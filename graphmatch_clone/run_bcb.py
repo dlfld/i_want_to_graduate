@@ -19,13 +19,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--cuda", default=True)
 parser.add_argument("--dataset", default='gcj')
 parser.add_argument("--graphmode", default='astandnext')
-parser.add_argument("--nextsib", default=False)
-parser.add_argument("--ifedge", default=False)
-parser.add_argument("--whileedge", default=False)
-parser.add_argument("--foredge", default=False)
-parser.add_argument("--blockedge", default=False)
-parser.add_argument("--nexttoken", default=False)
-parser.add_argument("--nextuse", default=False)
+parser.add_argument("--nextsib", default=True)
+parser.add_argument("--ifedge", default=True)
+parser.add_argument("--whileedge", default=True)
+parser.add_argument("--foredge", default=True)
+parser.add_argument("--blockedge", default=True)
+parser.add_argument("--nexttoken", default=True)
+parser.add_argument("--nextuse", default=True)
 parser.add_argument("--data_setting", default='11')
 parser.add_argument("--batch_size", default=32)
 parser.add_argument("--num_layers", default=4)
@@ -145,9 +145,7 @@ for epoch in epochs:# without batching
                 edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
             
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
-            for item in data:
-                print(item.shape)
-            exit(0)
+
             prediction=model(data)
             #batchloss=batchloss+criterion(prediction[0],prediction[1],label)
             cossim=F.cosine_similarity(prediction[0],prediction[1])
@@ -161,11 +159,13 @@ for epoch in epochs:# without batching
         loss=totalloss/main_index
         epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
     #test(validdata)
-    devresults=test(validdata)
-    devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
-    for res in devresults:
-        devfile.write(str(res)+'\n')
-    devfile.close()
+
+    testresults=test(testdata[:40000])
+    # devresults=test(validdata)
+    # devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
+    # for res in devresults:
+    #     devfile.write(str(res)+'\n')
+    # devfile.close()
     # testresults=test(testdata)
     # resfile=open('gmnbcbresult/'+args.graphmode+'_epoch_'+str(epoch+1),mode='w')
     # for res in testresults:

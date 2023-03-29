@@ -375,12 +375,11 @@ class GMNnet(torch.nn.Module):
                 x1, x2 = self.gmnlayer.forward(x1, x2, edge_index1, edge_index2, edge_weight1, edge_weight2, mode='train')'''
         batch1=torch.zeros(x1.size(0),dtype=torch.long).to(self.device) # without batching
         batch2=torch.zeros(x2.size(0),dtype=torch.long).to(self.device)
-        print(f"batch1 size = {batch1.shape}")
+        # print(f"batch1 size = {batch1.shape}")
 
         hg1=self.pool(x1,batch=batch1)
-        print(f"hg1 size = {hg1.shape}")
-        
-        exit(0)
+        # print(f"hg1 size = {hg1.shape}")
+    
         hg2=self.pool(x2,batch=batch2)
         logits = self.deep_sim(hg1,hg2)
         #sim=F.cosine_similarity(hg1,hg2)
