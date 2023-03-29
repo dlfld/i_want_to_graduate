@@ -198,15 +198,15 @@ for epoch in epochs:# without batching
     #test(validdata)
 
     devresults=test(validdata[:40000])
-    devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
-    for res in devresults:
-        devfile.write(str(res)+'\n')
-    devfile.close()
+    # devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
+    # for res in devresults:
+    #     devfile.write(str(res)+'\n')
+    # devfile.close()
     testresults=test(testdata[:40000])
-    resfile=open('gmnbcbresult/'+args.graphmode+'_epoch_'+str(epoch+1),mode='w')
-    for res in testresults:
-        resfile.write(str(res)+'\n')
-    resfile.close()
+    # resfile=open('gmnbcbresult/'+args.graphmode+'_epoch_'+str(epoch+1),mode='w')
+    # for res in testresults:
+    #     resfile.write(str(res)+'\n')
+    # resfile.close()
 
     #torch.save(model,'gmnmodels/gmnbcb'+str(epoch+1))
     #for start in range(0, len(traindata), args.batch_size):
