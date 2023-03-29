@@ -1,4 +1,4 @@
 gmnbcbresult/
-data
+*.data
 *.out
 vocabdata
