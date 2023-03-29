@@ -39,15 +39,12 @@ device=torch.device('cuda:0')
 astdict,vocablen,vocabdict=createast()
 treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
 traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
-print(len(traindata))
-#trainloder=DataLoader(traindata,batch_size=1)
 num_layers=int(args.num_layers)
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
 # 这儿进行了修改，将原来的Adam改为了AdamW
 optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
 criterion2=nn.MSELoss()
-
 criterion3 = torch.nn.BCEWithLogitsLoss()
 # criterion4 = torch.nn.BCE
 

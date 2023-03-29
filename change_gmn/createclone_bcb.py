@@ -74,6 +74,10 @@ def createtree(root,node,nodelist,parent=None):
 def getnodeandedge_astonly(node,nodeindexlist,vocabdict,src,tgt):
     token=node.token
     nodeindexlist.append([vocabdict[token]])
+#=====================添加自链接的边================================
+    src.append(node.id)
+    tgt.append(node.id)
+#=====================添加自链接的边================================
     for child in node.children:
         src.append(node.id)
         tgt.append(child.id)
@@ -121,6 +125,7 @@ def createast():
     paths=[]
     alltokens=[]
     dirname = 'BCB/bigclonebenchdata/'
+    # dirname = 'BCB/test/'
     for rt, dirs, files in os.walk(dirname):
         for file in files:
             programfile=open(os.path.join(rt,file),encoding='utf-8')
@@ -243,6 +248,7 @@ def creategmndata(id,treedict,vocablen,vocabdict,device):
     print('test data')
     testdata=createpairdata(treedict,testlist,device=device)
     return traindata, validdata, testdata
+
 def createpairdata(treedict,pathlist,device):
     datalist=[]
     countlines=1
@@ -272,7 +278,7 @@ def createpairdata(treedict,pathlist,device):
         datalist.append(data)
     return datalist
 
-if __name__ == '__main__':
-    astdict, vocabsize, vocabdict=createast()
-    treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
-    #creategmndata(treedict,vocabsize,vocabdict,device='cpu')
+# if __name__ == '__main__':
+#     astdict, vocabsize, vocabdict=createast()
+#     treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
+#     #creategmndata(treedict,vocabsize,vocabdict,device='cpu')

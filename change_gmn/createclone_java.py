@@ -207,6 +207,8 @@ def getedge_nexttoken(node,vocabdict,src,tgt,edgetype,tokenlist):
             src.append(tokenlist[i+1])
             tgt.append(tokenlist[i])
             edgetype.append([edges['Prevtoken']])
+
+# 变量使用
 def getedge_nextuse(node,vocabdict,src,tgt,edgetype,variabledict):
     def getvariables(node,vocabdict,edgetype,variabledict):
         token=node.token
@@ -222,7 +224,6 @@ def getedge_nextuse(node,vocabdict,src,tgt,edgetype,variabledict):
         for child in node.children:
             getvariables(child,vocabdict,edgetype,variabledict)
     getvariables(node,vocabdict,edgetype,variabledict)
-    #print(variabledict)
     for v in variabledict.keys():
         for i in range(len(variabledict[v])-1):
                 src.append(variabledict[v][i])
@@ -407,9 +408,9 @@ def createpairdata(treedict,pathlist,device):
         data = [[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2], label]
         datalist.append(data)
     return datalist
-if __name__ == '__main__':
-    astdict, vocabsize, vocabdict=createast()
-    treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
-    #creategmndata('0small',treedict,vocabsize,vocabdict,device='cpu')
+# if __name__ == '__main__':
+#     astdict, vocabsize, vocabdict=createast()
+#     treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
+#     #creategmndata('0small',treedict,vocabsize,vocabdict,device='cpu')
 
 

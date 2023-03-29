@@ -17,9 +17,6 @@ special_args = [
 __size_error_msg__ = ('All tensors which should get mapped to the same source '
                       'or target nodes must be of same size in dimension 0.')
 
-
-
-
 #==========================================================在最后加MLP，将整个计算相似度问题转换成为二分类问题===========================================================
 def dense_layer(
         inp: int,
@@ -267,6 +264,8 @@ class GMNlayer(MessagePassing):
         m1=self.propagate(edge_index1,size=(x1.size(0), x1.size(0)), x=x1,edge_weight=edge_weight1)
         m2=self.propagate(edge_index2,size=(x2.size(0), x2.size(0)), x=x2,edge_weight=edge_weight2)
 
+        
+
         # 让矩阵相乘
         scores = torch.mm(x1, x2.t())
         attn_1=F.softmax(scores,dim=1)
@@ -341,7 +340,7 @@ class GMNnet(torch.nn.Module):
         self.num_layers=num_layers
         self.embed=nn.Embedding(vocablen,embedding_dim)
         self.edge_embed=nn.Embedding(20,embedding_dim)
-        #self.gmn=nn.ModuleList([GMNlayer(embedding_dim,embedding_dim) for i in range(num_layers)])
+        #self.gmn=nn.ModuleList([GMNlayer(embedding_dim,embedding_dim) fsor i in range(num_layers)])
         self.gmnlayer=GMNlayer(embedding_dim,embedding_dim,self.device)
         self.mlp_gate=nn.Sequential(nn.Linear(embedding_dim,1),nn.Sigmoid())
         self.pool=GlobalAttention(gate_nn=self.mlp_gate)
@@ -365,6 +364,8 @@ class GMNnet(torch.nn.Module):
             edge_weight1=edge_weight1.squeeze(1)
             edge_weight2=self.edge_embed(edge_attr2)
             edge_weight2=edge_weight2.squeeze(1)
+
+        
 
         for i in range(self.num_layers):
             x1, x2 = self.gmnlayer.forward(x1, x2, edge_index1, edge_index2, edge_weight1, edge_weight2, mode='train')
