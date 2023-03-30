@@ -90,6 +90,7 @@ def getnodeandedge(node,nodeindexlist,vocabdict,src,tgt,edgetype):
 #=====================添加自链接的边================================
     src.append(node.id)
     tgt.append(node.id)
+    edgetype.append([0])
 #=====================添加自链接的边================================
     for child in node.children:
         src.append(node.id)
