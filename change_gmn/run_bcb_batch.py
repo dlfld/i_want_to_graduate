@@ -133,6 +133,7 @@ for item in traindata:
     x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=total_data
     x1 = to_adjacen_matrix(x1, edge_index1)
     x2 = to_adjacen_matrix(x2, edge_index2)
+    print("经过了一个邻接矩阵的转换")
     # 数据处理
     label =  [0] if label == -1 else [1]
 
@@ -143,6 +144,7 @@ for item in traindata:
         label=label
     )
     data_list.append(data)
+    del traindata
 
 
 

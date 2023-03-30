@@ -87,6 +87,10 @@ def getnodeandedge_astonly(node,nodeindexlist,vocabdict,src,tgt):
 def getnodeandedge(node,nodeindexlist,vocabdict,src,tgt,edgetype):
     token=node.token
     nodeindexlist.append([vocabdict[token]])
+#=====================添加自链接的边================================
+    src.append(node.id)
+    tgt.append(node.id)
+#=====================添加自链接的边================================
     for child in node.children:
         src.append(node.id)
         tgt.append(child.id)
