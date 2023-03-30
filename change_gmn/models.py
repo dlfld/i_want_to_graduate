@@ -345,11 +345,21 @@ class GMNnet(torch.nn.Module):
         self.mlp_gate=nn.Sequential(nn.Linear(embedding_dim,1),nn.Sigmoid())
         self.pool=GlobalAttention(gate_nn=self.mlp_gate)
 
-# ==================================================================================================================================
+# ======================================================添加后面的神经网络===========================================================================
         self.deep_sim  = DeepSim()
-# ==================================================================================================================================
+# ======================================================添加后面的神经网络===========================================================================
     def forward(self, data,mode='train'):
+#===========================================改batch之前的==========================================
         x1,x2, edge_index1, edge_index2,edge_attr1,edge_attr2 = data
+#===========================================改batch之前的==========================================
+    
+        # batch.edge_index_s = torch.tensor(batch.edge_index_s, dtype=torch.long, device=device)
+        # batch.x_s = torch.tensor(batch.x_s, dtype=torch.long, device=device)
+        # batch.edge_index_t = torch.tensor(batch.edge_index_t, dtype=torch.long, device=device)
+        # batch.x_t = torch.tensor(batch.x_t, dtype=torch.long, device=device)
+        # batch.edge_attr_s = torch.tensor(batch.edge_attr_s, dtype=torch.long, device=device)
+        # batch.edge_attr_t = torch.tensor(batch.edge_attr_t, dtype=torch.long, device=device)
+        # batch.label = torch.tensor(batch.label, dtype=torch.long, device=device)
         #print(edge_attr1)
         x1 = self.embed(x1)
         x1 = x1.squeeze(1)
@@ -382,13 +392,8 @@ class GMNnet(torch.nn.Module):
     
         hg2=self.pool(x2,batch=batch2)
         logits = self.deep_sim(hg1,hg2)
-        #sim=F.cosine_similarity(hg1,hg2)
-        # print(logits.shape)
-        # print(logits)
-        # logits = F.log_softmax(logits,dim=1)
+
         return logits
-        #for layer in self.gmn:
-            #x=layer(x,edge_index, edge_index2)
 
 class GGNN(torch.nn.Module):
     def __init__(self,vocablen,embedding_dim,num_layers,device):

@@ -131,7 +131,8 @@ data_list = []
 for item in traindata:
     total_data,label = item
     x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=total_data
-
+    x1 = to_adjacen_matrix(x1, edge_index1)
+    x2 = to_adjacen_matrix(x2, edge_index2)
     # 数据处理
     label =  [0] if label == -1 else [1]
 
@@ -160,8 +161,7 @@ for epoch in epochs:# without batching
     main_index=0.0
     
     for index, batch in tqdm(enumerate(loader), total=args.batch_size, desc = "Batches"):
-        batch.x_s = to_adjacen_matrix(batch.x_s, batch.edge_index_s)
-        batch.x_t = to_adjacen_matrix(batch.x_t, batch.edge_index_t)
+
         batch.edge_index_s = torch.tensor(batch.edge_index_s, dtype=torch.long, device=device)
         batch.x_s = torch.tensor(batch.x_s, dtype=torch.long, device=device)
         batch.edge_index_t = torch.tensor(batch.edge_index_t, dtype=torch.long, device=device)
@@ -172,7 +172,7 @@ for epoch in epochs:# without batching
         
         optimizer.zero_grad()
         batchloss= 0
-        
+        print(batch)
         logits=model(batch)
         batchloss = criterion3(logits, label)  # -log(sigmoid(1.5))
 

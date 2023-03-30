@@ -26,7 +26,7 @@ parser.add_argument("--foredge", default=True)
 parser.add_argument("--blockedge", default=True)
 parser.add_argument("--nexttoken", default=True)
 parser.add_argument("--nextuse", default=True)
-parser.add_argument("--data_setting", default='11')
+parser.add_argument("--data_setting", default='0')
 parser.add_argument("--batch_size", default=32)
 parser.add_argument("--num_layers", default=4)
 parser.add_argument("--num_epochs", default=10)
@@ -160,7 +160,7 @@ for epoch in epochs:# without batching
         epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
     #test(validdata)
 
-    testresults=test(testdata[:40000])
+    testresults=test(testdata)
     # devresults=test(validdata)
     # devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
     # for res in devresults:
