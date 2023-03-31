@@ -344,7 +344,9 @@ class GMNnet(torch.nn.Module):
         self.gmnlayer=GMNlayer(embedding_dim,embedding_dim,self.device)
         self.mlp_gate=nn.Sequential(nn.Linear(embedding_dim,1),nn.Sigmoid())
         self.pool=GlobalAttention(gate_nn=self.mlp_gate)
-
+# ======================================================添加Transformer=========================================================================== 
+        self.encoder_layer = nn.TransformerEncoderLayer(d_model=embedding_dim, nhead=8)
+        self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=6)
 # ======================================================添加后面的神经网络===========================================================================
         self.deep_sim  = DeepSim()
 # ======================================================添加后面的神经网络===========================================================================
@@ -365,6 +367,12 @@ class GMNnet(torch.nn.Module):
         x1 = x1.squeeze(1)
         x2 = self.embed(x2)
         x2 = x2.squeeze(1)
+        
+# ======================================================添加transformer encoder===========================================================================
+        x1 = self.transformer_encoder(x1)
+        x2 = self.transformer_encoder(x2)
+# ======================================================添加transformer encoder===========================================================================
+
         
         if type(edge_attr1)==type(None):
             edge_weight1=None
