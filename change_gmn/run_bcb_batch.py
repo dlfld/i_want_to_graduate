@@ -97,6 +97,7 @@ def to_adjacen_matrix(nodes,edge_index):
     # 
     A = np.dot(D,A)
     A = np.dot(A,D)
+    del D 
 
     return A
 
@@ -145,8 +146,6 @@ for item in traindata:
     )
     data_list.append(data)
     del traindata
-
-
 
 
 
