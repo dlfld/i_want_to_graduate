@@ -34,7 +34,7 @@ parser.add_argument("--lr", default=0.001)
 parser.add_argument("--threshold", default=0.5)
 args = parser.parse_args()
  
-device=torch.device('cuda:7')
+device=torch.device('cuda:0')
 #device=torch.device('cpu')
 astdict,vocablen,vocabdict=createast()
 treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
@@ -146,16 +146,12 @@ for epoch in epochs:# without batching
     main_index=0.0
     for index, batch in tqdm(enumerate(batches), total=len(batches), desc = "Batches"):
         optimizer.zero_grad()
-        batchloss= 0
+        # batchloss= 0wei
 
         for data,label in batch:
             label =  [0] if label == -1 else [1]
             label=torch.tensor(label, dtype=torch.float, device=device)
             label=torch.unsqueeze(label,dim=0)
-            #print(len(data))
-            #for i in range(len(data)):
-                #print(i)
-                #data[i]=torch.tensor(data[i], dtype=torch.long, device=device)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
             x1=torch.tensor(x1, dtype=torch.long, device=device)
             x2=torch.tensor(x2, dtype=torch.long, device=device)
@@ -169,30 +165,18 @@ for epoch in epochs:# without batching
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
 
             logits=model(data)
-            # batchloss += F.nll_loss(logits,label)
-            # print(f"logits={logits},label={label}")
-            # print(logits, label)
-            batchloss += criterion3(logits, label)  # -log(sigmoid(1.5))
+            # batchloss += criterion3(logits, label)  # -log(sigmoid(1.5))
+            loss = criterion3(logits, label)  # -log(sigmoid(1.5))
+            loss.backward(retain_graph=True)
 
-            # print(batchloss)
-            # print(type(batchloss))
+    
 
-            # batchloss=batchloss+criterion(prediction[0],prediction[1],label)
-            # cossim=F.cosine_similarity(prediction[0],prediction[1])
-            # batchloss=batchloss+criterion2(cossim,label)
-
-        batchloss.backward(retain_graph=True)
+        # batchloss.backward(retain_graph=True)
         optimizer.step()
-        loss = batchloss.item()
-        loss_list.append(loss)
-        # if index > -1:
+        # loss = batchloss.item()
+        loss_list.append(loss.item())
         writer.add_scalar('loss',loss, epoch*len(batches)+index)
-
-        # totalloss+=loss
-        # main_index = main_index + len(batch)
-        # loss=totalloss/main_index
-        
-        epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
+        epochs.set_description("Epoch (Loss=%g)" % round(loss.item(),5))
 
 
     #test(validdata)

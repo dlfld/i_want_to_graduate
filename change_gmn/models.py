@@ -345,34 +345,26 @@ class GMNnet(torch.nn.Module):
         self.mlp_gate=nn.Sequential(nn.Linear(embedding_dim,1),nn.Sigmoid())
         self.pool=GlobalAttention(gate_nn=self.mlp_gate)
 # ======================================================添加Transformer=========================================================================== 
-        self.encoder_layer = nn.TransformerEncoderLayer(d_model=embedding_dim, nhead=8)
-        self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=6)
+        self.encoder_layer = nn.TransformerEncoderLayer(d_model=embedding_dim, nhead=4,batch_first=True)
+        self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=2)
 # ======================================================添加后面的神经网络===========================================================================
         self.deep_sim  = DeepSim()
 # ======================================================添加后面的神经网络===========================================================================
+
     def forward(self, data,mode='train'):
-#===========================================改batch之前的==========================================
         x1,x2, edge_index1, edge_index2,edge_attr1,edge_attr2 = data
-#===========================================改batch之前的==========================================
-    
-        # batch.edge_index_s = torch.tensor(batch.edge_index_s, dtype=torch.long, device=device)
-        # batch.x_s = torch.tensor(batch.x_s, dtype=torch.long, device=device)
-        # batch.edge_index_t = torch.tensor(batch.edge_index_t, dtype=torch.long, device=device)
-        # batch.x_t = torch.tensor(batch.x_t, dtype=torch.long, device=device)
-        # batch.edge_attr_s = torch.tensor(batch.edge_attr_s, dtype=torch.long, device=device)
-        # batch.edge_attr_t = torch.tensor(batch.edge_attr_t, dtype=torch.long, device=device)
-        # batch.label = torch.tensor(batch.label, dtype=torch.long, device=device)
-        #print(edge_attr1)
         x1 = self.embed(x1)
         x1 = x1.squeeze(1)
         x2 = self.embed(x2)
         x2 = x2.squeeze(1)
-        
 # ======================================================添加transformer encoder===========================================================================
+        x1 = x1.unsqueeze(0)
+        x2 = x2.unsqueeze(0)
         x1 = self.transformer_encoder(x1)
         x2 = self.transformer_encoder(x2)
+        x1 = x1.squeeze(0)
+        x2 = x2.squeeze(0)
 # ======================================================添加transformer encoder===========================================================================
-
         
         if type(edge_attr1)==type(None):
             edge_weight1=None
