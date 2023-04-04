@@ -346,7 +346,7 @@ class GMNnet(torch.nn.Module):
         self.pool=GlobalAttention(gate_nn=self.mlp_gate)
 # ======================================================添加Transformer=========================================================================== 
         self.encoder_layer = nn.TransformerEncoderLayer(d_model=embedding_dim, nhead=4,batch_first=True)
-        self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=2)
+        self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=1)
 # ======================================================添加后面的神经网络===========================================================================
         self.deep_sim  = DeepSim()
 # ======================================================添加后面的神经网络===========================================================================
