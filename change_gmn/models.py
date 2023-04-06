@@ -78,7 +78,9 @@ class DeepSim(nn.Module):
         super().__init__()
         
         self.flatten = nn.Flatten()
-
+# ======================================================attention =============================================================================
+        self.attention = AttentionModule()
+# ======================================================attention =============================================================================
         self.mlp1 = MLP(  # 定义的全连接层
             d_hidden=[200, 2 * 200, 200],  # 全连接层数
             activation='relu',  # 激活函数
@@ -107,9 +109,17 @@ class DeepSim(nn.Module):
 
         x12 = torch.cat([x1, x2], 1)  # 拼接向量
         x21 = torch.cat([x2, x1], 1)
+        # print(f"x12.shape = {x12.shape}")
+# ======================================================添加attention ================================================================================
+        x12 = self.attention(x12)
+        x21 = self.attention(x21)
+        # print(f"x12.shape = {x12.shape}")
+        # print()
+# ======================================================添加attention ================================================================================
 
         h1 = self.mlp1(x12)
         h2 = self.mlp2(x21)
+        
         
         h = torch.cat((h1,h2),0)
         # print(f"求mean之前的shape  h.shape={h.shape}")
@@ -140,8 +150,8 @@ class AttentionModule(torch.nn.Module):
         """
         Defining weights.
         """
-        self.weight_matrix = torch.nn.Parameter(torch.Tensor(self.args.filters_3,
-                                                             self.args.filters_3))
+        self.weight_matrix = torch.nn.Parameter(torch.Tensor(200,
+                                                             1).cuda())
 
     def init_parameters(self):
         """
@@ -155,10 +165,12 @@ class AttentionModule(torch.nn.Module):
         :param embedding: Result of the GCN.
         :return representation: A graph level representation vector.
         """
-        global_context = torch.mean(torch.matmul(embedding, self.weight_matrix), dim=0)
+        global_context = torch.mean(torch.matmul(self.weight_matrix,embedding), dim=0)
+       
         transformed_global = torch.tanh(global_context)
         sigmoid_scores = torch.sigmoid(torch.mm(embedding, transformed_global.view(-1, 1)))
-        representation = torch.mm(torch.t(embedding), sigmoid_scores)
+
+        representation = torch.mm(sigmoid_scores,torch.t(embedding).T)
         return representation
 #==========================================================attention 层==========================================================
 
@@ -394,6 +406,8 @@ class GMNnet(torch.nn.Module):
 # ======================================================添加后面的神经网络===========================================================================
 
 
+
+
     def forward(self, data,mode='train'):
         x1,x2, edge_index1, edge_index2,edge_attr1,edge_attr2 = data
         x1 = self.embed(x1)
@@ -409,11 +423,6 @@ class GMNnet(torch.nn.Module):
         # x2 = x2.squeeze(0)
 
 # ======================================================添加transformer encoder===========================================================================
-        
-# ======================================================添加attention ================================================================================
-        # x1 = self.attention(x1)
-        # x2 = self.attention(x2)
-# ======================================================添加attention ================================================================================
 
         if type(edge_attr1)==type(None):
             edge_weight1=None

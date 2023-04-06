@@ -11,6 +11,7 @@ from param_parser import get_args
 import sys
 import argparse
 from tqdm import tqdm, trange
+import os
 import pycparser
 from createclone_bcb import createast,creategmndata,createseparategraph
 import models
@@ -20,14 +21,29 @@ from early_stopping import EarlyStopping
 
 # 获取参数
 args = get_args()
- 
+import joblib
 device=torch.device('cuda:0')
-# 读取数据集获取数据信息 
-astdict,vocablen,vocabdict=createast()
-# 数据预处理
-treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
-# 获取格式化数据
-traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
+
+if not os.path.exists("data.data"):
+    # 读取数据集获取数据信息 
+    astdict,vocablen,vocabdict=createast()
+    # 数据预处理
+    treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
+    # 获取格式化数据
+    traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
+    train_data = {
+        "traindata":traindata,
+        "validdata":validdata,
+        "testdata":testdata,
+        "vocablen":vocablen
+    }
+    joblib.dump(train_data,"data.data")
+else:
+    train_data = joblib.load("data.data")
+    traindata,validdata,testdata,vocablen=train_data["traindata"],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
+
+    
+
 num_layers=int(args.num_layers)
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
 # 这儿进行了修改，将原来的Adam改为了AdamW
