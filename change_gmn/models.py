@@ -358,12 +358,12 @@ class GMNnet(torch.nn.Module):
         x2 = self.embed(x2)
         x2 = x2.squeeze(1)
 # ======================================================添加transformer encoder===========================================================================
-        x1 = x1.unsqueeze(0)
-        x2 = x2.unsqueeze(0)
-        x1 = self.transformer_encoder(x1)
-        x2 = self.transformer_encoder(x2)
-        x1 = x1.squeeze(0)
-        x2 = x2.squeeze(0)
+        # x1 = x1.unsqueeze(0)
+        # x2 = x2.unsqueeze(0)
+        # x1 = self.transformer_encoder(x1)
+        # x2 = self.transformer_encoder(x2)
+        # x1 = x1.squeeze(0)
+        # x2 = x2.squeeze(0)
 # ======================================================添加transformer encoder===========================================================================
         
         if type(edge_attr1)==type(None):

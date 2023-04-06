@@ -32,6 +32,7 @@ traindata,validdata,testdata=creategmndata('11small',astdict,vocablen,vocabdict,
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=4).to(device)
 optimizer = optim.Adam(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
+
 def create_batches(data):
     #random.shuffle(data)
     batches = [data[graph:graph+args.batch_size] for graph in range(0, len(data), args.batch_size)]

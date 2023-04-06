@@ -22,10 +22,6 @@ def get_token(node):
         token = 'Modifier'
     elif isinstance(node, Node):
         token = node.__class__.__name__
-    print(node.attrs)
-    print("node-name--->", node.__class__.__name__)
-    print("node-type---->", type(node))
-    print()
     return token
 
 
@@ -148,7 +144,7 @@ def createast():
     paths = []
     alltokens = []
     dirname = 'BCB/bigclonebenchdata/'
-    dirname = 'BCB/test/'
+    # dirname = 'BCB/test/'
     for rt, dirs, files in os.walk(dirname):
         for file in files:
             programfile = open(os.path.join(rt, file), encoding='utf-8')

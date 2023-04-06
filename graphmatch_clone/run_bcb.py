@@ -101,12 +101,11 @@ def test(dataset):
         return
     r=tp/(tp+fn)
     f1=2*p*r/(p+r)
-    print('precision')
-    print(p)
-    print('recall')
-    print(r)
-    print('F1')
-    print(f1)
+    acc = (tp + tn) / len(dataset)
+    print(f'precision = {p}')
+    print(f'recall = {r}')
+    print(f'F1={f1}')
+    print(f"acc = {acc}")
     return results
 
 from sklearn.model_selection import train_test_split
