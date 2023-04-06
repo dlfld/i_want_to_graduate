@@ -9,6 +9,8 @@ from torch_geometric.nn.inits import glorot, zeros
 from torch_geometric.nn.glob import GlobalAttention
 import sys
 import inspect
+from param_parser import get_args
+
 is_python2 = sys.version_info[0] < 3
 getargspec = inspect.getargspec if is_python2 else inspect.getfullargspec
 special_args = [
@@ -122,24 +124,15 @@ class DeepSim(nn.Module):
 #==========================================================在最后加MLP，将整个计算相似度问题转换成为二分类问题===========================================================
 
 
-
-
-
-
-
-
-
 #==========================================================attention 层==========================================================
 class AttentionModule(torch.nn.Module):
     """
     SimGNN Attention Module to make a pass on graph.
     """
-    def __init__(self, args):
-        """
-        :param args: Arguments object.
-        """
+    def __init__(self):
         super(AttentionModule, self).__init__()
-        self.args = args
+        # 获取参数
+        self.args = get_args()
         self.setup_weights()
         self.init_parameters()
 
@@ -168,6 +161,7 @@ class AttentionModule(torch.nn.Module):
         representation = torch.mm(torch.t(embedding), sigmoid_scores)
         return representation
 #==========================================================attention 层==========================================================
+
 
 class GMNlayer(MessagePassing):
     def __init__(self, in_channels, out_channels,device):
@@ -399,6 +393,7 @@ class GMNnet(torch.nn.Module):
         self.deep_sim  = DeepSim()
 # ======================================================添加后面的神经网络===========================================================================
 
+
     def forward(self, data,mode='train'):
         x1,x2, edge_index1, edge_index2,edge_attr1,edge_attr2 = data
         x1 = self.embed(x1)
@@ -412,8 +407,14 @@ class GMNnet(torch.nn.Module):
         # x2 = self.transformer_encoder(x2)
         # x1 = x1.squeeze(0)
         # x2 = x2.squeeze(0)
+
 # ======================================================添加transformer encoder===========================================================================
         
+# ======================================================添加attention ================================================================================
+        # x1 = self.attention(x1)
+        # x2 = self.attention(x2)
+# ======================================================添加attention ================================================================================
+
         if type(edge_attr1)==type(None):
             edge_weight1=None
             edge_weight2=None

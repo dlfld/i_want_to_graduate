@@ -24,10 +24,7 @@ def parameter_parser():
                         default=5,
 	                help="Number of training epochs. Default is 5.")
 
-    parser.add_argument("--filters-1",
-                        type=int,
-                        default=128,
-	                help="Filters (neurons) in 1st convolution. Default is 128.")
+    parser.add_argument("--filters-1",type=int,default=128,help="Filters (neurons) in 1st convolution. Default is 128.")
 
     parser.add_argument("--filters-2",
                         type=int,

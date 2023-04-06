@@ -7,6 +7,7 @@ from torch.autograd import Variable
 import torch.optim as optim
 import numpy as np
 import time
+from param_parser import get_args
 import sys
 import argparse
 from tqdm import tqdm, trange
@@ -17,32 +18,15 @@ from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter   
 from early_stopping import EarlyStopping
 
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--cuda", default=True)
-parser.add_argument("--dataset", default='gcj')
-parser.add_argument("--graphmode", default='astandnext')
-parser.add_argument("--nextsib", default=True)
-parser.add_argument("--ifedge", default=True)
-parser.add_argument("--whileedge", default=True)
-parser.add_argument("--foredge", default=True)
-parser.add_argument("--blockedge", default=True)
-parser.add_argument("--nexttoken", default=True)
-parser.add_argument("--nextuse", default=True)
-parser.add_argument("--data_setting", default='11')
-parser.add_argument("--batch_size", default=32)
-parser.add_argument("--num_layers", default=4)
-parser.add_argument("--num_epochs", default=200)
-parser.add_argument("--lr", default=0.001)
-parser.add_argument("--threshold", default=0.5)
-parser.add_argument("--loss_name", default="loss_data.data")
-args = parser.parse_args()
+# 获取参数
+args = get_args()
  
 device=torch.device('cuda:0')
-#device=torch.device('cpu')
+# 读取数据集获取数据信息 
 astdict,vocablen,vocabdict=createast()
+# 数据预处理
 treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
+# 获取格式化数据
 traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
 num_layers=int(args.num_layers)
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
@@ -275,7 +259,7 @@ for epoch in epochs:# without batching
 
         r=tp/(tp+fn)
         f1=2*p*r/(p+r)
-        acc = (tp + tn) / len(dataset)
+        acc = (tp + tn) / len(val_data)
         print(f'precision = {p}')
         print(f'recall = {r}')
         print(f'F1={f1}')
