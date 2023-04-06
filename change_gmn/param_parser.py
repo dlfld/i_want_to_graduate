@@ -1,3 +1,4 @@
+import pycparser
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--cuda", default=True)
@@ -20,4 +21,3 @@ def get_args():
     parser.add_argument("--filters-3",default=32,help="Filters (neurons) in 3rd convolution. Default is 32.")
     args = parser.parse_args()
     return args
-    
