@@ -168,7 +168,7 @@ for epoch in epochs:# without batching
         # batchloss= 0wei
 
         # 预测正确的数量
-        num_correct = 0
+        # num_correct = 0
         batch_losses = []
         
    
@@ -189,12 +189,13 @@ for epoch in epochs:# without batching
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
 
             logits=model(data)
-            pred_sig = torch.sigmoid(logits)
-
-            # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
-            num_correct += 1 if pred_sig > args.threshold and label == [1] or pred_sig <= args.threshold and label == [0] else 0 
+            # pred_sig = torch.sigmoid(logits)
             
-            loss = criterion4(pred_sig,label)
+            # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
+            # num_correct += 1 if pred_sig > args.threshold and label == [1] or pred_sig <= args.threshold and label == [0] else 0 
+            
+            # loss = criterion4(pred_sig,label)
+            loss = criterion3(logits,label)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
 
@@ -210,7 +211,10 @@ for epoch in epochs:# without batching
         optimizer.step()
 
         # 早停策略判断
+    
+    
     model.eval()
+    # 验证和计算早停 
     with torch.no_grad():
         valid_loss_list = []
         val_data = validdata[:40000]
