@@ -216,8 +216,6 @@ for epoch in epochs:# without batching
 
             label=torch.tensor(label, dtype=torch.float, device=device)
             label=torch.unsqueeze(label,dim=0)
-            print("label")
-            print(label)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
 
             x1=torch.tensor(x1, dtype=torch.long, device=device)
