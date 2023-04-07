@@ -40,7 +40,7 @@ if not os.path.exists("data.data"):
     joblib.dump(train_data,"data.data")
 else:
     train_data = joblib.load("data.data")
-    traindata,validdata,testdata,vocablen=train_data["traindata"],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
+    traindata,validdata,testdata,vocablen=train_data["traindata"][:100],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
 
     
 
@@ -247,7 +247,7 @@ for epoch in epochs:# without batching
             logits=model(data)
             output = torch.sigmoid(logits)
             loss = criterion4(output,label)
-            eval_losses.append(loss)
+            eval_losses.append(loss.item())
 
             prediction  = output
             if prediction>args.threshold and label.item()==1:
@@ -281,7 +281,7 @@ for epoch in epochs:# without batching
 
         avg_valid_loss = np.average(eval_losses)
         print("验证集loss:{}".format(avg_valid_loss))
-        early_stopping(train_losses, model)
+        early_stopping(avg_valid_loss, model)
         if early_stopping.early_stop:
             print("此时早停！")
             break

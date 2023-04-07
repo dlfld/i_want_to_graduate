@@ -14,10 +14,9 @@ from createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, ge
 
 def get_token(node):
     token = ''
-    # print(isinstance(node, Node))
-    # print("node-type---->",type(node))
     if isinstance(node, str):
         token = node
+        # print(f"node->{node}")
     elif isinstance(node, set):
         token = 'Modifier'
     elif isinstance(node, Node):
@@ -136,7 +135,8 @@ def countnodes(node, ifcount, whilecount, forcount, blockcount):
         tgt.append(node.children[i].id)
         edgetype.append([1])
     for child in node.children:
-        getedge_nextsib(child,vocabdict,src,tgt,edgetype)'''
+        getedge_nextsib(child,vocabdict,src,tgt,edgetype)        
+'''
 
 
 def createast():
@@ -304,5 +304,5 @@ def createpairdata(treedict, pathlist, device):
 
 if __name__ == '__main__':
     astdict, vocabsize, vocabdict = createast()
-    # treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
-#     #creategmndata(treedict,vocabsize,vocabdict,device='cpu')
+    treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
+    creategmndata(treedict,vocabsize,vocabdict,device='cpu')
