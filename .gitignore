@@ -2,4 +2,4 @@
 *.data
 *.txt
 events.out.tfevents.*
-__pycache__/
+__pycache__/*
