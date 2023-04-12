@@ -222,6 +222,9 @@ def createseparategraph(astdict, vocablen, vocabdict, device, mode='astonly', ne
         else:
             getnodeandedge(newtree, x, vocabdict, edgesrc, edgetgt, edge_attr)
             if nextsib == True:
+                # 链接下一个兄弟结点，将一个节点连接到它的下一个兄弟姐妹 (从左到右)。
+                # 因为图神经网络不考虑节点的顺序，所以有必要向我们的神经网络模型提供子的顺序。
+                # 尝试一下，如果不要兄弟结点呢？不考虑顺序信息。
                 getedge_nextsib(newtree, vocabdict, edgesrc, edgetgt, edge_attr)
             getedge_flow(newtree, vocabdict, edgesrc, edgetgt, edge_attr, ifedge, whileedge, foredge)
             if blockedge == True:

@@ -5,6 +5,7 @@ def get_args():
     parser.add_argument("--cuda", default=True)
     parser.add_argument("--dataset", default='gcj')
     parser.add_argument("--graphmode", default='astandnext')
+    # parser.add_argument("--graphmode", default='astonly')
     parser.add_argument("--nextsib", default=True)
     parser.add_argument("--ifedge", default=True)
     parser.add_argument("--whileedge", default=True)

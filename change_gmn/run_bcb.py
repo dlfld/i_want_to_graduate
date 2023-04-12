@@ -40,7 +40,7 @@ if not os.path.exists("data.data"):
     joblib.dump(train_data,"data.data")
 else:
     train_data = joblib.load("data.data")
-    traindata,validdata,testdata,vocablen=train_data["traindata"][:100],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
+    traindata,validdata,testdata,vocablen=train_data["traindata"],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
 
     
 
@@ -54,7 +54,7 @@ criterion3 = torch.nn.BCEWithLogitsLoss()
 criterion4 = nn.BCELoss()
 save_path = "./models" #当前目录下
 # early_stopping = EarlyStopping()
-early_stopping = EarlyStopping(patience=4, verbose=True,save_path=save_path)  # 早停
+early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  # 早停
 # criterion4 = torch.nn.BCE
 
 def create_batches(data):
@@ -274,7 +274,7 @@ for epoch in epochs:# without batching
         r=tp/(tp+fn)
         f1=2*p*r/(p+r)
         acc = (tp + tn) / len(val_data)
-        print(f'precision = {p}')
+        print(f'\nprecision = {p}')
         print(f'recall = {r}')
         print(f'F1={f1}')
         print(f"acc = {acc}")
