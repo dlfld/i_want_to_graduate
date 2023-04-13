@@ -1,8 +1,7 @@
+# 通过这个代码可以获取到Java的语法分析树
 import antlr4
-# from Java9Lexer import Java9Lexer
-# from Java9Parser import Java9Parser
-import Java9Lexer
-import Java9Parser
+from JavaLexer import JavaLexer
+from JavaParser import JavaParser
 
 # 定义Java代码
 java_code = "public class Main { public static void main(String[] args) { System.out.println(\"Hello World!\"); } }"
@@ -11,13 +10,13 @@ java_code = "public class Main { public static void main(String[] args) { System
 input_stream = antlr4.InputStream(java_code)
 
 # 创建JavaLexer
-lexer = Java9Lexer(input_stream)
+lexer = JavaLexer(input_stream)
 
 # 创建ANTLR词法分析器
 token_stream = antlr4.CommonTokenStream(lexer)
 
 # 创建JavaParser
-parser = Java9Parser(token_stream)
+parser = JavaParser(token_stream)
 
 # 解析Java代码
 tree = parser.compilationUnit()
