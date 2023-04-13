@@ -18,12 +18,13 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter   
 from early_stopping import EarlyStopping
+import logddd
+
 
 # 获取参数
 args = get_args()
 import joblib
 device=torch.device('cuda:0')
-
 if not os.path.exists("data.data"):
     # 读取数据集获取数据信息 
     astdict,vocablen,vocabdict=createast()
@@ -141,6 +142,25 @@ def test(dataset):
     print(f"acc = {acc}")
     return results
 
+# 计算邻接矩阵
+def to_adjacen_matrix(nodes,edge_index):
+    # 构造邻接矩阵的样式并求出当前邻接矩阵大小
+    data = [item[0] for item in nodes]
+    min_id = min(data)
+    max_id = max(data)
+    len_nodes = max_id - min_id + 1
+    # 构造邻接矩阵
+    A = [[0 for x in range(len_nodes)] for y in range(len_nodes)]
+
+    # 取出边矩阵
+    sources,targets = edge_index
+    # 对邻接矩阵赋值    
+    for index,source in enumerate(sources):
+        row = source-min_id
+        col = targets[index] - min_id
+        A[row][col]+=1
+
+    return A
 
 # loss_list = []
 #=======================================================early stop=======================================================
@@ -170,12 +190,11 @@ for epoch in epochs:# without batching
         # 预测正确的数量
         # num_correct = 0
         batch_losses = []
-        
-   
+             
+
         for data,label in batch:
             label =  [0] if label == -1 else [1]
             label=torch.tensor(label, dtype=torch.float, device=device)
-            label=torch.unsqueeze(label,dim=0)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
             x1=torch.tensor(x1, dtype=torch.long, device=device)
             x2=torch.tensor(x2, dtype=torch.long, device=device)
@@ -186,16 +205,24 @@ for epoch in epochs:# without batching
                 edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
                 edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
 
-            data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
+            # x1_a = to_adjacen_matrix(x1, edge_index1)
+            # x2_a = to_adjacen_matrix(x2, edge_index2)
 
+            # data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2,x1_a,x2_a]
+            data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
             logits=model(data)
             # pred_sig = torch.sigmoid(logits)
             
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
             # num_correct += 1 if pred_sig > args.threshold and label == [1] or pred_sig <= args.threshold and label == [0] else 0 
-            
+            # logddd.log(logits)
+            logits  = logits.squeeze(0)
             # loss = criterion4(pred_sig,label)
-            loss = criterion3(logits,label)
+            output = torch.sigmoid(logits)
+            # logddd.log(output)
+            # logddd.log(label)
+            loss = criterion4(output,label)
+            # print(label)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
 
@@ -231,7 +258,7 @@ for epoch in epochs:# without batching
             label =  [0] if label == -1 else [1]
 
             label=torch.tensor(label, dtype=torch.float, device=device)
-            label=torch.unsqueeze(label,dim=0)
+            # label=torch.unsqueeze(label,dim=0)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
 
             x1=torch.tensor(x1, dtype=torch.long, device=device)

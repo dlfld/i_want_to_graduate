@@ -21,5 +21,6 @@ def get_args():
     parser.add_argument("--threshold", default=0.5)
     parser.add_argument("--loss_name", default="loss_data.data")
     parser.add_argument("--filters-3",default=32,help="Filters (neurons) in 3rd convolution. Default is 32.")
+    parser.add_argument("--dropout",type=float,default=0.5, help="Dropout probability. Default is 0.5.")
     args = parser.parse_args()
     return args

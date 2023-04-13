@@ -10,6 +10,7 @@ from torch_geometric.nn.glob import GlobalAttention
 import sys
 import inspect
 from param_parser import get_args
+from torch_geometric.nn import GCNConv
 
 is_python2 = sys.version_info[0] < 3
 getargspec = inspect.getargspec if is_python2 else inspect.getfullargspec
@@ -111,8 +112,8 @@ class DeepSim(nn.Module):
         x21 = torch.cat([x2, x1], 1)
         # print(f"x12.shape = {x12.shape}")
 # ======================================================添加attention ================================================================================
-        x12 = self.attention(x12)
-        x21 = self.attention(x21)
+        # x12 = self.attention(x12)
+        # x21 = self.attention(x21)
         # print(f"x12.shape = {x12.shape}")
         # print()
 # ======================================================添加attention ================================================================================
@@ -404,16 +405,51 @@ class GMNnet(torch.nn.Module):
 # ======================================================添加后面的神经网络===========================================================================
         self.deep_sim  = DeepSim()
 # ======================================================添加后面的神经网络===========================================================================
+        self.args = get_args()
+# ======================================================GCN==========================================================
+        # self.num_features = 100
+        self.convolution_1 = GCNConv(100, 256)
+        self.convolution_2 = GCNConv(256, 128)
+        self.convolution_3 = GCNConv(128, 100)
 
+    def convolutional_pass(self, edge_index, features):
+        """
+        Making convolutional pass.
+        :param edge_index: Edge indices.
+        :param features: Feature matrix.
+        :return features: Absstract feature matrix.
+        """
+        features = self.convolution_1(features, edge_index)
+        features = torch.nn.functional.relu(features)
+        features = torch.nn.functional.dropout(features,
+                                            p=self.args.dropout,
+                                            training=self.training)
 
+        features = self.convolution_2(features, edge_index)
+        features = torch.nn.functional.relu(features)
+        features = torch.nn.functional.dropout(features,
+                                            p=self.args.dropout,
+                                            training=self.training)
+
+        features = self.convolution_3(features, edge_index)
+        return features
+# ======================================================GCN==========================================================      
 
 
     def forward(self, data,mode='train'):
         x1,x2, edge_index1, edge_index2,edge_attr1,edge_attr2 = data
+        # 将稠密矩阵转换为邻接矩阵，然后输入到GCN中
+
+        # x1 和x2都是点的集合，每一个点被embedding为了100d，因此x1 和 x2 的维度是 n * 100
         x1 = self.embed(x1)
         x1 = x1.squeeze(1)
+        
         x2 = self.embed(x2)
         x2 = x2.squeeze(1)
+# ======================================================添加GCN=======================================================
+        x1 = self.convolutional_pass(edge_index=edge_index1, features = x1)
+        x2 = self.convolutional_pass(edge_index=edge_index2, features = x2)
+# ======================================================添加GCN=======================================================
 # ======================================================添加transformer encoder===========================================================================
         # x1 = x1.unsqueeze(0)
         # x2 = x2.unsqueeze(0)
