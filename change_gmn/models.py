@@ -11,6 +11,7 @@ import sys
 import inspect
 from param_parser import get_args
 from torch_geometric.nn import GCNConv
+import logddd
 
 is_python2 = sys.version_info[0] < 3
 getargspec = inspect.getargspec if is_python2 else inspect.getfullargspec
@@ -101,9 +102,9 @@ class DeepSim(nn.Module):
         )
 
 
-        self.liner = nn.Linear(200, 1)
+        self.liner = nn.Linear(300, 1)
 
-    def forward(self, x1, x2):
+    def forward(self, x1, x2,hist ):
     
         # x1 = self.mlp1(x1)  # 经过全连接层特征提取x1
         # x2 = self.mlp1(x2)  # 经过全连接层特征提取x2
@@ -126,6 +127,10 @@ class DeepSim(nn.Module):
         # print(f"求mean之前的shape  h.shape={h.shape}")
         h = torch.mean(h,keepdim=True,dim=0)  # 合并x1x2  
         # print(f"求mean之后的shape  h.shape={h.shape}")
+        # logddd.log(h.shape)
+        h = torch.cat((h,hist),1)
+        
+        # logddd.log(h.shape)
         # print(h)
         # 要输入是*200
         logits = self.liner(h)
@@ -411,7 +416,6 @@ class GMNnet(torch.nn.Module):
         self.convolution_1 = GCNConv(100, 256)
         self.convolution_2 = GCNConv(256, 128)
         self.convolution_3 = GCNConv(128, 100)
-
     def convolutional_pass(self, edge_index, features):
         """
         Making convolutional pass.
@@ -435,6 +439,22 @@ class GMNnet(torch.nn.Module):
         return features
 # ======================================================GCN==========================================================      
 
+# =====================================================Pairwise Node Comparison======================================
+    def calculate_histogram(self, abstract_features_1, abstract_features_2):
+        """
+        Calculate histogram from similarity matrix.
+        :param abstract_features_1: Feature matrix for graph 1.
+        :param abstract_features_2: Feature matrix for graph 2.
+        :return hist: Histsogram of similarity scores.
+        """
+        scores = torch.mm(abstract_features_1, torch.t(abstract_features_2)).detach()
+        scores = scores.view(-1, 1)
+        # torch.histc() 是一个用于计算张量中元素在各个区间内的频率的函数。
+        hist = torch.histc(scores, bins=100)
+        hist = hist/torch.sum(hist)
+        hist = hist.view(1, -1)
+        return hist
+# =====================================================Pairwise Node Comparison======================================
 
     def forward(self, data,mode='train'):
         x1,x2, edge_index1, edge_index2,edge_attr1,edge_attr2 = data
@@ -451,6 +471,15 @@ class GMNnet(torch.nn.Module):
         x2 = self.convolutional_pass(edge_index=edge_index2, features = x2)
 
 # ======================================================添加GCN=======================================================
+
+
+# ===================================================== 添加 Pairwise Node Comparison======================================
+        hist = self.calculate_histogram(x1, x2)
+        import logddd 
+        logddd.log(hist.shape)
+# ===================================================== 添加 Pairwise Node Comparison======================================
+
+
 # ======================================================添加transformer encoder===========================================================================
         # x1 = x1.unsqueeze(0)
         # x2 = x2.unsqueeze(0)
@@ -490,7 +519,7 @@ class GMNnet(torch.nn.Module):
         hg2=self.pool(x2,batch=batch2)
 
 
-        logits = self.deep_sim(hg1,hg2)
+        logits = self.deep_sim(hg1,hg2,hist)
 
         return logits
 
