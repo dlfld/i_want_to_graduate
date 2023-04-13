@@ -475,8 +475,6 @@ class GMNnet(torch.nn.Module):
 
 # ===================================================== 添加 Pairwise Node Comparison======================================
         hist = self.calculate_histogram(x1, x2)
-        import logddd 
-        logddd.log(hist.shape)
 # ===================================================== 添加 Pairwise Node Comparison======================================
 
 

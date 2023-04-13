@@ -18,7 +18,7 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter   
 from early_stopping import EarlyStopping
-import logddd
+# import logddd
 
 
 # 获取参数
@@ -272,6 +272,7 @@ for epoch in epochs:# without batching
 
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
             logits=model(data)
+            logits  = logits.squeeze(0)
             output = torch.sigmoid(logits)
             loss = criterion4(output,label)
             eval_losses.append(loss.item())
