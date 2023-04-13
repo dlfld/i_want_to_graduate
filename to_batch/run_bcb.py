@@ -180,8 +180,9 @@ for epoch in epochs:# without batching
         edge_attr2_t = []
         for data,label in batch:
             label =  [0] if label == -1 else [1]
-            # label=torch.tensor(label, dtype=torch.float, device=device)
+            label=torch.tensor(label, dtype=torch.float, device=device)
             # label=torch.unsqueeze(label,dim=0)
+
             labels.append(label)
 
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
@@ -199,6 +200,18 @@ for epoch in epochs:# without batching
                 edge_attr2_t.append(edge_attr2)
                 # edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
                 # edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
+        
+        labels=torch.tensor(labels, dtype=torch.float, device=device)
+        x1_t=torch.tensor(x1_t, dtype=torch.long, device=device)
+        x2_t=torch.tensor(x2_t, dtype=torch.long, device=device)
+        edge_index1_t=torch.tensor(edge_index1_t, dtype=torch.long, device=device)
+        edge_index2_t=torch.tensor(edge_index2_t, dtype=torch.long, device=device)
+        if len(edge_attr1_t) > 0:
+            edge_attr1_t=torch.tensor(edge_attr1_t, dtype=torch.long, device=device)
+            edge_attr2_t=torch.tensor(edge_attr2_t, dtype=torch.long, device=device)
+
+        data=[x1_t, x2_t, edge_index1_t, edge_index2_t, edge_attr1_t, edge_attr2_t]
+        
         
 
         for data,label in batch:
@@ -260,7 +273,6 @@ for epoch in epochs:# without batching
             label =  [0] if label == -1 else [1]
 
             label=torch.tensor(label, dtype=torch.float, device=device)
-            label=torch.unsqueeze(label,dim=0)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
 
             x1=torch.tensor(x1, dtype=torch.long, device=device)
