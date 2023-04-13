@@ -11,7 +11,7 @@ import sys
 import inspect
 from param_parser import get_args
 from torch_geometric.nn import GCNConv
-import logddd
+
 
 is_python2 = sys.version_info[0] < 3
 getargspec = inspect.getargspec if is_python2 else inspect.getfullargspec
