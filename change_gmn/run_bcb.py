@@ -47,6 +47,8 @@ else:
 
 num_layers=int(args.num_layers)
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
+device_ids = []
+net = torch.nn.DataParallel(net, device_ids=device_ids)
 # 这儿进行了修改，将原来的Adam改为了AdamW
 optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
@@ -222,7 +224,6 @@ for epoch in epochs:# without batching
             # logddd.log(output)
             # logddd.log(label)
             loss = criterion4(output,label)
-            # print(label)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
 
