@@ -102,7 +102,7 @@ class DeepSim(nn.Module):
         )
 
 
-        self.liner = nn.Linear(300, 1)
+        self.liner = nn.Linear(216, 1)
 
     def forward(self, x1, x2,hist ):
     
@@ -450,7 +450,7 @@ class GMNnet(torch.nn.Module):
         scores = torch.mm(abstract_features_1, torch.t(abstract_features_2)).detach()
         scores = scores.view(-1, 1)
         # torch.histc() 是一个用于计算张量中元素在各个区间内的频率的函数。
-        hist = torch.histc(scores, bins=100)
+        hist = torch.histc(scores, bins=16)
         hist = hist/torch.sum(hist)
         hist = hist.view(1, -1)
         return hist
