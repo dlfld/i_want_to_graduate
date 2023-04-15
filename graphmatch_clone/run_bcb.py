@@ -15,6 +15,9 @@ from createclone_bcb import createast,creategmndata,createseparategraph
 import models
 from torch_geometric.data import Data, DataLoader
 
+from torch.utils.tensorboard import SummaryWriter   
+writer = SummaryWriter('log/')
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--cuda", default=True)
 parser.add_argument("--dataset", default='gcj')
@@ -26,10 +29,10 @@ parser.add_argument("--foredge", default=True)
 parser.add_argument("--blockedge", default=True)
 parser.add_argument("--nexttoken", default=True)
 parser.add_argument("--nextuse", default=True)
-parser.add_argument("--data_setting", default='0')
+parser.add_argument("--data_setting", default='11')
 parser.add_argument("--batch_size", default=32)
 parser.add_argument("--num_layers", default=4)
-parser.add_argument("--num_epochs", default=10)
+parser.add_argument("--num_epochs", default=100)
 parser.add_argument("--lr", default=0.001)
 parser.add_argument("--threshold", default=0)
 args = parser.parse_args()
@@ -51,7 +54,69 @@ def create_batches(data):
     batches = [data[graph:graph+args.batch_size] for graph in range(0, len(data), args.batch_size)]
     return batches
 
+
+
 def test(dataset):
+    #model.eval()
+    count=0
+    correct=0
+    tp = 0
+    tn = 0
+    fp = 0
+    fn = 0
+    for data,label in dataset:
+        label=torch.tensor(label, dtype=torch.float, device=device)
+        x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
+        x1=torch.tensor(x1, dtype=torch.long, device=device)
+        x2=torch.tensor(x2, dtype=torch.long, device=device)
+        edge_index1=torch.tensor(edge_index1, dtype=torch.long, device=device)
+        edge_index2=torch.tensor(edge_index2, dtype=torch.long, device=device)
+        if edge_attr1!=None:
+            edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
+            edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
+        data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
+        prediction=model(data)
+
+        output=F.cosine_similarity(prediction[0],prediction[1])
+        # 记录验证机loss
+        prediction = torch.sign(output).item()
+
+        if prediction>args.threshold and label.item()==1:
+            tp+=1
+            #print('tp')
+        if prediction<=args.threshold and label.item()==-1:
+            tn+=1
+            #print('tn')
+        if prediction>args.threshold and label.item()==-1:
+            fp+=1
+            #print('fp')
+        if prediction<=args.threshold and label.item()==1:
+            fn+=1
+            #print('fn')
+    print(tp,tn,fp,fn)
+    p=0.0
+    r=0.0
+    f1=0.0
+    if tp+fp==0:
+        print('precision is none')
+        return
+    p=tp/(tp+fp)
+    if tp+fn==0:
+        print('recall is none')
+        return
+    r=tp/(tp+fn)
+    f1=2*p*r/(p+r)
+    acc = (tp + tn) / len(dataset)
+    print(f'precision = {p}')
+    print(f'recall = {r}')
+    print(f'F1={f1}')
+    print(f"acc = {acc}")
+    return results
+
+
+
+valid_data_loss = []
+def valid(dataset,epoch):
     #model.eval()
     count=0
     correct=0
@@ -72,7 +137,13 @@ def test(dataset):
             edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
         data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
         prediction=model(data)
+
+        
         output=F.cosine_similarity(prediction[0],prediction[1])
+        # 记录验证机loss
+        batchloss=criterion2(output,label)
+        loss = batchloss.item()
+        
         results.append(output.item())
         prediction = torch.sign(output).item()
 
@@ -88,6 +159,9 @@ def test(dataset):
         if prediction<=args.threshold and label.item()==1:
             fn+=1
             #print('fn')
+        
+    writer.add_scalar('loss_valid',results/len(dataset), epoch)
+
     print(tp,tn,fp,fn)
     p=0.0
     r=0.0
@@ -149,18 +223,22 @@ for epoch in epochs:# without batching
             #batchloss=batchloss+criterion(prediction[0],prediction[1],label)
             cossim=F.cosine_similarity(prediction[0],prediction[1])
             batchloss=batchloss+criterion2(cossim,label)
+            
         batchloss.backward(retain_graph=True)
         optimizer.step()
         loss = batchloss.item()
-        loss_list.append(loss)
+        
         totalloss+=loss
         main_index = main_index + len(batch)
         loss=totalloss/main_index
         epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
+    
+    loss_list.append(totalloss/len(batches))
     #test(validdata)
+    writer.add_scalar('loss_train',totalloss/len(batches), epoch)
 
-    testresults=test(testdata)
-    # devresults=test(validdata)
+    # testresults=test(testdata[:40000])
+    devresults=test(validdata[:40000])
     # devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
     # for res in devresults:
     #     devfile.write(str(res)+'\n')
@@ -171,8 +249,9 @@ for epoch in epochs:# without batching
     #     resfile.write(str(res)+'\n')
     # resfile.close()
 
+testresults=test(testdata[:40000])
 import joblib
-joblib.dump(loss_list,"loss_data.data")
+joblib.dump(loss_list,"baseline_loss.data")
     #torch.save(model,'gmnmodels/gmnbcb'+str(epoch+1))
     #for start in range(0, len(traindata), args.batch_size):
         #batch = traindata[start:start+args.batch_size]
