@@ -14,7 +14,8 @@ import pycparser
 from createclone_bcb import createast,creategmndata,createseparategraph
 import models
 from torch_geometric.data import Data, DataLoader
-
+import os
+import joblib
 from torch.utils.tensorboard import SummaryWriter   
 writer = SummaryWriter('log/')
 
@@ -38,10 +39,23 @@ parser.add_argument("--threshold", default=0)
 args = parser.parse_args()
  
 device=torch.device('cuda:0')
-#device=torch.device('cpu')
-astdict,vocablen,vocabdict=createast()
-treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
-traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
+if not os.path.exists("data.data"):
+    # 读取数据集获取数据信息 
+    astdict,vocablen,vocabdict=createast()
+    # 数据预处理
+    treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
+    # 获取格式化数据
+    traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
+    train_data = {
+        "traindata":traindata,
+        "validdata":validdata,
+        "testdata":testdata,
+        "vocablen":vocablen
+    }
+    joblib.dump(train_data,"data.data")
+else:
+    train_data = joblib.load("data.data")
+    traindata,validdata,testdata,vocablen=train_data["traindata"],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
 
 #trainloder=DataLoader(traindata,batch_size=1)
 num_layers=int(args.num_layers)
@@ -137,8 +151,6 @@ def valid(dataset,epoch):
             edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
         data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
         prediction=model(data)
-
-        
         output=F.cosine_similarity(prediction[0],prediction[1])
         # 记录验证机loss
         batchloss=criterion2(output,label)
