@@ -139,6 +139,7 @@ def valid(dataset,epoch):
     fp = 0
     fn = 0
     results=[]
+    total_losses = 0.0
     for data,label in dataset:
         label=torch.tensor(label, dtype=torch.float, device=device)
         x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
@@ -155,7 +156,8 @@ def valid(dataset,epoch):
         # 记录验证机loss
         batchloss=criterion2(output,label)
         loss = batchloss.item()
-        
+        # loss累加
+        total_losses+=loss
         results.append(output.item())
         prediction = torch.sign(output).item()
 
@@ -171,8 +173,9 @@ def valid(dataset,epoch):
         if prediction<=args.threshold and label.item()==1:
             fn+=1
             #print('fn')
-        
-    writer.add_scalar('loss_valid',results/len(dataset), epoch)
+
+    
+    writer.add_scalar('loss_valid',int(total_losses/len(dataset)), epoch)
 
     print(tp,tn,fp,fn)
     p=0.0
@@ -247,10 +250,10 @@ for epoch in epochs:# without batching
     
     loss_list.append(totalloss/len(batches))
     #test(validdata)
-    writer.add_scalar('loss_train',totalloss/len(batches), epoch)
+    writer.add_scalar('loss_train',int(totalloss/len(batches)), epoch)
 
     # testresults=test(testdata[:40000])
-    devresults=test(validdata[:40000])
+    devresults=valid(validdata[:40000],epoch)
     # devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
     # for res in devresults:
     #     devfile.write(str(res)+'\n')
