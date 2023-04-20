@@ -106,6 +106,14 @@ def to_adjacen_matrix(nodes,edge_index):
 # res = to_adjacen_matrix(x, edge_index)
 # for item in res:
 #     print(item)
+class PairData(Data):
+    pass
+    def __init__(self,data1,data2,label):
+        super().__init__()
+        self.data1 = data1
+        self.data2 = data2
+        self.label = label
+
 
 # 存储一对数据的类
 class PairData(Data):
