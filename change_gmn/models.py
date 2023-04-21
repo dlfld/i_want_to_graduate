@@ -101,8 +101,8 @@ class DeepSim(nn.Module):
             linear_first=True,
         )
 
-
-        self.liner = nn.Linear(216, 1)
+        # 如果添加了hist 需要将hist的长度添加上去
+        self.liner = nn.Linear(200, 2)
 
     def forward(self, x1, x2,hist ):
     
@@ -128,13 +128,13 @@ class DeepSim(nn.Module):
         h = torch.mean(h,keepdim=True,dim=0)  # 合并x1x2  
         # print(f"求mean之后的shape  h.shape={h.shape}")
         # logddd.log(h.shape)
-        h = torch.cat((h,hist),1)
+        # h = torch.cat((h,hist),1)
         
         # logddd.log(h.shape)
         # print(h)
         # 要输入是*200
         logits = self.liner(h)
-        # return F.softmax(logits,dim=1)
+
         return logits
 
 #==========================================================在最后加MLP，将整个计算相似度问题转换成为二分类问题===========================================================
@@ -467,8 +467,8 @@ class GMNnet(torch.nn.Module):
         x2 = self.embed(x2)
         x2 = x2.squeeze(1)
 # ======================================================添加GCN=======================================================
-        x1 = self.convolutional_pass(edge_index=edge_index1, features = x1)
-        x2 = self.convolutional_pass(edge_index=edge_index2, features = x2)
+        # x1 = self.convolutional_pass(edge_index=edge_index1, features = x1)
+        # x2 = self.convolutional_pass(edge_index=edge_index2, features = x2)
 
 # ======================================================添加GCN=======================================================
 

@@ -20,7 +20,6 @@ from torch.utils.tensorboard import SummaryWriter
 from early_stopping import EarlyStopping
 # import logddd
 
-
 # 获取参数
 args = get_args()
 import joblib
@@ -47,14 +46,15 @@ else:
 
 num_layers=int(args.num_layers)
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
-device_ids = []
-net = torch.nn.DataParallel(net, device_ids=device_ids)
+
 # 这儿进行了修改，将原来的Adam改为了AdamW
 optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
 criterion2=nn.MSELoss()
-criterion3 = torch.nn.BCEWithLogitsLoss()
-criterion4 = nn.BCELoss()
+
+criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([0.8576, 0.1424]))
+
+criterion4 = nn.BCELoss(weight=torch.tensor([0.8576, 0.1424])) # 交叉熵
 save_path = "./models" #当前目录下
 # early_stopping = EarlyStopping()
 early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  # 早停
@@ -92,18 +92,6 @@ def test(dataset):
 
         logits=model(data)
         output = torch.sigmoid(logits)
-
-        # precisions, recalls, thresholds = precision_recall_curve(y, p)
-        # # 求所有阈值下的F1 []
-        # f1_scores = (2 * precisions * recalls) / (precisions + recalls)
-        # # 求最大的F1 
-        # best_f1_score = np.max(f1_scores[np.isfinite(f1_scores)])
-
-        # best_f1_score_index = np.argmax(f1_scores[np.isfinite(f1_scores)])
-        # precision = precisions[best_f1_score_index]
-        # recall = recalls[best_f1_score_index]
-        # threshold = thresholds[best_f1_score_index]
-        # print(threshold)
 
 
         # output=F.cosine_similarity(prediction[0],prediction[1])
@@ -195,7 +183,8 @@ for epoch in epochs:# without batching
              
 
         for data,label in batch:
-            label =  [0] if label == -1 else [1]
+   
+            label =  [[1,0]] if label == -1 else [[0,1]]
             label=torch.tensor(label, dtype=torch.float, device=device)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
             x1=torch.tensor(x1, dtype=torch.long, device=device)
@@ -216,14 +205,17 @@ for epoch in epochs:# without batching
             # pred_sig = torch.sigmoid(logits)
             
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
-            # num_correct += 1 if pred_sig > args.threshold and label == [1] or pred_sig <= args.threshold and label == [0] else 0 
-            # logddd.log(logits)
-            logits  = logits.squeeze(0)
-            # loss = criterion4(pred_sig,label)
-            output = torch.sigmoid(logits)
-            # logddd.log(output)
-            # logddd.log(label)
-            loss = criterion4(output,label)
+            
+            print(logits)
+            # logits  = logits.squeeze(0)
+      
+          
+            # import logddd
+            # logddd.log(output.shape)
+            # logddd.log(label.shape)
+            # loss = criterion4(output,label)
+            
+            loss = criterion3(logits,label)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
 
