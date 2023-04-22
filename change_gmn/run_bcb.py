@@ -23,7 +23,7 @@ from early_stopping import EarlyStopping
 # 获取参数
 args = get_args()
 import joblib
-device=torch.device('cuda:0')
+device=torch.device('cuda:4')
 if not os.path.exists("data.data"):
     # 读取数据集获取数据信息 
     astdict,vocablen,vocabdict=createast()
@@ -52,9 +52,9 @@ optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
 criterion2=nn.MSELoss()
 
-criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([0.8576, 0.1424]))
+criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([0.8576, 0.1424] ,dtype=torch.long, device=device))
 
-criterion4 = nn.BCELoss(weight=torch.tensor([0.8576, 0.1424])) # 交叉熵
+criterion4 = nn.BCELoss(weight=torch.tensor([0.8576, 0.1424], dtype=torch.long, device=device)) # 交叉熵
 save_path = "./models" #当前目录下
 # early_stopping = EarlyStopping()
 early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  # 早停
@@ -208,12 +208,6 @@ for epoch in epochs:# without batching
             
             print(logits)
             # logits  = logits.squeeze(0)
-      
-          
-            # import logddd
-            # logddd.log(output.shape)
-            # logddd.log(label.shape)
-            # loss = criterion4(output,label)
             
             loss = criterion3(logits,label)
             batch_losses.append(loss.item())
