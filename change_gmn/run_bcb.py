@@ -23,7 +23,7 @@ from early_stopping import EarlyStopping
 # 获取参数
 args = get_args()
 import joblib
-device=torch.device('cuda:4')
+device=torch.device('cuda:0')
 if not os.path.exists("data.data"):
     # 读取数据集获取数据信息 
     astdict,vocablen,vocabdict=createast()
