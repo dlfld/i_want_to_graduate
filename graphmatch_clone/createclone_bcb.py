@@ -137,6 +137,7 @@ def createast():
             #print(list(programtokens))
             parser=javalang.parse.Parser(programtokens)
             programast=parser.parse_member_declaration()
+
             paths.append(os.path.join(rt,file))
             asts.append(programast)
             # print("当前文件的AST是")
@@ -281,8 +282,8 @@ def createpairdata(treedict,pathlist,device):
         datalist.append(data)
     return datalist
 
-# if __name__ == '__main__':
-#     astdict, vocabsize, vocabdict=createast()
+if __name__ == '__main__':
+    astdict, vocabsize, vocabdict=createast()
 #     # print(vocabdict)
 #     # for item in vocabdict.keys():
 #     #     print(item)
