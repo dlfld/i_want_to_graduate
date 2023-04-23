@@ -1,4 +1,65 @@
 import os
+from typing import List
+
+import javalang
+from javalang.tree import MethodDeclaration
+
+
+def get_method_asts(code: str) -> List[MethodDeclaration]:
+    """
+        获取java文件内方法AST节点
+    :param code: .java文件的code
+    :return: .java文件内所有方法转换成AST的方法节点列表
+    """
+    method_asts = []
+    # 将输入代码转换成ast树
+    program_ast = javalang.parse.parse(code)
+    # 遍历所有的节点
+    for ast_type in program_ast.types:
+        # 节点名
+        node_name = type(ast_type).__name__
+        # 方法应该存在于类定义中，因此需要找到类定义的标签
+        if node_name == "ClassDeclaration":
+            # 遍历类节点的子节点，获取到方法节点
+            for body in ast_type.body:
+                # 获取当前节点的节点名
+                body_type = type(body).__name__
+                # 如果当前节点是方法节点
+                if body_type == "MethodDeclaration":
+                    # 添加结果集
+                    method_asts.append(body)
+
+    return method_asts
+
+
+def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
+    """
+        扫描工程文件目录，获取工程中所有方法的AST
+    :param proj_dir: 工程文件目录
+    :return: 工程中所有的方法ast节点
+    """
+    method_ast_list = []
+    # 遍历
+
+    for rt, dirs, files in os.walk(proj_dir):
+        for file in files:
+            if file.endswith(".java"):
+                programfile = open(os.path.join(rt, file), encoding='utf-8')
+                # 读取文件
+                code = programfile.read()
+                # 获取方法的AST节点
+                try:
+                    asts = get_method_asts(code)
+                    method_ast_list.extend(asts)
+                except Exception as e:
+                    # print(e)
+                    pass
+                    
+                programfile.close()
+    return method_ast_list
+
+import sys 
+import os
 import random
 import javalang
 import javalang.tree
@@ -10,9 +71,12 @@ from anytree import AnyNode, RenderTree
 # import treelib
 from anytree import find
 from createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
-
+import logddd
 
 def get_token(node):
+    """
+        获取输入node的token
+    """
     token = ''
     if isinstance(node, str):
         token = node
@@ -25,7 +89,9 @@ def get_token(node):
 
 
 def get_child(root):
-    # print(root)
+    """
+        获取当前节点的孩子节点
+    """
     if isinstance(root, Node):
         children = root.children
     elif isinstance(root, set):
@@ -46,13 +112,17 @@ def get_child(root):
     return list(expand(children))
 
 
-def get_sequence(node, sequence):
+def get_sequence(node):
+    """
+        获取所有的token 
+    """
+    sequence = []
     token, children = get_token(node), get_child(node)
     sequence.append(token)
-    # print(len(sequence), token)
     for child in children:
-        get_sequence(child, sequence)
-
+        res = get_sequence(child)
+        sequence.extend(res)
+    return sequence
 
 def getnodes(node, nodelist):
     nodelist.append(node)
@@ -76,7 +146,6 @@ def createtree(root, node, nodelist, parent=None):
         else:
             createtree(root, child, nodelist, parent=newnode)
 
-
 def getnodeandedge_astonly(node, nodeindexlist, vocabdict, src, tgt):
     """
         创建ast的边
@@ -90,7 +159,6 @@ def getnodeandedge_astonly(node, nodeindexlist, vocabdict, src, tgt):
         src.append(child.id)
         tgt.append(node.id)
         getnodeandedge_astonly(child, nodeindexlist, vocabdict, src, tgt)
-
 
 def getnodeandedge(node, nodeindexlist, vocabdict, src, tgt, edgetype):
     token = node.token
@@ -109,7 +177,6 @@ def getnodeandedge(node, nodeindexlist, vocabdict, src, tgt, edgetype):
         edgetype.append([0])
         getnodeandedge(child, nodeindexlist, vocabdict, src, tgt, edgetype)
 
-
 def countnodes(node, ifcount, whilecount, forcount, blockcount):
     token = node.token
     if token == 'IfStatement':
@@ -120,49 +187,27 @@ def countnodes(node, ifcount, whilecount, forcount, blockcount):
         forcount += 1
     if token == 'BlockStatement':
         blockcount += 1
-    print(ifcount, whilecount, forcount, blockcount)
+    # print(ifcount, whilecount, forcount, blockcount)
     for child in node.children:
         countnodes(child, ifcount, whilecount, forcount, blockcount)
 
-
-'''def getedge_nextsib(node,vocabdict,src,tgt,edgetype):
-    token=node.token
-    for i in range(len(node.children)-1):
-        src.append(node.children[i].id)
-        tgt.append(node.children[i+1].id)
-        edgetype.append([1])
-        src.append(node.children[i+1].id)
-        tgt.append(node.children[i].id)
-        edgetype.append([1])
-    for child in node.children:
-        getedge_nextsib(child,vocabdict,src,tgt,edgetype)        
-'''
-
-
-def createast():
-    asts = []
-    paths = []
+def createast(proj_dir):
+    """
+        遍历工程文件，获取每一个方法的AST，并对AST进行遍历，获取每一个AST的token
+    """
     alltokens = []
-    dirname = 'BCB/bigclonebenchdata/'
-    # dirname = 'BCB/test/'
-    for rt, dirs, files in os.walk(dirname):
-        for file in files:
-            programfile = open(os.path.join(rt, file), encoding='utf-8')
-            # print(os.path.join(rt,file))
-            programtext = programfile.read()
-            # programtext=programtext.replace('\r','')
-            programtokens = javalang.tokenizer.tokenize(programtext)
-            # 这个token是每一个符号
-            # print(list(programtokens))
-            parser = javalang.parse.Parser(programtokens)
-            programast = parser.parse_member_declaration()
-            # print(programast)
-            paths.append(os.path.join(rt, file))
-            asts.append(programast)
-            get_sequence(programast, alltokens)
-            programfile.close()
 
-    astdict = dict(zip(paths, asts))
+     # 当前工程项目下所有的java方法转换成的ast
+    proj_method_asts = get_proj_method_asts(proj_dir)
+    # logddd.log(len(proj_method_asts))
+
+    # 遍历每一个方法ast
+    for method in proj_method_asts:
+        res = get_sequence(method)
+        alltokens.extend(res)
+    
+    # logddd.log(len(alltokens))
+
     ifcount = 0
     whilecount = 0
     forcount = 0
@@ -182,34 +227,26 @@ def createast():
             docount += 1
         if token == 'SwitchStatement':
             switchcount += 1
-    print(ifcount, whilecount, forcount, blockcount, docount, switchcount)
-    print('allnodes ', len(alltokens))
+
     alltokens = list(set(alltokens))
     vocabsize = len(alltokens)
     tokenids = range(vocabsize)
     vocabdict = dict(zip(alltokens, tokenids))
-    print(vocabsize)
-    return astdict, vocabsize, vocabdict
+    return proj_method_asts,vocabsize, vocabdict
 
-
-def createseparategraph(astdict, vocablen, vocabdict, device, mode='astonly', nextsib=False, ifedge=False,
+def create_separate_graph(ast_list,vocablen, vocabdict, device, mode='astonly', nextsib=False, ifedge=False,
                         whileedge=False, foredge=False, blockedge=False, nexttoken=False, nextuse=False):
     """
         创建图信息，根据ast重新构建树的结构，并在树上添加边
+        并返回一条处理完成之后的数据
     """
-    pathlist = []
     treelist = []
-    print('nextsib ', nextsib)
-    print('ifedge ', ifedge)
-    print('whileedge ', whileedge)
-    print('foredge ', foredge)
-    print('blockedge ', blockedge)
-    print('nexttoken', nexttoken)
-    print('nextuse ', nextuse)
-    print(len(astdict))
-    for path, tree in astdict.items():
+    logddd.log(len(ast_list))
+    # 遍历方法列表
+    for tree in ast_list:
         nodelist = []
         newtree = AnyNode(id=0, token=None, data=None)
+        # 创建树
         createtree(newtree, tree, nodelist)
         # print(path)
         # print(newtree)
@@ -235,77 +272,54 @@ def createseparategraph(astdict, vocablen, vocabdict, device, mode='astonly', ne
             variabledict = {}
             if nextuse == True:
                 getedge_nextuse(newtree, vocabdict, edgesrc, edgetgt, edge_attr, variabledict)
-        # x = torch.tensor(x, dtype=torch.long, device=device)
-        edge_index = [edgesrc, edgetgt]
-        # edge_index = torch.tensor([edgesrc, edgetgt], dtype=torch.long, device=device)
+                edge_index = [edgesrc, edgetgt]
+
         astlength = len(x)
-        pathlist.append(path)
-        treelist.append([[x, edge_index, edge_attr], astlength])
-        astdict[path] = [[x, edge_index, edge_attr], astlength]
-    # treedict=dict(zip(pathlist,treelist))
-    # print(totalif,totalwhile,totalfor,totalblock)
-    return astdict
+        treelist.append([x, edge_index, edge_attr])
 
+    return treelist
 
-def creategmndata(id, treedict, vocablen, vocabdict, device):
-    indexdir = 'BCB/'
-    if id == '0':
-        trainfile = open(indexdir + 'traindata.txt')
-        validfile = open(indexdir + 'devdata.txt')
-        testfile = open(indexdir + 'testdata.txt')
-    elif id == '11':
-        trainfile = open(indexdir + 'traindata11.txt')
-        validfile = open(indexdir + 'devdata.txt')
-        testfile = open(indexdir + 'testdata.txt')
+def create_input_model_data(treelist):
+    """
+        将传入列表的元素进行两两组合，判断他们是不是克隆对
+    """
+    data_list = []
+    for i in range(len(treelist)-1):
+        for j in range(i+1,len(treelist)):
+            data_list.append([treelist[i][0],treelist[j][0],treelist[i][1],treelist[j][1],treelist[i][2],treelist[j][2],i,j])
+    return data_list
+
+import logddd
+dirname = 'kafka/'
+proj_method_asts,vocabsize, vocabdict = createast(dirname)
+logddd.log(len(proj_method_asts))
+treelist=create_separate_graph(proj_method_asts, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
+logddd.log(f"len(tree) = {len(treelist)}")
+proj_data = create_input_model_data(treelist)
+print(len(proj_data))
+
+#加载模型
+model=torch.load('best_network.pth')
+device=torch.device("cuda:0")
+model=model.to(device)
+for data in proj_data:
+    x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2,index_i,index_j=data
+
+    x1=torch.tensor(x1, dtype=torch.long, device=device)
+    x2=torch.tensor(x2, dtype=torch.long, device=device)
+
+    edge_index1=torch.tensor(edge_index1, dtype=torch.long, device=device)
+    edge_index2=torch.tensor(edge_index2, dtype=torch.long, device=device)
+
+    if edge_attr1!=None:
+        edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
+        edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
+
+    data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
+    logits=model(data)
+    logits  = logits.squeeze(0)
+    output = torch.sigmoid(logits)
+    if output > 0.5:
+        logddd.log(f"找到相似 {index_i}  < -- > {index_j} --- > {output}")
     else:
-        print('file not exist')
-        quit()
-    trainlist = trainfile.readlines()
-    validlist = validfile.readlines()
-    testlist = testfile.readlines()
-    traindata = []
-    validdata = []
-    testdata = []
-    print('train data')
-    traindata = createpairdata(treedict, trainlist, device=device)
-    print('valid data')
-    validdata = createpairdata(treedict, validlist, device=device)
-    print('test data')
-    testdata = createpairdata(treedict, testlist, device=device)
-    return traindata, validdata, testdata
-
-
-def createpairdata(treedict, pathlist, device):
-    datalist = []
-    countlines = 1
-    for line in pathlist:
-        # print(countlines)
-        countlines += 1
-        pairinfo = line.split()
-        code1path = 'BCB' + pairinfo[0].strip('.')
-        code2path = 'BCB' + pairinfo[1].strip('.')
-        label = int(pairinfo[2])
-        data1 = treedict[code1path]
-        data2 = treedict[code2path]
-        x1, edge_index1, edge_attr1, ast1length = data1[0][0], data1[0][1], data1[0][2], data1[1]
-        x2, edge_index2, edge_attr2, ast2length = data2[0][0], data2[0][1], data2[0][2], data2[1]
-        '''matchsrc = []
-        matchtgt = []
-        for i in range(ast1length):
-            for j in range(ast2length):
-                matchsrc.append(i)
-                matchtgt.append(j)
-        match_index=[matchsrc, matchtgt]'''
-        # match_index = torch.tensor([matchsrc, matchtgt], dtype=torch.long, device=device)
-        if edge_attr1 == []:
-            edge_attr1 = None
-            edge_attr2 = None
-        data = [[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2], label]
-        datalist.append(data)
-    return datalist
-
-
-if __name__ == '__main__':
-    astdict, vocabsize, vocabdict = createast()
-    treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
-    creategmndata(treedict,vocabsize,vocabdict,device='cpu')
+        logddd.log(f" {index_i}  < -- > {index_j} 不相似 --- > {output} ")

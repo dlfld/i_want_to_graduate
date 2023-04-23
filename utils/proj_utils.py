@@ -40,6 +40,7 @@ def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
     """
     method_ast_list = []
     # 遍历
+
     for rt, dirs, files in os.walk(proj_dir):
         for file in files:
             if file.endswith(".java"):
@@ -47,13 +48,18 @@ def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
                 # 读取文件
                 code = programfile.read()
                 # 获取方法的AST节点
-                asts = get_method_asts(code)
-                method_ast_list.extend(asts)
-
+                try:
+                    asts = get_method_asts(code)
+                    method_ast_list.extend(asts)
+                except Exception as e:
+                    # print(e)
+                    pass
+                    
+                programfile.close()
     return method_ast_list
 
 
 if __name__ == '__main__':
-    proj_dir = "../class_bot"
+    proj_dir = "kafka"
     proj_method_asts = get_proj_method_asts(proj_dir)
-
+    print(len(proj_method_asts))
