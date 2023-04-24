@@ -81,7 +81,7 @@ class DeepSim(nn.Module):
         
         self.flatten = nn.Flatten()
 # ======================================================attention =============================================================================
-        self.attention = AttentionModule()
+        # self.attention = AttentionModule()
 # ======================================================attention =============================================================================
         self.mlp1 = MLP(  # 定义的全连接层
             d_hidden=[200, 2 * 200, 200],  # 全连接层数
@@ -405,8 +405,8 @@ class GMNnet(torch.nn.Module):
         self.mlp_gate=nn.Sequential(nn.Linear(embedding_dim,1),nn.Sigmoid())
         self.pool=GlobalAttention(gate_nn=self.mlp_gate)
 # ======================================================添加Transformer=========================================================================== 
-        self.encoder_layer = nn.TransformerEncoderLayer(d_model=embedding_dim, nhead=4,batch_first=True)
-        self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=1)
+        # self.encoder_layer = nn.TransformerEncoderLayer(d_model=embedding_dim, nhead=4,batch_first=True)
+        # self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=1)
 # ======================================================添加后面的神经网络===========================================================================
         self.deep_sim  = DeepSim()
 # ======================================================添加后面的神经网络===========================================================================
@@ -474,7 +474,7 @@ class GMNnet(torch.nn.Module):
 
 
 # ===================================================== 添加 Pairwise Node Comparison======================================
-        hist = self.calculate_histogram(x1, x2)
+        # hist = self.calculate_histogram(x1, x2)
 # ===================================================== 添加 Pairwise Node Comparison======================================
 
 
@@ -516,8 +516,9 @@ class GMNnet(torch.nn.Module):
     
         hg2=self.pool(x2,batch=batch2)
 
-
-        logits = self.deep_sim(hg1,hg2,hist)
+# 
+        # logits = self.deep_sim(hg1,hg2,hist)
+        logits = self.deep_sim(hg1,hg2,None)
 
         return logits
 

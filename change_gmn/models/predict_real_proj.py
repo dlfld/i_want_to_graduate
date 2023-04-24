@@ -297,10 +297,12 @@ if __name__ == "__main__":
     treelist=create_separate_graph(proj_method_asts, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
     logddd.log(f"len(tree) = {len(treelist)}")
     device=torch.device("cuda:0")
-    model=models.GMNnet(vocabsize,embedding_dim=100,num_layers=10,device=device).to(device)
-    model.load_state_dict(torch.load('best_network.pth'))
-
+    model=models.GMNnet(77535,embedding_dim=100,num_layers=4,device=device).to(device)
+    model.load_state_dict(torch.load('0.pt'))
     model=model.to(device)
+    model.eval()
+
+
     for i in range(len(treelist)-1):
         for j in range(i+1,len(treelist)):
             data = [treelist[i][0],treelist[j][0],treelist[i][1],treelist[j][1],treelist[i][2],treelist[j][2],i,j]
@@ -319,9 +321,11 @@ if __name__ == "__main__":
 
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
             logits=model(data)
-            logits  = logits.squeeze(0)
+            # logits  = logits.squeeze(0)
             output = torch.sigmoid(logits)
-            if output > 0.5:
+            output = output.squeeze(0)
+            
+            if output[0] <= output[1]:
                 logddd.log(f"找到相似 {index_i}  < -- > {index_j} --- > {output}")
             else:
                 logddd.log(f" {index_i}  < -- > {index_j} 不相似 --- > {output} ")

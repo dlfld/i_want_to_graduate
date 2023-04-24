@@ -165,6 +165,7 @@ epochs = trange(args.num_epochs, leave=True, desc = "Epoch")
 for epoch in epochs:# without batching
     print(epoch)
     batches=create_batches(traindata)
+    # batches = batches[:10]
     main_index=0.0
     # 存储一个epoch的loss
     epoch_loss = 0.0
@@ -182,7 +183,7 @@ for epoch in epochs:# without batching
              
 
         for data,label in batch:
-   
+            
             label =  [[1,0]] if label == -1 else [[0,1]]
             label=torch.tensor(label, dtype=torch.float, device=device)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
@@ -224,7 +225,8 @@ for epoch in epochs:# without batching
         # 早停策略判断
     
     import joblib
-    joblib.dump(model,f"models/{epoch}.model")
+    torch.save(model.state_dict(), f"models/{epoch}.pt")
+    # joblib.dump(model,f"models/{epoch}.model")
     model.eval()
     # 验证和计算早停 
     with torch.no_grad():
@@ -240,8 +242,8 @@ for epoch in epochs:# without batching
         f1=0.0
 
         for data,label in val_data:
-            label =  [0] if label == -1 else [1]
-
+            label =  [[1,0]] if label == -1 else [[0,1]]
+            
             label=torch.tensor(label, dtype=torch.float, device=device)
             # label=torch.unsqueeze(label,dim=0)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
@@ -257,22 +259,31 @@ for epoch in epochs:# without batching
 
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
             logits=model(data)
-            logits  = logits.squeeze(0)
+            # logits  = logits.squeeze(0)
             output = torch.sigmoid(logits)
+            pred = output.squeeze(0)
+          
+            # p = torch.exp(logits)  反对数 实际预测的时候用的
+
             loss = criterion4(output,label)
+            # 负对数似然函数
+            # loss = F.nll_loss(logits, label)
             eval_losses.append(loss.item())
 
-            prediction  = output
-            if prediction>args.threshold and label.item()==1:
+            if pred[0] > pred[1]:
+                prediction = 0.4
+            else:
+                prediction = 0.6
+            if prediction>args.threshold and label[0]==[0,1]:
                 tp+=1
                 #print('tp')
-            if prediction<=args.threshold and label.item()==0:
+            if prediction<=args.threshold and label[0]==[1,0]:
                 tn+=1
                 #print('tn')
-            if prediction>args.threshold and label.item()==0:
+            if prediction>args.threshold and label[0]==[1,0]:
                 fp+=1
                 #print('fp')
-            if prediction<=args.threshold and label.item()==1:
+            if prediction<=args.threshold and label[0]==[0,1]:
                 fn+=1
 
         if tp+fp==0:
