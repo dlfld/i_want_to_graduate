@@ -18,7 +18,7 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter   
 from early_stopping import EarlyStopping
-# import logddd
+import logddd
 
 # 获取参数
 args = get_args()
@@ -52,9 +52,10 @@ optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
 criterion2=nn.MSELoss()
 
-criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([0.8576, 0.1424] ,dtype=torch.long, device=device))
-
-criterion4 = nn.BCELoss(weight=torch.tensor([0.8576, 0.1424], dtype=torch.long, device=device)) # 交叉熵
+criterion3 = torch.nn.BCEWithLogitsLoss()
+# weight=torch.tensor([0.8576, 0.1424] ,dtype=torch.long, device=device)
+# weight=torch.tensor([0.8576, 0.1424], dtype=torch.long, device=device)
+criterion4 = nn.BCELoss() # 交叉熵
 save_path = "./models" #当前目录下
 # early_stopping = EarlyStopping()
 early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  # 早停
@@ -203,16 +204,19 @@ for epoch in epochs:# without batching
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
             logits=model(data)
             # pred_sig = torch.sigmoid(logits)
-            
+            logddd.log(logits)
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
         
             
             loss = criterion3(logits,label)
+            
+            logddd.log(loss)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
 
         # 记录整个过程中每一个batch的loss
         batch_loss = np.average(batch_losses)
+
         # train loss 添加
         train_losses.append(batch_loss)
         
