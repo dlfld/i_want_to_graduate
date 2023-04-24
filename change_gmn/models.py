@@ -474,7 +474,7 @@ class GMNnet(torch.nn.Module):
 
 
 # ===================================================== 添加 Pairwise Node Comparison======================================
-        hist = self.calculate_histogram(x1, x2)
+        # hist = self.calculate_histogram(x1, x2)
 # ===================================================== 添加 Pairwise Node Comparison======================================
 
 
@@ -516,8 +516,9 @@ class GMNnet(torch.nn.Module):
     
         hg2=self.pool(x2,batch=batch2)
 
-
-        logits = self.deep_sim(hg1,hg2,hist)
+# 
+        # logits = self.deep_sim(hg1,hg2,hist)
+        logits = self.deep_sim(hg1,hg2,None)
 
         return logits
 
