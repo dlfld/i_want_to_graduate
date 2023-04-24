@@ -61,7 +61,6 @@ early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  #
 # criterion4 = torch.nn.BCE
 
 def create_batches(data):
-    #random.shuffle(data)
     batches = [data[graph:graph+args.batch_size] for graph in range(0, len(data), args.batch_size)]
     return batches
 
@@ -226,7 +225,8 @@ for epoch in epochs:# without batching
 
         # 早停策略判断
     
-    
+    import joblib
+    joblib.dump(model,f"models/{epoch}.model")
     model.eval()
     # 验证和计算早停 
     with torch.no_grad():
