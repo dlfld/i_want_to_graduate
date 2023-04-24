@@ -52,10 +52,10 @@ optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion=nn.CosineEmbeddingLoss()
 criterion2=nn.MSELoss()
 
-criterion3 = torch.nn.BCEWithLogitsLoss()
+criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([1, 6] ,dtype=torch.long, device=device))
 # weight=torch.tensor([0.8576, 0.1424] ,dtype=torch.long, device=device)
 # weight=torch.tensor([0.8576, 0.1424], dtype=torch.long, device=device)
-criterion4 = nn.BCELoss() # 交叉熵
+criterion4 = nn.BCELoss(weight=torch.tensor([1, 6] ,dtype=torch.long, device=device)) # 交叉熵
 save_path = "./models" #当前目录下
 # early_stopping = EarlyStopping()
 early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  # 早停
