@@ -1,9 +1,8 @@
-import os
 from typing import List
 
-import javalang
 from javalang.tree import MethodDeclaration
 import models
+
 
 def get_method_asts(code: str) -> List[MethodDeclaration]:
     """
@@ -58,20 +57,18 @@ def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
                 programfile.close()
     return method_ast_list
 
-import sys 
+
 import os
-import random
 import javalang
 import javalang.tree
 import javalang.ast
 import javalang.util
 from javalang.ast import Node
 import torch
-from anytree import AnyNode, RenderTree
+from anytree import AnyNode
 # import treelib
-from anytree import find
-from createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
-import logddd
+from utils.dependencies.createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
+
 
 def get_token(node):
     """
@@ -297,7 +294,7 @@ if __name__ == "__main__":
     treelist=create_separate_graph(proj_method_asts, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
     logddd.log(f"len(tree) = {len(treelist)}")
     device=torch.device("cuda:0")
-    model=models.GMNnet(77535,embedding_dim=100,num_layers=4,device=device).to(device)
+    model= models.GMNnet(77535, embedding_dim=100, num_layers=4, device=device).to(device)
     model.load_state_dict(torch.load('0.pt'))
     model=model.to(device)
     model.eval()

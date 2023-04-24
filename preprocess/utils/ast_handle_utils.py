@@ -1,17 +1,11 @@
-import sys 
-import os
-import random
-import javalang
-import javalang.tree
-import javalang.ast
-import javalang.util
 from javalang.ast import Node
-import torch
-from anytree import AnyNode, RenderTree
+from anytree import AnyNode
 # import treelib
-from anytree import find
-from createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
+from utils.dependencies.createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
 import logddd
+
+from utils.proj_read_utils import get_proj_method_asts
+
 
 def get_token(node):
     """

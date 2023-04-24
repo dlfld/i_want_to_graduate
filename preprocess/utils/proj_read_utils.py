@@ -3,7 +3,7 @@ from typing import List
 
 import javalang
 from javalang.tree import MethodDeclaration
-import models
+
 
 def get_method_asts(code: str) -> List[MethodDeclaration]:
     """
