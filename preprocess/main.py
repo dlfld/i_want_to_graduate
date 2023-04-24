@@ -2,7 +2,6 @@ from typing import List
 
 import logddd
 import torch
-import models
 from utils.ast_handle_utils import createast, create_separate_graph
 import javalang
 from javalang.tree import MethodDeclaration
@@ -17,5 +16,11 @@ def preprocess(dir_name:str)->List[MethodDeclaration]:
 
 
 if __name__ == "__main__":
-    dir_name = "projects/kafka/"
+    # dir_name = "projects/qqrobot_mirai/"
+    # dir_name = "projects/class-bot/"
+    # dir_name = "projects/kafka/"
+    dir_name = "projects/test/"
     tree_list = preprocess(dir_name)
+    print(len(tree_list))
+
+    # proj_method_asts = get_proj_method_asts(dir_name)

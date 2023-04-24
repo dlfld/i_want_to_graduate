@@ -48,11 +48,16 @@ def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
                 # 读取文件
                 code = programfile.read()
                 # 获取方法的AST节点
+                # asts = get_method_asts(code)
+                # method_ast_list.extend(asts)
                 try:
                     asts = get_method_asts(code)
                     method_ast_list.extend(asts)
                 except Exception as e:
-                    # print(e)
+                    # print("=======================================================================================")
+                    # print(code)
+                    # print("=======================================================================================")
+                    # exit(0)
                     pass
                     
                 programfile.close()

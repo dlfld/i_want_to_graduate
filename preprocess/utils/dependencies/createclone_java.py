@@ -9,7 +9,9 @@ import torch
 from anytree import AnyNode, RenderTree
 #import treelib
 from anytree import find
-from edge_index import edges
+import sys
+sys.path.append("..")
+from utils.dependencies.edge_index import edges
 
 def get_token(node):
     token = ''
