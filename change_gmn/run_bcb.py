@@ -18,7 +18,7 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter   
 from early_stopping import EarlyStopping
-import logddd
+# import logddd
 
 # 获取参数
 args = get_args()
@@ -204,13 +204,13 @@ for epoch in epochs:# without batching
             data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
             logits=model(data)
             # pred_sig = torch.sigmoid(logits)
-            logddd.log(logits)
+            # logddd.log(logits)
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
         
             
             loss = criterion3(logits,label)
             
-            logddd.log(loss)
+            # logddd.log(loss)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
 
