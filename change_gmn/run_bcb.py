@@ -204,9 +204,7 @@ for epoch in epochs:# without batching
             # pred_sig = torch.sigmoid(logits)
             
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
-            
-            print(logits)
-            # logits  = logits.squeeze(0)
+        
             
             loss = criterion3(logits,label)
             batch_losses.append(loss.item())
