@@ -20,6 +20,7 @@ if __name__ == "__main__":
     # dir_name = "projects/class-bot/"
     # dir_name = "projects/kafka/"
     dir_name = "projects/test/"
+    # dir_name = "projects/dubbo/"
     tree_list = preprocess(dir_name)
     print(len(tree_list))
 
