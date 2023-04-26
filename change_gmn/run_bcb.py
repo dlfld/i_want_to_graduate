@@ -101,7 +101,7 @@ epochs = trange(args.num_epochs, leave=True, desc = "Epoch")
 for epoch in epochs:# without batching
     print(epoch)
     batches=create_batches(traindata)
-    batches = batches[:10]
+    # batches = batches[:10]
     main_index=0.0
     # 存储一个epoch的loss
     epoch_loss = 0.0
@@ -169,8 +169,8 @@ for epoch in epochs:# without batching
     # 验证和计算早停 
     with torch.no_grad():
         valid_loss_list = []
-        # val_data = validdata[:40000]
-        val_data = validdata[:4]
+        val_data = validdata[:40000]
+        # val_data = validdata[:4]
         tp = 0
         tn = 0
         fp = 0
