@@ -101,7 +101,7 @@ epochs = trange(args.num_epochs, leave=True, desc = "Epoch")
 for epoch in epochs:# without batching
     print(epoch)
     batches=create_batches(traindata)
-    # batches = batches[:10]
+    batches = batches[:10]
     main_index=0.0
     # 存储一个epoch的loss
     epoch_loss = 0.0
@@ -142,9 +142,8 @@ for epoch in epochs:# without batching
             # logddd.log(logits)
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
         
-            
+
             loss = criterion3(logits,label)
-            
             # logddd.log(loss)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
@@ -170,8 +169,8 @@ for epoch in epochs:# without batching
     # 验证和计算早停 
     with torch.no_grad():
         valid_loss_list = []
-        val_data = validdata[:40000]
-
+        # val_data = validdata[:40000]
+        val_data = validdata[:4]
         tp = 0
         tn = 0
         fp = 0
@@ -213,16 +212,18 @@ for epoch in epochs:# without batching
                 prediction = 0.4
             else:
                 prediction = 0.6
-            if prediction>args.threshold and label[0]==torch.tensor([0,1], dtype=torch.float, device=device):
+            y = label.tolist()
+            # print(label[0]==[0,1])
+            if prediction>args.threshold and y[0]==[0,1]:
                 tp+=1
                 #print('tp')
-            if prediction<=args.threshold and label[0]==torch.tensor([1,0], dtype=torch.float, device=device):
+            if prediction<=args.threshold and y[0]== [1,0]:
                 tn+=1
                 #print('tn')
-            if prediction>args.threshold and label[0]==torch.tensor([1,0], dtype=torch.float, device=device):
+            if prediction>args.threshold and y[0]== [1,0]:
                 fp+=1
                 #print('fp')
-            if prediction<=args.threshold and label[0]==torch.tensor([0,1], dtype=torch.float, device=device):
+            if prediction<=args.threshold and y[0]== [0,1]:
                 fn+=1
 
         if tp+fp==0:

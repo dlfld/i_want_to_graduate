@@ -2,4 +2,3 @@
 # [章鱼师兄MES](https://gitee.com/wangziyangyang/MES-Springboot.git)
 # [领头羊MES](https://gitee.com/wangziyangyang/MES.git)
 # [industry4.0-mes](https://gitee.com/ricefish/industry4.0-mes.git)
-# [WJ-MES](https://gitee.com/vulcanw/wj-mes.git)

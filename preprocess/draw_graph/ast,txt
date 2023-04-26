@@ -1,0 +1,66 @@
+CompilationUnit(
+    imports=[
+        Import(path=java.util.Arrays, static=False, wildcard=False), 
+        Import(path=java.util.LinkedList, static=False, wildcard=False), 
+        Import(path=java.util.List, static=False, wildcard=False)
+    ], 
+    package=None, 
+    types=[
+        ClassDeclaration(
+            annotations=[], 
+            body=[
+                MethodDeclaration(
+                    annotations=[], 
+                    body=[
+                        ForStatement(
+                            body=BlockStatement(
+                                label=None, 
+                                statements=[
+                                    StatementExpression(
+                                        expression=MethodInvocation(
+                                            arguments=[
+                                                MemberReference(
+                                                    member=string, 
+                                                    postfix_operators=[], 
+                                                    prefix_operators=[], 
+                                                    qualifier=, 
+                                                    selectors=[]
+                                                )
+                                            ], 
+                                            member=println, 
+                                            postfix_operators=[], 
+                                            prefix_operators=[], 
+                                            qualifier=System.out, 
+                                            selectors=[], 
+                                            type_arguments=None
+                                        ), 
+                                        label=None
+                                    )
+                                ]
+                            ), 
+                            control=EnhancedForControl(
+                                iterable=MemberReference(
+                                    member=params, postfix_operators=[], prefix_operators=[], qualifier=, selectors=[]
+                                ), 
+                                var=VariableDeclaration(
+                                    annotations=[], d
+                                    eclarators=[VariableDeclarator(dimensions=None, initializer=None, name=string)], 
+                                    modifiers=set(), 
+                                    type=ReferenceType(arguments=None, dimensions=[], name=String, sub_type=None))
+                                ), label=None)
+                        ], 
+                    documentation=None, 
+                    modifiers={'public'}, name=testMultiParams, parameters=[FormalParameter(annotations=[], modifiers=set(), name=params, type=ReferenceType(arguments=None, dimensions=[], name=String, sub_type=None), varargs=True)], return_type=None, throws=None, type_parameters=None
+                    ), 
+                    MethodDeclaration(
+                        annotations=[], 
+                        body=[], 
+                        documentation=None, 
+                        modifiers={'public'}, 
+                        name=testGener, 
+                        parameters=[
+                            FormalParameter(annotations=[], modifiers=set(), name=list, type=ReferenceType(arguments=[TypeArgument(pattern_type=?, type=None)], dimensions=[], name=List, sub_type=None), varargs=False)
+                        ], 
+                        return_type=None, throws=None, type_parameters=None
+                    ), 
+                MethodDeclaration(annotations=[], body=[LocalVariableDeclaration(annotations=[], declarators=[VariableDeclarator(dimensions=[], initializer=ClassCreator(arguments=[], body=None, constructor_type_arguments=None, postfix_operators=[], prefix_operators=[], qualifier=None, selectors=[], type=ReferenceType(arguments=[], dimensions=None, name=LinkedList, sub_type=None)), name=list)], modifiers=set(), type=ReferenceType(arguments=[TypeArgument(pattern_type=None, type=ReferenceType(arguments=None, dimensions=[], name=String, sub_type=None))], dimensions=[], name=List, sub_type=None))], documentation=None, modifiers={'public'}, name=testGener1, parameters=[], return_type=None, throws=None, type_parameters=None)], documentation=None, extends=None, implements=None, modifiers={'public'}, name=test, type_parameters=None)])

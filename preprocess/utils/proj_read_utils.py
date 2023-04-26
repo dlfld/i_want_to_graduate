@@ -14,6 +14,7 @@ def get_method_asts(code: str) -> List[MethodDeclaration]:
     method_asts = []
     # 将输入代码转换成ast树
     program_ast = javalang.parse.parse(code)
+
     # 遍历所有的节点
     for ast_type in program_ast.types:
         # 节点名
@@ -54,11 +55,12 @@ def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
                     asts = get_method_asts(code)
                     method_ast_list.extend(asts)
                 except Exception as e:
-                    print("=======================================================================================")
-                    print(code)
-                    print("=======================================================================================")
-                    exit(0)
+                    # print("=======================================================================================")
+                    # print(code)
+                    # print("=======================================================================================")
+                    # exit(0)
                     pass
                     
                 programfile.close()
     return method_ast_list
+
