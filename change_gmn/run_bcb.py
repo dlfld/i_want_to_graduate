@@ -171,7 +171,7 @@ for epoch in epochs:# without batching
     with torch.no_grad():
         valid_loss_list = []
         val_data = validdata[:40000]
-        val_data = validdata[:40]
+        # val_data = validdata[:40]
         tp = 0
         tn = 0
         fp = 0
