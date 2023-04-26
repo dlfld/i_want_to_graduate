@@ -65,72 +65,7 @@ def create_batches(data):
     batches = [data[graph:graph+args.batch_size] for graph in range(0, len(data), args.batch_size)]
     return batches
 
-def test(dataset):
-    #model.eval()
-    tp = 0
-    tn = 0
-    fp = 0
-    fn = 0
-    results=[]
-    for data,label in dataset:
-        label =  [0] if label == -1 else [1]
 
-        label=torch.tensor(label, dtype=torch.float, device=device)
-        label=torch.unsqueeze(label,dim=0)
-        x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
-
-        x1=torch.tensor(x1, dtype=torch.long, device=device)
-        x2=torch.tensor(x2, dtype=torch.long, device=device)
-
-        edge_index1=torch.tensor(edge_index1, dtype=torch.long, device=device)
-        edge_index2=torch.tensor(edge_index2, dtype=torch.long, device=device)
-        if edge_attr1!=None:
-            edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
-            edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
-
-        data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
-
-        logits=model(data)
-        output = torch.sigmoid(logits)
-
-
-        # output=F.cosine_similarity(prediction[0],prediction[1])
-        results.append(output.item())
-        # 将值改为-1 1 0
-        # prediction = torch.sign(output).item()
-        prediction  = output
-
-        if prediction>args.threshold and label.item()==1:
-            tp+=1
-            #print('tp')
-        if prediction<=args.threshold and label.item()==0:
-            tn+=1
-            #print('tn')
-        if prediction>args.threshold and label.item()==0:
-            fp+=1
-            #print('fp')
-        if prediction<=args.threshold and label.item()==1:
-            fn+=1
-            #print('fn')
-    print(tp,tn,fp,fn)
-    p=0.0
-    r=0.0
-    f1=0.0
-    if tp+fp==0:
-        print('precision is none')
-        return
-    p=tp/(tp+fp)
-    if tp+fn==0:
-        print('recall is none')
-        return
-    r=tp/(tp+fn)
-    f1=2*p*r/(p+r)
-    acc = (tp + tn) / len(dataset)
-    print(f'precision = {p}')
-    print(f'recall = {r}')
-    print(f'F1={f1}')
-    print(f"acc = {acc}")
-    return results
 
 # 计算邻接矩阵
 def to_adjacen_matrix(nodes,edge_index):
@@ -247,7 +182,7 @@ for epoch in epochs:# without batching
 
         for data,label in val_data:
             label =  [[1,0]] if label == -1 else [[0,1]]
-            
+
             label=torch.tensor(label, dtype=torch.float, device=device)
             # label=torch.unsqueeze(label,dim=0)
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
@@ -278,16 +213,16 @@ for epoch in epochs:# without batching
                 prediction = 0.4
             else:
                 prediction = 0.6
-            if prediction>args.threshold and label[0]==[0,1]:
+            if prediction>args.threshold and label[0]==torch.tensor([0,1], dtype=torch.float, device=device):
                 tp+=1
                 #print('tp')
-            if prediction<=args.threshold and label[0]==[1,0]:
+            if prediction<=args.threshold and label[0]==torch.tensor([1,0], dtype=torch.float, device=device):
                 tn+=1
                 #print('tn')
-            if prediction>args.threshold and label[0]==[1,0]:
+            if prediction>args.threshold and label[0]==torch.tensor([1,0], dtype=torch.float, device=device):
                 fp+=1
                 #print('fp')
-            if prediction<=args.threshold and label[0]==[0,1]:
+            if prediction<=args.threshold and label[0]==torch.tensor([0,1], dtype=torch.float, device=device):
                 fn+=1
 
         if tp+fp==0:
