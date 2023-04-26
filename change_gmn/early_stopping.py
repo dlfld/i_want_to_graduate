@@ -46,8 +46,8 @@ class EarlyStopping:
         if self.verbose:
             print(f'Validation loss decreased ({self.val_loss_min:.6f} --> {val_loss:.6f}).  Saving model ...')
         path = os.path.join(self.save_path, 'best_network.pth')
-        import joblib
-        joblib.dump(model,"best_model.model")
+        # import joblib
+        # joblib.dump(model,"best_model.model")
         torch.save(model.state_dict(), path)	# 这里会存储迄今最优模型的参数
         self.val_loss_min = val_loss
 

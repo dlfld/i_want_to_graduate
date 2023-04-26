@@ -18,7 +18,6 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter   
 from early_stopping import EarlyStopping
-# import logddd
 
 # 获取参数
 args = get_args()
@@ -165,12 +164,14 @@ for epoch in epochs:# without batching
     import joblib
     torch.save(model.state_dict(), f"models/{epoch}.pt")
     # joblib.dump(model,f"models/{epoch}.model")
+    print(("模型保存成功"))
+    
     model.eval()
     # 验证和计算早停 
     with torch.no_grad():
         valid_loss_list = []
         val_data = validdata[:40000]
-        # val_data = validdata[:4]
+        val_data = validdata[:40]
         tp = 0
         tn = 0
         fp = 0

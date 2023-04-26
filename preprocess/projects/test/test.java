@@ -14,6 +14,5 @@ public class test {
 
     public void testGener1() {
         List<String> list = new LinkedList<>();
-
     }
 }

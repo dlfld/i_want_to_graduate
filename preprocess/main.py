@@ -23,8 +23,8 @@ if __name__ == "__main__":
     dir_name = "projects/test/"
     # dir_name = "projects/dubbo/"
     # dir_name = "projects/mom_mes/"
-    # tree_list = preprocess(dir_name)
-    # print(len(tree_list))
+    tree_list = preprocess(dir_name)
+    print(len(tree_list))
 
-    proj_method_asts = get_proj_method_asts(dir_name)
+    # proj_method_asts = get_proj_method_asts(dir_name)
     # print(proj_method_asts)
