@@ -41,7 +41,6 @@ def get_proj_method_asts(proj_dir: str) -> List[MethodDeclaration]:
     """
     method_ast_list = []
     # 遍历
-
     for rt, dirs, files in os.walk(proj_dir):
         for file in files:
             if file.endswith(".java"):
