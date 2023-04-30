@@ -22,12 +22,9 @@ from anytree import AnyNode
 from javalang.ast import Node
 from javalang.tree import MethodDeclaration
 
-from utils.proj_read_utils import get_proj_method_asts
 
 def get_token(node):
     token = ''
-    #print(isinstance(node, Node))
-    #print(type(node))
     if isinstance(node, str):
         token = node
     elif isinstance(node, set):
@@ -175,42 +172,64 @@ def get_child(root):
                 yield item
     return list(expand(children))
 
-def createtree(root,node,nodelist,parent=None):
+def createtree(root, node, nodelist, parent, class_func_asts, replaced_func):
     """
      根据token和子结构创建一棵树,使用anytree
     @param root: 根节点
     @param node: 节点
     @param nodelist: 节点列表
     @param parent: 父节点
+    @param class_func_asts: 类和方法对应的map
+    @param replaced_func: 被替换的ast在class_func_asts中的key列表
     @return:
     """
     id = len(nodelist)
-    #print(id)
     token, children = get_token(node), get_child(node)
     if id==0:
         root.token=token
         root.data=node
     else:
         # 如果当前节点的类型是方法调用，那么就找到被调用的方法节点，进行替换
+        print(token)
         if token == "MethodInvocation":
-            pass
-        newnode=AnyNode(id=id,token=token,data=node,parent=parent)
+            node, token = replace_called_func(node, class_func_asts, token, replaced_func)
+
+        newnode = AnyNode(id=id, token=token, data=node, parent=parent)
 
     nodelist.append(node)
     for child in children:
-        if id==0:
-            createtree(root,child, nodelist, parent=root)
+        if id == 0:
+            createtree(root, child, nodelist, parent=root, class_func_asts=class_func_asts, replaced_func=replaced_func)
         else:
-            createtree(root,child, nodelist, parent=newnode)
+            createtree(root, child, nodelist, parent=newnode, class_func_asts=class_func_asts,
+                       replaced_func=replaced_func)
 
-def replace_called_func(node:Node,class_func_asts: dict)->AnyNode:
+
+def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func):
     """
      根据规则替换掉方法调用节点
-    @param node:
-    @param class_func_asts:
-    @return:
+    @param node: 方法调用节点
+    @param class_func_asts: 类-方法映射列表
+    @param token: node对应的token
+    @return:替换之后的node
     """
-    pass
+    # node.qualifier不为空表示当前节点是xxx.xxx()调用方式的
+    if node.qualifier is not None:
+        # 类名
+        class_name = node.qualifier
+        # 方法名
+        func_name = node.member
+        class_func_key = f"{class_name}_{func_name}"
+        print(class_func_key)
+        if class_func_key in class_func_asts:
+            called_func_ast = class_func_asts[class_func_key]
+            # 表示当前调用方法是当前项目内部编写的方法
+            if called_func_ast is not None:
+                # 添加被替换节点的key
+                print("进来了"+class_func_key)
+                replaced_func.append(class_func_key)
+                return called_func_ast, get_token(called_func_ast)
+    return node, token
 
 
 def func_call_replace(func_node_list: List[MethodDeclaration], class_func_asts: dict):
@@ -254,19 +273,17 @@ def func_call_replace(func_node_list: List[MethodDeclaration], class_func_asts: 
     for func in func_node_list:
         nodelist = []
         newtree = AnyNode(id=0, token=None, data=None)
-        createtree(newtree, func, nodelist)
-        print(newtree)
-        print(newtree.children)
-
-
+        replaced_func = []
+        createtree(newtree, func, nodelist, None, class_func_asts, replaced_func=replaced_func)
+        print(replaced_func)
         exit(0)
 
 
-
 if __name__ == '__main__':
-    proj_dir = "../projects/mom_mes/ktg-mes/"
+    proj_dir = "../projects/test/"
     method_ast_list, class_func_asts = get_proj_method_asts_classes(proj_dir)
-    func_call_replace(method_ast_list,class_func_asts)
+    print(class_func_asts)
+    func_call_replace(method_ast_list, class_func_asts)
     print(len(method_ast_list))
     print(len(class_func_asts))
 
