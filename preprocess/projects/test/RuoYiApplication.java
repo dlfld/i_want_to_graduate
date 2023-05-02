@@ -19,8 +19,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 public class RuoYiApplication
 {
-    public static void test(){
-    }
+
     public static void main(String[] args)
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
@@ -28,7 +27,8 @@ public class RuoYiApplication
         System.out.println("(♥◠‿◠)ﾉﾞ  KTM-MES启动成功   ლ(´ڡ`ლ)ﾞ  \n");
         RuoYiApplication.test();
     }
-
+    public static void test(){
+    }
     @Bean
     public ServletRegistrationBean urportServlet(){
         ServletRegistrationBean bean = new ServletRegistrationBean(new UReportServlet());
