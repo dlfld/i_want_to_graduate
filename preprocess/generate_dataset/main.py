@@ -12,9 +12,9 @@
                 called_func_id:[call_func_ast,]
             }
 """
-from generate_dataset.gen_dataset.dump_dataset import combination_func, dump_dataset
-from generate_dataset.gen_dataset.rebuild_ast import func_call_replace
-from generate_dataset.gen_proj_msg import get_proj_method_asts_classes
+from gen_dataset.dump_dataset import combination_func, dump_dataset
+from gen_dataset.rebuild_ast import func_call_replace
+from gen_proj_msg import get_proj_method_asts_classes
 
 
 if __name__ == '__main__':
@@ -33,5 +33,5 @@ if __name__ == '__main__':
 
     # 获取数据匹配列表
     dataset_list = combination_func(dataset_map, class_func_asts)
-    for index, data in enumerate(dataset_list):
+    for index, data in tqdm(enumerate(dataset_list)):
         dump_dataset(data, f"dataset/{index}.data")
