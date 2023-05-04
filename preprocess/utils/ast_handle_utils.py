@@ -1,9 +1,10 @@
-from javalang.ast import Node
-from anytree import AnyNode
-# import treelib
-from utils.dependencies.createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
 import logddd
+from anytree import AnyNode
+from javalang.ast import Node
 
+# import treelib
+from utils.dependencies.createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, \
+    getedge_nextuse
 from utils.proj_read_utils import get_proj_method_asts
 
 

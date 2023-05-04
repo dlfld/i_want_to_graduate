@@ -24,29 +24,6 @@ def get_token(node):
 
     return token
 
-
-def method_invoca_replace(node, class_func_asts: dict) -> Node:
-    """
-        检测当前节点是否为方法调用节点，
-            如果是的话就对该节点进行替换
-            如果不是的话就直接返回
-
-    @param node: 节点
-    @param class_func_asts: 方法map
-    @return: 替换之后的节点
-    """
-    note_type = type(node).__name__
-    # 提取静态方法调用
-    if note_type == "MethodInvocation" and node.qualifier is not None:
-        # qualifier 是调用对象、类名  member 是具体的方法名
-        # 因为在这个地方只需要提取静态方法的使用，因此直接将qualifier的值当作是类名去找，找不到就不是。
-        map_key = f"{node.qualifier}_{node.member}"
-        called_func_ast = class_func_asts[map_key]
-        return called_func_ast
-    else:
-        return node
-
-
 def get_child(root):
     """
         获取指定节点的所有属性
@@ -110,7 +87,7 @@ def createtree(root, node, nodelist, parent, class_func_asts, replaced_func):
 
 def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func):
     """
-     根据规则替换掉方法调用节点
+     根据规则替换掉方法调用节点，并将节点替换进行记录
       调用的方式有很多种，目前只是识别了静态方法调用（这是重用出现频率最高的一种）
     @param node: 方法调用节点
     @param class_func_asts: 类-方法映射列表
@@ -164,7 +141,7 @@ def func_call_replace(func_node_list: List[MethodDeclaration], class_func_asts: 
     @param class_func_asts: 当前项目所有类-方法对应列表，表示指定方法属于哪一个类
     @return: 替换之后的训练数据，其结构为
             {
-                called_func_id:call_func_ast
+                called_func_id:[call_func_ast,]
             }
     """
 
