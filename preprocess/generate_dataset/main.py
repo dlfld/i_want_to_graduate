@@ -18,7 +18,7 @@ sys.path.append("generate_dataset/")
 from gen_dataset.dump_dataset import combination_func, dump_dataset
 from gen_dataset.rebuild_ast import func_call_replace
 from gen_proj_msg import get_proj_method_asts_classes
-from tqdm import tqdm, trange
+from tqdm import tqdm
 import logddd
 if __name__ == '__main__':
     proj_dir = "../projects/mom_mes/ktg-mes/"
@@ -31,7 +31,6 @@ if __name__ == '__main__':
     logddd.log("len(method_ast_list) = ", len(method_ast_list))
     logddd.log("len(class_func_asts) = ", len(class_func_asts))
     logddd.log(f"len(dataset_map) = {len(dataset_map)}")
-
 
     # 获取数据匹配列表
     dataset_list = combination_func(dataset_map, class_func_asts)
