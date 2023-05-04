@@ -58,7 +58,7 @@ def createtree(root, node, nodelist, parent, class_func_asts, replaced_func):
     @param nodelist: 节点列表
     @param parent: 父节点
     @param class_func_asts: 类和方法对应的map
-    @param replaced_func: 被替换的ast在class_func_asts中的key列表
+    @param replaced_func: 被替换的ast在class_func_asts中的key列表，也就是当前方法调用了那些方法
     @return:
     """
     id = len(nodelist)
@@ -92,6 +92,7 @@ def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func)
     @param node: 方法调用节点
     @param class_func_asts: 类-方法映射列表
     @param token: node对应的token
+    @param replaced_func: 被调用方法的列表，也就是
     @return:替换之后的node
     """
     # node.qualifier不为空表示当前节点是xxx.xxx()调用方式的
@@ -101,13 +102,14 @@ def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func)
         # 方法名
         func_name = node.member
         class_func_key = f"{class_name}_{func_name}"
-        # print(class_func_key)
-        if class_func_key in class_func_asts:
+        # 判断当前调用的方法是不是当前工程中的方法
+        if class_func_key in class_func_asts.keys():
             called_func_ast = class_func_asts[class_func_key]
             # 表示当前调用方法是当前项目内部编写的方法
             if called_func_ast is not None:
                 # 添加被替换节点的key
                 replaced_func.append(class_func_key)
+
                 return called_func_ast, get_token(called_func_ast)
     return node, token
 

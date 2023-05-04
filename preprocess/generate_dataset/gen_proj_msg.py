@@ -5,7 +5,7 @@ import javalang
 from javalang.tree import MethodDeclaration
 
 
-def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_asts: dict):
+def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_asts: Dict):
     """
     根据输入Java代码，解析出当前java文件中的类-方法 对应关系和方法AST列表
     类-方法对应关系结构为：
@@ -43,7 +43,8 @@ def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_as
                     method_ast_list.append(body)
 
 
-def get_proj_method_asts_classes(proj_dir: str) -> tuple[List[MethodDeclaration], Dict]:
+# def get_proj_method_asts_classes(proj_dir: str) -> tuple[List[MethodDeclaration], Dict]:
+def get_proj_method_asts_classes(proj_dir: str):
     """
         根据输入的项目位置，解析出当前项目的类-方法 对应关系和方法AST列表
         类-方法对应关系结构为：

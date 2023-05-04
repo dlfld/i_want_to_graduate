@@ -30,11 +30,6 @@ def combination_func(dataset_map: dict, class_func_asts: dict) -> List[List]:
         for item in class_func_asts:
             # 将调用方法和被调用方法组成
             data = [class_func_asts[key], item, 1]
-            # data = {
-            #     "v1": class_func_asts[key],
-            #     "v2": item,
-            #     "label": 1
-            # }
             dataset_list.append(data)
 
         # 两两组合caller_list中的ast，他们都调用了同一个方法，因此有相同的子树
@@ -52,6 +47,8 @@ def combination_func(dataset_map: dict, class_func_asts: dict) -> List[List]:
 
         # 再遍历方法调用关系map，获取到除了当前key之外的其他key对应的方法调用方法，与当前的key进行组合（因为这些方法是没有调用当前key对应的方法的）
         for key in dataset_map.keys():
+            if key == item:
+                continue
             # 将这些调用方法添加到一个列表中
             data_list.extend(dataset_map[key])
 
@@ -59,11 +56,6 @@ def combination_func(dataset_map: dict, class_func_asts: dict) -> List[List]:
         for caller_func in data_list:
             # dataset_list.append()
             data = [called_func, caller_func, -1]
-            # data = {
-            #     "v1": called_func,
-            #     "v2": dataset_map[caller_func],
-            #     "label": -1
-            # }
             dataset_list.append(data)
 
     return dataset_list

@@ -12,11 +12,14 @@
                 called_func_id:[call_func_ast,]
             }
 """
+import sys
+sys.path.append("generate_dataset/")
+
 from gen_dataset.dump_dataset import combination_func, dump_dataset
 from gen_dataset.rebuild_ast import func_call_replace
 from gen_proj_msg import get_proj_method_asts_classes
-
-
+from tqdm import tqdm, trange
+import logddd
 if __name__ == '__main__':
     proj_dir = "../projects/mom_mes/ktg-mes/"
     # 获取ast列表和方法对应map
@@ -25,13 +28,17 @@ if __name__ == '__main__':
     # 调用这个方法，返回方法调用数据map
     dataset_map = func_call_replace(method_ast_list, class_func_asts)
 
-    print("len(method_ast_list) = ", len(method_ast_list))
-    print("len(class_func_asts) = ", len(class_func_asts))
-    print(f"len(dataset_map) = {len(dataset_map)}")
-    # for key in dataset_map.keys():
-    #     print(f"func_name={key},len(key) = {len(dataset_map[key])}")
+    logddd.log("len(method_ast_list) = ", len(method_ast_list))
+    logddd.log("len(class_func_asts) = ", len(class_func_asts))
+    logddd.log(f"len(dataset_map) = {len(dataset_map)}")
+
 
     # 获取数据匹配列表
     dataset_list = combination_func(dataset_map, class_func_asts)
-    for index, data in tqdm(enumerate(dataset_list)):
+    logddd.log(len(dataset_list))
+    # for key in dataset_map.keys():
+    #     print(f"func_name={key},len(key) = {len(dataset_map[key])}")
+
+    for index in tqdm(range(len(dataset_list)),desc="saving"):
+        data = dataset_list[index]
         dump_dataset(data, f"dataset/{index}.data")
