@@ -141,7 +141,6 @@ def createast():
             paths.append(os.path.join(rt,file))
             asts.append(programast)
             # print("当前文件的AST是")
-            # print(programast)
             get_sequence(programast,alltokens)
             programfile.close()
 
