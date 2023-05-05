@@ -26,20 +26,23 @@ def combination_func(dataset_map: dict, class_func_asts: dict) -> List[List]:
     # 对每一个相同的项进行遍历,构造正例
     for key in dataset_map.keys():
         caller_ast_list = dataset_map[key]
-        # 遍历调用方法的ast，将被调用方法与调用方法进行两两组合
-        for item in class_func_asts:
+
+        # 1. 遍历调用方法的ast，将被调用方法与调用方法进行两两组合
+        # 当前被调用方法
+        cur_called_func = class_func_asts[key]
+        for item in caller_ast_list:
             # 将调用方法和被调用方法组成
-            data = [class_func_asts[key], item, 1]
+            data = [cur_called_func, item, 1]
             dataset_list.append(data)
 
-        # 两两组合caller_list中的ast，他们都调用了同一个方法，因此有相同的子树
+        # 2. 两两组合caller_list中的ast，他们都调用了同一个方法，因此有相同的子树
         combine_list = list(product(caller_ast_list, repeat=2))
         # 结合出来没有标签，因此需要把标签加上去
         for item in combine_list:
             item = list(item) + [1]
             dataset_list.append(item)
 
-    # 构造负例
+    # 3. 构造负例,遍历每一个调用方法调用关系(map)，将当前被调用方法与其他被调用方法的调用方法(在调用方法内去除掉调用当前被调用的调用方法)进行两两组合，并赋予标签为-1（没有可复用代码段）。不使用调用方法之间两两组合是因为调用方法可能会存在调用了同一个方法的情况。
     # 遍历调用关系map，依次获取每一个key
     for item in dataset_map.keys():
         # 调用当前方法的列表
@@ -58,7 +61,6 @@ def combination_func(dataset_map: dict, class_func_asts: dict) -> List[List]:
         called_func = class_func_asts[item]
         # 遍历调用方法列表 生成负例列表
         for caller_func in data_list:
-            # dataset_list.append()
             data = [called_func, caller_func, -1]
             dataset_list.append(data)
 

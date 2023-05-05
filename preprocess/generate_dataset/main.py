@@ -21,7 +21,8 @@ from gen_proj_msg import get_proj_method_asts_classes
 from tqdm import tqdm
 import logddd
 if __name__ == '__main__':
-    proj_dir = "../projects/mom_mes/ktg-mes/"
+    # proj_dir = "../projects/mom_mes/ktg-mes/"
+    proj_dir = "../projects/mom_mes/industry4.0-mes/"
     # 获取ast列表和方法对应map
     method_ast_list, class_func_asts = get_proj_method_asts_classes(proj_dir)
     # print(class_func_asts)
@@ -35,9 +36,12 @@ if __name__ == '__main__':
     # 获取数据匹配列表
     dataset_list = combination_func(dataset_map, class_func_asts)
     logddd.log(len(dataset_list))
-    # for key in dataset_map.keys():
-    #     print(f"func_name={key},len(key) = {len(dataset_map[key])}")
+    sum = 0
+    for key in dataset_map.keys():
+        sum += len(dataset_map[key])
+        print(f"func_name={key},len(key) = {len(dataset_map[key])}")
 
-    for index in tqdm(range(len(dataset_list)),desc="saving"):
-        data = dataset_list[index]
-        dump_dataset(data, f"dataset/{index}.data")
+    logddd.log(sum)
+    # for index in tqdm(range(len(dataset_list)),desc="saving"):
+    #     data = dataset_list[index]
+    #     dump_dataset(data, f"dataset/{index}.data")
