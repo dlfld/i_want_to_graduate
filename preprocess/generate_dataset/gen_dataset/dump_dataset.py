@@ -58,7 +58,9 @@ def combination_func(dataset_map: dict, class_func_asts: dict) -> List[List]:
             # 将这些调用方法添加到一个列表中,还需要满足的一点是当前方法没有在当前被调用方法的调用列表中
             data_list.extend([val for val in dataset_map[key] if val not in caller_ast_set])
 
+        # 这个是没有使用anytree进行重构的
         called_func = class_func_asts[item]
+
         # 遍历调用方法列表 生成负例列表
         for caller_func in data_list:
             data = [called_func, caller_func, -1]

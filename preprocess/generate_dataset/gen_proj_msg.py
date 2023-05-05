@@ -3,6 +3,8 @@ from typing import List, Dict
 
 import javalang
 from javalang.tree import MethodDeclaration
+from gen_dataset.rebuild_ast import get_token, get_child
+from anytree import AnyNode
 
 
 def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_asts: Dict):
@@ -38,7 +40,12 @@ def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_as
                     func_name = body.name
                     # 类-方法 字典的key
                     dict_key = f"{class_name}_{func_name}"
-                    class_func_asts[dict_key] = body
+                    # 将需要加入class_func dict的ast使用anytree进行重构,在后面构建数据集的时候需要重构来统一格式
+                    nodelist = []
+                    new_tree = AnyNode(id=0, token=None, data=None)
+                    create_tree(new_tree, body, nodelist, None, )
+                    # 存储重构之后的tree
+                    class_func_asts[dict_key] = new_tree
                     # 将方法的ast节点添加到ast节点列表中
                     method_ast_list.append(body)
 
@@ -72,3 +79,30 @@ def get_proj_method_asts_classes(proj_dir: str):
                     pass
 
     return method_ast_list, class_func_asts
+
+
+def create_tree(root, node, nodelist, parent):
+    """
+     将javalang parse出来的ast使用anytree进行重构
+    @param root: 根节点
+    @param node: 节点
+    @param nodelist: 节点列表
+    @param parent: 父节点
+    @return:
+    """
+    id = len(nodelist)
+    token, children = get_token(node), get_child(node)
+
+    if id == 0:
+        root.token = token
+        root.data = node
+    else:
+        newnode = AnyNode(id=id, token=token, data=node, parent=parent)
+
+    nodelist.append(node)
+
+    for child in children:
+        if id == 0:
+            create_tree(root, child, nodelist, parent=root)
+        else:
+            create_tree(root, child, nodelist, parent=newnode)
