@@ -100,7 +100,7 @@ if __name__ == '__main__':
     epochs = trange(args.num_epochs, leave=True, desc="Epoch")
 
     eval_losses = []
-
+    step = 0
     for epoch in epochs:
         epoch_loss = 0
         model.train()
@@ -139,7 +139,9 @@ if __name__ == '__main__':
 
             # 记录过程中每一个batch的loss
             batch_loss = np.average(batch_losses)
-            writer.add_scalar('loss', batch_loss, epoch*len(batch)+index)
+            writer.add_scalar('loss', batch_loss, step)
+            step += 1
+
             epochs.set_description("Epoch (Loss=%g)" % round(batch_loss, 5))
 
             optimizer.step()
@@ -198,22 +200,25 @@ if __name__ == '__main__':
                 if prediction <= args.threshold and y[0] == [0, 1]:
                     fn += 1
 
-                p = tp/(tp+fp)
-                if tp+fn == 0:
-                    print('recall is none')
-                    exit(1)
+            if tp+fp == 0:
+                print('precision is none')
+                exit(1)
+            p = tp/(tp+fp)
+            if tp+fn == 0:
+                print('recall is none')
+                exit(1)
 
-                r = tp/(tp+fn)
-                f1 = 2*p*r/(p+r)
-                acc = (tp + tn) / len(valid)
-                print(f'\nprecision = {p}')
-                print(f'recall = {r}')
-                print(f'F1={f1}')
-                print(f"acc = {acc}")
+            r = tp/(tp+fn)
+            f1 = 2*p*r/(p+r)
+            acc = (tp + tn) / len(valid)
+            # print(f'\nprecision = {p}')
+            # print(f'recall = {r}')
+            # print(f'F1={f1}')
+            # print(f"acc = {acc}")
 
-                avg_valid_loss = np.average(eval_losses)
-                print("验证集loss:{}".format(avg_valid_loss))
-                early_stopping(avg_valid_loss, model)
-                if early_stopping.early_stop:
-                    print("此时早停！")
-                    break
+            avg_valid_loss = np.average(eval_losses)
+            print("验证集loss:{}".format(avg_valid_loss))
+            early_stopping(avg_valid_loss, model)
+            if early_stopping.early_stop:
+                print("此时早停！")
+                break
