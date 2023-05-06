@@ -1,7 +1,17 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "window.zoomLevel": 1,
-    "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": true,
-    "python.linting.enabled": true
+    "python.linting.pylintEnabled": true,
+    "python.linting.pep8Enabled": false,
+    "python.linting.enabled": true,
+    "editor.codeLensFontSize": 0,
+    "editor.inlayHints.fontSize": 1,
+    "markdown.preview.fontSize": 14,
+    "notebook.markup.fontSize": 12,
+    "notebook.output.fontSize": 0,
+    "timeline.pageSize": null,
+    "python.formatting.provider": "none",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    }
 }

@@ -12,14 +12,14 @@
                 called_func_id:[call_func_ast,]
             }
 """
+import logddd
+from tqdm import tqdm
+from gen_proj_msg import get_proj_method_asts_classes
+from gen_dataset.rebuild_ast import func_call_replace
+from gen_dataset.dump_dataset import combination_func, dump_dataset
 import sys
 sys.path.append("generate_dataset/")
 
-from gen_dataset.dump_dataset import combination_func, dump_dataset
-from gen_dataset.rebuild_ast import func_call_replace
-from gen_proj_msg import get_proj_method_asts_classes
-from tqdm import tqdm
-import logddd
 if __name__ == '__main__':
     proj_name = "ktg-mes"
     proj_dir = "../projects/mom_mes/ktg-mes/"
@@ -44,7 +44,6 @@ if __name__ == '__main__':
     #     print(f"func_name={key},len(key) = {len(dataset_map[key])}")
     # logddd.log(sum)
 
-    for index in tqdm(range(len(dataset_list)),desc="saving"):
+    for index in tqdm(range(len(dataset_list)), desc="saving"):
         data = dataset_list[index]
         dump_dataset(data, f"dataset/{proj_name}_{index}.data")
-
