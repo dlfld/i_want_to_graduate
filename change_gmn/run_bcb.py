@@ -1,3 +1,4 @@
+import joblib
 import math
 import random
 import torch
@@ -13,61 +14,67 @@ import argparse
 from tqdm import tqdm, trange
 import os
 import pycparser
-from createclone_bcb import createast,creategmndata,createseparategraph
+from createclone_bcb import createast, creategmndata, createseparategraph
 import models
 from torch_geometric.data import Data, DataLoader
-from torch.utils.tensorboard import SummaryWriter   
+from torch.utils.tensorboard import SummaryWriter
 from early_stopping import EarlyStopping
-
+import logddd
 # 获取参数
 args = get_args()
-import joblib
-device=torch.device('cuda:0')
+device = torch.device('cuda:0')
 if not os.path.exists("data.data"):
-    # 读取数据集获取数据信息 
-    astdict,vocablen,vocabdict=createast()
+    # 读取数据集获取数据信息
+    astdict, vocablen, vocabdict = createast()
     # 数据预处理
-    treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
+    treedict = createseparategraph(astdict, vocablen, vocabdict, device, mode=args.graphmode, nextsib=args.nextsib, ifedge=args.ifedge,
+                                   whileedge=args.whileedge, foredge=args.foredge, blockedge=args.blockedge, nexttoken=args.nexttoken, nextuse=args.nextuse)
     # 获取格式化数据
-    traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
+    traindata, validdata, testdata = creategmndata(
+        args.data_setting, treedict, vocablen, vocabdict, device)
     train_data = {
-        "traindata":traindata,
-        "validdata":validdata,
-        "testdata":testdata,
-        "vocablen":vocablen
+        "traindata": traindata,
+        "validdata": validdata,
+        "testdata": testdata,
+        "vocablen": vocablen
     }
-    joblib.dump(train_data,"data.data")
+    joblib.dump(train_data, "data.data")
 else:
     train_data = joblib.load("data.data")
-    traindata,validdata,testdata,vocablen=train_data["traindata"],train_data["validdata"],train_data["testdata"],train_data["vocablen"]
+    traindata, validdata, testdata, vocablen = train_data["traindata"], train_data[
+        "validdata"], train_data["testdata"], train_data["vocablen"]
 
-    
 
-num_layers=int(args.num_layers)
-model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
+num_layers = int(args.num_layers)
+model = models.GMNnet(vocablen, embedding_dim=100,
+                      num_layers=num_layers, device=device).to(device)
 
 # 这儿进行了修改，将原来的Adam改为了AdamW
 optimizer = optim.AdamW(model.parameters(), lr=args.lr)
-criterion=nn.CosineEmbeddingLoss()
-criterion2=nn.MSELoss()
+criterion = nn.CosineEmbeddingLoss()
+criterion2 = nn.MSELoss()
 
-criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([1, 6] ,dtype=torch.long, device=device))
+criterion3 = torch.nn.BCEWithLogitsLoss(
+    weight=torch.tensor([1, 6], dtype=torch.long, device=device))
 # weight=torch.tensor([0.8576, 0.1424] ,dtype=torch.long, device=device)
 # weight=torch.tensor([0.8576, 0.1424], dtype=torch.long, device=device)
-criterion4 = nn.BCELoss(weight=torch.tensor([1, 6] ,dtype=torch.long, device=device)) # 交叉熵
-save_path = "./models" #当前目录下
+criterion4 = nn.BCELoss(weight=torch.tensor(
+    [1, 6], dtype=torch.long, device=device))  # 交叉熵
+save_path = "./models"  # 当前目录下
 # early_stopping = EarlyStopping()
-early_stopping = EarlyStopping(patience=10, verbose=True,save_path=save_path)  # 早停
+early_stopping = EarlyStopping(
+    patience=10, verbose=True, save_path=save_path)  # 早停
 # criterion4 = torch.nn.BCE
 
+
 def create_batches(data):
-    batches = [data[graph:graph+args.batch_size] for graph in range(0, len(data), args.batch_size)]
+    batches = [data[graph:graph+args.batch_size]
+               for graph in range(0, len(data), args.batch_size)]
     return batches
 
 
-
 # 计算邻接矩阵
-def to_adjacen_matrix(nodes,edge_index):
+def to_adjacen_matrix(nodes, edge_index):
     # 构造邻接矩阵的样式并求出当前邻接矩阵大小
     data = [item[0] for item in nodes]
     min_id = min(data)
@@ -77,72 +84,81 @@ def to_adjacen_matrix(nodes,edge_index):
     A = [[0 for x in range(len_nodes)] for y in range(len_nodes)]
 
     # 取出边矩阵
-    sources,targets = edge_index
-    # 对邻接矩阵赋值    
-    for index,source in enumerate(sources):
+    sources, targets = edge_index
+    # 对邻接矩阵赋值
+    for index, source in enumerate(sources):
         row = source-min_id
         col = targets[index] - min_id
-        A[row][col]+=1
+        A[row][col] += 1
 
     return A
 
 # loss_list = []
-#=======================================================early stop=======================================================
+# =======================================================early stop=======================================================
+
 
 train_losses = []
 train_acces = []
 # 用数组保存每一轮迭代中，在测试数据上测试的损失值和精确度，也是为了通过画图展示出来。
 eval_losses = []
 eval_acces = []
-#=======================================================early stop=======================================================
+# =======================================================early stop=======================================================
 writer = SummaryWriter('log/')
-epochs = trange(args.num_epochs, leave=True, desc = "Epoch")
-for epoch in epochs:# without batching
+epochs = trange(args.num_epochs, leave=True, desc="Epoch")
+for epoch in epochs:  # without batching
     print(epoch)
-    batches=create_batches(traindata)
+    batches = create_batches(traindata)
     # batches = batches[:10]
-    main_index=0.0
+    main_index = 0.0
     # 存储一个epoch的loss
     epoch_loss = 0.0
     train_loss = 0
 
     model.train()
 
-    for index, batch in tqdm(enumerate(batches), total=len(batches), desc = "Batches"):
+    for index, batch in tqdm(enumerate(batches), total=len(batches), desc="Batches"):
         optimizer.zero_grad()
         # batchloss= 0wei
 
         # 预测正确的数量
         # num_correct = 0
         batch_losses = []
-             
 
-        for data,label in batch:
-            
-            label =  [[1,0]] if label == -1 else [[0,1]]
-            label=torch.tensor(label, dtype=torch.float, device=device)
-            x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
-            x1=torch.tensor(x1, dtype=torch.long, device=device)
-            x2=torch.tensor(x2, dtype=torch.long, device=device)
+        for data, label in batch:
 
-            edge_index1=torch.tensor(edge_index1, dtype=torch.long, device=device)
-            edge_index2=torch.tensor(edge_index2, dtype=torch.long, device=device)
-            if edge_attr1!=None:
-                edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
-                edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
+            label = [[1, 0]] if label == -1 else [[0, 1]]
+            label = torch.tensor(label, dtype=torch.float, device=device)
+            x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2 = data
+            x1 = torch.tensor(x1, dtype=torch.long, device=device)
+            x2 = torch.tensor(x2, dtype=torch.long, device=device)
+            logddd.log(x1.shape)
+            logddd.log(x2.shape)
 
+            edge_index1 = torch.tensor(
+                edge_index1, dtype=torch.long, device=device)
+            edge_index2 = torch.tensor(
+                edge_index2, dtype=torch.long, device=device)
+            logddd.log(edge_index1.shape)
+            logddd.log(edge_index2.shape)
+
+            if edge_attr1 != None:
+                edge_attr1 = torch.tensor(
+                    edge_attr1, dtype=torch.long, device=device)
+                edge_attr2 = torch.tensor(
+                    edge_attr2, dtype=torch.long, device=device)
+            logddd.log(edge_attr1.shape)
+            logddd.log(edge_attr2.shape)
             # x1_a = to_adjacen_matrix(x1, edge_index1)
             # x2_a = to_adjacen_matrix(x2, edge_index2)
 
             # data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2,x1_a,x2_a]
-            data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
-            logits=model(data)
+            data = [x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
+            logits = model(data)
             # pred_sig = torch.sigmoid(logits)
             # logddd.log(logits)
             # 计算出当前预测是否正确,如果正确就计数，作为后面计算acc的条件
-        
 
-            loss = criterion3(logits,label)
+            loss = criterion3(logits, label)
             # logddd.log(loss)
             batch_losses.append(loss.item())
             loss.backward(retain_graph=True)
@@ -152,22 +168,22 @@ for epoch in epochs:# without batching
 
         # train loss 添加
         train_losses.append(batch_loss)
-        
+
         # loss_list.append(batch_loss)
-        writer.add_scalar('loss',batch_loss, epoch*len(batches)+index)
-        epochs.set_description("Epoch (Loss=%g)" % round(batch_loss,5))
+        writer.add_scalar('loss', batch_loss, epoch*len(batches)+index)
+        epochs.set_description("Epoch (Loss=%g)" % round(batch_loss, 5))
 
         optimizer.step()
 
         # 早停策略判断
-    
+
     import joblib
     torch.save(model.state_dict(), f"models/{epoch}.pt")
     # joblib.dump(model,f"models/{epoch}.model")
     print(("模型保存成功"))
-    
+
     model.eval()
-    # 验证和计算早停 
+    # 验证和计算早停
     with torch.no_grad():
         valid_loss_list = []
         val_data = validdata[:40000]
@@ -176,35 +192,39 @@ for epoch in epochs:# without batching
         tn = 0
         fp = 0
         fn = 0
-        p=0.0
-        r=0.0
-        f1=0.0
+        p = 0.0
+        r = 0.0
+        f1 = 0.0
 
-        for data,label in val_data:
-            label =  [[1,0]] if label == -1 else [[0,1]]
+        for data, label in val_data:
+            label = [[1, 0]] if label == -1 else [[0, 1]]
 
-            label=torch.tensor(label, dtype=torch.float, device=device)
+            label = torch.tensor(label, dtype=torch.float, device=device)
             # label=torch.unsqueeze(label,dim=0)
-            x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2=data
+            x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2 = data
 
-            x1=torch.tensor(x1, dtype=torch.long, device=device)
-            x2=torch.tensor(x2, dtype=torch.long, device=device)
+            x1 = torch.tensor(x1, dtype=torch.long, device=device)
+            x2 = torch.tensor(x2, dtype=torch.long, device=device)
 
-            edge_index1=torch.tensor(edge_index1, dtype=torch.long, device=device)
-            edge_index2=torch.tensor(edge_index2, dtype=torch.long, device=device)
-            if edge_attr1!=None:
-                edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
-                edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
+            edge_index1 = torch.tensor(
+                edge_index1, dtype=torch.long, device=device)
+            edge_index2 = torch.tensor(
+                edge_index2, dtype=torch.long, device=device)
+            if edge_attr1 != None:
+                edge_attr1 = torch.tensor(
+                    edge_attr1, dtype=torch.long, device=device)
+                edge_attr2 = torch.tensor(
+                    edge_attr2, dtype=torch.long, device=device)
 
-            data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
-            logits=model(data)
+            data = [x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
+            logits = model(data)
             # logits  = logits.squeeze(0)
             output = torch.sigmoid(logits)
             pred = output.squeeze(0)
-          
+
             # p = torch.exp(logits)  反对数 实际预测的时候用的
 
-            loss = criterion4(output,label)
+            loss = criterion4(output, label)
             # 负对数似然函数
             # loss = F.nll_loss(logits, label)
             eval_losses.append(loss.item())
@@ -215,29 +235,29 @@ for epoch in epochs:# without batching
                 prediction = 0.6
             y = label.tolist()
             # print(label[0]==[0,1])
-            if prediction>args.threshold and y[0]==[0,1]:
-                tp+=1
-                #print('tp')
-            if prediction<=args.threshold and y[0]== [1,0]:
-                tn+=1
-                #print('tn')
-            if prediction>args.threshold and y[0]== [1,0]:
-                fp+=1
-                #print('fp')
-            if prediction<=args.threshold and y[0]== [0,1]:
-                fn+=1
+            if prediction > args.threshold and y[0] == [0, 1]:
+                tp += 1
+                # print('tp')
+            if prediction <= args.threshold and y[0] == [1, 0]:
+                tn += 1
+                # print('tn')
+            if prediction > args.threshold and y[0] == [1, 0]:
+                fp += 1
+                # print('fp')
+            if prediction <= args.threshold and y[0] == [0, 1]:
+                fn += 1
 
-        if tp+fp==0:
+        if tp+fp == 0:
             print('precision is none')
             exit(1)
 
-        p=tp/(tp+fp)
-        if tp+fn==0:
+        p = tp/(tp+fp)
+        if tp+fn == 0:
             print('recall is none')
             exit(1)
 
-        r=tp/(tp+fn)
-        f1=2*p*r/(p+r)
+        r = tp/(tp+fn)
+        f1 = 2*p*r/(p+r)
         acc = (tp + tn) / len(val_data)
         print(f'\nprecision = {p}')
         print(f'recall = {r}')
@@ -251,9 +271,7 @@ for epoch in epochs:# without batching
             print("此时早停！")
             break
 
-
-
-    #test(validdata)
+    # test(validdata)
 
     # devresults=test(validdata[:40000])
     # testresults=test(testdata[:40000])
@@ -267,13 +285,12 @@ for epoch in epochs:# without batching
     #     resfile.write(str(res)+'\n')
     # resfile.close()
 
-    #torch.save(model,'gmnmodels/gmnbcb'+str(epoch+1))
-    #for start in range(0, len(traindata), args.batch_size):
-        #batch = traindata[start:start+args.batch_size]
-        #epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
+    # torch.save(model,'gmnmodels/gmnbcb'+str(epoch+1))
+    # for start in range(0, len(traindata), args.batch_size):
+        # batch = traindata[start:start+args.batch_size]
+        # epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
 
-import joblib
-joblib.dump(train_losses,args.loss_name)
+joblib.dump(train_losses, args.loss_name)
 
 '''for batch in trainloder:
     batch=batch.to(device)

@@ -13,5 +13,8 @@
     "python.formatting.provider": "none",
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
-    }
+    },
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 200,
+    "python.languageServer": "Jedi"
 }

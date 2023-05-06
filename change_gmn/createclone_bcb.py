@@ -225,16 +225,21 @@ def createseparategraph(astdict, vocablen, vocabdict, device, mode='astonly', ne
                 # 链接下一个兄弟结点，将一个节点连接到它的下一个兄弟姐妹 (从左到右)。
                 # 因为图神经网络不考虑节点的顺序，所以有必要向我们的神经网络模型提供子的顺序。
                 # 尝试一下，如果不要兄弟结点呢？不考虑顺序信息。
-                getedge_nextsib(newtree, vocabdict, edgesrc, edgetgt, edge_attr)
-            getedge_flow(newtree, vocabdict, edgesrc, edgetgt, edge_attr, ifedge, whileedge, foredge)
+                getedge_nextsib(newtree, vocabdict,
+                                edgesrc, edgetgt, edge_attr)
+            getedge_flow(newtree, vocabdict, edgesrc, edgetgt,
+                         edge_attr, ifedge, whileedge, foredge)
             if blockedge == True:
-                getedge_nextstmt(newtree, vocabdict, edgesrc, edgetgt, edge_attr)
+                getedge_nextstmt(newtree, vocabdict,
+                                 edgesrc, edgetgt, edge_attr)
             tokenlist = []
             if nexttoken == True:
-                getedge_nexttoken(newtree, vocabdict, edgesrc, edgetgt, edge_attr, tokenlist)
+                getedge_nexttoken(newtree, vocabdict, edgesrc,
+                                  edgetgt, edge_attr, tokenlist)
             variabledict = {}
             if nextuse == True:
-                getedge_nextuse(newtree, vocabdict, edgesrc, edgetgt, edge_attr, variabledict)
+                getedge_nextuse(newtree, vocabdict, edgesrc,
+                                edgetgt, edge_attr, variabledict)
         # x = torch.tensor(x, dtype=torch.long, device=device)
         edge_index = [edgesrc, edgetgt]
         # edge_index = torch.tensor([edgesrc, edgetgt], dtype=torch.long, device=device)
@@ -307,5 +312,6 @@ def createpairdata(treedict, pathlist, device):
 
 if __name__ == '__main__':
     astdict, vocabsize, vocabdict = createast()
-    treedict=createseparategraph(astdict, vocabsize, vocabdict,device='cpu',mode='else',nextsib=True,ifedge=True,whileedge=True,foredge=True,blockedge=True,nexttoken=True,nextuse=True)
-    creategmndata(treedict,vocabsize,vocabdict,device='cpu')
+    treedict = createseparategraph(astdict, vocabsize, vocabdict, device='cpu', mode='else', nextsib=True,
+                                   ifedge=True, whileedge=True, foredge=True, blockedge=True, nexttoken=True, nextuse=True)
+    creategmndata(treedict, vocabsize, vocabdict, device='cpu')

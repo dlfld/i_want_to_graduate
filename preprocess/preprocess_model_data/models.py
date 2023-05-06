@@ -366,10 +366,10 @@ class GMNlayer(MessagePassing):
         # x_j has shape [E, out_channels]
         # Step 3: Normalize node features.
         # print(x_i.size(),x_j.size())
-        import logddd
-        logddd.log(x_i.shape)
-        logddd.log(x_j.shape)
-        exit(0)
+        # import logddd
+        # logddd.log(x_i.shape)
+        # logddd.log(x_j.shape)
+        # exit(0)
         if type(edge_weight) == type(None):
             edge_weight = torch.ones(x_i.size(0), x_i.size(1)).to(self.device)
             m = F.relu(self.fmessage(
