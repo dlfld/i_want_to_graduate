@@ -19,7 +19,7 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from early_stopping import EarlyStopping
-import logddd
+# import logddd
 # 获取参数
 args = get_args()
 device = torch.device('cuda:0')

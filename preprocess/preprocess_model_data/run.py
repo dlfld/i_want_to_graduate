@@ -21,9 +21,9 @@ import joblib
 from torch.utils.tensorboard import SummaryWriter
 from data_embedding import load_mem_data
 from bcb_data_loader.loader import load_bcb_data
-import logddd
+# import logddd
 from early_stopping import EarlyStopping
-import logddd
+# import logddd
 
 writer = SummaryWriter('log/')
 save_path = "./models/"  # 当前目录下
