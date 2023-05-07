@@ -18,7 +18,8 @@ from torch.utils.data import DataLoader
 import os
 import joblib
 from torch.utils.tensorboard import SummaryWriter
-from data_embedding import get_all_mes_datas
+from data_embedding import load_mem_data
+from bcb_data_loader.loader import load_bcb_data
 import logddd
 from early_stopping import EarlyStopping
 writer = SummaryWriter('log/')
@@ -55,6 +56,7 @@ def create_batches(data):
 
 def split_data(data):
     """
+        没有用dataloader的原因是：现在模型是一条一条数据输入的，数据长度没有对齐
         划分数据，换分训练集测试集和验证集
         @return 训练集、验证集、测试集
     """
@@ -65,26 +67,35 @@ def split_data(data):
     return X_train, X_validate, X_test
 
 
+def load_total_data(args):
+    """
+        加载所有的数据集
+        @return 所有数据，词表长度
+    """
+    men_data, mem_vocab_dict = load_mem_data(args)
+    bcb_data, bcb_cocab_dict = load_bcb_data(args)
+
+    all_data = []
+    all_data.extend(men_data)
+    all_data.extend(bcb_data)
+
+    all_vocab_list = []
+    all_vocab_list.extend(mem_vocab_dict.keys())
+    all_vocab_list.extend(bcb_cocab_dict.keys())
+
+    # 去重之后的字典
+    all_vocab_list_dictinct = list(set(all_vocab_list))
+
+    return all_data, len(all_vocab_list_dictinct)
+
+
 if __name__ == '__main__':
     device = torch.device('cuda:0')
-    data_file_name = "mom_data.data"
-    data_file_path = "../generate_dataset/dataset/"
-    # 加载数据
-    if not os.path.exists(data_file_name):
-        all_data_list, vocab_size = get_all_mes_datas(data_file_path)
-        temp_data = {
-            "all_data_list": all_data_list,
-            "vocab_size": vocab_size
-        }
-        joblib.dump(temp_data, data_file_name)
-    else:
-        temp_data = joblib.load(data_file_name)
-        all_data_list = temp_data["all_data_list"]
-        vocab_size = temp_data["vocab_size"]
-
+    # 加载所有数据
+    all_data_list, vocab_size = load_total_data()
     # 划分数据
     train, valid, test = split_data(all_data_list)
-
+    # 将数据划分为batch
     train_data_loader = create_batches(train)
 
     num_layers = int(args.num_layers)
@@ -114,21 +125,18 @@ if __name__ == '__main__':
                 label = torch.tensor(label, dtype=torch.float, device=device)
                 x1 = torch.tensor(x1, dtype=torch.long, device=device)
                 x2 = torch.tensor(x2, dtype=torch.long, device=device)
-                # logddd.log(x1.shape)
-                # logddd.log(x2.shape)
+
                 edge_index1 = torch.tensor(
                     edge_index1, dtype=torch.long, device=device)
                 edge_index2 = torch.tensor(
                     edge_index2, dtype=torch.long, device=device)
-                # logddd.log(edge_index1.shape)
-                # logddd.log(edge_index2.shape)
+
                 if edge_attr1 != None:
                     edge_attr1 = torch.tensor(
                         edge_attr1, dtype=torch.long, device=device)
                     edge_attr2 = torch.tensor(
                         edge_attr2, dtype=torch.long, device=device)
-                # logddd.log(edge_attr1.shape)
-                # logddd.log(edge_attr2.shape)
+
                 data = [x1, x2, edge_index1,
                         edge_index2, edge_attr1, edge_attr2]
 

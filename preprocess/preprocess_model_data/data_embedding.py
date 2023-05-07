@@ -242,7 +242,7 @@ def create_pair_data(all_data: List[Any], token_dict: Dict[Any, Any], vocab_size
 def get_all_mes_datas(dataset_path: str) -> List[Any]:
     """
     读取所有数据，对数据格式进行转换并embedding
-    @return: 返回所有数据经过embedding之后的pair,词表大小
+    @return: 返回所有数据经过embedding之后的pair,词表大小,词表
     """
     # 加载数据，获取token
     token_dict, vocab_size, all_data = get_all_tokens(dataset_path)
@@ -251,8 +251,30 @@ def get_all_mes_datas(dataset_path: str) -> List[Any]:
     all_pair_data = create_pair_data(
         all_data=all_data, token_dict=token_dict, vocab_size=vocab_size)
 
-    logddd.log(len(all_pair_data))
-    return all_pair_data, vocab_size
+    # logddd.log(len(all_pair_data))
+    return all_pair_data, vocab_size, token_dict
+
+
+def load_mem_data(args):
+    """
+        返回MOM&MES数据,
+        @return: 所有数据的列表，词表
+    """
+    data_file_name = "mom_data.data"
+    data_file_path = "../generate_dataset/dataset/"
+    # 加载数据
+    if not os.path.exists(data_file_name):
+        all_data_list, vocab_size = get_all_mes_datas(data_file_path)
+        temp_data = {
+            "all_data_list": all_data_list,
+            "vocab_size": vocab_size
+        }
+        joblib.dump(temp_data, data_file_name)
+    else:
+        temp_data = joblib.load(data_file_name)
+        all_data_list = temp_data["all_data_list"]
+        vocab_size = temp_data["vocab_size"]
+    return all_data_list, token_dict
 
 
 if __name__ == "__main__":
