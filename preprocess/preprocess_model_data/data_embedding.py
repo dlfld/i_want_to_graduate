@@ -252,7 +252,7 @@ def get_all_mes_datas(dataset_path: str) -> List[Any]:
         all_data=all_data, token_dict=token_dict, vocab_size=vocab_size)
 
     # logddd.log(len(all_pair_data))
-    return all_pair_data, vocab_size, token_dict
+    return all_pair_data, token_dict
 
 
 def load_mem_data(args):
@@ -264,24 +264,25 @@ def load_mem_data(args):
     data_file_path = "../generate_dataset/dataset/"
     # 加载数据
     if not os.path.exists(data_file_name):
-        all_data_list, vocab_size = get_all_mes_datas(data_file_path)
+        all_data_list, token_dict = get_all_mes_datas(data_file_path)
         temp_data = {
             "all_data_list": all_data_list,
-            "vocab_size": vocab_size
+            "token_dict": token_dict
         }
         joblib.dump(temp_data, data_file_name)
     else:
         temp_data = joblib.load(data_file_name)
         all_data_list = temp_data["all_data_list"]
-        vocab_size = temp_data["vocab_size"]
+        token_dict = temp_data["token_dict"]
+    print("load mom data compelete!")
     return all_data_list, token_dict
 
 
 if __name__ == "__main__":
-    all_pair_data, vocab_size = get_all_mes_datas(
+    all_pair_data, token_dict = get_all_mes_datas(
         "../generate_dataset/dataset/")
     temp_data = {
         "all_pair_data": all_pair_data,
-        "vocab_size": vocab_size
+        "token_dict": token_dict
     }
     joblib.dump(temp_data, "mom_data.data")

@@ -9,7 +9,7 @@ import torch
 from anytree import AnyNode, RenderTree
 # import treelib
 from anytree import find
-from createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
+from bcb_data_loader.createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
 
 
 def get_token(node):
@@ -143,7 +143,7 @@ def createast():
     asts = []
     paths = []
     alltokens = []
-    dirname = 'BCB/bigclonebenchdata/'
+    dirname = 'bcb_data_loader/BCB/bigclonebenchdata/'
     # dirname = 'BCB/test/'
     for rt, dirs, files in os.walk(dirname):
         for file in files:
@@ -253,7 +253,7 @@ def createseparategraph(astdict, vocablen, vocabdict, mode='astonly', nextsib=Fa
 
 
 def creategmndata(id, treedict, vocablen, vocabdict):
-    indexdir = 'BCB/'
+    indexdir = 'bcb_data_loader/BCB/'
     if id == '0':
         trainfile = open(indexdir + 'traindata.txt')
         validfile = open(indexdir + 'devdata.txt')
@@ -287,8 +287,8 @@ def createpairdata(treedict, pathlist):
         # print(countlines)
         countlines += 1
         pairinfo = line.split()
-        code1path = 'BCB' + pairinfo[0].strip('.')
-        code2path = 'BCB' + pairinfo[1].strip('.')
+        code1path = 'bcb_data_loader/BCB' + pairinfo[0].strip('.')
+        code2path = 'bcb_data_loader/BCB' + pairinfo[1].strip('.')
         label = int(pairinfo[2])
         data1 = treedict[code1path]
         data2 = treedict[code2path]
@@ -305,7 +305,9 @@ def createpairdata(treedict, pathlist):
         if edge_attr1 == []:
             edge_attr1 = None
             edge_attr2 = None
-        data = [[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2], label]
+        # data = [[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2], label]
+        data = [x1, x2, edge_index1, edge_index2,
+                edge_attr1, edge_attr2, label]
         datalist.append(data)
     return datalist
 

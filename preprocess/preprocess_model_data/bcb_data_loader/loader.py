@@ -1,5 +1,7 @@
-from createclone_bcb import createast, creategmndata, createseparategraph
+
+from bcb_data_loader.createclone_bcb import createast, creategmndata, createseparategraph
 import joblib
+import os
 
 
 def load_bcb_data(args):
@@ -21,11 +23,17 @@ def load_bcb_data(args):
         data.extend(traindata)
         data.extend(validdata)
         data.extend(testdata)
-
-        joblib.dump(data, data_file_name)
+        temp_data = {
+            "data": data,
+            "vocab_dict": vocabdict
+        }
+        joblib.dump(temp_data, data_file_name)
     else:
-        data = joblib.load(data_file_name)
+        temp_data = joblib.load(data_file_name)
+        data = temp_data["data"]
+        vocabdict = temp_data["vocab_dict"]
 
+    print("load bcb data compelete!")
     return data, vocabdict
 
 

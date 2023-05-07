@@ -9,6 +9,7 @@ import torch.optim as optim
 import numpy as np
 import time
 import sys
+import random
 import argparse
 from tqdm import tqdm, trange
 import pycparser
@@ -22,6 +23,8 @@ from data_embedding import load_mem_data
 from bcb_data_loader.loader import load_bcb_data
 import logddd
 from early_stopping import EarlyStopping
+import logddd
+
 writer = SummaryWriter('log/')
 save_path = "./models/"  # 当前目录下
 # early_stopping = EarlyStopping()
@@ -72,27 +75,40 @@ def load_total_data(args):
         加载所有的数据集
         @return 所有数据，词表长度
     """
-    men_data, mem_vocab_dict = load_mem_data(args)
-    bcb_data, bcb_cocab_dict = load_bcb_data(args)
+    if not os.path.exists("all_data.data"):
+        all_data, mem_vocab_dict = load_mem_data(args)
+        bcb_data, bcb_cocab_dict = load_bcb_data(args)
 
-    all_data = []
-    all_data.extend(men_data)
-    all_data.extend(bcb_data)
+        # 减小数据集
+        # all_data = all_data[:5000]
+        # bcb_data = bcb_data[:5000]
 
-    all_vocab_list = []
-    all_vocab_list.extend(mem_vocab_dict.keys())
-    all_vocab_list.extend(bcb_cocab_dict.keys())
+        all_data.extend(bcb_data)
 
-    # 去重之后的字典
-    all_vocab_list_dictinct = list(set(all_vocab_list))
+        all_vocab_list = list(mem_vocab_dict.keys())
+        all_vocab_list.extend(bcb_cocab_dict.keys())
 
-    return all_data, len(all_vocab_list_dictinct)
+        # 去重之后的字典
+        all_vocab_list_dictinct = list(set(all_vocab_list))
+        temp_data = {
+            "all_data": all_data,
+            "vocab_size": len(all_vocab_list_dictinct)
+        }
+        vocab_size = len(all_vocab_list_dictinct)
+        joblib.dump(temp_data, "all_data.data")
+    else:
+        temp_data = joblib.load("all_data.data")
+        all_data = temp_data["all_data"]
+        vocab_size = temp_data["vocab_size"]
+
+    # all_data = random.shuffle(all_data)
+    return all_data, vocab_size
 
 
 if __name__ == '__main__':
     device = torch.device('cuda:0')
     # 加载所有数据
-    all_data_list, vocab_size = load_total_data()
+    all_data_list, vocab_size = load_total_data(args)
     # 划分数据
     train, valid, test = split_data(all_data_list)
     # 将数据划分为batch
@@ -219,10 +235,10 @@ if __name__ == '__main__':
             r = tp/(tp+fn)
             f1 = 2*p*r/(p+r)
             acc = (tp + tn) / len(valid)
-            # print(f'\nprecision = {p}')
-            # print(f'recall = {r}')
-            # print(f'F1={f1}')
-            # print(f"acc = {acc}")
+            print(f'\nprecision = {p}')
+            print(f'recall = {r}')
+            print(f'F1={f1}')
+            print(f"acc = {acc}")
 
             avg_valid_loss = np.average(eval_losses)
             print("验证集loss:{}".format(avg_valid_loss))
