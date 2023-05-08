@@ -43,10 +43,10 @@ parser.add_argument("--blockedge", default=True)
 parser.add_argument("--nexttoken", default=True)
 parser.add_argument("--nextuse", default=True)
 parser.add_argument("--data_setting", default='11')
-parser.add_argument("--batch_size", default=32)
+parser.add_argument("--batch_size", default=128)
 parser.add_argument("--num_layers", default=4)
 parser.add_argument("--num_epochs", default=100)
-parser.add_argument("--lr", default=0.001)
+parser.add_argument("--lr", default=0.0001)
 parser.add_argument("--threshold", default=0)
 args = parser.parse_args()
 
@@ -75,32 +75,32 @@ def load_total_data(args):
         加载所有的数据集
         @return 所有数据，词表长度
     """
-    # if not os.path.exists("all_data.data"):
-    all_data, mom_vocab_dict = load_mem_data(args)
+    if not os.path.exists("all_data.data"):
+        all_data, mom_vocab_dict = load_mem_data(args)
 
-    bcb_data, bcb_cocab_dict = load_bcb_data(args)
+        bcb_data, bcb_cocab_dict = load_bcb_data(args)
 
-    # 减小数据集
-    all_data = all_data[:200000]
-    bcb_data = bcb_data[:200000]
+        # 减小数据集
+        all_data = all_data[:200000]
+        bcb_data = bcb_data[:200000]
 
-    all_data.extend(bcb_data)
+        all_data.extend(bcb_data)
 
-    all_vocab_list = list(mom_vocab_dict.keys())
-    all_vocab_list.extend(bcb_cocab_dict.keys())
+        all_vocab_list = list(mom_vocab_dict.keys())
+        all_vocab_list.extend(bcb_cocab_dict.keys())
 
-    # 去重之后的字典
-    all_vocab_list_dictinct = list(set(all_vocab_list))
-    temp_data = {
-        "all_data": all_data,
-        "vocab_size": len(all_vocab_list_dictinct)
-    }
-    vocab_size = len(all_vocab_list_dictinct)
-    # joblib.dump(temp_data, "all_data.data")
-    # else:
-    #     temp_data = joblib.load("all_data.data")
-    #     all_data = temp_data["all_data"]
-    #     vocab_size = temp_data["vocab_size"]
+        # 去重之后的字典
+        all_vocab_list_dictinct = list(set(all_vocab_list))
+        temp_data = {
+            "all_data": all_data,
+            "vocab_size": len(all_vocab_list_dictinct)
+        }
+        vocab_size = len(all_vocab_list_dictinct)
+        joblib.dump(temp_data, "all_data.data")
+    else:
+        temp_data = joblib.load("all_data.data")
+        all_data = temp_data["all_data"]
+        vocab_size = temp_data["vocab_size"]
 
     # all_data = random.shuffle(all_data)
     return all_data, vocab_size
