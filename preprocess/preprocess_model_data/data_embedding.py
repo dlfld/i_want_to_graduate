@@ -34,25 +34,29 @@ def get_all_tokens(dataset_path: str) -> Tuple[Dict[Any, Any], int, List[Any]]:
     # 测试，限制数据量
     sum = 0
 
+    # 读取所有的数据文件到data里面
     for rt, dirs, files in os.walk(dataset_path):
-        for file in tqdm(files, desc="files"):
+        for file in files:
             if file.endswith(".data"):
-                data = joblib.load(os.path.join(rt, file))
-                all_data.append(data)
-                # 解析出两个ast和标签,从这儿取出来的ast
-                ast1, ast2, label = data
-                # 遍历树获取当前树的token
-                get_tree_tokens_dfs(ast1, all_tokens)
-                get_tree_tokens_dfs(ast2, all_tokens)
-                # 测试，限制数据量
-                sum += 1
-                if sum == 100:
-                    break
+                proj_data = joblib.load(os.path.join(rt, file))
+                all_data.extend(proj_data)
+
+    # 遍历所有的数据文件，获取所有的token
+    for data in tqdm(all_data,desc="get_all_tokens:"):
+        # 解析出两个ast和标签,从这儿取出来的ast
+        ast1, ast2, label = data
+        # 遍历树获取当前树的token
+        get_tree_tokens_dfs(ast1, all_tokens)
+        get_tree_tokens_dfs(ast2, all_tokens)
+        # 测试，限制数据量
+        sum += 1
+        if sum == 200000:
+            break
 
     vocab_size = len(list(all_tokens))
     token_ids = range(vocab_size)
 
-    return dict(zip(all_tokens, token_ids)), vocab_size, all_data
+    return dict(zip(all_tokens, token_ids)), vocab_size, all_data[:200000]
 
 
 def getnodeandedge_astonly(node, nodeindexlist, vocabdict, src, tgt):
@@ -261,7 +265,8 @@ def load_mem_data(args):
         @return: 所有数据的列表，词表
     """
     data_file_name = "mom_data.data"
-    data_file_path = "../generate_dataset/dataset/"
+    # data_file_path = "../generate_dataset/dataset/"
+    data_file_path = "../generate_dataset/total_data/"
     # 加载数据
     if not os.path.exists(data_file_name):
         all_data_list, token_dict = get_all_mes_datas(data_file_path)
@@ -274,6 +279,7 @@ def load_mem_data(args):
         temp_data = joblib.load(data_file_name)
         all_data_list = temp_data["all_data_list"]
         token_dict = temp_data["token_dict"]
+
     print("load mom data compelete!")
     return all_data_list, token_dict
 

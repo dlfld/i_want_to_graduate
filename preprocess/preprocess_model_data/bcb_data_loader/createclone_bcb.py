@@ -9,7 +9,10 @@ import torch
 from anytree import AnyNode, RenderTree
 # import treelib
 from anytree import find
-from bcb_data_loader.createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
+import sys
+
+sys.path.append('bcb_data_loader/')
+from createclone_java import getedge_nextsib, getedge_flow, getedge_nextstmt, getedge_nexttoken, getedge_nextuse
 
 
 def get_token(node):

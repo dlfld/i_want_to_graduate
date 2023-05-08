@@ -76,16 +76,17 @@ def load_total_data(args):
         @return 所有数据，词表长度
     """
     # if not os.path.exists("all_data.data"):
-    all_data, mem_vocab_dict = load_mem_data(args)
+    all_data, mom_vocab_dict = load_mem_data(args)
+
     bcb_data, bcb_cocab_dict = load_bcb_data(args)
 
     # 减小数据集
-    all_data = all_data[:400000]
-    bcb_data = bcb_data[:400000]
+    all_data = all_data[:200000]
+    bcb_data = bcb_data[:200000]
 
     all_data.extend(bcb_data)
 
-    all_vocab_list = list(mem_vocab_dict.keys())
+    all_vocab_list = list(mom_vocab_dict.keys())
     all_vocab_list.extend(bcb_cocab_dict.keys())
 
     # 去重之后的字典
