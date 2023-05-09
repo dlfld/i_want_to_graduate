@@ -50,7 +50,7 @@ def get_child(root):
     return list(expand(children))
 
 
-def createtree(root, node, nodelist, parent, class_func_asts, replaced_func):
+def createtree(root, node, nodelist, parent, class_func_asts, replaced_func, type1, type2, type3, type4):
     """
      根据token和子结构创建一棵树,使用anytree
     @param root: 根节点
@@ -71,7 +71,7 @@ def createtree(root, node, nodelist, parent, class_func_asts, replaced_func):
         # print(node)
         # 如果当前节点的类型是方法调用，那么就找到被调用的方法节点，进行替换
         if token == "MethodInvocation":
-            node, token = replace_called_func(node, class_func_asts, token, replaced_func)
+            node, token = replace_called_func(node, class_func_asts, token, replaced_func, type1, type2, type3, type4)
 
         newnode = AnyNode(id=id, token=token, data=node, parent=parent)
 
@@ -79,13 +79,13 @@ def createtree(root, node, nodelist, parent, class_func_asts, replaced_func):
 
     for child in children:
         if id == 0:
-            createtree(root, child, nodelist, parent=root, class_func_asts=class_func_asts, replaced_func=replaced_func)
+            createtree(root, child, nodelist, parent=root, class_func_asts=class_func_asts, replaced_func=replaced_func, type1=type1, type2=type2, type3=type3, type4=type4)
         else:
             createtree(root, child, nodelist, parent=newnode, class_func_asts=class_func_asts,
-                       replaced_func=replaced_func)
+                       replaced_func=replaced_func, type1=type1, type2=type2, type3=type3, type4=type4)
 
 
-def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func):
+def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func, type1, type2, type3, type4):
     """
      根据规则替换掉方法调用节点，并将节点替换进行记录
       调用的方式有很多种，目前只是识别了静态方法调用（这是重用出现频率最高的一种）
@@ -93,6 +93,10 @@ def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func)
     @param class_func_asts: 类-方法映射列表
     @param token: node对应的token
     @param replaced_func: 被调用方法的列表，也就是
+    @param type1: new class().func()的方式，其qualifier属性为空
+    @param type2: local.func() 其qualifier属性为变量名
+    @param type3: 第三方工具类 StringUtils.isEmpty() 这种，其qualifier属性为变量名为第三方类名
+    @param type4: 当前项目的staticClass.func() 这种，其qualifier属性为变量名为第三方类名
     @return:替换之后的node
     """
     # node.qualifier不为空表示当前节点是xxx.xxx()调用方式的
@@ -102,15 +106,46 @@ def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func)
         # 方法名
         func_name = node.member
         class_func_key = f"{class_name}_{func_name}"
-        # 判断当前调用的方法是不是当前工程中的方法
+
+        # 第一种 new class().func()的方式，其qualifier属性为空
+        # 第二种 local.func() 其qualifier属性为变量名
+        # 第三种 第三方工具类 StringUtils.isEmpty() 这种，其qualifier属性为变量名为第三方类名
+        # 第四种 当前项目的staticClass.func() 这种，其qualifier属性为变量名为第三方类名
+
+        # 判断当前调用的方法是不是当前工程中的方法,如果是的话就表示匹配到了第一种方法调用模式静态类的静态方法
         if class_func_key in class_func_asts.keys():
             called_func_ast = class_func_asts[class_func_key]
             # 表示当前调用方法是当前项目内部编写的方法
             if called_func_ast is not None:
+                # 第四种情况
                 # 添加被替换节点的key
                 replaced_func.append(class_func_key)
+                type4.append(class_func_key)
+                node, token = called_func_ast, get_token(called_func_ast)
+            else:
+                # 第三种情况
+                type3.append(class_func_key)
+        else:
+            # 首字母为小写，表示的是第一种
+            # 类名
+            class_name = node.qualifier
+            # 方法名
+            func_name = node.member
+            class_func_key = f"{class_name}_{func_name}"
+            type1.append(class_func_key)
+    else:
+        # 走到这个地方就表示当前的调用方式是其他的几种（类实例.func ｜ new 类().func ｜ 第三方工具类.func ）
+        """
+            对于这三种的区分: 按照标准代码规范可以区分
+            1. 类实例.func 其qualifier属性值，首字母是小写
+            2. new 类().func 其qualifier属性为空
+            3. 第三方工具类.func 其qualifier属性值，首字母是大写
+        """
+        qualifier = node.qualifier
+        if qualifier is None:
+            # 表示是第二种
+            type2.append(node.member)
 
-                return called_func_ast, get_token(called_func_ast)
     return node, token
 
 
@@ -123,6 +158,7 @@ def func_call_replace(func_node_list: List[MethodDeclaration], class_func_asts: 
             XXXX.xxxx() 大多数工具类的重用方法，工具类中工具类的使用会出现在一个项目中的不同地方，不同与一些专门的Service类（只会在上层的一个地方被调用）
             先识别这一类的方法调用并进行还原生成数据集
                 因为这一类的方法会在不同的方法中被调用，可以对调用该方法的方法进行方法调用还原后进行两两组合形成较大数量的数据集
+            这种里面有两种情况，第一种是
             类名为：node.qualifier
             方法名为:node.member
         2. 类变量.方法()
@@ -146,7 +182,7 @@ def func_call_replace(func_node_list: List[MethodDeclaration], class_func_asts: 
                 called_func_id:[call_func_ast,]
             }
     """
-
+    type1, type2, type3, type4 = [], [], [], []
     dataset_map = dict()
     # 遍历每一个方法
     for func in func_node_list:
@@ -155,11 +191,11 @@ def func_call_replace(func_node_list: List[MethodDeclaration], class_func_asts: 
         # 这个列表记录的是当前方法节点进行方法调用节点替换的时候，替换了那些方法调用进去
         replaced_func = []
         # 对当前方法的抽象语法树进行重构，在重构过程中进行方法调用节点的替换
-        createtree(new_tree, func, nodelist, None, class_func_asts, replaced_func=replaced_func)
+        createtree(new_tree, func, nodelist, None, class_func_asts, replaced_func=replaced_func, type1=type1, type2 = type2, type3=type3, type4=type4)
         # 一个方法可能调用了多个方法，因此，需要使用一个列表来记录被调用方法是被那些方法调用了
         for item in replaced_func:
             if item in dataset_map.keys():
                 dataset_map[item].append(new_tree)
             else:
                 dataset_map[item] = [new_tree]
-    return dataset_map
+    return dataset_map, type1, type2, type3, type4
