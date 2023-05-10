@@ -1,0 +1,2108 @@
+className_funcName,doc
+BatchUtil_extractNumberFrom,"/**
+     * Tries to extract the batch's number.
+     * 
+     * @param entity
+     *            entity from which you want to extract batch's number
+     * @param batchFieldName
+     *            name of the belongsTo field pointing to the batch entity
+     * @return batch number as a String or null if given entity is null or batch field is null.
+     * @throws IllegalArgumentException
+     *             if given field name doesn't correspond to belongs to field pointing to the batch model.
+     */"
+BatchUtil_extractExternalNumberFrom,"/**
+     * Tries to extract the batch's external number.
+     * 
+     * @param entity
+     *            entity from which you want to extract batch's external number
+     * @param batchFieldName
+     *            name of the belongsTo field pointing to the batch entity
+     * @return batch external number as a String or null if given entity is null or batch field is null.
+     * @throws IllegalArgumentException
+     *             if given field name doesn't correspond to belongs to field pointing to the batch model.
+     */"
+DeviationSummariesDataProvider_getDeviationsByCauseType,"/**
+     * Get detailed deviation summaries, matching given criteria. Resulting Multimap's keys will be sorted ascending.
+     * 
+     * @param criteria
+     *            restrictions for deviations to be summarized.
+     * @return Multimap containing deviation summaries, grouped by its reason (cause) type. Multimap's keys will be in ascending
+     *         order.
+     */"
+DeviationWithOccurrencesDataProvider_getDeviationsWithOccurrencesCount,"/**
+     * Return a List of POJOs representing a pair of deviation's cause and number of its occurrences.
+     * 
+     * @param criteria
+     *            restrictions for deviations to be summarized.
+     * @return ImmutableList of POJOs representing a pair of deviation's cause and number of its occurrences.
+     */"
+OrderHooksPPS_updateOrderData,"/**
+     * Method to additional process data - overridden by aspect
+     * 
+     * @param order
+     */"
+DailyProgressService_getDailyProgressesWithTrackingRecords,"/**
+     * Creates map of daily progresses with accepted production tracking records only, and fills keys with quantity produced in
+     * that record
+     * 
+     * @param pps
+     * @return
+     */"
+WorkersOnLineService_getWorkersOnLine,"/**
+     * Get workers on line for shift and date
+     * @param productionLine
+     * @param shift
+     * @param date
+     * @return number of workers
+     */"
+CompanyService_getCompanyId,"/**
+     * Returns basic company entity id for current user
+     * 
+     * @return company entity id
+     * 
+     */"
+CompanyService_getCompany,"/**
+     * Returns company entity
+     * 
+     * @param companyId
+     *            companyId
+     * 
+     * @return company
+     */"
+ParameterService_getParameterId,"/**
+     * Returns basic parameter entity id for current user
+     * 
+     * @return parameter entity id
+     * 
+     */"
+ParameterService_getParameter,"/**
+     * Returns basic parameter entity for current user. If parameter does not exist the new parameter entity will be created,
+     * saved and returned.
+     * 
+     * @return parameter entity
+     * 
+     */"
+PalletNumberGenerator_checkIfShouldInsertNumber,"/**
+     * Check if should insert number
+     *
+     * @param view
+     *            View
+     *
+     * @return true/false
+     *
+     */"
+PalletNumberGenerator_generate,"/**
+     * Generate number
+     *
+     * @return number
+     */"
+PalletNumberGenerator_list,"/**
+     * Lists pallet numbers
+     *
+     * @param firstNumber
+     *            First number
+     *
+     * @param quantity
+     *            Quantity
+     *
+     * @return palletNumbers
+     *
+     */"
+ShiftsServiceImpl_checkIfShiftWorkAtDate,"/**
+     * @deprecated Use Shift#worksAt
+     */"
+StaffService_extractFullName,"/**
+     * @deprecated use com.qcadoo.mes.basic.util.StaffNameExtractor.extractNameAndSurname
+     */"
+Shift_worksAt,"/**
+     * Check if this shift will be working at given date and time. This method is aware of timetable exceptions
+     * 
+     * @param date
+     * @return true if this shift will be working at given date and time.
+     * 
+     * @deprecated use worksAt(DateTime) if you want to check if shift works at given date and time, or works(LocalDate) if all
+     *             you want is just check if shift works at given day.
+     */"
+Shift_findWorkTimeAt,"/**
+     * Returns a list with shift work time ranges for whole given day (of the week, to be precise). This method IS NOT AWARE of
+     * timetable exceptions, it just check if shift works at given day of week and returns working hours.
+     * 
+     * @param localDate
+     *            date to check
+     * @return shift's work time ranges for given date
+     * @since 1.4
+     */"
+Shift_getEntity,"/**
+     * Returns a copy of the underlying entity.
+     * 
+     * @return a copy of the underlying entity.
+     */"
+Shift_getId,"/**
+     * Returns shift's identifier
+     * 
+     * @return shift's identifier
+     */"
+CurrencyService_getCurrentCurrency,"/**
+     * Returns currently used currency {@link Entity}.
+     * 
+     * @return currently used currency {@link Entity}.
+     */"
+CurrencyService_getCurrencyAlphabeticCode,"/**
+     * Returns alphabetic (ISO-4217) code for currently used currency.
+     * 
+     * @return alphabetic (ISO-4217) code for currently used currency.
+     */"
+ProductUnitsConversionService_forProduct,"/**
+     * @param product
+     *            A product that will be used in conversion operations
+     * @return Unit conversion chain helper class that allows to specify target unit. Returned object can be reused.
+     * @throws IllegalArgumentException
+     *             If argument is not a product
+     */"
+ReservationsService_createReservationFromDocumentPosition,"/**
+     * Creates new reservation for position and updates resource stock. Uses framework.
+     *
+     * Warning! If logic in this method is changed, it should also be applied to corresponding jdbc method.
+     *
+     * @param position
+     * @see ReservationsService#createReservationFromDocumentPosition(Map)
+     */"
+ReservationsService_updateReservationFromDocumentPosition,"/**
+     * Updates reservation for position and updates resource stock. Uses framework.
+     *
+     * Warning! If logic in this method is changed, it should also be applied to corresponding jdbc method.
+     *
+     * @param position
+     * @see ReservationsService#updateReservationFromDocumentPosition(Map)
+     */"
+ReservationsService_deleteReservationFromDocumentPosition,"/**
+     * Deletes reservation for position and updates resource stock. Uses framework.
+     *
+     * Warning! If logic in this method is changed, it should also be applied to corresponding jdbc method.
+     *
+     * @param position
+     * @see ReservationsService#deleteReservationFromDocumentPosition(Map)
+     */"
+DocumentBuilder_addPosition,"/**
+     * Add previously created position to document
+     *
+     * @param position
+     * @return DocumentBuilder.this
+     */"
+DocumentBuilder_createPosition,"/**
+     * Creates position with given field values (with different base unit and given unit)
+     *
+     * @param product
+     * @param quantity
+     * @param givenQuantity
+     * @param givenUnit
+     * @param price
+     * @param batch
+     * @param expirationDate
+     * @param productionDate
+     * @param resource
+     * @return Created position entity
+     */"
+DocumentBuilder_setField,"/**
+     * Use this method to set document fields added by any extending plugins.
+     *
+     * @param field
+     *            field name
+     * @param value
+     *            field value
+     * @return this builder
+     */"
+DocumentBuilder_getDocumentType,"/**
+     * Use this method to get document type.
+     */"
+DocumentBuilder_build,"/**
+     * Save document in database and creates resources if document is accepted.
+     *
+     * @return Created document entity.
+     */"
+DocumentPdfHelper_getDocumentType,"/**
+     * Returns translated short document type
+     *
+     * @param documentEntity
+     * @param locale
+     * @return translated short document type
+     */"
+DocumentPdfHelper_getTableHeader,"/**
+     * Returns translated products table header
+     *
+     * @param locale
+     * @return translated short document type
+     */"
+DocumentPdfHelper_getFileName,"/**
+     * Returns translated document report file name (with document type and number)
+     *
+     * @param documentEntity
+     * @param locale
+     * @return translated document report file name
+     */"
+DocumentPdfHelper_getDocumentHeader,"/**
+     * Returns translated document report header (with document type)
+     *
+     * @param documentEntity
+     * @param locale
+     * @return translated document report header
+     */"
+DocumentPdfHelper_getTotalValueLabel,"/**
+     * Returns total value label
+     *
+     * @param locale
+     * @return
+     */"
+DocumentPdfHelper_getTotaLabel,"/**
+     * Returns total row label
+     *
+     * @param locale
+     * @return
+     */"
+DocumentPdfHelper_getDocumentHeaderTableContent,"/**
+     * Returns content of document header table in proper order as pair (label, value)
+     *
+     * @param documentEntity
+     * @param locale
+     * @return document header table
+     */"
+DocumentPdfHelper_getDescription,"/**
+     * Returns document description with label
+     *
+     * @param documentEntity
+     * @param locale
+     * @return
+     */"
+DocumentPdfHelper_getPositionsTableHeaderLabels,"/**
+     * Returns map of translated positions' table headers and alignments
+     *
+     * @param locale
+     * @return
+     */"
+GeneratorContextDataProvider_find,"/**
+     * Try find technology generator context entity by its id.
+     * 
+     * @param contextId
+     *            unique identifier of an context.
+     * @return matching context entity, if exists.
+     */"
+GeneratorContextDataProvider_deleteContextsNotUsedSince,"/**
+     * Deletes technology generator context entities that weren't used since given date and time.
+     * 
+     * By 'weren't used' we mean contexts having update date (or create date if update date is not defined) earlier than given
+     * one.
+     * 
+     * @param threshold
+     *            date time threshold used to decide which contexts need to be deleted
+     * @return either the messages holder if operation didn't finish successfully or list of deleted context ids.
+     */"
+GeneratorView_setGenerationEnabled,"/**
+     * Enables or disables the main tab & 'generate' ribbon button.
+     *
+     * @param enabled
+     *            true, if the main tab & 'generate' button should be enabled. False otherwise.
+     */"
+AbstractStateListenerAspect_phaseExecution,"/**
+     * Pointcut for execution state change phase
+     * 
+     * @param stateChangeContext
+     * @param phase
+     */"
+AbstractStateListenerAspect_changeStateExecution,"/**
+     * Pointcut for changing state join points ({@link StateChangeService#changeState(com.qcadoo.mes.states.StateChangeContext)})
+     * using additional restrictions from {@link AbstractStateListenerAspect#targetServicePointcut()} pointcut.
+     * 
+     * @param stateChangeContext
+     *            entity which represent state change flow
+     */"
+AbstractStateListenerAspect_targetServicePointcut,"/**
+     * Select {@link StateChangeService} to be woven with this listener. Usually pointcut expression looks like ""this(TypeName)""
+     */"
+AbstractStateChangeAspect_getNumOfPhases,"/**
+     * Get number of state change phases. Default value is {@link AbstractStateChangeAspect#DEFAULT_NUM_OF_PHASES}.
+     * 
+     * @return number of phases
+     */"
+AbstractStateChangeAspect_changeStatePhase,"/**
+     * Single state change phase join point.
+     * 
+     * @param stateChangeEntity
+     * @param phaseNumber
+     */"
+StateChangeContextBuilderImpl_checkForUnfinishedStateChange,"/**
+     * Checks if given owner entity have not any unfinished state change request.
+     * 
+     * @param owner
+     *            state change's owner entity
+     * @throws AnotherChangeInProgressException
+     *             if at least one unfinished state change request for given owner entity is found.
+     */"
+AbstractStateChangeViewClient_getViewContextHolderForListView,"/**
+     * Returns {@link ViewContextHolder} for list (grid) view. Default messageConsumer is set to component which invoke event
+     * (usually grid component). Override this method if you want to change default consumer.
+     * 
+     * @param view
+     * @param component
+     * @return
+     */"
+MessagesUtil_joinArgs,"/**
+     * Join given arguments using separator specified in {@link MessagesUtil#ARGS_SEPARATOR}.
+     * 
+     * @param splittedArgs
+     *            array of translation arguments
+     * @return joined string containing all splitterArgs elements, separated by {@link MessagesUtil#ARGS_SEPARATOR}
+     */"
+MessagesUtil_splitArgs,"/**
+     * Split given string using separator specified in {@link MessagesUtil#ARGS_SEPARATOR}
+     * 
+     * @param joinedArgs
+     *            string which contains translation arguments separated by {@link MessagesUtil#ARGS_SEPARATOR}
+     * @return array of strings representing translation arguments
+     */"
+MessagesUtil_hasFailureMessages,"/**
+     * Check if given list of message entity contains at least one message with type set to {@link StateMessageType#FAILURE}
+     * 
+     * @param messages
+     *            list of message entities
+     * @return true if given list contain at least one message with type set to {@link StateMessageType#FAILURE} or false
+     *         otherwise.
+     */"
+MessagesUtil_hasValidationErrorMessages,"/**
+     * Check if given list of message entity contains at least one message with type set to
+     * {@link StateMessageType#VALIDATION_ERROR}
+     * 
+     * @param messages
+     *            list of message entities
+     * @return true if given list contain at least one message with type set to {@link StateMessageType#VALIDATION_ERROR} or false
+     *         otherwise.
+     */"
+MessagesUtil_convertViewMessageType,"/**
+     * Convert {@link StateMessageType} to appropriate {@link com.qcadoo.view.api.ComponentState.MessageType}
+     * 
+     * @param type
+     *            {@link StateMessageType}
+     * @return appropriate {@link com.qcadoo.view.api.ComponentState.MessageType}
+     */"
+OperationProductsExtractor_getProductsByModelName,"/**
+     * This method takes production tracking entity and returns all matching products wrapped in tracking operation components.
+     * Results will be grouped by their model name, so you can easily distinct inputs products from output ones.
+     * 
+     * @param productionTracking
+     *            production tracking for which you want to extract products.
+     * 
+     * @return object representing tracking operation components grouped by their model name.
+     */"
+TechnologyService_getMainOutputProductComponent,"/**
+     * @param technologyOperationComponent
+     * @return productOutComponent. Assuming operation can have only one product/intermediate.
+     */"
+TechnologyService_getProductCountForOperationComponent,"/**
+     * @param operationComponent
+     * @return Quantity of the output product associated with this operationComponent. Assuming operation can have only one
+     *         product/intermediate.
+     */"
+TechnologyService_isExternalSynchronized,"/**
+     * Check if technology with given id is external synchronized.
+     * 
+     * @param technologyId
+     *            identifier of the queried technology
+     * @return true if technology is external synchronized
+     */"
+MainTocOutputProductProvider_findAsFunction,"/**
+     * Returns function that transforms id of the technology operation into its main output product entity. Calling
+     * #findAsFunction().apply(Long) is equivalent to calling #find(Long)
+     * 
+     * @return function that transforms id of the technology operation into its main output product entity.
+     */"
+MainTocOutputProductProvider_find,"/**
+     * Find main output product from a given technology operation.
+     * 
+     * @param tocId
+     *            id of the technology operation for which we want to figure out main output product
+     * @return main product
+     */"
+ItemWithQuantity_getItem,"/**
+     * @return item
+     */"
+ItemWithQuantity_getQuantity,"/**
+     * @return quantity
+     */"
+ItemWithQuantity_getPriority,"/**
+     * @return priority
+     */"
+GenerateMaterialRequirementCoverageHooks_fillRowStylesBasedOnGenerated,"/**
+     * Marking rows as based on generated coverage products table
+     *
+     * @param entity
+     * @return
+     */"
+GenerateMaterialRequirementCoverageListeners_deleteSelected,"/**
+     * Deleting coverageProductSelected
+     */"
+GenerateMaterialRequirementCoverageListeners_insertSelected,"/**
+     * Inserting selected items to coverageProductSelected
+     *
+     * @param grid
+     */"
+GenerateMaterialRequirementCoverageListeners_insertGenerated,"/**
+     * Record of generated items
+     *
+     * @param grid
+     */"
+GenerateMaterialRequirementCoverageListeners_createRequestForQuotation,"/**
+     * createRequestForQuotation event handler
+     *
+     * @param view
+     * @param state
+     * @param args
+     */"
+GenerateMaterialRequirementCoverageListeners_createDelivery,"/**
+     * createOffer event handler
+     *
+     * @param view
+     * @param state
+     * @param args
+     */"
+SupplierModalViewListeners_generateRequestProducts,"/**
+	 * Saving requestForQuotation and generating and attaching products
+	 * 
+	 * @param view
+	 * @param state
+	 * @param args
+	 */"
+SupplierModalViewListeners_generateOfferedProducts,"/**
+	 * Saving delivery and generating attached products
+	 * 
+	 * @param view
+	 * @param state
+	 * @param args
+	 */"
+SupplierModalViewListeners_generateProductsRequestForQuotation,"/**
+	 * generateProductsRequestForQuotation handler
+	 * 
+	 * @param view
+	 * @param state
+	 * @param args
+	 */"
+SupplierModalViewListeners_generateProductsDelivery,"/**
+	 * generateProductsDelivery handler
+	 * 
+	 * @param view
+	 * @param state
+	 * @param args
+	 */"
+MultiTenantUtil_init,"/**
+     * Initialize utilities instance
+     */"
+MultiTenantUtil_doInMultiTenantContext,"/**
+     * Do callback in multitenant context for given tenant id.
+     * 
+     * @param tenantId
+     * @param callback
+     */"
+MultiTenantUtil_getCurrentTenantId,"/**
+     * Get current tenant id.
+     * 
+     * @return tenant id
+     */"
+VersionOfDependency_getMinVersion,"/**
+     * Returns minimum version of required plugin.
+     * 
+     * @return min version or null if not specified
+     */"
+VersionOfDependency_getMaxVersion,"/**
+     * Returns maximum version of required plugin.
+     * 
+     * @return max version or null if not specified
+     */"
+VersionOfDependency_contains,"/**
+     * Returns true if version contains the given one.
+     * 
+     * @param version
+     *            version
+     * @return true if version contains the given one
+     */"
+VersionOfDependency_hashCode,"/**
+     * {@inheritDoc}
+     */"
+VersionOfDependency_equals,"/**
+     * {@inheritDoc}
+     */"
+VersionOfDependency_toString,"/**
+     * {@inheritDoc}
+     */"
+Version_compareTo,"/**
+     * {@inheritDoc}
+     */"
+Version_toString,"/**
+     * {@inheritDoc}
+     */"
+Version_hashCode,"/**
+     * {@inheritDoc}
+     */"
+Version_equals,"/**
+     * {@inheritDoc}
+     */"
+ModuleFactory_preInit,"/**
+     * Callback is invoke once on application startup, before the {@link Module#init()}.
+     */"
+ModuleFactory_postInit,"/**
+     * Callback is invoke once on application startup, after the {@link Module#init()}.
+     */"
+ModuleFactory_parse,"/**
+     * Parses descriptor and creates instance of {@link Module}.
+     * 
+     * @param pluginIdentifier
+     *            plugin identifier
+     * @param element
+     *            xml element describing module
+     * @return module instance
+     * @throws ModuleException
+     *             when some exception occured
+     */"
+ModuleFactory_getIdentifier,"/**
+     * Identifier is used to distinguish the type of the module. It is equal to the name of the tag in section ""modules"" in plugin
+     * descriptor.
+     * 
+     * @return module identifier
+     */"
+ModuleFactory_getAttribute,"/**
+     * Returns element attribute or null when attribute was not defined.
+     * 
+     * @param element
+     *            node element
+     * @param attributeName
+     *            name of attribute
+     * 
+     * @return element attribute or null
+     */"
+ModuleFactory_getRequiredAttribute,"/**
+     * Returns element attribute. Throws exception when attribute was not defined.
+     * 
+     * @param element
+     *            node element
+     * @param attributeName
+     *            name of attribute
+     * 
+     * @return element attribute
+     * @throws NullPointerException
+     *             when attribute was not defined
+     */"
+ModuleFactory_getOneElementContent,"/**
+     * Returns inner element. Throws exception when element is empty or element contains more than one inner elements.
+     * 
+     * @param element
+     *            node element
+     * 
+     * @return inner element
+     * @throws IllegalStateException
+     *             when element is empty or element contains more than one inner elements
+     */"
+PluginInformation_getLicense,"/**
+     * Returns plugin's license
+     * 
+     * @return license
+     */"
+PluginInformation_getDescription,"/**
+     * Returns plugin's description
+     * 
+     * @return description
+     */"
+PluginInformation_getVendor,"/**
+     * Returns plugin's vendor
+     * 
+     * @return vendor
+     */"
+PluginInformation_getVendorUrl,"/**
+     * Return's plugin's vendor's URL.
+     * 
+     * @return vendor's url
+     */"
+PluginInformation_getName,"/**
+     * Return plugin's readable name.
+     * 
+     * @return name
+     */"
+PluginInformation_hashCode,"/**
+     * {@inheritDoc}
+     */"
+PluginInformation_equals,"/**
+     * {@inheritDoc}
+     */"
+PluginUtils_isEnabled,"/**
+     * Returns true if plugin is enabled.
+     * 
+     * @param pluginIdentifier
+     *            plugin's identifier
+     * @return true if enabled
+     * @see PluginStateResolver#isEnabled(String)
+     */"
+PluginUtils_isEnabledOrEnabling,"/**
+     * Returns true if plugin is enabled or enabling.
+     * 
+     * @deprecated for internal use only
+     * 
+     * @param pluginIdentifier
+     *            plugin's identifier
+     * @return true if enabled or enabling
+     * @see PluginStateResolver#isEnabledOrEnabling(Plugin)
+     */"
+Module_init,"/**
+     * Callback invoke once on application startup.
+     */"
+Module_enableOnStartup,"/**
+     * Callback invoke once on application startup, if plugin is enabled - in state {@link PluginState#ENABLED}.
+     */"
+Module_enable,"/**
+     * Callback invoke when plugin change its state to {@link PluginState#ENABLED}.
+     */"
+Module_disable,"/**
+     * Callback invoke when plugin change its state from {@link PluginState#ENABLED}.
+     */"
+Module_disableOnStartup,"/**
+     * Callback invoke once on application startup, if plugin isn't or won't be enabled - neither {@link PluginState#ENABLED} nor
+     * {@link PluginState#ENABLING}.
+     */"
+Module_multiTenantEnableOnStartup,"/**
+     * Version of {@link Module#enableOnStartup()} for multi-tenant environments. Will be invoke for every tenant once. If there
+     * is no tenant it won't be invoke.
+     */"
+Module_multiTenantEnable,"/**
+     * Version of {@link Module#enable()} for multi-tenant environments. Will be invoke for every tenant once. If there is no
+     * tenant it won't be invoke.
+     */"
+Module_multiTenantDisable,"/**
+     * Version of {@link Module#disable()} for multi-tenant environments. Will be invoke for every tenant once. If there is no
+     * tenant it won't be invoke.
+     */"
+Module_multiTenantDisableOnStartup,"/**
+     * Version of {@link Module#disableOnStartup()} for multi-tenant environments. Will be invoke for every tenant once. If there
+     * is no tenant it won't be invoke.
+     */"
+PluginDependencyInformation_getIdentifier,"/**
+     * Returns required plugin's identifier.
+     * 
+     * @return required plugin's identifier
+     */"
+PluginDependencyInformation_getVersionOfDependency,"/**
+     * Returns required plugin's version
+     * 
+     * @return required plugin's version
+     */"
+PluginDependencyInformation_contains,"/**
+     * Returns true if the required plugin's version contains the given one.
+     * 
+     * @param version
+     *            version
+     * @return true if the required plugin's version contains the given one
+     */"
+PluginDependencyInformation_toString,"/**
+     * {@inheritDoc}
+     */"
+PluginDependencyInformation_hashCode,"/**
+     * {@inheritDoc}
+     */"
+PluginDependencyInformation_equals,"/**
+     * {@inheritDoc}
+     */"
+PluginUtilsService_isEnabled,"/**
+     * Returns true if plugin is enabled.
+     * 
+     * @param pluginIdentifier
+     *            plugin's identifier
+     * @return true if enabled
+     * @see PluginStateResolver#isEnabled(String)
+     */"
+PluginUtilsService_isEnabledOrEnabling,"/**
+     * Returns true if plugin is enabled or enabling.
+     * 
+     * @deprecated for internal use only
+     * 
+     * @param pluginIdentifier
+     *            plugin's identifier
+     * @return true if enabled or enabling
+     * @see PluginStateResolver#isEnabledOrEnabling(Plugin)
+     */"
+PluginDependencyResultImpl_dependenciesToEnable,"/**
+     * Creates holder with plugins to enable.
+     * 
+     * @param dependenciesToEnable
+     *            plugins to enable
+     * @return holder
+     */"
+PluginDependencyResultImpl_satisfiedDependencies,"/**
+     * Creates holder with all plugins satisfied.
+     * 
+     * @return holder
+     */"
+PluginDependencyResultImpl_unsatisfiedDependencies,"/**
+     * Creates holder with missing plugins.
+     * 
+     * @param unsatisfiedDependencies
+     *            missing plugins
+     * @return holder
+     */"
+PluginDependencyResultImpl_dependenciesToDisable,"/**
+     * Creates holder with plugins to disable.
+     * 
+     * @param dependenciesToDisable
+     *            plugins to disable
+     * @return holder
+     */"
+PluginDependencyResultImpl_dependenciesToUninstall,"/**
+     * Creates holder with plugins to uninstall.
+     * 
+     * @param dependenciesToUninstall
+     *            plugins to uninstall
+     * @return holder
+     */"
+PluginDependencyResultImpl_dependenciesToUpdate,"/**
+     * Creates holder with plugins to disable, after update.
+     * 
+     * @param dependenciesToDisable
+     *            plugins to disable
+     * @param dependenciesToDisableUnsatisfiedAfterUpdate
+     *            plugins which will not be able to enable after updating
+     * @return holder
+     */"
+PluginDependencyResultImpl_cyclicDependencies,"/**
+     * Creates holder with cyclic dependencies.
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_successWithRestart,"/**
+     * Creates holder with {@link PluginOperationStatus#SUCCESS_WITH_RESTART}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_success,"/**
+     * Creates holder with {@link PluginOperationStatus#SUCCESS}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_systemPluginDisabling,"/**
+     * Creates holder with {@link PluginOperationStatus#SYSTEM_PLUGIN_DISABLING}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_systemPluginUninstalling,"/**
+     * Creates holder with {@link PluginOperationStatus#SYSTEM_PLUGIN_UNINSTALLING}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_systemPluginUpdating,"/**
+     * Creates holder with {@link PluginOperationStatus#SYSTEM_PLUGIN_UPDATING}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_corruptedPlugin,"/**
+     * Creates holder with {@link PluginOperationStatus#CORRUPTED_PLUGIN}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_cannotUploadPlugin,"/**
+     * Creates holder with {@link PluginOperationStatus#CANNOT_UPLOAD_PLUGIN}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_cannotDowngradePlugin,"/**
+     * Creates holder with {@link PluginOperationStatus#CANNOT_DOWNGRADE_PLUGIN}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_dependenciesCyclesExists,"/**
+     * Creates holder with {@link PluginOperationStatus#DEPENDENCIES_CYCLES_EXISTS}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_pluginEnablingIsNotAllowed,"/**
+     * Creates holder with {@link PluginOperationStatus#PLUGIN_ENABLING_IS_NOT_ALLOWED}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_dependenciesToEnable,"/**
+     * Creates holder with {@link PluginOperationStatus#DEPENDENCIES_TO_ENABLE}
+     * 
+     * @param pluginDependencyResult
+     *            dependencies information
+     * @return holder
+     */"
+PluginOperationResultImpl_unsatisfiedDependencies,"/**
+     * Creates holder with {@link PluginOperationStatus#UNSATISFIED_DEPENDENCIES}
+     * 
+     * @param pluginDependencyResult
+     *            dependencies information
+     * @return holder
+     */"
+PluginOperationResultImpl_successWithMissingDependencies,"/**
+     * Creates holder with {@link PluginOperationStatus#SUCCESS_WITH_MISSING_DEPENDENCIES}
+     * 
+     * @param pluginDependencyResult
+     *            dependencies information
+     * @return holder
+     */"
+PluginOperationResultImpl_dependenciesToDisable,"/**
+     * Creates holder with {@link PluginOperationStatus#DEPENDENCIES_TO_DISABLE}
+     * 
+     * @param pluginDependencyResult
+     *            dependencies information
+     * @return holder
+     */"
+PluginOperationResultImpl_dependenciesToUninstall,"/**
+     * Creates holder with {@link PluginOperationStatus#DEPENDENCIES_TO_UNINSTALL}
+     * 
+     * @param pluginDependencyResult
+     *            dependencies information
+     * @return holder
+     */"
+PluginOperationResultImpl_unsatisfiedDependenciesAfterUpdate,"/**
+     * Creates holder with {@link PluginOperationStatus#UNSATISFIED_DEPENDENCIES_AFTER_UPDATE}
+     * 
+     * @param pluginDependencyResult
+     *            dependencies information
+     * @return holder
+     */"
+PluginOperationResultImpl_cannotInstallPlugin,"/**
+     * Creates holder with {@link PluginOperationStatus#CANNOT_INSTALL_PLUGIN_FILE}
+     * 
+     * @return holder
+     */"
+PluginOperationResultImpl_pluginEnablingEncounteredErrors,"/**
+     * Creates holder with {@link PluginOperationStatus#PLUGIN_ENABLING_ENCOUNTERED_ERRORS}
+     *
+     * @return holder
+     */"
+PluginOperationResultImpl_pluginNotExist,"/**
+     * Creates holder with {@link PluginOperationStatus#PLUGIN_NOT_EXIST}
+     * 
+     * @return holder
+     */"
+DefaultPluginStateResolver_isEnabledOrEnabling,"/**
+     * @deprecated internal use only!
+     * */"
+FontUtils_prepare,"/**
+     * Prepare fonts.
+     * 
+     * @throws DocumentException
+     * @throws IOException
+     */"
+Pair_of,"/**
+     * creates new Pair instance
+     * 
+     * @param key
+     * @param value
+     * @return new Pair containing key and value same as arguments
+     */"
+ColorUtils_prepare,"/**
+     * Prepare colors.
+     */"
+SortUtil_sortMapUsingComparator,"/**
+     * Sort given map by keys, using specified comparator
+     * 
+     * @param <T>
+     *            key type
+     * @param <V>
+     *            value type
+     * @param map
+     *            Map, which will be sorted
+     * @param comparator
+     *            Comparator for comparing keys
+     * @return new instance of map, sorted by keys
+     */"
+AbstractXLSXView_renderMergedOutputModel,"/**
+     * Renders the Excel view, given the specified model.
+     */"
+PdfPageNumbering_onOpenDocument,"/**
+     * @see com.lowagie.text.pdf.PdfPageEvent#onOpenDocument(com.lowagie.text.pdf.PdfWriter, com.lowagie.text.Document)
+     */"
+PdfPageNumbering_onStartPage,"/**
+     * @see com.lowagie.text.pdf.PdfPageEvent#onStartPage(com.lowagie.text.pdf.PdfWriter, com.lowagie.text.Document)
+     */"
+PdfPageNumbering_onEndPage,"/**
+     * @see com.lowagie.text.pdf.PdfPageEvent#onEndPage(com.lowagie.text.pdf.PdfWriter, com.lowagie.text.Document)
+     */"
+PdfPageNumbering_onCloseDocument,"/**
+     * @see com.lowagie.text.pdf.PdfPageEvent#onCloseDocument(com.lowagie.text.pdf.PdfWriter, com.lowagie.text.Document)
+     */"
+VerticalLayout_create,"/**
+     * Create new instance VerticalLayout
+     * 
+     * @return new instance of VerticalLayout.
+     */"
+VerticalLayout_empty,"/**
+     * Create empty VerticalLayout
+     * 
+     * @return empty VerticalLayout.
+     */"
+VerticalLayout_append,"/**
+     * Append an element to this layout.
+     * 
+     * @param element
+     *            element to be appended
+     * @return reference to this layout.
+     */"
+VerticalLayout_merge,"/**
+     * Merge this layout with given one.
+     * 
+     * @param verticalLayout
+     *            layout to be merged
+     * @return reference to this layout.
+     */"
+VerticalLayout_appendToDocument,"/**
+     * Print this layout within given document.
+     * 
+     * @param document
+     *            document to be printed into.
+     * @throws DocumentException
+     *             if the document isn't opened yet or is already closed.
+     */"
+IntegerUtils_convertNullToZero,"/**
+     * Converts value, if null returns zero
+     * 
+     * @param value
+     *            value
+     * 
+     * @return value or zero
+     */"
+IntegerUtils_convertNullToOne,"/**
+     * Converts value, if null returns one
+     * 
+     * @param value
+     *            value
+     * 
+     * @return value or one
+     */"
+IntegerUtils_parse,"/**
+     * Parse integer value from string.
+     * 
+     * @param stringValue
+     *            value to be parsed
+     * @return parsed integer number or null if given string is empty or blank
+     * @throws NumberFormatException
+     *             if given string does not represent correct number.
+     */"
+CopyException_getEntity,"/**
+     * @return entity in corrupted state
+     */"
+BigDecimalUtils_convertNullToZero,"/**
+     * Converts value, if null returns zero
+     *
+     * @param value value
+     *
+     * @return value or zero
+     */"
+BigDecimalUtils_convertNullToOne,"/**
+     * Converts value, if null returns one
+     *
+     * @param value value
+     *
+     * @return value or one
+     */"
+BigDecimalUtils_toPercent,"/**
+     * Converts decimal value to percent
+     *
+     * @param decimalValue decimal value
+     *
+     * @return percent
+     */"
+BigDecimalUtils_valueEquals,"/**
+     * Check if decimals represent the same numeric value, even if they have
+     * different precisions or contexts.
+     *
+     * @param d1 first BigDecimal to compare
+     * @param d2 second decimal to compare
+     * @return true if decimals represent the same numeric value, even if they
+     * have different precisions or contexts.
+     */"
+BigDecimalUtils_tryParse,"/**
+     * Try parse string into BigDecimal.
+     *
+     * @param maybeStringWithDecimal String to be parsed as a BigDecimal number
+     * @param locale locale to be used when parse.
+     * @return either Exception that occur during parsing or parsed BigDecimal,
+     * wrapped within Optional.
+     */"
+ExpressionUtils_getValue,"/**
+     * Evaluate expression value using entity fields values. Returns null when generated value is null.
+     * 
+     * @param entity
+     *            entity
+     * @param locale
+     *            locale
+     * @return evaluated expression or null
+     */"
+FileUtils_getInstance,"/**
+     * Returns the {@link FileService} instance.
+     * 
+     * @return file service
+     */"
+SearchRestrictions_or,"/**
+     * Creates restriction which join given restrictions with ""OR"" operator.
+     * 
+     * @param firstCriterion
+     *            first criterion
+     * @param secondCriterion
+     *            second criterion
+     * @param otherCriteria
+     *            other criteria
+     * @return criterion
+     */"
+SearchRestrictions_and,"/**
+     * Creates restriction which join given restrictions with ""AND"" operator.
+     * 
+     * @param firstCriterion
+     *            first criterion
+     * @param secondCriterion
+     *            second criterion
+     * @param otherCriteria
+     *            other criteria
+     * @return criterion
+     */"
+SearchRestrictions_not,"/**
+     * Wraps given criterion with ""not"" criterion.
+     * 
+     * @param criterion
+     *            criterion
+     * @return negated criterion
+     */"
+SearchRestrictions_idEq,"/**
+     * Creates criterion which checks if id is equal to given value.
+     * 
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_idNe,"/**
+     * Creates criterion which checks if id isn't equal to given value.
+     * 
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_allEq,"/**
+     * Creates criterion which checks if all given fields match given values.
+     * 
+     * @param values
+     *            map where key is a field's name and value is the expected value
+     * @return criterion
+     */"
+SearchRestrictions_like,"/**
+     * Creates criterion which checks if field is equal (using ""like"" operator) to given value.
+     * 
+     * @param field
+     *            field
+     * @param mode
+     *            match mode
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_ilike,"/**
+     * Creates criterion which checks if field is equal (using case-insensitive ""like"" operator) to given value.
+     * 
+     * @param field
+     *            field
+     * @param mode
+     *            match mode
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_le,"/**
+     * Creates criterion which checks if field is less than or equal to given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_lt,"/**
+     * Creates criterion which checks if field is less than given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_ge,"/**
+     * Creates criterion which checks if field is greater than or equal to given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_gt,"/**
+     * Creates criterion which checks if field is greater than given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_ne,"/**
+     * Creates criterion which checks if field isn't equal to given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_eq,"/**
+     * Creates criterion which checks if field is equal to given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_iEq,"/**
+     * Creates criterion which checks if field is equal (using case-insensitive ""eq"" operator) to given value.
+     * 
+     * @param field
+     *            field
+     * @param value
+     *            value
+     * @return criterion
+     */"
+SearchRestrictions_leField,"/**
+     * Creates criterion which checks if field is less than or equal to other field.
+     * 
+     * @param field
+     *            field
+     * @param otherField
+     *            other field
+     * @return criterion
+     */"
+SearchRestrictions_ltField,"/**
+     * Creates criterion which checks if field is less than other field.
+     * 
+     * @param field
+     *            field
+     * @param otherField
+     *            other field
+     * @return criterion
+     */"
+SearchRestrictions_geField,"/**
+     * Creates criterion which checks if field is greater than or equal to other field.
+     * 
+     * @param field
+     *            field
+     * @param otherField
+     *            other field
+     * @return criterion
+     */"
+SearchRestrictions_gtField,"/**
+     * Creates criterion which checks if field is greater than other field.
+     * 
+     * @param field
+     *            field
+     * @param otherField
+     *            other field
+     * @return criterion
+     */"
+SearchRestrictions_neField,"/**
+     * Creates criterion which checks if field isn't equal to other field.
+     * 
+     * @param field
+     *            field
+     * @param otherField
+     *            other field
+     * @return criterion
+     */"
+SearchRestrictions_eqField,"/**
+     * Creates criterion which checks if field is equal to other field.
+     * 
+     * @param field
+     *            field
+     * @param otherField
+     *            other field
+     * @return criterion
+     */"
+SearchRestrictions_isNotNull,"/**
+     * Creates criterion which checks if field is not null.
+     * 
+     * @param field
+     *            field
+     * @return criterion
+     */"
+SearchRestrictions_isNull,"/**
+     * Creates criterion which checks if field is null.
+     * 
+     * @param field
+     *            field
+     * @return criterion
+     */"
+SearchRestrictions_sizeEq,"/**
+     * Creates criterion which checks if ""collection"" field's size is equal to given size.
+     * 
+     * @param field
+     *            field
+     * @param size
+     *            size
+     * @return criterion
+     */"
+SearchRestrictions_sizeLe,"/**
+     * Creates criterion which checks if ""collection"" field's size is less than or equal to given size.
+     * 
+     * @param field
+     *            field
+     * @param size
+     *            size
+     * @return criterion
+     */"
+SearchRestrictions_sizeLt,"/**
+     * Creates criterion which checks if ""collection"" field's size is less than given size.
+     * 
+     * @param field
+     *            field
+     * @param size
+     *            size
+     * @return criterion
+     */"
+SearchRestrictions_sizeGe,"/**
+     * Creates criterion which checks if ""collection"" field's size is greater than or equal to given size.
+     * 
+     * @param field
+     *            field
+     * @param size
+     *            size
+     * @return criterion
+     */"
+SearchRestrictions_sizeGt,"/**
+     * Creates criterion which checks if ""collection"" field's size is greater than given size.
+     * 
+     * @param field
+     *            field
+     * @param size
+     *            size
+     * @return criterion
+     */"
+SearchRestrictions_sizeNe,"/**
+     * Creates criterion which checks if ""collection"" field's size isn't equal to given size.
+     * 
+     * @param field
+     *            field
+     * @param size
+     *            size
+     * @return criterion
+     */"
+SearchRestrictions_isEmpty,"/**
+     * Creates criterion which checks if ""collection"" field's size is empty.
+     * 
+     * @param field
+     *            field
+     * @return criterion
+     */"
+SearchRestrictions_isNotEmpty,"/**
+     * Creates criterion which checks if ""collection"" field's size isn't empty.
+     * 
+     * @param field
+     *            field
+     * @return criterion
+     */"
+SearchRestrictions_between,"/**
+     * Creates criterion which checks if field is between given values.
+     * 
+     * @param field
+     *            field
+     * @param lo
+     *            low value
+     * @param hi
+     *            high value
+     * @return criterion
+     */"
+SearchRestrictions_in,"/**
+     * Creates criterion which checks if field is in given values.
+     * 
+     * @param field
+     *            field
+     * @param values
+     *            values
+     * @return criterion
+     */"
+SearchRestrictions_inIgnoringCase,"/**
+     * Creates criterion which checks if field is in given values ignoring case.
+     *
+     * @param field
+     *            field
+     * @param values
+     *            values
+     * @return criterion
+     */"
+SearchRestrictions_belongsTo,"/**
+     * Creates criterion which checks if ""belongsTo"" field is equal to given entity.
+     * 
+     * @param field
+     *            field
+     * @param entity
+     *            entity
+     * @return criterion
+     */"
+SearchRestrictions_disjunction,"/**
+     * Creates disjunction - (... OR ... OR ...).
+     * 
+     * @return disjunction
+     */"
+SearchRestrictions_conjunction,"/**
+     * Creates conjunction - (... AND ... AND ...).
+     * 
+     * @return conjunction
+     */"
+SearchProjections_list,"/**
+     * Creates projection's list.
+     * 
+     * @return projection's list
+     */"
+SearchProjections_groupField,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_sum,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause and its ""sum"" to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_max,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause and its ""max"" to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_min,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause and its ""min"" to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_avg,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause and its ""avg"" to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_id,"/**
+     * Creates projection which add ""id"" field to the ""SELECT"" clause.
+     * 
+     * @return projection
+     */"
+SearchProjections_field,"/**
+     * Creates projection which add given field to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_count,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause and its ""count"" to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_countDistinct,"/**
+     * Creates projection which add given field to the ""GROUP BY"" clause and its ""count with distinct"" to the ""SELECT"" clause.
+     * 
+     * @param field
+     *            field
+     * @return projection
+     */"
+SearchProjections_distinct,"/**
+     * Wraps projection with distinct projection.
+     * 
+     * @param projection
+     *            projection
+     * @return distincted projection
+     */"
+SearchProjections_rowCount,"/**
+     * Creates projection which add ""count(*)"" to the ""SELECT"" clause.
+     * 
+     * Value returned by this projection will be a Long number.
+     * 
+     * @return projection
+     */"
+SearchProjections_alias,"/**
+     * Wraps projection with aliased projection.
+     * 
+     * @param projection
+     *            projection
+     * @param alias
+     *            alias
+     * @return aliased projection
+     */"
+SearchOrders_asc,"/**
+     * Creates ascending order using given field.
+     * 
+     * @param field
+     *            field
+     * @return order
+     */"
+SearchOrders_desc,"/**
+     * Creates descending order using given field.
+     * 
+     * @param field
+     *            field
+     * @return order
+     */"
+SearchSubqueries_notExists,"/**
+     * Creates criterion which checks if none row exists in given subquery.
+     * 
+     * @param criteria
+     *            subcriteria
+     * @return criteria
+     */"
+SearchSubqueries_exists,"/**
+     * Creates criterion which checks if any row exists in given subquery.
+     * 
+     * @param criteria
+     *            subcriteria
+     * @return criteria
+     */"
+SearchSubqueries_in,"/**
+     * Creates criterion which checks if given value exists in given subquery.
+     * 
+     * @param value
+     *            value
+     * @param criteria
+     *            subcriteria
+     * @return criteria
+     */"
+SearchSubqueries_fieldIn,"/**
+     * Creates criterion which checks if given field's value exists in given subquery.
+     * 
+     * @param field
+     *            field
+     * @param criteria
+     *            subcriteria
+     * @return criteria
+     */"
+SearchSubqueries_notIn,"/**
+     * Creates criterion which checks if given value doesn't exist in given subquery.
+     * 
+     * @param value
+     *            value
+     * @param criteria
+     *            subcriteria
+     * @return criteria
+     */"
+SearchSubqueries_fieldNotIn,"/**
+     * Creates criterion which checks if given field's value doesn't exist in given subquery.
+     * 
+     * @param field
+     *            field
+     * @param criteria
+     *            subcriteria
+     * @return criteria
+     */"
+EntityTreeUtilsService_getDetachedEntityTree,"/**
+     * Return new instance of DetachedEntityTreeImpl, contains specified entities
+     * 
+     * @param entities
+     *            entity tree nodes
+     * @return new instance of DetachedEntityTreeImpl
+     */"
+EntityTreeUtilsService_getSortedEntities,"/**
+     * Return list of entities sorted in the same order as they appear on the tree
+     * 
+     * @param tree
+     *            entity tree containing entities to be listed
+     * @return list of sorted entities
+     * 
+     * @since 1.1.5
+     */"
+ErrorMessage_getMessage,"/**
+     * Return validation error message.
+     * 
+     * @return message
+     */"
+ErrorMessage_getVars,"/**
+     * Return validation error message's vars.
+     * 
+     * @return message's vars
+     */"
+ErrorMessage_getAutoClose,"/**
+     * Return autoClose.
+     * 
+     * @return autoClose
+     */"
+ErrorMessage_isExtraLarge,"/**
+     * Return extraLarge.
+     *
+     * @return extraLarge
+     */"
+GlobalMessage_getMessage,"/**
+     * Return validation error message.
+     * 
+     * @return message
+     */"
+GlobalMessage_getVars,"/**
+     * Return validation error message's vars.
+     * 
+     * @return message's vars
+     */"
+GlobalMessage_getAutoClose,"/**
+     * Return autoClose.
+     * 
+     * @return autoClose
+     */"
+GlobalMessage_isExtraLarge,"/**
+     * Return extraLarge.
+     *
+     * @return extraLarge
+     */"
+ValueAndError_withoutError,"/**
+     * Build and returns new instance of {@link ValueAndError} with given
+     * 
+     * @param value
+     * @return new instance of {@link ValueAndError}
+     */"
+ValueAndError_empty,"/**
+     * Returns empty {@link ValueAndError} object
+     * 
+     * @return empty {@link ValueAndError} object
+     */"
+ValueAndError_withError,"/**
+     * Build and returns new instance of {@link ValueAndError} with given message and args
+     * 
+     * @param message
+     *            error message
+     * @param args
+     *            error message arguments (values which will replace message's place holders)
+     * @return new instance of {@link ValueAndError}
+     */"
+ValueAndError_isValid,"/**
+     * Checks if value is valid.
+     * 
+     * @return true if field value is valid. Otherwise false.
+     */"
+ValueAndError_getValue,"/**
+     * Returns parsed value
+     * 
+     * @return parsed value
+     */"
+ValueAndError_getArgs,"/**
+     * Returns error message arguments (values which will replace message's place holders)
+     * 
+     * @return error message arguments (values which will replace message's place holders)
+     */"
+ValueAndError_getMessage,"/**
+     * Returns error message
+     * 
+     * @return error message
+     */"
+Order_asc,"/**
+     * Create ascending order using id field.
+     * 
+     * @return order
+     */"
+Order_desc,"/**
+     * Create descending order for given field.
+     * 
+     * @param fieldName
+     *            field's name
+     * @return order
+     */"
+Order_isAsc,"/**
+     * Return true if order is ascending.
+     * 
+     * @return is asc
+     */"
+Order_isDesc,"/**
+     * Return true if order is desc.
+     * 
+     * @return true if ascending
+     */"
+Order_getFieldName,"/**
+     * Return field's name use for ordering.
+     * 
+     * @return field's name
+     */"
+DateUtils_parseAndComplete,"/**
+     * Parse string into date, with autocomplete missing month, day, hour, minute and second.
+     * 
+     * Examples with up-complete:
+     * 
+     * <ul>
+     * <li>2010: 2010-12-31 23:59:59</li>
+     * <li>2010-03: 2010-03-31 23:59:59</li>
+     * <li>2010-03-06: 2010-03-06 23:59:59</li>
+     * <li>2010-03-06 19: 2010-03-06 19:59:59</li>
+     * <li>2010-03-06 19:30: 2010-03-06 19:30:59</li>
+     * <li>2010-03-06 19:30:20: 2010-03-06 19:30:20</li>
+     * </ul>
+     * 
+     * Examples with down-complete:
+     * 
+     * <ul>
+     * <li>2010: 2010-01-01 00:00:00</li>
+     * <li>2010-03: 2010-03-01 00:00:00</li>
+     * <li>2010-03-06: 2010-03-06 00:00:00</li>
+     * <li>2010-03-06 19: 2010-03-06 19:00:00</li>
+     * <li>2010-03-06 19:30: 2010-03-06 19:30:00</li>
+     * <li>2010-03-06 19:30:20: 2010-03-06 19:30:20</li>
+     * </ul>
+     * 
+     * @param dateExpression
+     *            string with date expression
+     * @param upComplete
+     *            true if up-complete, otherwise down-complete
+     * @return parsed date
+     * @throws ParseException
+     *             if year, month, day, hour, minute or second is invalid or when year is &lt; 1500 or &gt; 2500
+     */"
+DateUtils_toDateTimeString,"/**
+     * Get date's String value in {@value DateUtils#L_DATE_TIME_FORMAT} format
+     * 
+     * @param date
+     *            date to be formatted
+     * @return date as String in {@value DateUtils#L_DATE_TIME_FORMAT} format or empty string if date is null
+     */"
+DateUtils_toDateString,"/**
+     * Get date's String value in {@value DateUtils#L_DATE_FORMAT} format
+     * 
+     * @param date
+     *            date to be formatted
+     * @return date as String in {@value DateUtils#L_DATE_FORMAT} format or empty string if date is null
+     */"
+DateUtils_parseDate,"/**
+     * Parse date from object
+     * 
+     * @param value
+     *            object to be parsed. Supported argument types:
+     *            <ul>
+     *            <li>String - representing date in {@value DateUtils#L_DATE_TIME_FORMAT} or {@value DateUtils#L_DATE_FORMAT}
+     *            format</li>
+     *            <li>Date</li>
+     *            <li>Number - containing number of milliseconds from 1st January 1970 00:00:00.000 GMT</li>
+     *            </ul>
+     * @return Date parsed from given object or null if object is null
+     * @throws IllegalArgumentException
+     *             if value is unsupported or has incorrect format
+     */"
+GanttChartItemStripFactory_create,"/**
+     * Creates item's strip with given color and size.
+     * 
+     * @param color
+     *            css color string. For example: ""red"", ""#45DFA9"", ""rgb(10, 55, 255)""
+     * @param size
+     *            percentage size of strip
+     * @return new GanttChartItemStrip instance
+     */"
+NumberGeneratorService_generateAndInsertNumber,"/**
+     * Generates and inserts new number to entity's form
+     * 
+     * @param state
+     *            main view state definition
+     * @param plugin
+     *            plugin identifier of entity
+     * @param entityName
+     *            name of entity
+     * @param formFieldReferenceName
+     *            reference name of form
+     * @param numberFieldReferenceName
+     *            reference name of field into which generated number should be inserted
+     */"
+NumberGeneratorService_checkIfShouldInsertNumber,"/**
+     * Checks if new entity number should be generated and inserted
+     * 
+     * @param state
+     *            main view state definition
+     * @param formFieldReferenceName
+     *            reference name of form
+     * @param numberFieldReferenceName
+     *            reference name of field into which generated number should be inserted
+     * @return true if new entity number should be generated and inserted
+     */"
+NumberGeneratorService_generateNumber,"/**
+     * Generate new number of entity with specified digits number
+     * 
+     * @param pluginIdentifier
+     *            plugin identifier of entity
+     * @param modelName
+     *            name of entity
+     * @param numOfDigits
+     *            number of digits of generated number
+     * @return new number of entity
+     */"
+NumberGeneratorService_generateNumberWithPrefix,"/**
+     * Generate new number of entity with specified digits number
+     * 
+     * @param pluginIdentifier
+     *            plugin identifier of entity
+     * @param modelName
+     *            name of entity
+     * @param numOfDigits
+     *            number of digits of generated number
+     * @param prefix
+     *            number prefix
+     * @return new number of entity
+     */"
+NumberGeneratorService_generateNumberWithSuffix,"/**
+     * Generate new number of entity with specified digits number
+     *
+     * @param pluginIdentifier
+     *            plugin identifier of entity
+     * @param modelName
+     *            name of entity
+     * @param numOfDigits
+     *            number of digits of generated number
+     * @param suffix
+     *            number suffix
+     * @return new number of entity
+     */"
+TranslationUtilsService_getCategoryTranslation,"/**
+     * Returns menu category translation
+     * 
+     * @param category
+     *            category entity
+     * @param locale
+     *            localization
+     * @return category translation
+     */"
+TranslationUtilsService_getCategoryDescriptionTranslation,"/**
+     * Returns menu category description translation
+     * 
+     * @param category
+     *            category entity
+     * @param locale
+     *            localization
+     * @return category description translation or empty String if translation does not exists
+     * 
+     * @since 1.1.3
+     */"
+TranslationUtilsService_getItemTranslation,"/**
+     * Returns menu item translation
+     * 
+     * @param item
+     *            item entity
+     * @param locale
+     *            localization
+     * @return item translation
+     */"
+TranslationUtilsService_getItemDescriptionTranslation,"/**
+     * Returns menu item description translation
+     * 
+     * @param item
+     *            category entity
+     * @param locale
+     *            localization
+     * @return item description translation or empty String if translation does not exists
+     * 
+     * @since 1.1.3
+     */"
+TranslationUtilsService_translateAndIgnoreMissingMessages,"/**
+     * Returns translation for given key or empty string if translation has been not found.
+     * 
+     * @param translationKey
+     *            translation key
+     * @param locale
+     *            localization
+     * @return translated message or empty String if translation does not exists
+     */"
+FormUtils_setFormEntity,"/**
+     * Set Entity which be used to fill this form
+     * 
+     * @deprecated this method is deprecated, if you want set form's entity, use {@link FormComponent#setEntity(Entity)}
+     * 
+     * @param form
+     *            form which want to fill
+     * @param entity
+     *            entity which be used to fill form
+     */"
+TimeConverterService_convertTimeToString,"/**
+     * Convert string time value to string in format hh:mm:ss
+     * 
+     * @param duration
+     *            time value from database
+     * @return time value in format hh:mm:ss
+     */"
+TimeConverterService_getDateTimeFromField,"/**
+     * Converts value from data field to Date
+     * 
+     * @deprecated This method will be removed soon. Please use {@link DateUtils#parseDate(Object)}
+     * 
+     * @param dateFromField
+     *            value from view field
+     * @return date value in format dd:mm:rrrr hh:mm
+     */"
+TimeConverterService_setDateTimeToField,"/**
+     * Converts value from field to Object
+     * 
+     * @deprecated This method will be removed soon. Please use {@link DateUtils#toDateTimeString(Date)}
+     * 
+     * @param date
+     *            value from entity
+     * @return date to view field
+     */"
+TimeConverterService_getDateFromField,"/**
+     * Converts value from data field to Date
+     * 
+     * @deprecated This method will be removed soon. Please use {@link DateUtils#parseDate(Object)}
+     * 
+     * @param dateFromField
+     *            value from view field
+     * @return date value in format dd:mm:rrrr
+     */"
+TimeConverterService_setDateToField,"/**
+     * Converts value from field to Object
+     * 
+     * @deprecated This method will be removed soon. Please use {@link DateUtils#toDateString(Date)}
+     * 
+     * @param date
+     *            value from entity
+     * @return date to view field
+     */"
+NumberGeneratorModelHelper_getNumbersProjection,"/**
+     * Returns a list of projection entities containing NUM_PROJECTION_ALIAS field with numberFieldName values with trimmed out
+     * leading zeros. List is sorted descendant by numberFieldName.
+     * 
+     * @param pluginIdentifier
+     *            identifier of the plugin
+     * @param modelName
+     *            name of the model
+     * @param numberFieldName
+     *            name of the field for which number will be generated
+     * @param prefix
+     *            number prefix
+     * @param suffix
+     *            number suffix
+     * @return a list of projection entities containing NUM_PROJECTION_ALIAS field with numberFieldName values with trimmed out
+     *         leading zeros. List is sorted descendant by numberFieldName.
+     */"
+RowStyleResolver_resolve,"/**
+     * Resolve CSS classes for grid rows
+     * 
+     * @param entities
+     *            list of entities which the CSS class will be resolved
+     * @return entity identifiers mapped to appropriate set of the CSS classes.
+     */"
+ComponentOption_getAttributeValue,"/**
+     * Return attribute's value.
+     * 
+     * @param name
+     *            attribute's name
+     * @return value
+     */"
+ComponentOption_getType,"/**
+     * Return option's type.
+     * 
+     * @return type
+     */"
+ComponentOption_getValue,"/**
+     * Return option's value - if there is only one attribute, its value will be returned, otherwise value of the ""value""
+     * attribute is returned.
+     * 
+     * @return value
+     */"
+ModalDimensions_parseFromOptions,"/**
+     * Parse and create new instance of modal dimensions object from component options. Use default values defined in
+     * {@link ModalDimensions#DEFAULT_WIDTH} and {@link ModalDimensions#DEFAULT_HEIGHT} if ""modalWidth"" or/and ""modalHeight""
+     * attribute was not specified.
+     * 
+     * @param componentOptions
+     *            component's options
+     * @return modal dimensions instance.
+     */"
+ModalDimensions_toJson,"/**
+     * Get modal dimensions as JSON
+     * 
+     * @return modal dimensions as JSON
+     * @throws JSONException
+     */"
+ModalDimensions_getWidth,"/**
+     * get modal width
+     * 
+     * @return modal width
+     */"
+ModalDimensions_getHeight,"/**
+     * get modal height
+     * 
+     * @return modal height
+     */"
+ResourceModule_serveResource,"/**
+     * Serves resource to response
+     * 
+     * @param request
+     * @param response
+     * @return true when resource was served
+     */"
+MenuDefinition_getItems,"/**
+     * Get all menu groups
+     * 
+     * @return menu groups
+     */"
+MenuDefinition_addItem,"/**
+     * Add group to menu
+     * 
+     * @param item
+     */"
+MenuDefinition_getAsJson,"/**
+     * Generates JSON string that contains all menu definition
+     * 
+     * @return JSON menu definition
+     */"
+MenuDefinition_getAdministrationCategory,"/**
+     * Returns administration category of this menu
+     * 
+     * @return administration category of this menu
+     */"
+MenuDefinition_setAdministrationCategory,"/**
+     * Sets content of administration category
+     * 
+     * @param administrationCategory
+     *            new content of administration category
+     */"
+MenuDefinition_getHomeCategory,"/**
+     * Returns home category of this menu
+     * 
+     * @return home category of this menu
+     */"
+MenuDefinition_setHomeCategory,"/**
+     * Sets content of home category
+     * 
+     * @param homeCategory
+     *            new content of home category
+     */"
+MenuItemsGroup_getName,"/**
+     * Get identifier of group
+     * 
+     * @return identifier of group
+     */"
+MenuItemsGroup_getLabel,"/**
+     * Get group label to display
+     * 
+     * @return group label to display
+     */"
+MenuItemsGroup_getItems,"/**
+     * Get list of all items of group
+     * 
+     * @return list of all items of group
+     */"
+MenuItemsGroup_addItem,"/**
+     * Add item to menu group
+     * 
+     * @param item
+     *            item to add
+     */"
+MenuItemsGroup_getAsJson,"/**
+     * Generates JSON representation of this menu group
+     * 
+     * @return JSON group representation
+     * @throws JSONException
+     */"
+MenuItem_getName,"/**
+     * Get identifier of item
+     * 
+     * @return identifier of item
+     */"
+MenuItem_getLabel,"/**
+     * Get item label to display
+     * 
+     * @return item label to display
+     */"
+MenuItem_getDescription,"/**
+     * Get item description to display as a tooltip
+     * 
+     * @return item description to display as a tooltip
+     */"
+MenuItem_getPluginIdentifier,"/**
+     * Get plugin identifier of this item
+     * 
+     * @return plugin identifier of this item
+     */"
+MenuItem_getPage,"/**
+     * Get URL that this item leads to
+     * 
+     * @return URL that this item leads to
+     */"
+MenuItem_getAsJson,"/**
+     * Generates JSON representation of this item
+     * 
+     * @return JSON representation of this item
+     * @throws JSONException
+     */"
+GridComponentFilterException_getFilterValue,"/**
+     * Returns value of column's filter
+     * 
+     * @return value of column's filter
+     */"
+DateRange_contains,"/**
+     * Check if this date range contains given date.
+     * 
+     * @param date
+     *            date to be checked
+     * @return true if this date range contains given date
+     */"
+DateRange_getFrom,"/**
+     * Get lower bound date.
+     * 
+     * @return lower bound date or null
+     */"
+DateRange_getTo,"/**
+     * Get upper bound date.
+     * 
+     * @return upper bound date or null
+     */"
+TimeRange_startsDayBefore,"/**
+     * @return true if from is greater than to.
+     */"
+TimeRange_contains,"/**
+     * Check if given time is included in this time range. If from & to boundaries is in reversed order (time from is greater than
+     * to; startsDayBefore() returns true) then it will be checked that given time is contained in range [from time = midnight
+     * (inclusive)] or [midnight - to time].
+     * 
+     * @param time
+     * @return true if this time range contains given time.
+     */"
+DefaultAsyncTaskExecutorWrapper_onException,"/**
+     * This method is performed whenever executed task throws uncaught exception.
+     * 
+     * @param ex
+     *            exception thrown by task
+     */"
+LazyStream_create,"/**
+     * Create a new instance of LazyStream.
+     * 
+     * @param firstElement
+     *            first element, will be used to calculate tail (and therefore alternate element)
+     * @param inductionStep
+     *            function consuming current stream's element and producing next one.
+     * @param <U>
+     *            type of Stream elements.
+     * @return new instance of LazyStream
+     */"
+LazyStream_head,"/**
+     * Return underlying value, contained in this particular LazyStream chain.
+     * 
+     * @return underlying value
+     */"
+LazyStream_tail,"/**
+     * Returns forwarding elements as a LazyStream. Returned stream is generated lazily, when you're calling tail() for the first
+     * time, and stored for further invocations. Therefore further invocations of tail() will not evaluate induction function.
+     * 
+     * @return alternate elements as a LazyStream.
+     */"
+EntityListMock_create,"/**
+     * Create a new mock instance of an EntityList, containing given values, with find() method stubbed for returning
+     * SearchCriteriaBuilder objects produced by given supplier (factory, provider).
+     * 
+     * @param elements
+     *            content of new mock
+     * @param criteriaBuilderFactory
+     *            SearchCriteriaBuilder objects supplier
+     * @return a new instance of an EntityList mock
+     */"

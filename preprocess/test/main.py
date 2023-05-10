@@ -1,6 +1,20 @@
+import javalang
 if __name__ == '__main__':
     code = """
     class Test{
+
+        /**
+        * 提供精确的加法运算。
+        *  v1 被加数
+        *  v2 加数
+        *  两个参数的和
+        */
+        public static double add(double v1, double v2)
+        {
+            BigDecimal b1 = new BigDecimal(Double.toString(v1));
+            BigDecimal b2 = new BigDecimal(Double.toString(v2));
+            return b1.add(b2).doubleValue();
+        }
         public AjaxResult getInfo() throws Exception
         {
             new Server().copyTo();

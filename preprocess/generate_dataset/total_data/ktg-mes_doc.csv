@@ -1,0 +1,8770 @@
+className_funcName,doc
+RepeatSubmitInterceptor_isRepeatSubmit,"/**
+     * 验证是否重复提交由子类实现具体的防重复提交的规则
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */"
+SameUrlDataInterceptor_compareParams,"/**
+     * 判断参数是否相同
+     */"
+SameUrlDataInterceptor_compareTime,"/**
+     * 判断两次间隔时间
+     */"
+ApplicationConfig_jacksonObjectMapperCustomization,"/**
+     * 时区配置
+     */"
+ServerConfig_getUrl,"/**
+     * 获取完整的请求路径，包括：域名，端口，上下文访问路径
+     * 
+     * @return 服务地址
+     */"
+ThreadPoolConfig_scheduledExecutorService,"/**
+     * 执行周期性或定时任务
+     */"
+SecurityConfig_authenticationManagerBean,"/**
+     * 解决 无法直接注入 AuthenticationManager
+     *
+     * @return
+     * @throws Exception
+     */"
+SecurityConfig_configure,"/**
+     * 身份认证接口
+     */"
+SecurityConfig_bCryptPasswordEncoder,"/**
+     * 强散列哈希加密实现
+     */"
+ResourcesConfig_addInterceptors,"/**
+     * 自定义拦截规则
+     */"
+ResourcesConfig_corsFilter,"/**
+     * 跨域配置
+     */"
+DruidConfig_setDataSource,"/**
+     * 设置数据源
+     * 
+     * @param targetDataSources 备选数据源集合
+     * @param sourceName 数据源名称
+     * @param beanName bean名称
+     */"
+DruidConfig_removeDruidFilterRegistrationBean,"/**
+     * 去除监控页面底部的广告
+     */"
+RedisConfig_limitScriptText,"/**
+     * 限流脚本
+     */"
+DynamicDataSourceContextHolder_setDataSourceType,"/**
+     * 设置数据源的变量
+     */"
+DynamicDataSourceContextHolder_getDataSourceType,"/**
+     * 获得数据源的变量
+     */"
+DynamicDataSourceContextHolder_clearDataSourceType,"/**
+     * 清空数据源变量
+     */"
+WebSocketServer_onOpen,"/**
+     * 连接建立成功调用的方法
+     */"
+WebSocketServer_onClose,"/**
+     * 连接关闭时处理
+     */"
+WebSocketServer_onError,"/**
+     * 抛出异常时处理
+     */"
+WebSocketServer_onMessage,"/**
+     * 服务器接收到客户端消息时调用的方法
+     */"
+WebSocketUsers_put,"/**
+     * 存储用户
+     *
+     * @param key 唯一键
+     * @param session 用户信息
+     */"
+WebSocketUsers_remove,"/**
+     * 移出用户
+     *
+     * @param key 键
+     */"
+WebSocketUsers_getUsers,"/**
+     * 获取在线用户列表
+     *
+     * @return 返回用户集合
+     */"
+WebSocketUsers_sendMessageToUsersByText,"/**
+     * 群发消息文本消息
+     *
+     * @param message 消息内容
+     */"
+WebSocketUsers_sendMessageToUserByText,"/**
+     * 发送文本消息
+     *
+     * @param session 自己的用户名
+     * @param message 消息内容
+     */"
+SemaphoreUtils_tryAcquire,"/**
+     * 获取信号量
+     * 
+     * @param semaphore
+     * @return
+     */"
+SemaphoreUtils_release,"/**
+     * 释放信号量
+     * 
+     * @param semaphore
+     */"
+AsyncManager_execute,"/**
+     * 执行任务
+     * 
+     * @param task 任务
+     */"
+AsyncManager_shutdown,"/**
+     * 停止任务线程池
+     */"
+ShutdownManager_shutdownAsyncManager,"/**
+     * 停止异步执行任务
+     */"
+AsyncFactory_recordLogininfor,"/**
+     * 记录登录信息
+     * 
+     * @param username 用户名
+     * @param status 状态
+     * @param message 消息
+     * @param args 列表
+     * @return 任务task
+     */"
+AsyncFactory_recordOper,"/**
+     * 操作日志记录
+     * 
+     * @param operLog 操作日志信息
+     * @return 任务task
+     */"
+LogoutSuccessHandlerImpl_onLogoutSuccess,"/**
+     * 退出处理
+     * 
+     * @return
+     */"
+LogAspect_doAfterReturning,"/**
+     * 处理完请求后执行
+     *
+     * @param joinPoint 切点
+     */"
+LogAspect_doAfterThrowing,"/**
+     * 拦截异常操作
+     * 
+     * @param joinPoint 切点
+     * @param e 异常
+     */"
+LogAspect_getControllerMethodDescription,"/**
+     * 获取注解中对方法的描述信息 用于Controller层注解
+     * 
+     * @param log 日志
+     * @param operLog 操作日志
+     * @throws Exception
+     */"
+LogAspect_setRequestValue,"/**
+     * 获取请求的参数，放到log中
+     * 
+     * @param operLog 操作日志
+     * @throws Exception 异常
+     */"
+LogAspect_argsArrayToString,"/**
+     * 参数拼装
+     */"
+LogAspect_isFilterObject,"/**
+     * 判断是否需要过滤的对象。
+     * 
+     * @param o 对象信息。
+     * @return 如果是需要过滤的对象，则返回true；否则返回false。
+     */"
+DataSourceAspect_getDataSource,"/**
+     * 获取需要切换的数据源
+     */"
+DataScopeAspect_dataScopeFilter,"/**
+     * 数据范围过滤
+     *
+     * @param joinPoint 切点
+     * @param user 用户
+     * @param userAlias 别名
+     */"
+DataScopeAspect_clearDataScope,"/**
+     * 拼接权限sql前先清空params.dataScope参数防止注入
+     */"
+SysPermissionService_getRolePermission,"/**
+     * 获取角色数据权限
+     * 
+     * @param user 用户信息
+     * @return 角色权限信息
+     */"
+SysPermissionService_getMenuPermission,"/**
+     * 获取菜单数据权限
+     * 
+     * @param user 用户信息
+     * @return 菜单权限信息
+     */"
+TokenService_getLoginUser,"/**
+     * 获取用户身份信息
+     *
+     * @return 用户信息
+     */"
+TokenService_setLoginUser,"/**
+     * 设置用户身份信息
+     */"
+TokenService_delLoginUser,"/**
+     * 删除用户身份信息
+     */"
+TokenService_createToken,"/**
+     * 从数据声明生成令牌
+     *
+     * @param claims 数据声明
+     * @return 令牌
+     */"
+TokenService_verifyToken,"/**
+     * 验证令牌有效期，相差不足20分钟，自动刷新缓存
+     *
+     * @param loginUser
+     * @return 令牌
+     */"
+TokenService_refreshToken,"/**
+     * 刷新令牌有效期
+     *
+     * @param loginUser 登录信息
+     */"
+TokenService_setUserAgent,"/**
+     * 设置用户代理信息
+     *
+     * @param loginUser 登录信息
+     */"
+TokenService_parseToken,"/**
+     * 从令牌中获取数据声明
+     *
+     * @param token 令牌
+     * @return 数据声明
+     */"
+TokenService_getUsernameFromToken,"/**
+     * 从令牌中获取用户名
+     *
+     * @param token 令牌
+     * @return 用户名
+     */"
+TokenService_getToken,"/**
+     * 获取请求token
+     *
+     * @param request
+     * @return token
+     */"
+TokenService_getUserByToken,"/**
+     * 根据Token获取对应的用户
+     * @param token
+     * @return
+     */"
+PermissionService_hasPermi,"/**
+     * 验证用户是否具备某权限
+     * 
+     * @param permission 权限字符串
+     * @return 用户是否具备某权限
+     */"
+PermissionService_lacksPermi,"/**
+     * 验证用户是否不具备某权限，与 hasPermi逻辑相反
+     *
+     * @param permission 权限字符串
+     * @return 用户是否不具备某权限
+     */"
+PermissionService_hasAnyPermi,"/**
+     * 验证用户是否具有以下任意一个权限
+     *
+     * @param permissions 以 PERMISSION_NAMES_DELIMETER 为分隔符的权限列表
+     * @return 用户是否具有以下任意一个权限
+     */"
+PermissionService_hasRole,"/**
+     * 判断用户是否拥有某个角色
+     * 
+     * @param role 角色字符串
+     * @return 用户是否具备某角色
+     */"
+PermissionService_lacksRole,"/**
+     * 验证用户是否不具备某角色，与 isRole逻辑相反。
+     *
+     * @param role 角色名称
+     * @return 用户是否不具备某角色
+     */"
+PermissionService_hasAnyRoles,"/**
+     * 验证用户是否具有以下任意一个角色
+     *
+     * @param roles 以 ROLE_NAMES_DELIMETER 为分隔符的角色列表
+     * @return 用户是否具有以下任意一个角色
+     */"
+PermissionService_hasPermissions,"/**
+     * 判断是否包含权限
+     * 
+     * @param permissions 权限列表
+     * @param permission 权限字符串
+     * @return 用户是否具备某权限
+     */"
+MobileLoginService_sendCode,"/**
+     * 发送注册验证码
+     * @param loginParams
+     * @return
+     */"
+MobileLoginService_registerUser,"/**
+     * 手机号验证码注册用户
+     * @param loginParams
+     * @return
+     */"
+MobileLoginService_setUserDefaultInfo,"/**
+     * 设置注册用户角色部门岗位信息
+     * @param registerUser
+     * @return
+     */"
+SysLoginService_login,"/**
+     * 登录验证
+     * 
+     * @param username 用户名
+     * @param password 密码
+     * @param code 验证码
+     * @param uuid 唯一标识
+     * @return 结果
+     */"
+SysLoginService_validateCaptcha,"/**
+     * 校验验证码
+     * 
+     * @param username 用户名
+     * @param code 验证码
+     * @param uuid 唯一标识
+     * @return 结果
+     */"
+SysLoginService_recordLoginInfo,"/**
+     * 记录登录信息
+     *
+     * @param userId 用户ID
+     */"
+SysRegisterService_register,"/**
+     * 注册
+     */"
+SysRegisterService_validateCaptcha,"/**
+     * 校验验证码
+     * 
+     * @param username 用户名
+     * @param code 验证码
+     * @param uuid 唯一标识
+     * @return 结果
+     */"
+GlobalExceptionHandler_handleAccessDeniedException,"/**
+     * 权限校验异常
+     */"
+GlobalExceptionHandler_handleHttpRequestMethodNotSupported,"/**
+     * 请求方式不支持
+     */"
+GlobalExceptionHandler_handleServiceException,"/**
+     * 业务异常
+     */"
+GlobalExceptionHandler_handleRuntimeException,"/**
+     * 拦截未知的运行时异常
+     */"
+GlobalExceptionHandler_handleException,"/**
+     * 系统异常
+     */"
+GlobalExceptionHandler_handleBindException,"/**
+     * 自定义验证异常
+     */"
+GlobalExceptionHandler_handleMethodArgumentNotValidException,"/**
+     * 自定义验证异常
+     */"
+GlobalExceptionHandler_handleDemoModeException,"/**
+     * 演示模式异常
+     */"
+Server_setCpuInfo,"/**
+     * 设置CPU信息
+     */"
+Server_setMemInfo,"/**
+     * 设置内存信息
+     */"
+Server_setSysInfo,"/**
+     * 设置服务器信息
+     */"
+Server_setJvmInfo,"/**
+     * 设置Java虚拟机
+     */"
+Server_setSysFiles,"/**
+     * 设置磁盘信息
+     */"
+Server_convertFileSize,"/**
+     * 字节转换
+     * 
+     * @param size 字节大小
+     * @return 转换后值
+     */"
+Jvm_getName,"/**
+     * 获取JDK名称
+     */"
+Jvm_getStartTime,"/**
+     * JDK启动时间
+     */"
+Jvm_getRunTime,"/**
+     * JDK运行时间
+     */"
+Jvm_getInputArgs,"/**
+     * 运行参数
+     */"
+SysJobLogServiceImpl_selectJobLogList,"/**
+     * 获取quartz调度器日志的计划任务
+     * 
+     * @param jobLog 调度日志信息
+     * @return 调度任务日志集合
+     */"
+SysJobLogServiceImpl_selectJobLogById,"/**
+     * 通过调度任务日志ID查询调度信息
+     * 
+     * @param jobLogId 调度任务日志ID
+     * @return 调度任务日志对象信息
+     */"
+SysJobLogServiceImpl_addJobLog,"/**
+     * 新增任务日志
+     * 
+     * @param jobLog 调度日志信息
+     */"
+SysJobLogServiceImpl_deleteJobLogByIds,"/**
+     * 批量删除调度日志信息
+     * 
+     * @param logIds 需要删除的数据ID
+     * @return 结果
+     */"
+SysJobLogServiceImpl_deleteJobLogById,"/**
+     * 删除任务日志
+     * 
+     * @param jobId 调度日志ID
+     */"
+SysJobLogServiceImpl_cleanJobLog,"/**
+     * 清空任务日志
+     */"
+SysJobServiceImpl_init,"/**
+     * 项目启动时，初始化定时器 主要是防止手动修改数据库导致未同步到定时任务处理（注：不能手动修改数据库ID和任务组名，否则会导致脏数据）
+     */"
+SysJobServiceImpl_selectJobList,"/**
+     * 获取quartz调度器的计划任务列表
+     * 
+     * @param job 调度信息
+     * @return
+     */"
+SysJobServiceImpl_selectJobById,"/**
+     * 通过调度任务ID查询调度信息
+     * 
+     * @param jobId 调度任务ID
+     * @return 调度任务对象信息
+     */"
+SysJobServiceImpl_pauseJob,"/**
+     * 暂停任务
+     * 
+     * @param job 调度信息
+     */"
+SysJobServiceImpl_resumeJob,"/**
+     * 恢复任务
+     * 
+     * @param job 调度信息
+     */"
+SysJobServiceImpl_deleteJob,"/**
+     * 删除任务后，所对应的trigger也将被删除
+     * 
+     * @param job 调度信息
+     */"
+SysJobServiceImpl_deleteJobByIds,"/**
+     * 批量删除调度信息
+     * 
+     * @param jobIds 需要删除的任务ID
+     * @return 结果
+     */"
+SysJobServiceImpl_changeStatus,"/**
+     * 任务调度状态修改
+     * 
+     * @param job 调度信息
+     */"
+SysJobServiceImpl_run,"/**
+     * 立即运行任务
+     * 
+     * @param job 调度信息
+     */"
+SysJobServiceImpl_insertJob,"/**
+     * 新增任务
+     * 
+     * @param job 调度信息 调度信息
+     */"
+SysJobServiceImpl_updateJob,"/**
+     * 更新任务的时间表达式
+     * 
+     * @param job 调度信息
+     */"
+SysJobServiceImpl_updateSchedulerJob,"/**
+     * 更新任务
+     * 
+     * @param job 任务对象
+     * @param jobGroup 任务组名
+     */"
+SysJobServiceImpl_checkCronExpressionIsValid,"/**
+     * 校验cron表达式是否有效
+     * 
+     * @param cronExpression 表达式
+     * @return 结果
+     */"
+SysJobLogController_list,"/**
+     * 查询定时任务调度日志列表
+     */"
+SysJobLogController_export,"/**
+     * 导出定时任务调度日志列表
+     */"
+SysJobLogController_getInfo,"/**
+     * 根据调度编号获取详细信息
+     */"
+SysJobLogController_remove,"/**
+     * 删除定时任务调度日志
+     */"
+SysJobLogController_clean,"/**
+     * 清空定时任务调度日志
+     */"
+SysJobController_list,"/**
+     * 查询定时任务列表
+     */"
+SysJobController_export,"/**
+     * 导出定时任务列表
+     */"
+SysJobController_getInfo,"/**
+     * 获取定时任务详细信息
+     */"
+SysJobController_add,"/**
+     * 新增定时任务
+     */"
+SysJobController_edit,"/**
+     * 修改定时任务
+     */"
+SysJobController_changeStatus,"/**
+     * 定时任务状态修改
+     */"
+SysJobController_run,"/**
+     * 定时任务立即执行一次
+     */"
+SysJobController_remove,"/**
+     * 删除定时任务
+     */"
+ScheduleUtils_getQuartzJobClass,"/**
+     * 得到quartz任务类
+     *
+     * @param sysJob 执行计划
+     * @return 具体执行任务类
+     */"
+ScheduleUtils_getTriggerKey,"/**
+     * 构建任务触发对象
+     */"
+ScheduleUtils_getJobKey,"/**
+     * 构建任务键对象
+     */"
+ScheduleUtils_createScheduleJob,"/**
+     * 创建定时任务
+     */"
+ScheduleUtils_handleCronScheduleMisfirePolicy,"/**
+     * 设置定时任务策略
+     */"
+ScheduleUtils_whiteList,"/**
+     * 检查包名是否为白名单配置
+     * 
+     * @param invokeTarget 目标字符串
+     * @return 结果
+     */"
+JobInvokeUtil_invokeMethod,"/**
+     * 调用任务方法
+     *
+     * @param bean 目标对象
+     * @param methodName 方法名称
+     * @param methodParams 方法参数
+     */"
+JobInvokeUtil_isValidClassName,"/**
+     * 校验是否为为class包名
+     * 
+     * @param invokeTarget 名称
+     * @return true是 false否
+     */"
+JobInvokeUtil_getBeanName,"/**
+     * 获取bean名称
+     * 
+     * @param invokeTarget 目标字符串
+     * @return bean名称
+     */"
+JobInvokeUtil_getMethodName,"/**
+     * 获取bean方法
+     * 
+     * @param invokeTarget 目标字符串
+     * @return method方法
+     */"
+JobInvokeUtil_getMethodParams,"/**
+     * 获取method方法参数相关列表
+     * 
+     * @param invokeTarget 目标字符串
+     * @return method方法相关参数列表
+     */"
+JobInvokeUtil_getMethodParamsType,"/**
+     * 获取参数类型
+     * 
+     * @param methodParams 参数相关列表
+     * @return 参数类型列表
+     */"
+JobInvokeUtil_getMethodParamsValue,"/**
+     * 获取参数值
+     * 
+     * @param methodParams 参数相关列表
+     * @return 参数值列表
+     */"
+AbstractQuartzJob_before,"/**
+     * 执行前
+     *
+     * @param context 工作执行上下文对象
+     * @param sysJob 系统计划任务
+     */"
+AbstractQuartzJob_after,"/**
+     * 执行后
+     *
+     * @param context 工作执行上下文对象
+     * @param sysJob 系统计划任务
+     */"
+AbstractQuartzJob_doExecute,"/**
+     * 执行方法，由子类重载
+     *
+     * @param context 工作执行上下文对象
+     * @param sysJob 系统计划任务
+     * @throws Exception 执行过程中的异常
+     */"
+CronUtils_isValid,"/**
+     * 返回一个布尔值代表一个给定的Cron表达式的有效性
+     *
+     * @param cronExpression Cron表达式
+     * @return boolean 表达式是否有效
+     */"
+CronUtils_getInvalidMessage,"/**
+     * 返回一个字符串值,表示该消息无效Cron表达式给出有效性
+     *
+     * @param cronExpression Cron表达式
+     * @return String 无效时返回表达式错误描述,如果有效返回null
+     */"
+CronUtils_getNextExecution,"/**
+     * 返回下一个执行时间根据给定的Cron表达式
+     *
+     * @param cronExpression Cron表达式
+     * @return Date 下次Cron表达式执行时间
+     */"
+SysOperLogServiceImpl_insertOperlog,"/**
+     * 新增操作日志
+     * 
+     * @param operLog 操作日志对象
+     */"
+SysOperLogServiceImpl_selectOperLogList,"/**
+     * 查询系统操作日志集合
+     * 
+     * @param operLog 操作日志对象
+     * @return 操作日志集合
+     */"
+SysOperLogServiceImpl_deleteOperLogByIds,"/**
+     * 批量删除系统操作日志
+     * 
+     * @param operIds 需要删除的操作日志ID
+     * @return 结果
+     */"
+SysOperLogServiceImpl_selectOperLogById,"/**
+     * 查询操作日志详细
+     * 
+     * @param operId 操作ID
+     * @return 操作日志对象
+     */"
+SysOperLogServiceImpl_cleanOperLog,"/**
+     * 清空操作日志
+     */"
+SysLogininforServiceImpl_insertLogininfor,"/**
+     * 新增系统登录日志
+     * 
+     * @param logininfor 访问日志对象
+     */"
+SysLogininforServiceImpl_selectLogininforList,"/**
+     * 查询系统登录日志集合
+     * 
+     * @param logininfor 访问日志对象
+     * @return 登录记录集合
+     */"
+SysLogininforServiceImpl_deleteLogininforByIds,"/**
+     * 批量删除系统登录日志
+     * 
+     * @param infoIds 需要删除的登录日志ID
+     * @return 结果
+     */"
+SysLogininforServiceImpl_cleanLogininfor,"/**
+     * 清空系统登录日志
+     */"
+SysDeptServiceImpl_selectDeptList,"/**
+     * 查询部门管理数据
+     * 
+     * @param dept 部门信息
+     * @return 部门信息集合
+     */"
+SysDeptServiceImpl_buildDeptTree,"/**
+     * 构建前端所需要树结构
+     * 
+     * @param depts 部门列表
+     * @return 树结构列表
+     */"
+SysDeptServiceImpl_buildDeptTreeSelect,"/**
+     * 构建前端所需要下拉树结构
+     * 
+     * @param depts 部门列表
+     * @return 下拉树结构列表
+     */"
+SysDeptServiceImpl_selectDeptListByRoleId,"/**
+     * 根据角色ID查询部门树信息
+     * 
+     * @param roleId 角色ID
+     * @return 选中部门列表
+     */"
+SysDeptServiceImpl_selectDeptById,"/**
+     * 根据部门ID查询信息
+     * 
+     * @param deptId 部门ID
+     * @return 部门信息
+     */"
+SysDeptServiceImpl_selectNormalChildrenDeptById,"/**
+     * 根据ID查询所有子部门（正常状态）
+     * 
+     * @param deptId 部门ID
+     * @return 子部门数
+     */"
+SysDeptServiceImpl_hasChildByDeptId,"/**
+     * 是否存在子节点
+     * 
+     * @param deptId 部门ID
+     * @return 结果
+     */"
+SysDeptServiceImpl_checkDeptExistUser,"/**
+     * 查询部门是否存在用户
+     * 
+     * @param deptId 部门ID
+     * @return 结果 true 存在 false 不存在
+     */"
+SysDeptServiceImpl_checkDeptNameUnique,"/**
+     * 校验部门名称是否唯一
+     * 
+     * @param dept 部门信息
+     * @return 结果
+     */"
+SysDeptServiceImpl_checkDeptDataScope,"/**
+     * 校验部门是否有数据权限
+     * 
+     * @param deptId 部门id
+     */"
+SysDeptServiceImpl_insertDept,"/**
+     * 新增保存部门信息
+     * 
+     * @param dept 部门信息
+     * @return 结果
+     */"
+SysDeptServiceImpl_updateDept,"/**
+     * 修改保存部门信息
+     * 
+     * @param dept 部门信息
+     * @return 结果
+     */"
+SysDeptServiceImpl_updateParentDeptStatusNormal,"/**
+     * 修改该部门的父级部门状态
+     * 
+     * @param dept 当前部门
+     */"
+SysDeptServiceImpl_updateDeptChildren,"/**
+     * 修改子元素关系
+     * 
+     * @param deptId 被修改的部门ID
+     * @param newAncestors 新的父ID集合
+     * @param oldAncestors 旧的父ID集合
+     */"
+SysDeptServiceImpl_deleteDeptById,"/**
+     * 删除部门管理信息
+     * 
+     * @param deptId 部门ID
+     * @return 结果
+     */"
+SysDeptServiceImpl_recursionFn,"/**
+     * 递归列表
+     */"
+SysDeptServiceImpl_getChildList,"/**
+     * 得到子节点列表
+     */"
+SysDeptServiceImpl_hasChild,"/**
+     * 判断是否有子节点
+     */"
+SysRoleServiceImpl_selectRoleList,"/**
+     * 根据条件分页查询角色数据
+     * 
+     * @param role 角色信息
+     * @return 角色数据集合信息
+     */"
+SysRoleServiceImpl_selectRolesByUserId,"/**
+     * 根据用户ID查询角色
+     * 
+     * @param userId 用户ID
+     * @return 角色列表
+     */"
+SysRoleServiceImpl_selectRolePermissionByUserId,"/**
+     * 根据用户ID查询权限
+     * 
+     * @param userId 用户ID
+     * @return 权限列表
+     */"
+SysRoleServiceImpl_selectRoleAll,"/**
+     * 查询所有角色
+     * 
+     * @return 角色列表
+     */"
+SysRoleServiceImpl_selectRoleListByUserId,"/**
+     * 根据用户ID获取角色选择框列表
+     * 
+     * @param userId 用户ID
+     * @return 选中角色ID列表
+     */"
+SysRoleServiceImpl_selectRoleById,"/**
+     * 通过角色ID查询角色
+     * 
+     * @param roleId 角色ID
+     * @return 角色对象信息
+     */"
+SysRoleServiceImpl_checkRoleNameUnique,"/**
+     * 校验角色名称是否唯一
+     * 
+     * @param role 角色信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_checkRoleKeyUnique,"/**
+     * 校验角色权限是否唯一
+     * 
+     * @param role 角色信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_checkRoleAllowed,"/**
+     * 校验角色是否允许操作
+     * 
+     * @param role 角色信息
+     */"
+SysRoleServiceImpl_checkRoleDataScope,"/**
+     * 校验角色是否有数据权限
+     * 
+     * @param roleId 角色id
+     */"
+SysRoleServiceImpl_countUserRoleByRoleId,"/**
+     * 通过角色ID查询角色使用数量
+     * 
+     * @param roleId 角色ID
+     * @return 结果
+     */"
+SysRoleServiceImpl_insertRole,"/**
+     * 新增保存角色信息
+     * 
+     * @param role 角色信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_updateRole,"/**
+     * 修改保存角色信息
+     * 
+     * @param role 角色信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_updateRoleStatus,"/**
+     * 修改角色状态
+     * 
+     * @param role 角色信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_authDataScope,"/**
+     * 修改数据权限信息
+     * 
+     * @param role 角色信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_insertRoleMenu,"/**
+     * 新增角色菜单信息
+     * 
+     * @param role 角色对象
+     */"
+SysRoleServiceImpl_insertRoleDept,"/**
+     * 新增角色部门信息(数据权限)
+     *
+     * @param role 角色对象
+     */"
+SysRoleServiceImpl_deleteRoleById,"/**
+     * 通过角色ID删除角色
+     * 
+     * @param roleId 角色ID
+     * @return 结果
+     */"
+SysRoleServiceImpl_deleteRoleByIds,"/**
+     * 批量删除角色信息
+     * 
+     * @param roleIds 需要删除的角色ID
+     * @return 结果
+     */"
+SysRoleServiceImpl_deleteAuthUser,"/**
+     * 取消授权用户角色
+     * 
+     * @param userRole 用户和角色关联信息
+     * @return 结果
+     */"
+SysRoleServiceImpl_deleteAuthUsers,"/**
+     * 批量取消授权用户角色
+     * 
+     * @param roleId 角色ID
+     * @param userIds 需要取消授权的用户数据ID
+     * @return 结果
+     */"
+SysRoleServiceImpl_insertAuthUsers,"/**
+     * 批量选择授权用户角色
+     * 
+     * @param roleId 角色ID
+     * @param userIds 需要授权的用户数据ID
+     * @return 结果
+     */"
+SysConfigServiceImpl_init,"/**
+     * 项目启动时，初始化参数到缓存
+     */"
+SysConfigServiceImpl_selectConfigById,"/**
+     * 查询参数配置信息
+     * 
+     * @param configId 参数配置ID
+     * @return 参数配置信息
+     */"
+SysConfigServiceImpl_selectConfigByKey,"/**
+     * 根据键名查询参数配置信息
+     * 
+     * @param configKey 参数key
+     * @return 参数键值
+     */"
+SysConfigServiceImpl_selectCaptchaOnOff,"/**
+     * 获取验证码开关
+     * 
+     * @return true开启，false关闭
+     */"
+SysConfigServiceImpl_selectConfigList,"/**
+     * 查询参数配置列表
+     * 
+     * @param config 参数配置信息
+     * @return 参数配置集合
+     */"
+SysConfigServiceImpl_insertConfig,"/**
+     * 新增参数配置
+     * 
+     * @param config 参数配置信息
+     * @return 结果
+     */"
+SysConfigServiceImpl_updateConfig,"/**
+     * 修改参数配置
+     * 
+     * @param config 参数配置信息
+     * @return 结果
+     */"
+SysConfigServiceImpl_deleteConfigByIds,"/**
+     * 批量删除参数信息
+     * 
+     * @param configIds 需要删除的参数ID
+     */"
+SysConfigServiceImpl_loadingConfigCache,"/**
+     * 加载参数缓存数据
+     */"
+SysConfigServiceImpl_clearConfigCache,"/**
+     * 清空参数缓存数据
+     */"
+SysConfigServiceImpl_resetConfigCache,"/**
+     * 重置参数缓存数据
+     */"
+SysConfigServiceImpl_checkConfigKeyUnique,"/**
+     * 校验参数键名是否唯一
+     * 
+     * @param config 参数配置信息
+     * @return 结果
+     */"
+SysConfigServiceImpl_getCacheKey,"/**
+     * 设置cache key
+     * 
+     * @param configKey 参数键
+     * @return 缓存键key
+     */"
+SysMessageServiceImpl_selectSysMessageByMessageId,"/**
+     * 查询消息
+     * 
+     * @param messageId 消息主键
+     * @return 消息
+     */"
+SysMessageServiceImpl_selectSysMessageList,"/**
+     * 查询消息列表
+     * 
+     * @param sysMessage 消息
+     * @return 消息
+     */"
+SysMessageServiceImpl_insertSysMessage,"/**
+     * 新增消息
+     * 
+     * @param sysMessage 消息
+     * @return 结果
+     */"
+SysMessageServiceImpl_updateSysMessage,"/**
+     * 修改消息
+     * 
+     * @param sysMessage 消息
+     * @return 结果
+     */"
+SysMessageServiceImpl_deleteSysMessageByMessageIds,"/**
+     * 批量删除消息
+     * 
+     * @param messageIds 需要删除的消息主键
+     * @return 结果
+     */"
+SysMessageServiceImpl_deleteSysMessageByMessageId,"/**
+     * 删除消息信息
+     * 
+     * @param messageId 消息主键
+     * @return 结果
+     */"
+SysMenuServiceImpl_selectMenuList,"/**
+     * 查询系统菜单列表
+     * 
+     * @param menu 菜单信息
+     * @return 菜单列表
+     */"
+SysMenuServiceImpl_selectMenuPermsByUserId,"/**
+     * 根据用户ID查询权限
+     * 
+     * @param userId 用户ID
+     * @return 权限列表
+     */"
+SysMenuServiceImpl_selectMenuTreeByUserId,"/**
+     * 根据用户ID查询菜单
+     * 
+     * @param userId 用户名称
+     * @return 菜单列表
+     */"
+SysMenuServiceImpl_selectMenuListByRoleId,"/**
+     * 根据角色ID查询菜单树信息
+     * 
+     * @param roleId 角色ID
+     * @return 选中菜单列表
+     */"
+SysMenuServiceImpl_buildMenus,"/**
+     * 构建前端路由所需要的菜单
+     * 
+     * @param menus 菜单列表
+     * @return 路由列表
+     */"
+SysMenuServiceImpl_buildMenuTree,"/**
+     * 构建前端所需要树结构
+     * 
+     * @param menus 菜单列表
+     * @return 树结构列表
+     */"
+SysMenuServiceImpl_buildMenuTreeSelect,"/**
+     * 构建前端所需要下拉树结构
+     * 
+     * @param menus 菜单列表
+     * @return 下拉树结构列表
+     */"
+SysMenuServiceImpl_selectMenuById,"/**
+     * 根据菜单ID查询信息
+     * 
+     * @param menuId 菜单ID
+     * @return 菜单信息
+     */"
+SysMenuServiceImpl_hasChildByMenuId,"/**
+     * 是否存在菜单子节点
+     * 
+     * @param menuId 菜单ID
+     * @return 结果
+     */"
+SysMenuServiceImpl_checkMenuExistRole,"/**
+     * 查询菜单使用数量
+     * 
+     * @param menuId 菜单ID
+     * @return 结果
+     */"
+SysMenuServiceImpl_insertMenu,"/**
+     * 新增保存菜单信息
+     * 
+     * @param menu 菜单信息
+     * @return 结果
+     */"
+SysMenuServiceImpl_updateMenu,"/**
+     * 修改保存菜单信息
+     * 
+     * @param menu 菜单信息
+     * @return 结果
+     */"
+SysMenuServiceImpl_deleteMenuById,"/**
+     * 删除菜单管理信息
+     * 
+     * @param menuId 菜单ID
+     * @return 结果
+     */"
+SysMenuServiceImpl_checkMenuNameUnique,"/**
+     * 校验菜单名称是否唯一
+     * 
+     * @param menu 菜单信息
+     * @return 结果
+     */"
+SysMenuServiceImpl_getRouteName,"/**
+     * 获取路由名称
+     * 
+     * @param menu 菜单信息
+     * @return 路由名称
+     */"
+SysMenuServiceImpl_getRouterPath,"/**
+     * 获取路由地址
+     * 
+     * @param menu 菜单信息
+     * @return 路由地址
+     */"
+SysMenuServiceImpl_getComponent,"/**
+     * 获取组件信息
+     * 
+     * @param menu 菜单信息
+     * @return 组件信息
+     */"
+SysMenuServiceImpl_isMenuFrame,"/**
+     * 是否为菜单内部跳转
+     * 
+     * @param menu 菜单信息
+     * @return 结果
+     */"
+SysMenuServiceImpl_isInnerLink,"/**
+     * 是否为内链组件
+     * 
+     * @param menu 菜单信息
+     * @return 结果
+     */"
+SysMenuServiceImpl_isParentView,"/**
+     * 是否为parent_view组件
+     * 
+     * @param menu 菜单信息
+     * @return 结果
+     */"
+SysMenuServiceImpl_getChildPerms,"/**
+     * 根据父节点的ID获取所有子节点
+     * 
+     * @param list 分类表
+     * @param parentId 传入的父节点ID
+     * @return String
+     */"
+SysMenuServiceImpl_recursionFn,"/**
+     * 递归列表
+     * 
+     * @param list
+     * @param t
+     */"
+SysMenuServiceImpl_getChildList,"/**
+     * 得到子节点列表
+     */"
+SysMenuServiceImpl_hasChild,"/**
+     * 判断是否有子节点
+     */"
+SysMenuServiceImpl_innerLinkReplaceEach,"/**
+     * 内链域名特殊字符替换
+     * 
+     * @return
+     */"
+SysDictDataServiceImpl_selectDictDataList,"/**
+     * 根据条件分页查询字典数据
+     * 
+     * @param dictData 字典数据信息
+     * @return 字典数据集合信息
+     */"
+SysDictDataServiceImpl_selectDictLabel,"/**
+     * 根据字典类型和字典键值查询字典数据信息
+     * 
+     * @param dictType 字典类型
+     * @param dictValue 字典键值
+     * @return 字典标签
+     */"
+SysDictDataServiceImpl_selectDictDataById,"/**
+     * 根据字典数据ID查询信息
+     * 
+     * @param dictCode 字典数据ID
+     * @return 字典数据
+     */"
+SysDictDataServiceImpl_deleteDictDataByIds,"/**
+     * 批量删除字典数据信息
+     * 
+     * @param dictCodes 需要删除的字典数据ID
+     */"
+SysDictDataServiceImpl_insertDictData,"/**
+     * 新增保存字典数据信息
+     * 
+     * @param data 字典数据信息
+     * @return 结果
+     */"
+SysDictDataServiceImpl_updateDictData,"/**
+     * 修改保存字典数据信息
+     * 
+     * @param data 字典数据信息
+     * @return 结果
+     */"
+SysNoticeServiceImpl_selectNoticeById,"/**
+     * 查询公告信息
+     * 
+     * @param noticeId 公告ID
+     * @return 公告信息
+     */"
+SysNoticeServiceImpl_selectNoticeList,"/**
+     * 查询公告列表
+     * 
+     * @param notice 公告信息
+     * @return 公告集合
+     */"
+SysNoticeServiceImpl_insertNotice,"/**
+     * 新增公告
+     * 
+     * @param notice 公告信息
+     * @return 结果
+     */"
+SysNoticeServiceImpl_updateNotice,"/**
+     * 修改公告
+     * 
+     * @param notice 公告信息
+     * @return 结果
+     */"
+SysNoticeServiceImpl_deleteNoticeById,"/**
+     * 删除公告对象
+     * 
+     * @param noticeId 公告ID
+     * @return 结果
+     */"
+SysNoticeServiceImpl_deleteNoticeByIds,"/**
+     * 批量删除公告信息
+     * 
+     * @param noticeIds 需要删除的公告ID
+     * @return 结果
+     */"
+SysPostServiceImpl_selectPostList,"/**
+     * 查询岗位信息集合
+     * 
+     * @param post 岗位信息
+     * @return 岗位信息集合
+     */"
+SysPostServiceImpl_selectPostAll,"/**
+     * 查询所有岗位
+     * 
+     * @return 岗位列表
+     */"
+SysPostServiceImpl_selectPostById,"/**
+     * 通过岗位ID查询岗位信息
+     * 
+     * @param postId 岗位ID
+     * @return 角色对象信息
+     */"
+SysPostServiceImpl_selectPostListByUserId,"/**
+     * 根据用户ID获取岗位选择框列表
+     * 
+     * @param userId 用户ID
+     * @return 选中岗位ID列表
+     */"
+SysPostServiceImpl_checkPostNameUnique,"/**
+     * 校验岗位名称是否唯一
+     * 
+     * @param post 岗位信息
+     * @return 结果
+     */"
+SysPostServiceImpl_checkPostCodeUnique,"/**
+     * 校验岗位编码是否唯一
+     * 
+     * @param post 岗位信息
+     * @return 结果
+     */"
+SysPostServiceImpl_countUserPostById,"/**
+     * 通过岗位ID查询岗位使用数量
+     * 
+     * @param postId 岗位ID
+     * @return 结果
+     */"
+SysPostServiceImpl_deletePostById,"/**
+     * 删除岗位信息
+     * 
+     * @param postId 岗位ID
+     * @return 结果
+     */"
+SysPostServiceImpl_deletePostByIds,"/**
+     * 批量删除岗位信息
+     * 
+     * @param postIds 需要删除的岗位ID
+     * @return 结果
+     */"
+SysPostServiceImpl_insertPost,"/**
+     * 新增保存岗位信息
+     * 
+     * @param post 岗位信息
+     * @return 结果
+     */"
+SysPostServiceImpl_updatePost,"/**
+     * 修改保存岗位信息
+     * 
+     * @param post 岗位信息
+     * @return 结果
+     */"
+SysDictTypeServiceImpl_init,"/**
+     * 项目启动时，初始化字典到缓存
+     */"
+SysDictTypeServiceImpl_selectDictTypeList,"/**
+     * 根据条件分页查询字典类型
+     * 
+     * @param dictType 字典类型信息
+     * @return 字典类型集合信息
+     */"
+SysDictTypeServiceImpl_selectDictTypeAll,"/**
+     * 根据所有字典类型
+     * 
+     * @return 字典类型集合信息
+     */"
+SysDictTypeServiceImpl_selectDictDataByType,"/**
+     * 根据字典类型查询字典数据
+     * 
+     * @param dictType 字典类型
+     * @return 字典数据集合信息
+     */"
+SysDictTypeServiceImpl_selectDictTypeById,"/**
+     * 根据字典类型ID查询信息
+     * 
+     * @param dictId 字典类型ID
+     * @return 字典类型
+     */"
+SysDictTypeServiceImpl_selectDictTypeByType,"/**
+     * 根据字典类型查询信息
+     * 
+     * @param dictType 字典类型
+     * @return 字典类型
+     */"
+SysDictTypeServiceImpl_deleteDictTypeByIds,"/**
+     * 批量删除字典类型信息
+     * 
+     * @param dictIds 需要删除的字典ID
+     */"
+SysDictTypeServiceImpl_loadingDictCache,"/**
+     * 加载字典缓存数据
+     */"
+SysDictTypeServiceImpl_clearDictCache,"/**
+     * 清空字典缓存数据
+     */"
+SysDictTypeServiceImpl_resetDictCache,"/**
+     * 重置字典缓存数据
+     */"
+SysDictTypeServiceImpl_insertDictType,"/**
+     * 新增保存字典类型信息
+     * 
+     * @param dict 字典类型信息
+     * @return 结果
+     */"
+SysDictTypeServiceImpl_updateDictType,"/**
+     * 修改保存字典类型信息
+     * 
+     * @param dict 字典类型信息
+     * @return 结果
+     */"
+SysDictTypeServiceImpl_checkDictTypeUnique,"/**
+     * 校验字典类型称是否唯一
+     * 
+     * @param dict 字典类型
+     * @return 结果
+     */"
+SysUserServiceImpl_selectUserList,"/**
+     * 根据条件分页查询用户列表
+     * 
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */"
+SysUserServiceImpl_selectAllocatedList,"/**
+     * 根据条件分页查询已分配用户角色列表
+     * 
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */"
+SysUserServiceImpl_selectUnallocatedList,"/**
+     * 根据条件分页查询未分配用户角色列表
+     * 
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */"
+SysUserServiceImpl_selectUserByUserName,"/**
+     * 通过用户名查询用户
+     * 
+     * @param userName 用户名
+     * @return 用户对象信息
+     */"
+SysUserServiceImpl_selectUserById,"/**
+     * 通过用户ID查询用户
+     * 
+     * @param userId 用户ID
+     * @return 用户对象信息
+     */"
+SysUserServiceImpl_selectUserRoleGroup,"/**
+     * 查询用户所属角色组
+     * 
+     * @param userName 用户名
+     * @return 结果
+     */"
+SysUserServiceImpl_selectUserPostGroup,"/**
+     * 查询用户所属岗位组
+     * 
+     * @param userName 用户名
+     * @return 结果
+     */"
+SysUserServiceImpl_checkUserNameUnique,"/**
+     * 校验用户名称是否唯一
+     * 
+     * @param userName 用户名称
+     * @return 结果
+     */"
+SysUserServiceImpl_checkPhoneUnique,"/**
+     * 校验手机号码是否唯一
+     *
+     * @param user 用户信息
+     * @return
+     */"
+SysUserServiceImpl_checkEmailUnique,"/**
+     * 校验email是否唯一
+     *
+     * @param user 用户信息
+     * @return
+     */"
+SysUserServiceImpl_checkUserAllowed,"/**
+     * 校验用户是否允许操作
+     * 
+     * @param user 用户信息
+     */"
+SysUserServiceImpl_checkUserDataScope,"/**
+     * 校验用户是否有数据权限
+     * 
+     * @param userId 用户id
+     */"
+SysUserServiceImpl_insertUser,"/**
+     * 新增保存用户信息
+     * 
+     * @param user 用户信息
+     * @return 结果
+     */"
+SysUserServiceImpl_registerUser,"/**
+     * 注册用户信息
+     * 
+     * @param user 用户信息
+     * @return 结果
+     */"
+SysUserServiceImpl_updateUser,"/**
+     * 修改保存用户信息
+     * 
+     * @param user 用户信息
+     * @return 结果
+     */"
+SysUserServiceImpl_insertUserAuth,"/**
+     * 用户授权角色
+     * 
+     * @param userId 用户ID
+     * @param roleIds 角色组
+     */"
+SysUserServiceImpl_updateUserStatus,"/**
+     * 修改用户状态
+     * 
+     * @param user 用户信息
+     * @return 结果
+     */"
+SysUserServiceImpl_updateUserProfile,"/**
+     * 修改用户基本信息
+     * 
+     * @param user 用户信息
+     * @return 结果
+     */"
+SysUserServiceImpl_updateUserAvatar,"/**
+     * 修改用户头像
+     * 
+     * @param userName 用户名
+     * @param avatar 头像地址
+     * @return 结果
+     */"
+SysUserServiceImpl_resetPwd,"/**
+     * 重置用户密码
+     * 
+     * @param user 用户信息
+     * @return 结果
+     */"
+SysUserServiceImpl_resetUserPwd,"/**
+     * 重置用户密码
+     * 
+     * @param userName 用户名
+     * @param password 密码
+     * @return 结果
+     */"
+SysUserServiceImpl_insertUserRole,"/**
+     * 新增用户角色信息
+     * 
+     * @param userId 用户ID
+     * @param roleIds 角色组
+     */"
+SysUserServiceImpl_insertUserPost,"/**
+     * 新增用户岗位信息
+     * 
+     * @param user 用户对象
+     */"
+SysUserServiceImpl_deleteUserById,"/**
+     * 通过用户ID删除用户
+     * 
+     * @param userId 用户ID
+     * @return 结果
+     */"
+SysUserServiceImpl_deleteUserByIds,"/**
+     * 批量删除用户信息
+     * 
+     * @param userIds 需要删除的用户ID
+     * @return 结果
+     */"
+SysUserServiceImpl_importUser,"/**
+     * 导入用户数据
+     * 
+     * @param userList 用户数据列表
+     * @param isUpdateSupport 是否更新支持，如果已存在，则进行更新数据
+     * @param operName 操作用户
+     * @return 结果
+     */"
+SysAttachmentServiceImpl_selectSysAttachmentByAttachmentId,"/**
+     * 查询附件
+     * 
+     * @param attachmentId 附件主键
+     * @return 附件
+     */"
+SysAttachmentServiceImpl_selectSysAttachmentList,"/**
+     * 查询附件列表
+     * 
+     * @param sysAttachment 附件
+     * @return 附件
+     */"
+SysAttachmentServiceImpl_insertSysAttachment,"/**
+     * 新增附件
+     * 
+     * @param sysAttachment 附件
+     * @return 结果
+     */"
+SysAttachmentServiceImpl_updateSysAttachment,"/**
+     * 修改附件
+     * 
+     * @param sysAttachment 附件
+     * @return 结果
+     */"
+SysAttachmentServiceImpl_deleteSysAttachmentByAttachmentIds,"/**
+     * 批量删除附件
+     * 
+     * @param attachmentIds 需要删除的附件主键
+     * @return 结果
+     */"
+SysAttachmentServiceImpl_deleteSysAttachmentByAttachmentId,"/**
+     * 删除附件信息
+     * 
+     * @param attachmentId 附件主键
+     * @return 结果
+     */"
+SysUserOnlineServiceImpl_selectOnlineByIpaddr,"/**
+     * 通过登录地址查询信息
+     * 
+     * @param ipaddr 登录地址
+     * @param user 用户信息
+     * @return 在线用户信息
+     */"
+SysUserOnlineServiceImpl_selectOnlineByUserName,"/**
+     * 通过用户名称查询信息
+     * 
+     * @param userName 用户名称
+     * @param user 用户信息
+     * @return 在线用户信息
+     */"
+SysUserOnlineServiceImpl_selectOnlineByInfo,"/**
+     * 通过登录地址/用户名称查询信息
+     * 
+     * @param ipaddr 登录地址
+     * @param userName 用户名称
+     * @param user 用户信息
+     * @return 在线用户信息
+     */"
+SysUserOnlineServiceImpl_loginUserToUserOnline,"/**
+     * 设置在线用户信息
+     * 
+     * @param user 用户信息
+     * @return 在线用户
+     */"
+AutoCodeUtil_paddingStr,"/**
+     * 根据编码规则的配置进行补齐操作
+     * @param rule
+     * @param sb
+     * @return
+     */"
+PhoneUtils_isMobile,"/**
+     * 判断是否是手机号
+     *
+     * @param tel 手机号
+     * @return boolean true:是  false:否
+     */"
+PhoneUtils_isTel,"/**
+     * 验证固定电话号码
+     */"
+LoginParams_validateCode,"/**
+     * 验证验证码 是否正确 （目前都不需要验证码）
+     *
+     * @return 正确返回true  否则返回false
+     */"
+GenTableColumnServiceImpl_selectGenTableColumnListByTableId,"/**
+     * 查询业务字段列表
+     * 
+     * @param tableId 业务字段编号
+     * @return 业务字段集合
+     */"
+GenTableColumnServiceImpl_insertGenTableColumn,"/**
+     * 新增业务字段
+     * 
+     * @param genTableColumn 业务字段信息
+     * @return 结果
+     */"
+GenTableColumnServiceImpl_updateGenTableColumn,"/**
+     * 修改业务字段
+     * 
+     * @param genTableColumn 业务字段信息
+     * @return 结果
+     */"
+GenTableColumnServiceImpl_deleteGenTableColumnByIds,"/**
+     * 删除业务字段对象
+     * 
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */"
+GenTableServiceImpl_selectGenTableById,"/**
+     * 查询业务信息
+     * 
+     * @param id 业务ID
+     * @return 业务信息
+     */"
+GenTableServiceImpl_selectGenTableList,"/**
+     * 查询业务列表
+     * 
+     * @param genTable 业务信息
+     * @return 业务集合
+     */"
+GenTableServiceImpl_selectDbTableList,"/**
+     * 查询据库列表
+     * 
+     * @param genTable 业务信息
+     * @return 数据库表集合
+     */"
+GenTableServiceImpl_selectDbTableListByNames,"/**
+     * 查询据库列表
+     * 
+     * @param tableNames 表名称组
+     * @return 数据库表集合
+     */"
+GenTableServiceImpl_selectGenTableAll,"/**
+     * 查询所有表信息
+     * 
+     * @return 表信息集合
+     */"
+GenTableServiceImpl_updateGenTable,"/**
+     * 修改业务
+     * 
+     * @param genTable 业务信息
+     * @return 结果
+     */"
+GenTableServiceImpl_deleteGenTableByIds,"/**
+     * 删除业务对象
+     * 
+     * @param tableIds 需要删除的数据ID
+     * @return 结果
+     */"
+GenTableServiceImpl_importGenTable,"/**
+     * 导入表结构
+     * 
+     * @param tableList 导入表列表
+     */"
+GenTableServiceImpl_previewCode,"/**
+     * 预览代码
+     * 
+     * @param tableId 表编号
+     * @return 预览数据列表
+     */"
+GenTableServiceImpl_downloadCode,"/**
+     * 批量生成代码（下载方式）
+     * 
+     * @param tableNames 表数组
+     * @return 数据
+     */"
+GenTableServiceImpl_generatorCode,"/**
+     * 查询表信息并生成代码
+     */"
+GenTableServiceImpl_synchDb,"/**
+     * 同步数据库
+     * 
+     * @param tableName 表名称
+     */"
+GenTableServiceImpl_validateEdit,"/**
+     * 修改保存参数校验
+     * 
+     * @param genTable 业务信息
+     */"
+GenTableServiceImpl_setPkColumn,"/**
+     * 设置主键列信息
+     * 
+     * @param table 业务表信息
+     */"
+GenTableServiceImpl_setSubTable,"/**
+     * 设置主子表信息
+     * 
+     * @param table 业务表信息
+     */"
+GenTableServiceImpl_setTableFromOptions,"/**
+     * 设置代码生成其他选项值
+     * 
+     * @param genTable 设置后的生成对象
+     */"
+GenTableServiceImpl_getGenPath,"/**
+     * 获取代码生成地址
+     * 
+     * @param table 业务表信息
+     * @param template 模板文件路径
+     * @return 生成地址
+     */"
+GenController_genList,"/**
+     * 查询代码生成列表
+     */"
+GenController_getInfo,"/**
+     * 修改代码生成业务
+     */"
+GenController_dataList,"/**
+     * 查询数据库列表
+     */"
+GenController_columnList,"/**
+     * 查询数据表字段列表
+     */"
+GenController_importTableSave,"/**
+     * 导入表结构（保存）
+     */"
+GenController_editSave,"/**
+     * 修改保存代码生成业务
+     */"
+GenController_remove,"/**
+     * 删除代码生成
+     */"
+GenController_preview,"/**
+     * 预览代码
+     */"
+GenController_download,"/**
+     * 生成代码（下载方式）
+     */"
+GenController_genCode,"/**
+     * 生成zip文件
+     */"
+GenController_synchDb,"/**
+     * 同步数据库
+     */"
+GenController_batchGenCode,"/**
+     * 批量生成代码
+     */"
+VelocityUtils_prepareContext,"/**
+     * 设置模板变量信息
+     *
+     * @return 模板列表
+     */"
+VelocityUtils_getTemplateList,"/**
+     * 获取模板信息
+     *
+     * @return 模板列表
+     */"
+VelocityUtils_getFileName,"/**
+     * 获取文件名
+     */"
+VelocityUtils_getPackagePrefix,"/**
+     * 获取包前缀
+     *
+     * @param packageName 包名称
+     * @return 包前缀名称
+     */"
+VelocityUtils_getImportList,"/**
+     * 根据列类型获取导入包
+     * 
+     * @param genTable 业务表对象
+     * @return 返回需要导入的包列表
+     */"
+VelocityUtils_getDicts,"/**
+     * 根据列类型获取字典组
+     * 
+     * @param genTable 业务表对象
+     * @return 返回字典组
+     */"
+VelocityUtils_addDicts,"/**
+     * 添加字典列表
+     * 
+     * @param dicts 字典列表
+     * @param columns 列集合
+     */"
+VelocityUtils_getPermissionPrefix,"/**
+     * 获取权限前缀
+     *
+     * @param moduleName 模块名称
+     * @param businessName 业务名称
+     * @return 返回权限前缀
+     */"
+VelocityUtils_getParentMenuId,"/**
+     * 获取上级菜单ID字段
+     *
+     * @param paramsObj 生成其他选项
+     * @return 上级菜单ID字段
+     */"
+VelocityUtils_getTreecode,"/**
+     * 获取树编码
+     *
+     * @param paramsObj 生成其他选项
+     * @return 树编码
+     */"
+VelocityUtils_getTreeParentCode,"/**
+     * 获取树父编码
+     *
+     * @param paramsObj 生成其他选项
+     * @return 树父编码
+     */"
+VelocityUtils_getTreeName,"/**
+     * 获取树名称
+     *
+     * @param paramsObj 生成其他选项
+     * @return 树名称
+     */"
+VelocityUtils_getExpandColumn,"/**
+     * 获取需要在哪一列上面显示展开按钮
+     *
+     * @param genTable 业务表对象
+     * @return 展开按钮列序号
+     */"
+VelocityInitializer_initVelocity,"/**
+     * 初始化vm方法
+     */"
+GenUtils_initTable,"/**
+     * 初始化表信息
+     */"
+GenUtils_initColumnField,"/**
+     * 初始化列属性字段
+     */"
+GenUtils_arraysContains,"/**
+     * 校验数组是否包含指定值
+     * 
+     * @param arr 数组
+     * @param targetValue 值
+     * @return 是否包含
+     */"
+GenUtils_getModuleName,"/**
+     * 获取模块名
+     * 
+     * @param packageName 包名
+     * @return 模块名
+     */"
+GenUtils_getBusinessName,"/**
+     * 获取业务名
+     * 
+     * @param tableName 表名
+     * @return 业务名
+     */"
+GenUtils_convertClassName,"/**
+     * 表名转换成Java类名
+     * 
+     * @param tableName 表名称
+     * @return 类名
+     */"
+GenUtils_replaceFirst,"/**
+     * 批量替换前缀
+     * 
+     * @param replacementm 替换值
+     * @param searchList 替换列表
+     * @return
+     */"
+GenUtils_replaceText,"/**
+     * 关键字替换
+     * 
+     * @param text 需要被替换的名字
+     * @return 替换后的名字
+     */"
+GenUtils_getDbType,"/**
+     * 获取数据库类型字段
+     * 
+     * @param columnType 列类型
+     * @return 截取后的列类型
+     */"
+GenUtils_getColumnLength,"/**
+     * 获取字段长度
+     * 
+     * @param columnType 列类型
+     * @return 截取后的列类型
+     */"
+RedisCache_setCacheObject,"/**
+     * 缓存基本的对象，Integer、String、实体类等
+     *
+     * @param key 缓存的键值
+     * @param value 缓存的值
+     * @param timeout 时间
+     * @param timeUnit 时间颗粒度
+     */"
+RedisCache_expire,"/**
+     * 设置有效时间
+     *
+     * @param key Redis键
+     * @param timeout 超时时间
+     * @param unit 时间单位
+     * @return true=设置成功；false=设置失败
+     */"
+RedisCache_getCacheObject,"/**
+     * 获得缓存的基本对象。
+     *
+     * @param key 缓存键值
+     * @return 缓存键值对应的数据
+     */"
+RedisCache_deleteObject,"/**
+     * 删除集合对象
+     *
+     * @param collection 多个对象
+     * @return
+     */"
+RedisCache_setCacheList,"/**
+     * 缓存List数据
+     *
+     * @param key 缓存的键值
+     * @param dataList 待缓存的List数据
+     * @return 缓存的对象
+     */"
+RedisCache_getCacheList,"/**
+     * 获得缓存的list对象
+     *
+     * @param key 缓存的键值
+     * @return 缓存键值对应的数据
+     */"
+RedisCache_setCacheSet,"/**
+     * 缓存Set
+     *
+     * @param key 缓存键值
+     * @param dataSet 缓存的数据
+     * @return 缓存数据的对象
+     */"
+RedisCache_getCacheSet,"/**
+     * 获得缓存的set
+     *
+     * @param key
+     * @return
+     */"
+RedisCache_setCacheMap,"/**
+     * 缓存Map
+     *
+     * @param key
+     * @param dataMap
+     */"
+RedisCache_getCacheMap,"/**
+     * 获得缓存的Map
+     *
+     * @param key
+     * @return
+     */"
+RedisCache_setCacheMapValue,"/**
+     * 往Hash中存入数据
+     *
+     * @param key Redis键
+     * @param hKey Hash键
+     * @param value 值
+     */"
+RedisCache_getCacheMapValue,"/**
+     * 获取Hash中的数据
+     *
+     * @param key Redis键
+     * @param hKey Hash键
+     * @return Hash中的对象
+     */"
+RedisCache_delCacheMapValue,"/**
+     * 删除Hash中的数据
+     * 
+     * @param key
+     * @param hKey
+     */"
+RedisCache_getMultiCacheMapValue,"/**
+     * 获取多个Hash中的数据
+     *
+     * @param key Redis键
+     * @param hKeys Hash键集合
+     * @return Hash对象集合
+     */"
+RedisCache_keys,"/**
+     * 获得缓存的基本对象列表
+     *
+     * @param pattern 字符串前缀
+     * @return 对象列表
+     */"
+BaseController_initBinder,"/**
+     * 将前台传递过来的日期格式的字符串，自动转化为Date类型
+     */"
+BaseController_startPage,"/**
+     * 设置请求分页数据
+     */"
+BaseController_startOrderBy,"/**
+     * 设置请求排序数据
+     */"
+BaseController_clearPage,"/**
+     * 清理分页的线程变量
+     */"
+BaseController_getDataTable,"/**
+     * 响应请求分页数据
+     */"
+BaseController_success,"/**
+     * 返回成功消息
+     */"
+BaseController_error,"/**
+     * 返回失败消息
+     */"
+BaseController_toAjax,"/**
+     * 响应返回结果
+     * 
+     * @param result 结果
+     * @return 操作结果
+     */"
+BaseController_redirect,"/**
+     * 页面跳转
+     */"
+BaseController_getLoginUser,"/**
+     * 获取用户缓存信息
+     */"
+BaseController_getUserId,"/**
+     * 获取登录用户id
+     */"
+BaseController_getDeptId,"/**
+     * 获取登录部门id
+     */"
+BaseController_getUsername,"/**
+     * 获取登录用户名
+     */"
+TableSupport_getPageDomain,"/**
+     * 封装分页对象
+     */"
+AjaxResult_success,"/**
+     * 返回成功消息
+     * 
+     * @param msg 返回内容
+     * @param data 数据对象
+     * @return 成功消息
+     */"
+AjaxResult_error,"/**
+     * 返回错误消息
+     * 
+     * @param code 状态码
+     * @param msg 返回内容
+     * @return 警告消息
+     */"
+AjaxResult_put,"/**
+     * 方便链式调用
+     *
+     * @param key 键
+     * @param value 值
+     * @return 数据对象
+     */"
+LoginUser_isAccountNonExpired,"/**
+     * 账户是否未过期,过期无法验证
+     */"
+LoginUser_isAccountNonLocked,"/**
+     * 指定用户是否解锁,锁定的用户无法进行身份验证
+     * 
+     * @return
+     */"
+LoginUser_isCredentialsNonExpired,"/**
+     * 指示是否已过期的用户的凭据(密码),过期的凭据防止认证
+     * 
+     * @return
+     */"
+LoginUser_isEnabled,"/**
+     * 是否可用 ,禁用的用户不能身份验证
+     * 
+     * @return
+     */"
+Convert_toStr,"/**
+     * 转换为字符串<br>
+     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toChar,"/**
+     * 转换为字符<br>
+     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toByte,"/**
+     * 转换为byte<br>
+     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toShort,"/**
+     * 转换为Short<br>
+     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toNumber,"/**
+     * 转换为Number<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toInt,"/**
+     * 转换为int<br>
+     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toIntArray,"/**
+     * 转换为Integer数组<br>
+     *
+     * @param split 分隔符
+     * @param split 被转换的值
+     * @return 结果
+     */"
+Convert_toLongArray,"/**
+     * 转换为Long数组<br>
+     *
+     * @param split 分隔符
+     * @param str 被转换的值
+     * @return 结果
+     */"
+Convert_toStrArray,"/**
+     * 转换为String数组<br>
+     *
+     * @param split 分隔符
+     * @param split 被转换的值
+     * @return 结果
+     */"
+Convert_toLong,"/**
+     * 转换为long<br>
+     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toDouble,"/**
+     * 转换为double<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toFloat,"/**
+     * 转换为Float<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toBool,"/**
+     * 转换为boolean<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toEnum,"/**
+     * 转换为Enum对象<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     *
+     * @param clazz Enum的Class
+     * @param value 值
+     * @return Enum
+     */"
+Convert_toBigInteger,"/**
+     * 转换为BigInteger<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_toBigDecimal,"/**
+     * 转换为BigDecimal<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */"
+Convert_utf8Str,"/**
+     * 将对象转为字符串<br>
+     * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组 2、对象数组会调用Arrays.toString方法
+     *
+     * @param obj 对象
+     * @return 字符串
+     */"
+Convert_str,"/**
+     * 将编码的byteBuffer数据转换为字符串
+     *
+     * @param data 数据
+     * @param charset 字符集，如果为空使用当前系统字符集
+     * @return 字符串
+     */"
+Convert_toSBC,"/**
+     * 半角转全角
+     *
+     * @param input String
+     * @param notConvertSet 不替换的字符集合
+     * @return 全角字符串.
+     */"
+Convert_toDBC,"/**
+     * 替换全角为半角
+     *
+     * @param text 文本
+     * @param notConvertSet 不替换的字符集合
+     * @return 替换后的字符
+     */"
+Convert_digitUppercase,"/**
+     * 数字金额大写转换 先写个完整的然后将如零拾替换成零
+     *
+     * @param n 数字
+     * @return 中文大写数字
+     */"
+StrFormatter_format,"/**
+     * 格式化字符串<br>
+     * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
+     * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
+     * 例：<br>
+     * 通常使用：format(""this is {} for {}"", ""a"", ""b"") -> this is a for b<br>
+     * 转义{}： format(""this is \\{} for {}"", ""a"", ""b"") -> this is \{} for a<br>
+     * 转义\： format(""this is \\\\{} for {}"", ""a"", ""b"") -> this is \a for b<br>
+     * 
+     * @param strPattern 字符串模板
+     * @param argArray 参数列表
+     * @return 结果
+     */"
+CharsetKit_charset,"/**
+     * 转换为Charset对象
+     * 
+     * @param charset 字符集，为空则返回默认字符集
+     * @return Charset
+     */"
+CharsetKit_convert,"/**
+     * 转换字符串的字符集编码
+     * 
+     * @param source 字符串
+     * @param srcCharset 源字符集，默认ISO-8859-1
+     * @param destCharset 目标字符集，默认UTF-8
+     * @return 转换后的字符集
+     */"
+CharsetKit_systemCharset,"/**
+     * @return 系统字符集编码
+     */"
+RuoYiConfig_getImportPath,"/**
+     * 获取导入上传路径
+     */"
+RuoYiConfig_getAvatarPath,"/**
+     * 获取头像上传路径
+     */"
+RuoYiConfig_getDownloadPath,"/**
+     * 获取下载路径
+     */"
+RuoYiConfig_getUploadPath,"/**
+     * 获取上传路径
+     */"
+XssHttpServletRequestWrapper_isJsonRequest,"/**
+     * 是否是Json请求
+     * 
+     * @param request
+     */"
+ExceptionUtil_getExceptionMessage,"/**
+     * 获取exception的详细错误信息。
+     */"
+StringUtils_nvl,"/**
+     * 获取参数不为空值
+     * 
+     * @param value defaultValue 要判断的value
+     * @return value 返回值
+     */"
+StringUtils_isEmpty,"/**
+     * * 判断一个字符串是否为空串
+     * 
+     * @param str String
+     * @return true：为空 false：非空
+     */"
+StringUtils_isNotEmpty,"/**
+     * * 判断一个字符串是否为非空串
+     * 
+     * @param str String
+     * @return true：非空串 false：空串
+     */"
+StringUtils_isNull,"/**
+     * * 判断一个对象是否为空
+     * 
+     * @param object Object
+     * @return true：为空 false：非空
+     */"
+StringUtils_isNotNull,"/**
+     * * 判断一个对象是否非空
+     * 
+     * @param object Object
+     * @return true：非空 false：空
+     */"
+StringUtils_isArray,"/**
+     * * 判断一个对象是否是数组类型（Java基本型别的数组）
+     * 
+     * @param object 对象
+     * @return true：是数组 false：不是数组
+     */"
+StringUtils_trim,"/**
+     * 去空格
+     */"
+StringUtils_substring,"/**
+     * 截取字符串
+     * 
+     * @param str 字符串
+     * @param start 开始
+     * @param end 结束
+     * @return 结果
+     */"
+StringUtils_format,"/**
+     * 格式化文本, {} 表示占位符<br>
+     * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
+     * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
+     * 例：<br>
+     * 通常使用：format(""this is {} for {}"", ""a"", ""b"") -> this is a for b<br>
+     * 转义{}： format(""this is \\{} for {}"", ""a"", ""b"") -> this is \{} for a<br>
+     * 转义\： format(""this is \\\\{} for {}"", ""a"", ""b"") -> this is \a for b<br>
+     * 
+     * @param template 文本模板，被替换的部分用 {} 表示
+     * @param params 参数值
+     * @return 格式化后的文本
+     */"
+StringUtils_ishttp,"/**
+     * 是否为http(s)://开头
+     * 
+     * @param link 链接
+     * @return 结果
+     */"
+StringUtils_str2Set,"/**
+     * 字符串转set
+     * 
+     * @param str 字符串
+     * @param sep 分隔符
+     * @return set集合
+     */"
+StringUtils_str2List,"/**
+     * 字符串转list
+     * 
+     * @param str 字符串
+     * @param sep 分隔符
+     * @param filterBlank 过滤纯空白
+     * @param trim 去掉首尾空白
+     * @return list集合
+     */"
+StringUtils_containsAnyIgnoreCase,"/**
+     * 查找指定字符串是否包含指定字符串列表中的任意一个字符串同时串忽略大小写
+     *
+     * @param cs 指定字符串
+     * @param searchCharSequences 需要检查的字符串数组
+     * @return 是否包含任意一个字符串
+     */"
+StringUtils_toUnderScoreCase,"/**
+     * 驼峰转下划线命名
+     */"
+StringUtils_inStringIgnoreCase,"/**
+     * 是否包含字符串
+     * 
+     * @param str 验证字符串
+     * @param strs 字符串组
+     * @return 包含返回true
+     */"
+StringUtils_convertToCamelCase,"/**
+     * 将下划线大写方式命名的字符串转换为驼峰式。如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。 例如：HELLO_WORLD->HelloWorld
+     * 
+     * @param name 转换前的下划线大写方式命名的字符串
+     * @return 转换后的驼峰式命名的字符串
+     */"
+StringUtils_toCamelCase,"/**
+     * 驼峰式命名法 例如：user_name->userName
+     */"
+StringUtils_matches,"/**
+     * 查找指定字符串是否匹配指定字符串列表中的任意一个字符串
+     * 
+     * @param str 指定字符串
+     * @param strs 需要检查的字符串数组
+     * @return 是否匹配
+     */"
+StringUtils_isMatch,"/**
+     * 判断url是否与规则配置: 
+     * ? 表示单个字符; 
+     * * 表示一层路径内的任意字符串，不可跨层级; 
+     * ** 表示任意层路径;
+     * 
+     * @param pattern 匹配规则
+     * @param url 需要匹配的url
+     * @return
+     */"
+StringUtils_padl,"/**
+     * 字符串左补齐。如果原始字符串s长度大于size，则只保留最后size个字符。
+     * 
+     * @param s 原始字符串
+     * @param size 字符串指定长度
+     * @param c 用于补齐的字符
+     * @return 返回指定长度的字符串，由原字符串左补齐或截取得到。
+     */"
+MessageUtils_message,"/**
+     * 根据消息键和参数 获取消息 委托给spring messageSource
+     *
+     * @param code 消息键
+     * @param args 参数
+     * @return 获取国际化翻译值
+     */"
+SecurityUtils_getUserId,"/**
+     * 用户ID
+     **/"
+SecurityUtils_getDeptId,"/**
+     * 获取部门ID
+     **/"
+SecurityUtils_getUsername,"/**
+     * 获取用户账户
+     **/"
+SecurityUtils_getLoginUser,"/**
+     * 获取用户
+     **/"
+SecurityUtils_getAuthentication,"/**
+     * 获取Authentication
+     */"
+SecurityUtils_encryptPassword,"/**
+     * 生成BCryptPasswordEncoder密码
+     *
+     * @param password 密码
+     * @return 加密字符串
+     */"
+SecurityUtils_matchesPassword,"/**
+     * 判断密码是否相同
+     *
+     * @param rawPassword 真实密码
+     * @param encodedPassword 加密后字符
+     * @return 结果
+     */"
+SecurityUtils_isAdmin,"/**
+     * 是否为管理员
+     * 
+     * @param userId 用户ID
+     * @return 结果
+     */"
+DictUtils_setDictCache,"/**
+     * 设置字典缓存
+     * 
+     * @param key 参数键
+     * @param dictDatas 字典数据列表
+     */"
+DictUtils_getDictCache,"/**
+     * 获取字典缓存
+     * 
+     * @param key 参数键
+     * @return dictDatas 字典数据列表
+     */"
+DictUtils_getDictLabel,"/**
+     * 根据字典类型和字典值获取字典标签
+     * 
+     * @param dictType 字典类型
+     * @param dictValue 字典值
+     * @param separator 分隔符
+     * @return 字典标签
+     */"
+DictUtils_getDictValue,"/**
+     * 根据字典类型和字典标签获取字典值
+     * 
+     * @param dictType 字典类型
+     * @param dictLabel 字典标签
+     * @param separator 分隔符
+     * @return 字典值
+     */"
+DictUtils_removeDictCache,"/**
+     * 删除指定字典缓存
+     * 
+     * @param key 字典键
+     */"
+DictUtils_clearDictCache,"/**
+     * 清空字典缓存
+     */"
+DictUtils_getCacheKey,"/**
+     * 设置cache key
+     * 
+     * @param configKey 参数键
+     * @return 缓存键key
+     */"
+Threads_sleep,"/**
+     * sleep等待,单位为毫秒
+     */"
+Threads_shutdownAndAwaitTermination,"/**
+     * 停止线程池
+     * 先使用shutdown, 停止接收新任务并尝试完成所有已存在任务.
+     * 如果超时, 则调用shutdownNow, 取消在workQueue中Pending的任务,并中断所有阻塞函数.
+     * 如果仍然超時，則強制退出.
+     * 另对在shutdown时线程本身被调用中断做了处理.
+     */"
+Threads_printException,"/**
+     * 打印线程异常信息
+     */"
+ServletUtils_getParameter,"/**
+     * 获取String参数
+     */"
+ServletUtils_getParameterToInt,"/**
+     * 获取Integer参数
+     */"
+ServletUtils_getParameterToBool,"/**
+     * 获取Boolean参数
+     */"
+ServletUtils_getRequest,"/**
+     * 获取request
+     */"
+ServletUtils_getResponse,"/**
+     * 获取response
+     */"
+ServletUtils_getSession,"/**
+     * 获取session
+     */"
+ServletUtils_renderString,"/**
+     * 将字符串渲染到客户端
+     * 
+     * @param response 渲染对象
+     * @param string 待渲染的字符串
+     */"
+ServletUtils_isAjaxRequest,"/**
+     * 是否是Ajax异步请求
+     * 
+     * @param request
+     */"
+ServletUtils_urlEncode,"/**
+     * 内容编码
+     *
+     * @param str 内容
+     * @return 编码后的内容
+     */"
+ServletUtils_urlDecode,"/**
+     * 内容解码
+     *
+     * @param str 内容
+     * @return 解码后的内容
+     */"
+DateUtils_getNowDate,"/**
+     * 获取当前Date型日期
+     * 
+     * @return Date() 当前日期
+     */"
+DateUtils_getDate,"/**
+     * 获取当前日期, 默认格式为yyyy-MM-dd
+     * 
+     * @return String
+     */"
+DateUtils_datePath,"/**
+     * 日期路径 即年/月/日 如2018/08/08
+     */"
+DateUtils_dateTime,"/**
+     * 日期路径 即年/月/日 如20180808
+     */"
+DateUtils_parseDate,"/**
+     * 日期型字符串转化为日期 格式
+     */"
+DateUtils_getServerStartDate,"/**
+     * 获取服务器启动时间
+     */"
+DateUtils_differentDaysByMillisecond,"/**
+     * 计算相差天数
+     */"
+DateUtils_getDatePoor,"/**
+     * 计算两个时间差
+     */"
+DateUtils_toDate,"/**
+     * 增加 LocalDate ==> Date
+     */"
+Arith_add,"/**
+     * 提供精确的加法运算。
+     * @param v1 被加数
+     * @param v2 加数
+     * @return 两个参数的和
+     */"
+Arith_sub,"/**
+     * 提供精确的减法运算。
+     * @param v1 被减数
+     * @param v2 减数
+     * @return 两个参数的差
+     */"
+Arith_mul,"/**
+     * 提供精确的乘法运算。
+     * @param v1 被乘数
+     * @param v2 乘数
+     * @return 两个参数的积
+     */"
+Arith_div,"/**
+     * 提供（相对）精确的除法运算。当发生除不尽的情况时，由scale参数指
+     * 定精度，以后的数字四舍五入。
+     * @param v1 被除数
+     * @param v2 除数
+     * @param scale 表示表示需要精确到小数点以后几位。
+     * @return 两个参数的商
+     */"
+Arith_round,"/**
+     * 提供精确的小数位四舍五入处理。
+     * @param v 需要四舍五入的数字
+     * @param scale 小数点后保留几位
+     * @return 四舍五入后的结果
+     */"
+PageUtils_startPage,"/**
+     * 设置请求分页数据
+     */"
+PageUtils_clearPage,"/**
+     * 清理分页的线程变量
+     */"
+SpringUtils_getBean,"/**
+     * 获取类型为requiredType的对象
+     *
+     * @param clz
+     * @return
+     * @throws org.springframework.beans.BeansException
+     *
+     */"
+SpringUtils_containsBean,"/**
+     * 如果BeanFactory包含一个与所给名称匹配的bean定义，则返回true
+     *
+     * @param name
+     * @return boolean
+     */"
+SpringUtils_isSingleton,"/**
+     * 判断以给定名字注册的bean定义是一个singleton还是一个prototype。 如果与给定名字相应的bean定义没有被找到，将会抛出一个异常（NoSuchBeanDefinitionException）
+     *
+     * @param name
+     * @return boolean
+     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+     *
+     */"
+SpringUtils_getType,"/**
+     * @param name
+     * @return Class 注册对象的类型
+     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+     *
+     */"
+SpringUtils_getAliases,"/**
+     * 如果给定的bean名字在bean定义中有别名，则返回这些别名
+     *
+     * @param name
+     * @return
+     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+     *
+     */"
+SpringUtils_getAopProxy,"/**
+     * 获取aop代理对象
+     * 
+     * @param invoker
+     * @return
+     */"
+SpringUtils_getActiveProfiles,"/**
+     * 获取当前的环境配置，无配置返回null
+     *
+     * @return 当前的环境配置
+     */"
+SpringUtils_getActiveProfile,"/**
+     * 获取当前的环境配置，当有多个环境配置时，只获取第一个
+     *
+     * @return 当前的环境配置
+     */"
+IpUtils_getIpAddr,"/**
+     * 获取客户端IP
+     * 
+     * @param request 请求对象
+     * @return IP地址
+     */"
+IpUtils_internalIp,"/**
+     * 检查是否为内部IP地址
+     * 
+     * @param addr byte地址
+     * @return 结果
+     */"
+IpUtils_textToNumericFormatV4,"/**
+     * 将IPv4地址转换成字节
+     * 
+     * @param text IPv4地址
+     * @return byte 字节
+     */"
+IpUtils_getHostIp,"/**
+     * 获取IP地址
+     * 
+     * @return 本地IP地址
+     */"
+IpUtils_getHostName,"/**
+     * 获取主机名
+     * 
+     * @return 本地主机名
+     */"
+IpUtils_getMultistageReverseProxyIp,"/**
+     * 从多级反向代理中获得第一个非unknown IP地址
+     *
+     * @param ip 获得的IP地址
+     * @return 第一个非unknown IP地址
+     */"
+IpUtils_isUnknown,"/**
+     * 检测给定字符串是否为未知，多用于检测HTTP请求相关
+     *
+     * @param checkString 被检测的字符串
+     * @return 是否未知
+     */"
+ReflectUtils_invokeGetter,"/**
+     * 调用Getter方法.
+     * 支持多级，如：对象名.对象名.方法
+     */"
+ReflectUtils_invokeSetter,"/**
+     * 调用Setter方法, 仅匹配方法名。
+     * 支持多级，如：对象名.对象名.方法
+     */"
+ReflectUtils_getFieldValue,"/**
+     * 直接读取对象属性值, 无视private/protected修饰符, 不经过getter函数.
+     */"
+ReflectUtils_setFieldValue,"/**
+     * 直接设置对象属性值, 无视private/protected修饰符, 不经过setter函数.
+     */"
+ReflectUtils_invokeMethod,"/**
+     * 直接调用对象方法, 无视private/protected修饰符.
+     * 用于一次性调用的情况，否则应使用getAccessibleMethod()函数获得Method后反复调用.
+     * 同时匹配方法名+参数类型，
+     */"
+ReflectUtils_invokeMethodByName,"/**
+     * 直接调用对象方法, 无视private/protected修饰符，
+     * 用于一次性调用的情况，否则应使用getAccessibleMethodByName()函数获得Method后反复调用.
+     * 只匹配函数名，如果有多个同名函数调用第一个。
+     */"
+ReflectUtils_getAccessibleField,"/**
+     * 循环向上转型, 获取对象的DeclaredField, 并强制设置为可访问.
+     * 如向上转型到Object仍无法找到, 返回null.
+     */"
+ReflectUtils_getAccessibleMethod,"/**
+     * 循环向上转型, 获取对象的DeclaredMethod,并强制设置为可访问.
+     * 如向上转型到Object仍无法找到, 返回null.
+     * 匹配函数名+参数类型。
+     * 用于方法需要被多次调用的情况. 先使用本函数先取得Method,然后调用Method.invoke(Object obj, Object... args)
+     */"
+ReflectUtils_getAccessibleMethodByName,"/**
+     * 循环向上转型, 获取对象的DeclaredMethod,并强制设置为可访问.
+     * 如向上转型到Object仍无法找到, 返回null.
+     * 只匹配函数名。
+     * 用于方法需要被多次调用的情况. 先使用本函数先取得Method,然后调用Method.invoke(Object obj, Object... args)
+     */"
+ReflectUtils_makeAccessible,"/**
+     * 改变private/protected的成员变量为public，尽量不调用实际改动的语句，避免JDK的SecurityManager抱怨。
+     */"
+ReflectUtils_getClassGenricType,"/**
+     * 通过反射, 获得Class定义中声明的父类的泛型参数的类型.
+     * 如无法找到, 返回Object.class.
+     */"
+ReflectUtils_convertReflectionExceptionToUnchecked,"/**
+     * 将反射时的checked exception转换为unchecked exception.
+     */"
+FileUtils_writeBytes,"/**
+     * 写数据到文件中
+     *
+     * @param data 数据
+     * @param uploadDir 目标文件
+     * @return 目标文件
+     * @throws IOException IO异常
+     */"
+FileUtils_writeImportBytes,"/**
+     * 写数据到文件中
+     *
+     * @param data 数据
+     * @return 目标文件
+     * @throws IOException IO异常
+     */"
+FileUtils_deleteFile,"/**
+     * 删除文件
+     * 
+     * @param filePath 文件
+     * @return
+     */"
+FileUtils_isValidFilename,"/**
+     * 文件名称验证
+     * 
+     * @param filename 文件名称
+     * @return true 正常 false 非法
+     */"
+FileUtils_checkAllowDownload,"/**
+     * 检查文件是否可下载
+     * 
+     * @param resource 需要下载的文件
+     * @return true 正常 false 非法
+     */"
+FileUtils_setFileDownloadHeader,"/**
+     * 下载文件名重新编码
+     * 
+     * @param request 请求对象
+     * @param fileName 文件名
+     * @return 编码后的文件名
+     */"
+FileUtils_setAttachmentResponseHeader,"/**
+     * 下载文件名重新编码
+     *
+     * @param response 响应对象
+     * @param realFileName 真实文件名
+     */"
+FileUtils_percentEncode,"/**
+     * 百分号编码工具方法
+     *
+     * @param s 需要百分号编码的字符串
+     * @return 百分号编码后的字符串
+     */"
+FileUtils_getFileExtendName,"/**
+     * 获取图像后缀
+     * 
+     * @param photoByte 图像数据
+     * @return 后缀名
+     */"
+FileUtils_getName,"/**
+     * 获取名称
+     * 
+     * @param fileName 路径名称
+     * @return 没有文件路径的名称
+     */"
+FileUploadUtils_upload,"/**
+     * 文件上传
+     *
+     * @param baseDir 相对应用的基目录
+     * @param file 上传的文件
+     * @param allowedExtension 上传文件类型
+     * @return 返回上传成功的文件名
+     * @throws FileSizeLimitExceededException 如果超出最大大小
+     * @throws FileNameLengthLimitExceededException 文件名太长
+     * @throws IOException 比如读写文件出错时
+     * @throws InvalidExtensionException 文件校验异常
+     */"
+FileUploadUtils_uploadMinio,"/**
+     * 自定义bucketName配置上传到Minio服务器
+     *
+     * @param file 上传的文件
+     * @return 文件名称
+     * @throws Exception
+     */"
+FileUploadUtils_extractFilename,"/**
+     * 编码文件名
+     */"
+FileUploadUtils_assertAllowed,"/**
+     * 文件大小校验
+     *
+     * @param file 上传的文件
+     * @return
+     * @throws FileSizeLimitExceededException 如果超出最大大小
+     * @throws InvalidExtensionException
+     */"
+FileUploadUtils_isAllowedExtension,"/**
+     * 判断MIME类型是否是允许的MIME类型
+     *
+     * @param extension
+     * @param allowedExtension
+     * @return
+     */"
+FileUploadUtils_getExtension,"/**
+     * 获取文件名的后缀
+     *
+     * @param file 表单文件
+     * @return 后缀名
+     */"
+FileTypeUtils_getFileType,"/**
+     * 获取文件类型
+     * <p>
+     * 例如: ruoyi.txt, 返回: txt
+     *
+     * @param fileName 文件名
+     * @return 后缀（不含""."")
+     */"
+FileTypeUtils_getFileExtendName,"/**
+     * 获取文件类型
+     * 
+     * @param photoByte 文件字节码
+     * @return 后缀（不含""."")
+     */"
+MinioUtil_uploadFile,"/**
+     * 上传文件
+     *
+     * @param bucketName 桶名称
+     * @param fileName
+     * @throws IOException
+     */"
+ImageUtils_readFile,"/**
+     * 读取文件为字节数据
+     * 
+     * @param url 地址
+     * @return 字节数据
+     */"
+EscapeUtil_escape,"/**
+     * 转义文本中的HTML字符为安全的字符
+     * 
+     * @param text 被转义的文本
+     * @return 转义后的文本
+     */"
+EscapeUtil_unescape,"/**
+     * 还原被转义的HTML特殊字符
+     * 
+     * @param content 包含转义符的HTML内容
+     * @return 转换后的字符串
+     */"
+EscapeUtil_clean,"/**
+     * 清除所有HTML标签，但是不删除标签内的内容
+     * 
+     * @param content 文本
+     * @return 清除标签后的文本
+     */"
+EscapeUtil_encode,"/**
+     * Escape编码
+     * 
+     * @param text 被编码的文本
+     * @return 编码后的字符
+     */"
+EscapeUtil_decode,"/**
+     * Escape解码
+     * 
+     * @param content 被转义的内容
+     * @return 解码后的字符串
+     */"
+HTMLFilter_filter,"/**
+     * given a user submitted input String, filter out any invalid or restricted html.
+     *
+     * @param input text (i.e. submitted by a user) than may contain html
+     * @return ""clean"" version of input, with only valid, whitelisted html elements allowed
+     */"
+Base64_encode,"/**
+     * Encodes hex octects into Base64
+     *
+     * @param binaryData Array containing binaryData
+     * @return Encoded Base64 array
+     */"
+Base64_decode,"/**
+     * Decodes Base64 data into octects
+     *
+     * @param encoded string containing Base64 data
+     * @return Array containind decoded data.
+     */"
+Base64_removeWhiteSpace,"/**
+     * remove WhiteSpace from MIME containing encoded Base64 data.
+     *
+     * @param data the byte array of base64 data (with WS)
+     * @return the new length
+     */"
+ExcelUtil_createTitle,"/**
+     * 创建excel第一行标题
+     */"
+ExcelUtil_importExcel,"/**
+     * 对excel表单指定表格索引名转换成list
+     * 
+     * @param sheetName 表格索引名
+     * @param titleNum 标题占用行数
+     * @param is 输入流
+     * @return 转换后集合
+     */"
+ExcelUtil_exportExcel,"/**
+     * 对list数据源将其里面的数据导入到excel表单
+     * 
+     * @return 结果
+     */"
+ExcelUtil_importTemplateExcel,"/**
+     * 对list数据源将其里面的数据导入到excel表单
+     * 
+     * @param sheetName 工作表的名称
+     * @param title 标题
+     * @return 结果
+     */"
+ExcelUtil_writeSheet,"/**
+     * 创建写入数据到Sheet
+     */"
+ExcelUtil_fillExcelData,"/**
+     * 填充excel数据
+     * 
+     * @param index 序号
+     * @param row 单元格行
+     */"
+ExcelUtil_createStyles,"/**
+     * 创建表格样式
+     * 
+     * @param wb 工作薄对象
+     * @return 样式列表
+     */"
+ExcelUtil_createCell,"/**
+     * 创建单元格
+     */"
+ExcelUtil_setCellVo,"/**
+     * 设置单元格信息
+     * 
+     * @param value 单元格值
+     * @param attr 注解相关
+     * @param cell 单元格信息
+     */"
+ExcelUtil_getDrawingPatriarch,"/**
+     * 获取画布
+     */"
+ExcelUtil_getImageType,"/**
+     * 获取图片类型,设置图片插入类型
+     */"
+ExcelUtil_setDataValidation,"/**
+     * 创建表格样式
+     */"
+ExcelUtil_addCell,"/**
+     * 添加单元格
+     */"
+ExcelUtil_setPromptOrValidation,"/**
+     * 设置 POI XSSFSheet 单元格提示或选择框
+     * 
+     * @param sheet 表单
+     * @param textlist 下拉框显示的内容
+     * @param promptContent 提示内容
+     * @param firstRow 开始行
+     * @param endRow 结束行
+     * @param firstCol 开始列
+     * @param endCol 结束列
+     */"
+ExcelUtil_convertByExp,"/**
+     * 解析导出值 0=男,1=女,2=未知
+     * 
+     * @param propertyValue 参数值
+     * @param converterExp 翻译注解
+     * @param separator 分隔符
+     * @return 解析后值
+     */"
+ExcelUtil_reverseByExp,"/**
+     * 反向解析值 男=0,女=1,未知=2
+     * 
+     * @param propertyValue 参数值
+     * @param converterExp 翻译注解
+     * @param separator 分隔符
+     * @return 解析后值
+     */"
+ExcelUtil_convertDictByExp,"/**
+     * 解析字典值
+     * 
+     * @param dictValue 字典值
+     * @param dictType 字典类型
+     * @param separator 分隔符
+     * @return 字典标签
+     */"
+ExcelUtil_reverseDictByExp,"/**
+     * 反向解析值字典值
+     * 
+     * @param dictLabel 字典标签
+     * @param dictType 字典类型
+     * @param separator 分隔符
+     * @return 字典值
+     */"
+ExcelUtil_dataFormatHandlerAdapter,"/**
+     * 数据处理器
+     * 
+     * @param value 数据值
+     * @param excel 数据注解
+     * @return
+     */"
+ExcelUtil_addStatisticsData,"/**
+     * 合计统计信息
+     */"
+ExcelUtil_addStatisticsRow,"/**
+     * 创建统计行
+     */"
+ExcelUtil_encodingFilename,"/**
+     * 编码文件名
+     */"
+ExcelUtil_getAbsoluteFile,"/**
+     * 获取下载路径
+     * 
+     * @param filename 文件名称
+     */"
+ExcelUtil_getTargetValue,"/**
+     * 获取bean中的属性值
+     * 
+     * @param vo 实体对象
+     * @param field 字段
+     * @param excel 注解
+     * @return 最终的属性值
+     * @throws Exception
+     */"
+ExcelUtil_getValue,"/**
+     * 以类的属性的get方法方法形式获取值
+     * 
+     * @param o
+     * @param name
+     * @return value
+     * @throws Exception
+     */"
+ExcelUtil_createExcelField,"/**
+     * 得到所有定义字段
+     */"
+ExcelUtil_getFields,"/**
+     * 获取字段注解信息
+     */"
+ExcelUtil_getRowHeight,"/**
+     * 根据注解获取最大行高
+     */"
+ExcelUtil_createWorkbook,"/**
+     * 创建一个工作簿
+     */"
+ExcelUtil_createSheet,"/**
+     * 创建工作表
+     * 
+     * @param sheetNo sheet数量
+     * @param index 序号
+     */"
+ExcelUtil_getCellValue,"/**
+     * 获取单元格值
+     * 
+     * @param row 获取的行
+     * @param column 获取单元格列号
+     * @return 单元格值
+     */"
+ExcelUtil_isRowEmpty,"/**
+     * 判断是否是空行
+     * 
+     * @param row 判断的行
+     * @return
+     */"
+ExcelUtil_getSheetPictures03,"/**
+     * 获取Excel2003图片
+     *
+     * @param sheet 当前sheet对象
+     * @param workbook 工作簿对象
+     * @return Map key:图片单元格索引（1_1）String，value:图片流PictureData
+     */"
+ExcelUtil_getSheetPictures07,"/**
+     * 获取Excel2007图片
+     *
+     * @param sheet 当前sheet对象
+     * @param workbook 工作簿对象
+     * @return Map key:图片单元格索引（1_1）String，value:图片流PictureData
+     */"
+ExcelUtil_parseDateToStr,"/**
+     * 格式化不同类型的日期对象
+     * 
+     * @param dateFormat 日期格式
+     * @param val 被格式化的日期对象
+     * @return 格式化后的日期字符
+     */"
+HttpUtils_sendGet,"/**
+     * 向指定 URL 发送GET方法的请求
+     *
+     * @param url 发送请求的 URL
+     * @param param 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * @param contentType 编码类型
+     * @return 所代表远程资源的响应结果
+     */"
+HttpUtils_sendPost,"/**
+     * 向指定 URL 发送POST方法的请求
+     *
+     * @param url 发送请求的 URL
+     * @param param 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * @return 所代表远程资源的响应结果
+     */"
+IdUtils_randomUUID,"/**
+     * 获取随机UUID
+     * 
+     * @return 随机UUID
+     */"
+IdUtils_simpleUUID,"/**
+     * 简化的UUID，去掉了横线
+     * 
+     * @return 简化的UUID，去掉了横线
+     */"
+IdUtils_fastUUID,"/**
+     * 获取随机UUID，使用性能更好的ThreadLocalRandom生成UUID
+     * 
+     * @return 随机UUID
+     */"
+IdUtils_fastSimpleUUID,"/**
+     * 简化的UUID，去掉了横线，使用性能更好的ThreadLocalRandom生成UUID
+     * 
+     * @return 简化的UUID，去掉了横线
+     */"
+Seq_getId,"/**
+     * 通用接口序列号 yyMMddHHmmss + 一位机器标识 + length长度循环递增字符串
+     * 
+     * @param atomicInt 序列数
+     * @param length 数值长度
+     * @return 序列值
+     */"
+Seq_getSeq,"/**
+     * 序列循环递增字符串[1, 10 的 (length)幂次方), 用0左补齐length位数
+     * 
+     * @return 序列值
+     */"
+UUID_fastUUID,"/**
+     * 获取类型 4（伪随机生成的）UUID 的静态工厂。 使用加密的本地线程伪随机数生成器生成该 UUID。
+     * 
+     * @return 随机生成的 {@code UUID}
+     */"
+UUID_randomUUID,"/**
+     * 获取类型 4（伪随机生成的）UUID 的静态工厂。 使用加密的强伪随机数生成器生成该 UUID。
+     * 
+     * @param isSecure 是否使用{@link SecureRandom}如果是可以获得更安全的随机码，否则可以得到更好的性能
+     * @return 随机生成的 {@code UUID}
+     */"
+UUID_nameUUIDFromBytes,"/**
+     * 根据指定的字节数组获取类型 3（基于名称的）UUID 的静态工厂。
+     *
+     * @param name 用于构造 UUID 的字节数组。
+     *
+     * @return 根据指定数组生成的 {@code UUID}
+     */"
+UUID_fromString,"/**
+     * 根据 {@link #toString()} 方法中描述的字符串标准表示形式创建{@code UUID}。
+     *
+     * @param name 指定 {@code UUID} 字符串
+     * @return 具有指定值的 {@code UUID}
+     * @throws IllegalArgumentException 如果 name 与 {@link #toString} 中描述的字符串表示形式不符抛出此异常
+     *
+     */"
+UUID_getLeastSignificantBits,"/**
+     * 返回此 UUID 的 128 位值中的最低有效 64 位。
+     *
+     * @return 此 UUID 的 128 位值中的最低有效 64 位。
+     */"
+UUID_getMostSignificantBits,"/**
+     * 返回此 UUID 的 128 位值中的最高有效 64 位。
+     *
+     * @return 此 UUID 的 128 位值中最高有效 64 位。
+     */"
+UUID_version,"/**
+     * 与此 {@code UUID} 相关联的版本号. 版本号描述此 {@code UUID} 是如何生成的。
+     * <p>
+     * 版本号具有以下含意:
+     * <ul>
+     * <li>1 基于时间的 UUID
+     * <li>2 DCE 安全 UUID
+     * <li>3 基于名称的 UUID
+     * <li>4 随机生成的 UUID
+     * </ul>
+     *
+     * @return 此 {@code UUID} 的版本号
+     */"
+UUID_variant,"/**
+     * 与此 {@code UUID} 相关联的变体号。变体号描述 {@code UUID} 的布局。
+     * <p>
+     * 变体号具有以下含意：
+     * <ul>
+     * <li>0 为 NCS 向后兼容保留
+     * <li>2 <a href=""http://www.ietf.org/rfc/rfc4122.txt"">IETF&nbsp;RFC&nbsp;4122</a>(Leach-Salz), 用于此类
+     * <li>6 保留，微软向后兼容
+     * <li>7 保留供以后定义使用
+     * </ul>
+     *
+     * @return 此 {@code UUID} 相关联的变体号
+     */"
+UUID_timestamp,"/**
+     * 与此 UUID 相关联的时间戳值。
+     *
+     * <p>
+     * 60 位的时间戳值根据此 {@code UUID} 的 time_low、time_mid 和 time_hi 字段构造。<br>
+     * 所得到的时间戳以 100 毫微秒为单位，从 UTC（通用协调时间） 1582 年 10 月 15 日零时开始。
+     *
+     * <p>
+     * 时间戳值仅在在基于时间的 UUID（其 version 类型为 1）中才有意义。<br>
+     * 如果此 {@code UUID} 不是基于时间的 UUID，则此方法抛出 UnsupportedOperationException。
+     *
+     * @throws UnsupportedOperationException 如果此 {@code UUID} 不是 version 为 1 的 UUID。
+     */"
+UUID_clockSequence,"/**
+     * 与此 UUID 相关联的时钟序列值。
+     *
+     * <p>
+     * 14 位的时钟序列值根据此 UUID 的 clock_seq 字段构造。clock_seq 字段用于保证在基于时间的 UUID 中的时间唯一性。
+     * <p>
+     * {@code clockSequence} 值仅在基于时间的 UUID（其 version 类型为 1）中才有意义。 如果此 UUID 不是基于时间的 UUID，则此方法抛出
+     * UnsupportedOperationException。
+     *
+     * @return 此 {@code UUID} 的时钟序列
+     *
+     * @throws UnsupportedOperationException 如果此 UUID 的 version 不为 1
+     */"
+UUID_node,"/**
+     * 与此 UUID 相关的节点值。
+     *
+     * <p>
+     * 48 位的节点值根据此 UUID 的 node 字段构造。此字段旨在用于保存机器的 IEEE 802 地址，该地址用于生成此 UUID 以保证空间唯一性。
+     * <p>
+     * 节点值仅在基于时间的 UUID（其 version 类型为 1）中才有意义。<br>
+     * 如果此 UUID 不是基于时间的 UUID，则此方法抛出 UnsupportedOperationException。
+     *
+     * @return 此 {@code UUID} 的节点值
+     *
+     * @throws UnsupportedOperationException 如果此 UUID 的 version 不为 1
+     */"
+UUID_toString,"/**
+     * 返回此{@code UUID} 的字符串表现形式。
+     *
+     * <p>
+     * UUID 的字符串表示形式由此 BNF 描述：
+     * 
+     * <pre>
+     * {@code
+     * UUID                   = <time_low>-<time_mid>-<time_high_and_version>-<variant_and_sequence>-<node>
+     * time_low               = 4*<hexOctet>
+     * time_mid               = 2*<hexOctet>
+     * time_high_and_version  = 2*<hexOctet>
+     * variant_and_sequence   = 2*<hexOctet>
+     * node                   = 6*<hexOctet>
+     * hexOctet               = <hexDigit><hexDigit>
+     * hexDigit               = [0-9a-fA-F]
+     * }
+     * </pre>
+     * 
+     * </blockquote>
+     *
+     * @param isSimple 是否简单模式，简单模式为不带'-'的UUID字符串
+     * @return 此{@code UUID} 的字符串表现形式
+     */"
+UUID_hashCode,"/**
+     * 返回此 UUID 的哈希码。
+     *
+     * @return UUID 的哈希码值。
+     */"
+UUID_equals,"/**
+     * 将此对象与指定对象比较。
+     * <p>
+     * 当且仅当参数不为 {@code null}、而是一个 UUID 对象、具有与此 UUID 相同的 varriant、包含相同的值（每一位均相同）时，结果才为 {@code true}。
+     *
+     * @param obj 要与之比较的对象
+     *
+     * @return 如果对象相同，则返回 {@code true}；否则返回 {@code false}
+     */"
+UUID_compareTo,"/**
+     * 将此 UUID 与指定的 UUID 比较。
+     *
+     * <p>
+     * 如果两个 UUID 不同，且第一个 UUID 的最高有效字段大于第二个 UUID 的对应字段，则第一个 UUID 大于第二个 UUID。
+     *
+     * @param val 与此 UUID 比较的 UUID
+     *
+     * @return 在此 UUID 小于、等于或大于 val 时，分别返回 -1、0 或 1。
+     *
+     */"
+UUID_digits,"/**
+     * 返回指定数字对应的hex值
+     * 
+     * @param val 值
+     * @param digits 位
+     * @return 值
+     */"
+UUID_checkTimeBase,"/**
+     * 检查是否为time-based版本UUID
+     */"
+UUID_getSecureRandom,"/**
+     * 获取{@link SecureRandom}，类提供加密的强随机数生成器 (RNG)
+     * 
+     * @return {@link SecureRandom}
+     */"
+UUID_getRandom,"/**
+     * 获取随机数生成器对象<br>
+     * ThreadLocalRandom是JDK 7之后提供并发产生随机数，能够解决多个线程发生的竞争争夺。
+     * 
+     * @return {@link ThreadLocalRandom}
+     */"
+SqlUtil_escapeOrderBySql,"/**
+     * 检查字符，防止注入绕过
+     */"
+SqlUtil_isValidOrderBySql,"/**
+     * 验证 order by 语法是否符合规范
+     */"
+SqlUtil_filterKeyword,"/**
+     * SQL关键字检查
+     */"
+BarcodeUtil_generateLineCode,"/**
+     * 生成一维条形码
+     * @param msg 条形码的内容
+     * @param barCodeFormat 条形码格式 see {@link UserConstants}
+     * @param destFilePath  条形码存储的路径
+     * @throws Exception 
+     */"
+BarcodeUtil_generateQRCode,"/**
+     * 生成带logo二维码，并保存到磁盘
+     *
+     * @param content      二维码的内容
+     * @param imgPath      二维码内部插入的图片路径，如果不需要可以传空
+     * @param destFilePath     整个二维码存储的路径
+     * @param needCompress 二维码内部插入的图片是否需要压缩的标识
+     * @throws Exception 异常
+     */"
+BarcodeUtil_createQrCode,"/**
+     * 生成二维码图片
+     *
+     * @param content      二维码内容
+     * @param imagePath    二维码内部图片路径,如果不需要可以传空
+     * @param needCompress 二维码内部图片是否需要压缩标识
+     * @return 二维码图片
+     * @throws WriterException 异常
+     */"
+BarcodeUtil_insertImage,"/**
+     * 将logo插入二维码中间
+     *
+     * @param source       生成的二位码存储对象
+     * @param imagePath    二维码内部图片的路径
+     * 一般的业务场景会把插入的小logo放到oss生成url
+     * @param needCompress 二维码内部图片是否需要压缩
+     * @throws IOException 异常
+     */"
+BeanUtils_copyBeanProp,"/**
+     * Bean属性复制工具方法。
+     * 
+     * @param dest 目标对象
+     * @param src 源对象
+     */"
+BeanUtils_getSetterMethods,"/**
+     * 获取对象的setter方法。
+     * 
+     * @param obj 对象
+     * @return 对象的setter方法列表
+     */"
+BeanUtils_getGetterMethods,"/**
+     * 获取对象的getter方法。
+     * 
+     * @param obj 对象
+     * @return 对象的getter方法列表
+     */"
+BeanUtils_isMethodPropEquals,"/**
+     * 检查Bean方法名中的属性名是否相等。<br>
+     * 如getName()和setName()属性名一样，getName()和setAge()属性名不一样。
+     * 
+     * @param m1 方法名1
+     * @param m2 方法名2
+     * @return 属性名一样返回true，否则返回false
+     */"
+SwaggerConfig_createRestApi,"/**
+     * 创建API
+     */"
+SwaggerConfig_securitySchemes,"/**
+     * 安全模式，这里指定token通过Authorization头请求头传递
+     */"
+SwaggerConfig_securityContexts,"/**
+     * 安全上下文
+     */"
+SwaggerConfig_defaultAuth,"/**
+     * 默认的安全上引用
+     */"
+SwaggerConfig_apiInfo,"/**
+     * 添加摘要信息
+     */"
+UReportConfig_name,"/**
+     * 返回数据源的名称
+     * @return
+     */"
+CaptchaController_getCode,"/**
+     * 生成验证码
+     */"
+CommonController_fileDownload,"/**
+     * 通用下载请求
+     * 
+     * @param fileName 文件名称
+     * @param delete 是否删除
+     */"
+CommonController_uploadFile,"/**
+     * 通用上传请求（单个）
+     */"
+CommonController_uploadFiles,"/**
+     * 通用上传请求（多个）
+     */"
+CommonController_resourceDownload,"/**
+     * 本地资源通用下载
+     */"
+SysIndexController_index,"/**
+     * 访问首页，提示语
+     */"
+SysDictTypeController_getInfo,"/**
+     * 查询字典类型详细
+     */"
+SysDictTypeController_add,"/**
+     * 新增字典类型
+     */"
+SysDictTypeController_edit,"/**
+     * 修改字典类型
+     */"
+SysDictTypeController_remove,"/**
+     * 删除字典类型
+     */"
+SysDictTypeController_refreshCache,"/**
+     * 刷新字典缓存
+     */"
+SysDictTypeController_optionselect,"/**
+     * 获取字典选择框列表
+     */"
+SysAttachmentController_list,"/**
+     * 查询附件列表
+     */"
+SysAttachmentController_export,"/**
+     * 导出附件列表
+     */"
+SysAttachmentController_getInfo,"/**
+     * 获取附件详细信息
+     */"
+SysAttachmentController_add,"/**
+     * 新增附件
+     */"
+SysAttachmentController_edit,"/**
+     * 修改附件
+     */"
+SysAttachmentController_remove,"/**
+     * 删除附件
+     */"
+UserController_registerUser,"/**
+     * 注册用户
+     *
+     * @return -1 用户名或密码错误  -2 账号冻结  -3 账号锁定 1 成功  -4 验证码错误
+     */"
+UserController_getUserInfo,"/**
+     * 获取用户信息
+     *
+     * @return 用户信息
+     */"
+SysDictDataController_getInfo,"/**
+     * 查询字典数据详细
+     */"
+SysDictDataController_dictType,"/**
+     * 根据字典类型查询字典数据信息
+     */"
+SysDictDataController_add,"/**
+     * 新增字典类型
+     */"
+SysDictDataController_edit,"/**
+     * 修改保存字典类型
+     */"
+SysDictDataController_remove,"/**
+     * 删除字典类型
+     */"
+LoginController_loginByPassword,"/**
+     * 会员登录
+     * @return -1 用户名或密码错误  -2 账号冻结  -3 账号锁定 1 成功  -4 验证码错误
+     */"
+LoginController_sendRegisterCode,"/**
+     * 发送验证码
+     */"
+SysMessageController_list,"/**
+     * 查询消息列表
+     */"
+SysMessageController_export,"/**
+     * 导出消息列表
+     */"
+SysMessageController_getInfo,"/**
+     * 获取消息详细信息
+     */"
+SysMessageController_add,"/**
+     * 新增消息
+     */"
+SysMessageController_edit,"/**
+     * 修改消息
+     */"
+SysMessageController_remove,"/**
+     * 删除消息
+     */"
+SysMenuController_list,"/**
+     * 获取菜单列表
+     */"
+SysMenuController_getInfo,"/**
+     * 根据菜单编号获取详细信息
+     */"
+SysMenuController_treeselect,"/**
+     * 获取菜单下拉树列表
+     */"
+SysMenuController_roleMenuTreeselect,"/**
+     * 加载对应角色菜单列表树
+     */"
+SysMenuController_add,"/**
+     * 新增菜单
+     */"
+SysMenuController_edit,"/**
+     * 修改菜单
+     */"
+SysMenuController_remove,"/**
+     * 删除菜单
+     */"
+SysRoleController_getInfo,"/**
+     * 根据角色编号获取详细信息
+     */"
+SysRoleController_add,"/**
+     * 新增角色
+     */"
+SysRoleController_edit,"/**
+     * 修改保存角色
+     */"
+SysRoleController_dataScope,"/**
+     * 修改保存数据权限
+     */"
+SysRoleController_changeStatus,"/**
+     * 状态修改
+     */"
+SysRoleController_remove,"/**
+     * 删除角色
+     */"
+SysRoleController_optionselect,"/**
+     * 获取角色选择框列表
+     */"
+SysRoleController_allocatedList,"/**
+     * 查询已分配用户角色列表
+     */"
+SysRoleController_unallocatedList,"/**
+     * 查询未分配用户角色列表
+     */"
+SysRoleController_cancelAuthUser,"/**
+     * 取消授权用户
+     */"
+SysRoleController_cancelAuthUserAll,"/**
+     * 批量取消授权用户
+     */"
+SysRoleController_selectAuthUserAll,"/**
+     * 批量选择用户授权
+     */"
+SysLoginController_login,"/**
+     * 登录方法
+     * 
+     * @param loginBody 登录信息
+     * @return 结果
+     */"
+SysLoginController_getInfo,"/**
+     * 获取用户信息
+     * 
+     * @return 用户信息
+     */"
+SysLoginController_getRouters,"/**
+     * 获取路由信息
+     * 
+     * @return 路由信息
+     */"
+SysMessageMobController_list,"/**
+     * 查询当前人的消息
+     */"
+SysDeptController_list,"/**
+     * 获取部门列表
+     */"
+SysDeptController_excludeChild,"/**
+     * 查询部门列表（排除节点）
+     */"
+SysDeptController_getInfo,"/**
+     * 根据部门编号获取详细信息
+     */"
+SysDeptController_treeselect,"/**
+     * 获取部门下拉树列表
+     */"
+SysDeptController_roleDeptTreeselect,"/**
+     * 加载对应角色部门列表树
+     */"
+SysDeptController_add,"/**
+     * 新增部门
+     */"
+SysDeptController_edit,"/**
+     * 修改部门
+     */"
+SysDeptController_remove,"/**
+     * 删除部门
+     */"
+SysProfileController_profile,"/**
+     * 个人信息
+     */"
+SysProfileController_updateProfile,"/**
+     * 修改用户
+     */"
+SysProfileController_updatePwd,"/**
+     * 重置密码
+     */"
+SysProfileController_avatar,"/**
+     * 头像上传
+     */"
+SysPostController_list,"/**
+     * 获取岗位列表
+     */"
+SysPostController_listAll,"/**
+     * 查询所有有效岗位信息以List方式返回
+     * @return
+     */"
+SysPostController_getInfo,"/**
+     * 根据岗位编号获取详细信息
+     */"
+SysPostController_add,"/**
+     * 新增岗位
+     */"
+SysPostController_edit,"/**
+     * 修改岗位
+     */"
+SysPostController_remove,"/**
+     * 删除岗位
+     */"
+SysPostController_optionselect,"/**
+     * 获取岗位选择框列表
+     */"
+SysNoticeController_list,"/**
+     * 获取通知公告列表
+     */"
+SysNoticeController_getInfo,"/**
+     * 根据通知公告编号获取详细信息
+     */"
+SysNoticeController_add,"/**
+     * 新增通知公告
+     */"
+SysNoticeController_edit,"/**
+     * 修改通知公告
+     */"
+SysNoticeController_remove,"/**
+     * 删除通知公告
+     */"
+SysConfigController_list,"/**
+     * 获取参数配置列表
+     */"
+SysConfigController_getInfo,"/**
+     * 根据参数编号获取详细信息
+     */"
+SysConfigController_getConfigKey,"/**
+     * 根据参数键名查询参数值
+     */"
+SysConfigController_add,"/**
+     * 新增参数配置
+     */"
+SysConfigController_edit,"/**
+     * 修改参数配置
+     */"
+SysConfigController_remove,"/**
+     * 删除参数配置
+     */"
+SysConfigController_refreshCache,"/**
+     * 刷新参数缓存
+     */"
+SysUserController_list,"/**
+     * 获取用户列表
+     */"
+SysUserController_getInfo,"/**
+     * 根据用户编号获取详细信息
+     */"
+SysUserController_add,"/**
+     * 新增用户
+     */"
+SysUserController_edit,"/**
+     * 修改用户
+     */"
+SysUserController_remove,"/**
+     * 删除用户
+     */"
+SysUserController_resetPwd,"/**
+     * 重置密码
+     */"
+SysUserController_changeStatus,"/**
+     * 状态修改
+     */"
+SysUserController_authRole,"/**
+     * 根据用户编号获取授权角色
+     */"
+SysUserController_insertAuthRole,"/**
+     * 用户授权角色
+     */"
+SysUserOnlineController_forceLogout,"/**
+     * 强退用户
+     */"
+MySQLProvider_getCorrectName,"/**
+     * 获取没有前缀的文件名
+     * @param name
+     * @return
+     */"
+UreportFileTblServiceImpl_selectUreportFileTblById,"/**
+     * 查询报表管理
+     *
+     * @param id 报表管理主键
+     * @return 报表管理
+     */"
+UreportFileTblServiceImpl_selectUreportFileTblList,"/**
+     * 查询报表管理列表
+     *
+     * @param ureportFileTbl 报表管理
+     * @return 报表管理
+     */"
+UreportFileTblServiceImpl_insertUreportFileTbl,"/**
+     * 新增报表管理
+     *
+     * @param ureportFileTbl 报表管理
+     * @return 结果
+     */"
+UreportFileTblServiceImpl_updateUreportFileTbl,"/**
+     * 修改报表管理
+     *
+     * @param ureportFileTbl 报表管理
+     * @return 结果
+     */"
+UreportFileTblServiceImpl_deleteUreportFileTblByIds,"/**
+     * 批量删除报表管理
+     *
+     * @param ids 需要删除的报表管理主键
+     * @return 结果
+     */"
+UreportFileTblServiceImpl_deleteUreportFileTblById,"/**
+     * 删除报表管理信息
+     *
+     * @param id 报表管理主键
+     * @return 结果
+     */"
+UreportFileTblController_list,"/**
+     * 查询报表管理列表
+     */"
+UreportFileTblController_export,"/**
+     * 导出报表管理列表
+     */"
+UreportFileTblController_getInfo,"/**
+     * 获取报表管理详细信息
+     */"
+UreportFileTblController_add,"/**
+     * 新增报表管理
+     */"
+UreportFileTblController_edit,"/**
+     * 修改报表管理
+     */"
+UreportFileTblController_remove,"/**
+     * 删除报表管理
+     */"
+CalHolidayServiceImpl_selectCalHolidayByHolidayId,"/**
+     * 查询节假日设置
+     * 
+     * @param holidayId 节假日设置主键
+     * @return 节假日设置
+     */"
+CalHolidayServiceImpl_selectCalHolidayList,"/**
+     * 查询节假日设置列表
+     * 
+     * @param calHoliday 节假日设置
+     * @return 节假日设置
+     */"
+CalHolidayServiceImpl_insertCalHoliday,"/**
+     * 新增节假日设置
+     * 
+     * @param calHoliday 节假日设置
+     * @return 结果
+     */"
+CalHolidayServiceImpl_updateCalHoliday,"/**
+     * 修改节假日设置
+     * 
+     * @param calHoliday 节假日设置
+     * @return 结果
+     */"
+CalHolidayServiceImpl_deleteCalHolidayByHolidayIds,"/**
+     * 批量删除节假日设置
+     * 
+     * @param holidayIds 需要删除的节假日设置主键
+     * @return 结果
+     */"
+CalHolidayServiceImpl_deleteCalHolidayByHolidayId,"/**
+     * 删除节假日设置信息
+     * 
+     * @param holidayId 节假日设置主键
+     * @return 结果
+     */"
+CalPlanTeamServiceImpl_selectCalPlanTeamByRecordId,"/**
+     * 查询计划班组
+     * 
+     * @param recordId 计划班组主键
+     * @return 计划班组
+     */"
+CalPlanTeamServiceImpl_selectCalPlanTeamList,"/**
+     * 查询计划班组列表
+     * 
+     * @param calPlanTeam 计划班组
+     * @return 计划班组
+     */"
+CalPlanTeamServiceImpl_insertCalPlanTeam,"/**
+     * 新增计划班组
+     * 
+     * @param calPlanTeam 计划班组
+     * @return 结果
+     */"
+CalPlanTeamServiceImpl_updateCalPlanTeam,"/**
+     * 修改计划班组
+     * 
+     * @param calPlanTeam 计划班组
+     * @return 结果
+     */"
+CalPlanTeamServiceImpl_deleteCalPlanTeamByRecordIds,"/**
+     * 批量删除计划班组
+     * 
+     * @param recordIds 需要删除的计划班组主键
+     * @return 结果
+     */"
+CalPlanTeamServiceImpl_deleteCalPlanTeamByRecordId,"/**
+     * 删除计划班组信息
+     * 
+     * @param recordId 计划班组主键
+     * @return 结果
+     */"
+CalShiftServiceImpl_selectCalShiftByShiftId,"/**
+     * 查询计划班次
+     * 
+     * @param shiftId 计划班次主键
+     * @return 计划班次
+     */"
+CalShiftServiceImpl_selectCalShiftList,"/**
+     * 查询计划班次列表
+     * 
+     * @param calShift 计划班次
+     * @return 计划班次
+     */"
+CalShiftServiceImpl_insertCalShift,"/**
+     * 新增计划班次
+     * 
+     * @param calShift 计划班次
+     * @return 结果
+     */"
+CalShiftServiceImpl_updateCalShift,"/**
+     * 修改计划班次
+     * 
+     * @param calShift 计划班次
+     * @return 结果
+     */"
+CalShiftServiceImpl_deleteCalShiftByShiftIds,"/**
+     * 批量删除计划班次
+     * 
+     * @param shiftIds 需要删除的计划班次主键
+     * @return 结果
+     */"
+CalShiftServiceImpl_deleteCalShiftByShiftId,"/**
+     * 删除计划班次信息
+     * 
+     * @param shiftId 计划班次主键
+     * @return 结果
+     */"
+CalCalendarServiceImpl_getCalendarByType,"/**
+     * 1.循环生成当前月份每一天的CalCalendar
+     * 2.根据月份和班组类型查询合适的plan
+     * 3.根据plan上的Shift_type和shift_method计算每个班组的班次
+     * 4.设置CalShiftTeamBean
+     * @param day
+     * @param calenderType
+     * @return
+     */"
+CalTeamMemberServiceImpl_selectCalTeamMemberByMemberId,"/**
+     * 查询班组成员
+     * 
+     * @param memberId 班组成员主键
+     * @return 班组成员
+     */"
+CalTeamMemberServiceImpl_selectCalTeamMemberList,"/**
+     * 查询班组成员列表
+     * 
+     * @param calTeamMember 班组成员
+     * @return 班组成员
+     */"
+CalTeamMemberServiceImpl_insertCalTeamMember,"/**
+     * 新增班组成员
+     * 
+     * @param calTeamMember 班组成员
+     * @return 结果
+     */"
+CalTeamMemberServiceImpl_updateCalTeamMember,"/**
+     * 修改班组成员
+     * 
+     * @param calTeamMember 班组成员
+     * @return 结果
+     */"
+CalTeamMemberServiceImpl_deleteCalTeamMemberByMemberIds,"/**
+     * 批量删除班组成员
+     * 
+     * @param memberIds 需要删除的班组成员主键
+     * @return 结果
+     */"
+CalTeamMemberServiceImpl_deleteCalTeamMemberByMemberId,"/**
+     * 删除班组成员信息
+     * 
+     * @param memberId 班组成员主键
+     * @return 结果
+     */"
+CalTeamServiceImpl_selectCalTeamByTeamId,"/**
+     * 查询班组
+     * 
+     * @param teamId 班组主键
+     * @return 班组
+     */"
+CalTeamServiceImpl_selectCalTeamList,"/**
+     * 查询班组列表
+     * 
+     * @param calTeam 班组
+     * @return 班组
+     */"
+CalTeamServiceImpl_insertCalTeam,"/**
+     * 新增班组
+     * 
+     * @param calTeam 班组
+     * @return 结果
+     */"
+CalTeamServiceImpl_updateCalTeam,"/**
+     * 修改班组
+     * 
+     * @param calTeam 班组
+     * @return 结果
+     */"
+CalTeamServiceImpl_deleteCalTeamByTeamIds,"/**
+     * 批量删除班组
+     * 
+     * @param teamIds 需要删除的班组主键
+     * @return 结果
+     */"
+CalTeamServiceImpl_deleteCalTeamByTeamId,"/**
+     * 删除班组信息
+     * 
+     * @param teamId 班组主键
+     * @return 结果
+     */"
+CalPlanServiceImpl_selectCalPlanByPlanId,"/**
+     * 查询排班计划
+     * 
+     * @param planId 排班计划主键
+     * @return 排班计划
+     */"
+CalPlanServiceImpl_selectCalPlanList,"/**
+     * 查询排班计划列表
+     * 
+     * @param calPlan 排班计划
+     * @return 排班计划
+     */"
+CalPlanServiceImpl_insertCalPlan,"/**
+     * 新增排班计划
+     * 
+     * @param calPlan 排班计划
+     * @return 结果
+     */"
+CalPlanServiceImpl_updateCalPlan,"/**
+     * 修改排班计划
+     * 
+     * @param calPlan 排班计划
+     * @return 结果
+     */"
+CalPlanServiceImpl_deleteCalPlanByPlanIds,"/**
+     * 批量删除排班计划
+     * 
+     * @param planIds 需要删除的排班计划主键
+     * @return 结果
+     */"
+CalPlanServiceImpl_deleteCalPlanByPlanId,"/**
+     * 删除排班计划信息
+     * 
+     * @param planId 排班计划主键
+     * @return 结果
+     */"
+CalTeamshiftServiceImpl_selectCalTeamshiftByRecordId,"/**
+     * 查询班组排班
+     * 
+     * @param recordId 班组排班主键
+     * @return 班组排班
+     */"
+CalTeamshiftServiceImpl_selectCalTeamshiftList,"/**
+     * 查询班组排班列表
+     * 
+     * @param calTeamshift 班组排班
+     * @return 班组排班
+     */"
+CalTeamshiftServiceImpl_insertCalTeamshift,"/**
+     * 新增班组排班
+     * 
+     * @param calTeamshift 班组排班
+     * @return 结果
+     */"
+CalTeamshiftServiceImpl_updateCalTeamshift,"/**
+     * 修改班组排班
+     * 
+     * @param calTeamshift 班组排班
+     * @return 结果
+     */"
+CalTeamshiftServiceImpl_deleteCalTeamshiftByRecordIds,"/**
+     * 批量删除班组排班
+     * 
+     * @param recordIds 需要删除的班组排班主键
+     * @return 结果
+     */"
+CalTeamshiftServiceImpl_deleteCalTeamshiftByRecordId,"/**
+     * 删除班组排班信息
+     * 
+     * @param recordId 班组排班主键
+     * @return 结果
+     */"
+CalTeamshiftServiceImpl_genRecords,"/**
+     * 根据排班计划生成每个班组的明细排班记录
+     * 1.查询计划头
+     * 2.查询计划中的班组
+     * 3.查询计划中的班次
+     * 4.计算计划的开始日期和结束日期的差值
+     * 5.遍历每一天，设置每一天的班组与班次的对应关系（要结合轮班方式）
+     * @param plandId
+     */"
+CalTeamController_list,"/**
+     * 查询班组列表
+     */"
+CalTeamController_listAll,"/**
+     * 查询所有班组列表
+     */"
+CalTeamController_export,"/**
+     * 导出班组列表
+     */"
+CalTeamController_getInfo,"/**
+     * 获取班组详细信息
+     */"
+CalTeamController_add,"/**
+     * 新增班组
+     */"
+CalTeamController_edit,"/**
+     * 修改班组
+     */"
+CalTeamController_remove,"/**
+     * 删除班组
+     */"
+CalTeamMemberController_list,"/**
+     * 查询班组成员列表
+     */"
+CalTeamMemberController_export,"/**
+     * 导出班组成员列表
+     */"
+CalTeamMemberController_getInfo,"/**
+     * 获取班组成员详细信息
+     */"
+CalTeamMemberController_add,"/**
+     * 新增班组成员
+     */"
+CalTeamMemberController_remove,"/**
+     * 删除班组成员
+     */"
+CalCalendarController_getCalendarsWithoutHoliday,"/**
+     * 过滤掉节假日
+     * @param days
+     * @return
+     */"
+CalShiftController_list,"/**
+     * 查询计划班次列表
+     */"
+CalShiftController_export,"/**
+     * 导出计划班次列表
+     */"
+CalShiftController_getInfo,"/**
+     * 获取计划班次详细信息
+     */"
+CalShiftController_add,"/**
+     * 新增计划班次
+     */"
+CalShiftController_edit,"/**
+     * 修改计划班次
+     */"
+CalShiftController_remove,"/**
+     * 删除计划班次
+     */"
+CalHolidayController_list,"/**
+     * 查询节假日设置列表
+     */"
+CalHolidayController_export,"/**
+     * 导出节假日设置列表
+     */"
+CalHolidayController_getInfo,"/**
+     * 获取节假日设置详细信息
+     */"
+CalHolidayController_add,"/**
+     * 新增节假日设置
+     */"
+CalHolidayController_edit,"/**
+     * 修改节假日设置
+     */"
+CalHolidayController_remove,"/**
+     * 删除节假日设置
+     */"
+CalPlanTeamController_list,"/**
+     * 查询计划班组列表
+     */"
+CalPlanTeamController_export,"/**
+     * 导出计划班组列表
+     */"
+CalPlanTeamController_getInfo,"/**
+     * 获取计划班组详细信息
+     */"
+CalPlanTeamController_add,"/**
+     * 新增计划班组
+     */"
+CalPlanTeamController_edit,"/**
+     * 修改计划班组
+     */"
+CalPlanTeamController_remove,"/**
+     * 删除计划班组
+     */"
+CalPlanController_list,"/**
+     * 查询排班计划列表
+     */"
+CalPlanController_export,"/**
+     * 导出排班计划列表
+     */"
+CalPlanController_getInfo,"/**
+     * 获取排班计划详细信息
+     */"
+CalPlanController_add,"/**
+     * 新增排班计划
+     */"
+CalPlanController_edit,"/**
+     * 修改排班计划
+     */"
+CalPlanController_remove,"/**
+     * 删除排班计划
+     */"
+CalendarUtil_getDateTimeStr,"/**
+     * 时间戳转换为日期时间字符串
+     *
+     * @param timestamp 时间戳
+     * @param pattern   日期格式 例如DATETIME_PATTERN
+     * @return String 日期时间字符串，例如 2015-08-11 09:51:53
+     */"
+CalendarUtil_getDateStr,"/**
+     * 获取指定日期字符串.
+     *
+     * @return String 日期字符串，例如2015-08-11
+     */"
+CalendarUtil_getTimeStr,"/**
+     * 获取当前时间字符串.
+     *
+     * @return String 时间字符串，例如 09:51:53
+     */"
+CalendarUtil_getYearStr,"/**
+     * 获取当前年份字符串.
+     *
+     * @return String 当前年份字符串，例如 2015
+     */"
+CalendarUtil_getMonthStr,"/**
+     * 获取当前月份字符串.
+     *
+     * @return String 当前月份字符串，例如 08
+     */"
+CalendarUtil_getDayStr,"/**
+     * 获取当前天数字符串.
+     *
+     * @return String 当前天数字符串，例如 11
+     */"
+CalendarUtil_getDayOfWeekStr,"/**
+     * 获取指定日期是星期几
+     *
+     * @param date 日期
+     * @return String 星期几
+     */"
+CalendarUtil_format,"/**
+     * 获取日期时间字符串
+     *
+     * @param date   需要转化的日期时间
+     * @param pattern 时间格式
+     * @return String 日期时间字符串，例如 2015-08-11 09:51:53
+     */"
+CalendarUtil_addYears,"/**
+     * 获取指定日期num年数之后的日期.
+     *
+     * @param num 间隔年数(负数表示之前)
+     * @return Date 日期
+     */"
+CalendarUtil_addMonths,"/**
+     * 获取指定日期num月数之后的日期.
+     *
+     * @param num 间隔月数(负数表示之前)
+     * @return Date 日期
+     */"
+CalendarUtil_addWeeks,"/**
+     * 获取指定日期num周数之后的日期.
+     *
+     * @param date 日期
+     * @param num 周数(负数表示之前)
+     * @return Date 新的日期
+     */"
+CalendarUtil_addDays,"/**
+     * 获取指定日期num天数之后的日期.
+     *
+     * @param date 日期
+     * @param num 天数(负数表示之前)
+     * @return Date 新的日期
+     */"
+CalendarUtil_addHours,"/**
+     * 获取指定日期num小时之后的日期.
+     *
+     * @param date 日期
+     * @param num 小时数(负数表示之前)
+     * @return Date 新的日期
+     */"
+CalendarUtil_addMinutes,"/**
+     * 获取指定日期num分钟之后的日期.
+     *
+     * @param date 日期
+     * @param num 分钟数(负数表示之前)
+     * @return Date 新的日期
+     */"
+CalendarUtil_addSeconds,"/**
+     * 获取指定日期num秒钟之后的日期.
+     *
+     * @param date 日期
+     * @param num 秒钟数(负数表示之前)
+     * @return Date 新的日期
+     */"
+CalendarUtil_add,"/**
+     * 获取当前日期指定数量日期时间单位之后的日期.
+     *
+     * @param date 日期
+     * @param num 数量
+     * @param unit 日期时间单位
+     * @return Date 新的日期
+     */"
+CalendarUtil_getStartDayOfWeek,"/**
+     * 获取本周的第一天，一个星期的第一天是星期一，最后一天是星期天
+     *
+     * @return Calendar 日历
+     */"
+CalendarUtil_getEndDayOfWeek,"/**
+     * 获取本周的最后一天，一个星期的第一天是星期一，最后一天是星期天
+     *
+     * @return Calendar 日历
+     */"
+CalendarUtil_getWeekStartTimeStr,"/**
+     * 获取指定日期当周第一天的日期字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd
+     */"
+CalendarUtil_getWeekEndTimeStr,"/**
+     * 获取本周最后一天的日期字符串
+     *
+     * @return String 格式：yyyy-MM-dd
+     */"
+CalendarUtil_getMonthStart,"/**
+     * 获取指定日期所在月份的开始日期
+     * @param date
+     * @return
+     */"
+CalendarUtil_getMonthEnd,"/**
+     * 获取指定日期所在月份的最后一天
+     * @param date
+     * @return
+     */"
+CalendarUtil_getMonthStartStr,"/**
+     * 获取指定日期对应月份第一天
+     * @param date
+     * @return
+     */"
+CalendarUtil_getMonthEndStr,"/**
+     * 获取指定日期对应月份最后一天
+     * @param date
+     * @return
+     */"
+CalendarUtil_getQuarterStartStr,"/**
+     * 获取指定日期对应季度的第一天
+     * @param theDay
+     * @return
+     */"
+CalendarUtil_getQuarterEandStr,"/**
+     * 获取指定日期对应季度的最后一天
+     * @param theDay
+     * @return
+     */"
+CalendarUtil_getDateDiff,"/**
+     * 计算两个日期之间的天数差值
+     * @param start
+     * @param end
+     * @return
+     */"
+CalendarUtil_getDays,"/**
+     * 获取指定月份的所有日期
+     * @param d
+     * @return
+     */"
+CalendarUtil_getDateStrList,"/**
+     * 获取指定日期前后N天的所有日期
+     * @param date
+     * @param num
+     * @param pattern
+     * @return
+     */"
+TmToolTypeServiceImpl_selectTmToolTypeByToolTypeId,"/**
+     * 查询工装夹具类型
+     * 
+     * @param toolTypeId 工装夹具类型主键
+     * @return 工装夹具类型
+     */"
+TmToolTypeServiceImpl_selectTmToolTypeList,"/**
+     * 查询工装夹具类型列表
+     * 
+     * @param tmToolType 工装夹具类型
+     * @return 工装夹具类型
+     */"
+TmToolTypeServiceImpl_insertTmToolType,"/**
+     * 新增工装夹具类型
+     * 
+     * @param tmToolType 工装夹具类型
+     * @return 结果
+     */"
+TmToolTypeServiceImpl_updateTmToolType,"/**
+     * 修改工装夹具类型
+     * 
+     * @param tmToolType 工装夹具类型
+     * @return 结果
+     */"
+TmToolTypeServiceImpl_deleteTmToolTypeByToolTypeIds,"/**
+     * 批量删除工装夹具类型
+     * 
+     * @param toolTypeIds 需要删除的工装夹具类型主键
+     * @return 结果
+     */"
+TmToolTypeServiceImpl_deleteTmToolTypeByToolTypeId,"/**
+     * 删除工装夹具类型信息
+     * 
+     * @param toolTypeId 工装夹具类型主键
+     * @return 结果
+     */"
+TmToolServiceImpl_selectTmToolByToolId,"/**
+     * 查询工装夹具清单
+     * 
+     * @param toolId 工装夹具清单主键
+     * @return 工装夹具清单
+     */"
+TmToolServiceImpl_selectTmToolList,"/**
+     * 查询工装夹具清单列表
+     * 
+     * @param tmTool 工装夹具清单
+     * @return 工装夹具清单
+     */"
+TmToolServiceImpl_insertTmTool,"/**
+     * 新增工装夹具清单
+     * 
+     * @param tmTool 工装夹具清单
+     * @return 结果
+     */"
+TmToolServiceImpl_updateTmTool,"/**
+     * 修改工装夹具清单
+     * 
+     * @param tmTool 工装夹具清单
+     * @return 结果
+     */"
+TmToolServiceImpl_deleteTmToolByToolIds,"/**
+     * 批量删除工装夹具清单
+     * 
+     * @param toolIds 需要删除的工装夹具清单主键
+     * @return 结果
+     */"
+TmToolServiceImpl_deleteTmToolByToolId,"/**
+     * 删除工装夹具清单信息
+     * 
+     * @param toolId 工装夹具清单主键
+     * @return 结果
+     */"
+TmToolTypeController_list,"/**
+     * 查询工装夹具类型列表
+     */"
+TmToolTypeController_export,"/**
+     * 导出工装夹具类型列表
+     */"
+TmToolTypeController_getInfo,"/**
+     * 获取工装夹具类型详细信息
+     */"
+TmToolTypeController_add,"/**
+     * 新增工装夹具类型
+     */"
+TmToolTypeController_edit,"/**
+     * 修改工装夹具类型
+     */"
+TmToolTypeController_remove,"/**
+     * 删除工装夹具类型
+     */"
+TmToolController_list,"/**
+     * 查询工装夹具清单列表
+     */"
+TmToolController_export,"/**
+     * 导出工装夹具清单列表
+     */"
+TmToolController_getInfo,"/**
+     * 获取工装夹具清单详细信息
+     */"
+TmToolController_add,"/**
+     * 新增工装夹具清单
+     */"
+TmToolController_edit,"/**
+     * 修改工装夹具清单
+     */"
+TmToolController_remove,"/**
+     * 删除工装夹具清单
+     */"
+StorageCoreServiceImpl_processItemRecpt,"/**
+     * 采购入库
+     * @param lines
+     */"
+StorageCoreServiceImpl_processRtVendor,"/**
+     * 供应商退货
+     * @param lines
+     */"
+StorageCoreServiceImpl_processIssue,"/**
+     * 生产领料
+     * @param lines
+     */"
+StorageCoreServiceImpl_processRtIssue,"/**
+     * 生产退料
+     * @param lines
+     */"
+StorageCoreServiceImpl_processItemConsume,"/**
+     * 库存消耗
+     *
+     */"
+StorageCoreServiceImpl_processProductProduce,"/**
+     * 产品产出
+     *
+     */"
+StorageCoreServiceImpl_processProductRecpt,"/**
+     * 产品入库
+     * @param lines
+     */"
+StorageCoreServiceImpl_processProductSalse,"/**
+     * 销售出库
+     * @param lines
+     */"
+WmRtVendorServiceImpl_selectWmRtVendorByRtId,"/**
+     * 查询供应商退货
+     * 
+     * @param rtId 供应商退货主键
+     * @return 供应商退货
+     */"
+WmRtVendorServiceImpl_selectWmRtVendorList,"/**
+     * 查询供应商退货列表
+     * 
+     * @param wmRtVendor 供应商退货
+     * @return 供应商退货
+     */"
+WmRtVendorServiceImpl_insertWmRtVendor,"/**
+     * 新增供应商退货
+     * 
+     * @param wmRtVendor 供应商退货
+     * @return 结果
+     */"
+WmRtVendorServiceImpl_updateWmRtVendor,"/**
+     * 修改供应商退货
+     * 
+     * @param wmRtVendor 供应商退货
+     * @return 结果
+     */"
+WmRtVendorServiceImpl_deleteWmRtVendorByRtIds,"/**
+     * 批量删除供应商退货
+     * 
+     * @param rtIds 需要删除的供应商退货主键
+     * @return 结果
+     */"
+WmRtVendorServiceImpl_deleteWmRtVendorByRtId,"/**
+     * 删除供应商退货信息
+     * 
+     * @param rtId 供应商退货主键
+     * @return 结果
+     */"
+WmRtIssueServiceImpl_selectWmRtIssueByRtId,"/**
+     * 查询生产退料单头
+     * 
+     * @param rtId 生产退料单头主键
+     * @return 生产退料单头
+     */"
+WmRtIssueServiceImpl_selectWmRtIssueList,"/**
+     * 查询生产退料单头列表
+     * 
+     * @param wmRtIssue 生产退料单头
+     * @return 生产退料单头
+     */"
+WmRtIssueServiceImpl_insertWmRtIssue,"/**
+     * 新增生产退料单头
+     * 
+     * @param wmRtIssue 生产退料单头
+     * @return 结果
+     */"
+WmRtIssueServiceImpl_updateWmRtIssue,"/**
+     * 修改生产退料单头
+     * 
+     * @param wmRtIssue 生产退料单头
+     * @return 结果
+     */"
+WmRtIssueServiceImpl_deleteWmRtIssueByRtIds,"/**
+     * 批量删除生产退料单头
+     * 
+     * @param rtIds 需要删除的生产退料单头主键
+     * @return 结果
+     */"
+WmRtIssueServiceImpl_deleteWmRtIssueByRtId,"/**
+     * 删除生产退料单头信息
+     * 
+     * @param rtId 生产退料单头主键
+     * @return 结果
+     */"
+WmMaterialStockServiceImpl_selectWmMaterialStockByMaterialStockId,"/**
+     * 查询库存记录
+     * 
+     * @param materialStockId 库存记录主键
+     * @return 库存记录
+     */"
+WmMaterialStockServiceImpl_selectWmMaterialStockList,"/**
+     * 查询库存记录列表
+     * 
+     * @param wmMaterialStock 库存记录
+     * @return 库存记录
+     */"
+WmMaterialStockServiceImpl_insertWmMaterialStock,"/**
+     * 新增库存记录
+     * 
+     * @param wmMaterialStock 库存记录
+     * @return 结果
+     */"
+WmMaterialStockServiceImpl_updateWmMaterialStock,"/**
+     * 修改库存记录
+     * 
+     * @param wmMaterialStock 库存记录
+     * @return 结果
+     */"
+WmMaterialStockServiceImpl_deleteWmMaterialStockByMaterialStockIds,"/**
+     * 批量删除库存记录
+     * 
+     * @param materialStockIds 需要删除的库存记录主键
+     * @return 结果
+     */"
+WmMaterialStockServiceImpl_deleteWmMaterialStockByMaterialStockId,"/**
+     * 删除库存记录信息
+     * 
+     * @param materialStockId 库存记录主键
+     * @return 结果
+     */"
+WmRtSalseLineServiceImpl_selectWmRtSalseLineByLineId,"/**
+     * 查询产品销售退货行
+     * 
+     * @param lineId 产品销售退货行主键
+     * @return 产品销售退货行
+     */"
+WmRtSalseLineServiceImpl_selectWmRtSalseLineList,"/**
+     * 查询产品销售退货行列表
+     * 
+     * @param wmRtSalseLine 产品销售退货行
+     * @return 产品销售退货行
+     */"
+WmRtSalseLineServiceImpl_insertWmRtSalseLine,"/**
+     * 新增产品销售退货行
+     * 
+     * @param wmRtSalseLine 产品销售退货行
+     * @return 结果
+     */"
+WmRtSalseLineServiceImpl_updateWmRtSalseLine,"/**
+     * 修改产品销售退货行
+     * 
+     * @param wmRtSalseLine 产品销售退货行
+     * @return 结果
+     */"
+WmRtSalseLineServiceImpl_deleteWmRtSalseLineByLineIds,"/**
+     * 批量删除产品销售退货行
+     * 
+     * @param lineIds 需要删除的产品销售退货行主键
+     * @return 结果
+     */"
+WmRtSalseLineServiceImpl_deleteWmRtSalseLineByLineId,"/**
+     * 删除产品销售退货行信息
+     * 
+     * @param lineId 产品销售退货行主键
+     * @return 结果
+     */"
+WmPackageServiceImpl_selectWmPackageByPackageId,"/**
+     * 查询装箱单
+     * 
+     * @param packageId 装箱单主键
+     * @return 装箱单
+     */"
+WmPackageServiceImpl_selectWmPackageList,"/**
+     * 查询装箱单列表
+     * 
+     * @param wmPackage 装箱单
+     * @return 装箱单
+     */"
+WmPackageServiceImpl_insertWmPackage,"/**
+     * 新增装箱单
+     * 
+     * @param wmPackage 装箱单
+     * @return 结果
+     */"
+WmPackageServiceImpl_updateWmPackage,"/**
+     * 修改装箱单
+     * 
+     * @param wmPackage 装箱单
+     * @return 结果
+     */"
+WmPackageServiceImpl_deleteWmPackageByPackageIds,"/**
+     * 批量删除装箱单
+     * 
+     * @param packageIds 需要删除的装箱单主键
+     * @return 结果
+     */"
+WmPackageServiceImpl_deleteWmPackageByPackageId,"/**
+     * 删除装箱单信息
+     * 
+     * @param packageId 装箱单主键
+     * @return 结果
+     */"
+WmPackageLineServiceImpl_selectWmPackageLineByLineId,"/**
+     * 查询装箱明细
+     * 
+     * @param lineId 装箱明细主键
+     * @return 装箱明细
+     */"
+WmPackageLineServiceImpl_selectWmPackageLineList,"/**
+     * 查询装箱明细列表
+     * 
+     * @param wmPackageLine 装箱明细
+     * @return 装箱明细
+     */"
+WmPackageLineServiceImpl_insertWmPackageLine,"/**
+     * 新增装箱明细
+     * 
+     * @param wmPackageLine 装箱明细
+     * @return 结果
+     */"
+WmPackageLineServiceImpl_updateWmPackageLine,"/**
+     * 修改装箱明细
+     * 
+     * @param wmPackageLine 装箱明细
+     * @return 结果
+     */"
+WmPackageLineServiceImpl_deleteWmPackageLineByLineIds,"/**
+     * 批量删除装箱明细
+     * 
+     * @param lineIds 需要删除的装箱明细主键
+     * @return 结果
+     */"
+WmPackageLineServiceImpl_deleteWmPackageLineByLineId,"/**
+     * 删除装箱明细信息
+     * 
+     * @param lineId 装箱明细主键
+     * @return 结果
+     */"
+WmItemRecptServiceImpl_selectWmItemRecptByRecptId,"/**
+     * 查询物料入库单
+     * 
+     * @param recptId 物料入库单主键
+     * @return 物料入库单
+     */"
+WmItemRecptServiceImpl_selectWmItemRecptList,"/**
+     * 查询物料入库单列表
+     * 
+     * @param wmItemRecpt 物料入库单
+     * @return 物料入库单
+     */"
+WmItemRecptServiceImpl_insertWmItemRecpt,"/**
+     * 新增物料入库单
+     * 
+     * @param wmItemRecpt 物料入库单
+     * @return 结果
+     */"
+WmItemRecptServiceImpl_updateWmItemRecpt,"/**
+     * 修改物料入库单
+     * 
+     * @param wmItemRecpt 物料入库单
+     * @return 结果
+     */"
+WmItemRecptServiceImpl_deleteWmItemRecptByRecptIds,"/**
+     * 批量删除物料入库单
+     * 
+     * @param recptIds 需要删除的物料入库单主键
+     * @return 结果
+     */"
+WmItemRecptServiceImpl_deleteWmItemRecptByRecptId,"/**
+     * 删除物料入库单信息
+     * 
+     * @param recptId 物料入库单主键
+     * @return 结果
+     */"
+WmBarcodeServiceImpl_selectWmBarcodeByBarcodeId,"/**
+     * 查询条码清单
+     * 
+     * @param barcodeId 条码清单主键
+     * @return 条码清单
+     */"
+WmBarcodeServiceImpl_selectWmBarcodeList,"/**
+     * 查询条码清单列表
+     * 
+     * @param wmBarcode 条码清单
+     * @return 条码清单
+     */"
+WmBarcodeServiceImpl_insertWmBarcode,"/**
+     * 新增条码清单
+     * 
+     * @param wmBarcode 条码清单
+     * @return 结果
+     */"
+WmBarcodeServiceImpl_updateWmBarcode,"/**
+     * 修改条码清单
+     * 
+     * @param wmBarcode 条码清单
+     * @return 结果
+     */"
+WmBarcodeServiceImpl_deleteWmBarcodeByBarcodeIds,"/**
+     * 批量删除条码清单
+     * 
+     * @param barcodeIds 需要删除的条码清单主键
+     * @return 结果
+     */"
+WmBarcodeServiceImpl_deleteWmBarcodeByBarcodeId,"/**
+     * 删除条码清单信息
+     * 
+     * @param barcodeId 条码清单主键
+     * @return 结果
+     */"
+WmProductSalseLineServiceImpl_selectWmProductSalseLineByLineId,"/**
+     * 查询产品销售出库行
+     * 
+     * @param lineId 产品销售出库行主键
+     * @return 产品销售出库行
+     */"
+WmProductSalseLineServiceImpl_selectWmProductSalseLineList,"/**
+     * 查询产品销售出库行列表
+     * 
+     * @param wmProductSalseLine 产品销售出库行
+     * @return 产品销售出库行
+     */"
+WmProductSalseLineServiceImpl_insertWmProductSalseLine,"/**
+     * 新增产品销售出库行
+     * 
+     * @param wmProductSalseLine 产品销售出库行
+     * @return 结果
+     */"
+WmProductSalseLineServiceImpl_updateWmProductSalseLine,"/**
+     * 修改产品销售出库行
+     * 
+     * @param wmProductSalseLine 产品销售出库行
+     * @return 结果
+     */"
+WmProductSalseLineServiceImpl_deleteWmProductSalseLineByLineIds,"/**
+     * 批量删除产品销售出库行
+     * 
+     * @param lineIds 需要删除的产品销售出库行主键
+     * @return 结果
+     */"
+WmProductSalseLineServiceImpl_deleteWmProductSalseLineByLineId,"/**
+     * 删除产品销售出库行信息
+     * 
+     * @param lineId 产品销售出库行主键
+     * @return 结果
+     */"
+WmBarcodeConfigServiceImpl_selectWmBarcodeConfigByConfigId,"/**
+     * 查询条码配置
+     * 
+     * @param configId 条码配置主键
+     * @return 条码配置
+     */"
+WmBarcodeConfigServiceImpl_selectWmBarcodeConfigList,"/**
+     * 查询条码配置列表
+     * 
+     * @param wmBarcodeConfig 条码配置
+     * @return 条码配置
+     */"
+WmBarcodeConfigServiceImpl_insertWmBarcodeConfig,"/**
+     * 新增条码配置
+     * 
+     * @param wmBarcodeConfig 条码配置
+     * @return 结果
+     */"
+WmBarcodeConfigServiceImpl_updateWmBarcodeConfig,"/**
+     * 修改条码配置
+     * 
+     * @param wmBarcodeConfig 条码配置
+     * @return 结果
+     */"
+WmBarcodeConfigServiceImpl_deleteWmBarcodeConfigByConfigIds,"/**
+     * 批量删除条码配置
+     * 
+     * @param configIds 需要删除的条码配置主键
+     * @return 结果
+     */"
+WmBarcodeConfigServiceImpl_deleteWmBarcodeConfigByConfigId,"/**
+     * 删除条码配置信息
+     * 
+     * @param configId 条码配置主键
+     * @return 结果
+     */"
+WmBarcodeConfigServiceImpl_isAutoGen,"/**
+     * 判断某种类型的业务是否需要自动生成赋码
+     * @param barcodeType
+     * @return
+     */"
+WmWarehouseServiceImpl_selectWmWarehouseByWarehouseId,"/**
+     * 查询仓库设置
+     * 
+     * @param warehouseId 仓库设置主键
+     * @return 仓库设置
+     */"
+WmWarehouseServiceImpl_selectWmWarehouseList,"/**
+     * 查询仓库设置列表
+     * 
+     * @param wmWarehouse 仓库设置
+     * @return 仓库设置
+     */"
+WmWarehouseServiceImpl_insertWmWarehouse,"/**
+     * 新增仓库设置
+     * 
+     * @param wmWarehouse 仓库设置
+     * @return 结果
+     */"
+WmWarehouseServiceImpl_updateWmWarehouse,"/**
+     * 修改仓库设置
+     * 
+     * @param wmWarehouse 仓库设置
+     * @return 结果
+     */"
+WmWarehouseServiceImpl_deleteWmWarehouseByWarehouseIds,"/**
+     * 批量删除仓库设置
+     * 
+     * @param warehouseIds 需要删除的仓库设置主键
+     * @return 结果
+     */"
+WmWarehouseServiceImpl_deleteWmWarehouseByWarehouseId,"/**
+     * 删除仓库设置信息
+     * 
+     * @param warehouseId 仓库设置主键
+     * @return 结果
+     */"
+WmRtSalseServiceImpl_selectWmRtSalseByRtId,"/**
+     * 查询产品销售退货单
+     * 
+     * @param rtId 产品销售退货单主键
+     * @return 产品销售退货单
+     */"
+WmRtSalseServiceImpl_selectWmRtSalseList,"/**
+     * 查询产品销售退货单列表
+     * 
+     * @param wmRtSalse 产品销售退货单
+     * @return 产品销售退货单
+     */"
+WmRtSalseServiceImpl_insertWmRtSalse,"/**
+     * 新增产品销售退货单
+     * 
+     * @param wmRtSalse 产品销售退货单
+     * @return 结果
+     */"
+WmRtSalseServiceImpl_updateWmRtSalse,"/**
+     * 修改产品销售退货单
+     * 
+     * @param wmRtSalse 产品销售退货单
+     * @return 结果
+     */"
+WmRtSalseServiceImpl_deleteWmRtSalseByRtIds,"/**
+     * 批量删除产品销售退货单
+     * 
+     * @param rtIds 需要删除的产品销售退货单主键
+     * @return 结果
+     */"
+WmRtSalseServiceImpl_deleteWmRtSalseByRtId,"/**
+     * 删除产品销售退货单信息
+     * 
+     * @param rtId 产品销售退货单主键
+     * @return 结果
+     */"
+WmProductProduceLineServiceImpl_selectWmProductProduceLineByLineId,"/**
+     * 查询产品产出记录行
+     * 
+     * @param lineId 产品产出记录行主键
+     * @return 产品产出记录行
+     */"
+WmProductProduceLineServiceImpl_selectWmProductProduceLineList,"/**
+     * 查询产品产出记录行列表
+     * 
+     * @param wmProductProduceLine 产品产出记录行
+     * @return 产品产出记录行
+     */"
+WmProductProduceLineServiceImpl_insertWmProductProduceLine,"/**
+     * 新增产品产出记录行
+     * 
+     * @param wmProductProduceLine 产品产出记录行
+     * @return 结果
+     */"
+WmProductProduceLineServiceImpl_updateWmProductProduceLine,"/**
+     * 修改产品产出记录行
+     * 
+     * @param wmProductProduceLine 产品产出记录行
+     * @return 结果
+     */"
+WmProductProduceLineServiceImpl_deleteWmProductProduceLineByLineIds,"/**
+     * 批量删除产品产出记录行
+     * 
+     * @param lineIds 需要删除的产品产出记录行主键
+     * @return 结果
+     */"
+WmProductProduceLineServiceImpl_deleteWmProductProduceLineByLineId,"/**
+     * 删除产品产出记录行信息
+     * 
+     * @param lineId 产品产出记录行主键
+     * @return 结果
+     */"
+WmItemRecptLineServiceImpl_selectWmItemRecptLineByLineId,"/**
+     * 查询物料入库单行
+     * 
+     * @param lineId 物料入库单行主键
+     * @return 物料入库单行
+     */"
+WmItemRecptLineServiceImpl_selectWmItemRecptLineList,"/**
+     * 查询物料入库单行列表
+     * 
+     * @param wmItemRecptLine 物料入库单行
+     * @return 物料入库单行
+     */"
+WmItemRecptLineServiceImpl_insertWmItemRecptLine,"/**
+     * 新增物料入库单行
+     * 
+     * @param wmItemRecptLine 物料入库单行
+     * @return 结果
+     */"
+WmItemRecptLineServiceImpl_updateWmItemRecptLine,"/**
+     * 修改物料入库单行
+     * 
+     * @param wmItemRecptLine 物料入库单行
+     * @return 结果
+     */"
+WmItemRecptLineServiceImpl_deleteWmItemRecptLineByLineIds,"/**
+     * 批量删除物料入库单行
+     * 
+     * @param lineIds 需要删除的物料入库单行主键
+     * @return 结果
+     */"
+WmItemRecptLineServiceImpl_deleteWmItemRecptLineByLineId,"/**
+     * 删除物料入库单行信息
+     * 
+     * @param lineId 物料入库单行主键
+     * @return 结果
+     */"
+WmRtVendorLineServiceImpl_selectWmRtVendorLineByLineId,"/**
+     * 查询供应商退货行
+     * 
+     * @param lineId 供应商退货行主键
+     * @return 供应商退货行
+     */"
+WmRtVendorLineServiceImpl_selectWmRtVendorLineList,"/**
+     * 查询供应商退货行列表
+     * 
+     * @param wmRtVendorLine 供应商退货行
+     * @return 供应商退货行
+     */"
+WmRtVendorLineServiceImpl_insertWmRtVendorLine,"/**
+     * 新增供应商退货行
+     * 
+     * @param wmRtVendorLine 供应商退货行
+     * @return 结果
+     */"
+WmRtVendorLineServiceImpl_updateWmRtVendorLine,"/**
+     * 修改供应商退货行
+     * 
+     * @param wmRtVendorLine 供应商退货行
+     * @return 结果
+     */"
+WmRtVendorLineServiceImpl_deleteWmRtVendorLineByLineIds,"/**
+     * 批量删除供应商退货行
+     * 
+     * @param lineIds 需要删除的供应商退货行主键
+     * @return 结果
+     */"
+WmRtVendorLineServiceImpl_deleteWmRtVendorLineByLineId,"/**
+     * 删除供应商退货行信息
+     * 
+     * @param lineId 供应商退货行主键
+     * @return 结果
+     */"
+WmProductRecptLineServiceImpl_selectWmProductRecptLineByLineId,"/**
+     * 查询产品入库记录行
+     * 
+     * @param lineId 产品入库记录行主键
+     * @return 产品入库记录行
+     */"
+WmProductRecptLineServiceImpl_selectWmProductRecptLineList,"/**
+     * 查询产品入库记录行列表
+     * 
+     * @param wmProductRecptLine 产品入库记录行
+     * @return 产品入库记录行
+     */"
+WmProductRecptLineServiceImpl_insertWmProductRecptLine,"/**
+     * 新增产品入库记录行
+     * 
+     * @param wmProductRecptLine 产品入库记录行
+     * @return 结果
+     */"
+WmProductRecptLineServiceImpl_updateWmProductRecptLine,"/**
+     * 修改产品入库记录行
+     * 
+     * @param wmProductRecptLine 产品入库记录行
+     * @return 结果
+     */"
+WmProductRecptLineServiceImpl_deleteWmProductRecptLineByLineIds,"/**
+     * 批量删除产品入库记录行
+     * 
+     * @param lineIds 需要删除的产品入库记录行主键
+     * @return 结果
+     */"
+WmProductRecptLineServiceImpl_deleteWmProductRecptLineByLineId,"/**
+     * 删除产品入库记录行信息
+     * 
+     * @param lineId 产品入库记录行主键
+     * @return 结果
+     */"
+WmProductProduceServiceImpl_selectWmProductProduceByRecordId,"/**
+     * 查询产品产出记录
+     * 
+     * @param recordId 产品产出记录主键
+     * @return 产品产出记录
+     */"
+WmProductProduceServiceImpl_selectWmProductProduceList,"/**
+     * 查询产品产出记录列表
+     * 
+     * @param wmProductProduce 产品产出记录
+     * @return 产品产出记录
+     */"
+WmProductProduceServiceImpl_insertWmProductProduce,"/**
+     * 新增产品产出记录
+     * 
+     * @param wmProductProduce 产品产出记录
+     * @return 结果
+     */"
+WmProductProduceServiceImpl_updateWmProductProduce,"/**
+     * 修改产品产出记录
+     * 
+     * @param wmProductProduce 产品产出记录
+     * @return 结果
+     */"
+WmProductProduceServiceImpl_deleteWmProductProduceByRecordIds,"/**
+     * 批量删除产品产出记录
+     * 
+     * @param recordIds 需要删除的产品产出记录主键
+     * @return 结果
+     */"
+WmProductProduceServiceImpl_deleteWmProductProduceByRecordId,"/**
+     * 删除产品产出记录信息
+     * 
+     * @param recordId 产品产出记录主键
+     * @return 结果
+     */"
+WmProductProduceServiceImpl_generateProductProduce,"/**
+     * 根据报工单生成
+     * @param feedback
+     * @return
+     */"
+WmTransferServiceImpl_selectWmTransferByTransferId,"/**
+     * 查询转移单
+     * 
+     * @param transferId 转移单主键
+     * @return 转移单
+     */"
+WmTransferServiceImpl_selectWmTransferList,"/**
+     * 查询转移单列表
+     * 
+     * @param wmTransfer 转移单
+     * @return 转移单
+     */"
+WmTransferServiceImpl_insertWmTransfer,"/**
+     * 新增转移单
+     * 
+     * @param wmTransfer 转移单
+     * @return 结果
+     */"
+WmTransferServiceImpl_updateWmTransfer,"/**
+     * 修改转移单
+     * 
+     * @param wmTransfer 转移单
+     * @return 结果
+     */"
+WmTransferServiceImpl_deleteWmTransferByTransferIds,"/**
+     * 批量删除转移单
+     * 
+     * @param transferIds 需要删除的转移单主键
+     * @return 结果
+     */"
+WmTransferServiceImpl_deleteWmTransferByTransferId,"/**
+     * 删除转移单信息
+     * 
+     * @param transferId 转移单主键
+     * @return 结果
+     */"
+WmStorageLocationServiceImpl_selectWmStorageLocationByLocationId,"/**
+     * 查询库区设置
+     * 
+     * @param locationId 库区设置主键
+     * @return 库区设置
+     */"
+WmStorageLocationServiceImpl_selectWmStorageLocationList,"/**
+     * 查询库区设置列表
+     * 
+     * @param wmStorageLocation 库区设置
+     * @return 库区设置
+     */"
+WmStorageLocationServiceImpl_insertWmStorageLocation,"/**
+     * 新增库区设置
+     * 
+     * @param wmStorageLocation 库区设置
+     * @return 结果
+     */"
+WmStorageLocationServiceImpl_updateWmStorageLocation,"/**
+     * 修改库区设置
+     * 
+     * @param wmStorageLocation 库区设置
+     * @return 结果
+     */"
+WmStorageLocationServiceImpl_deleteWmStorageLocationByLocationIds,"/**
+     * 批量删除库区设置
+     * 
+     * @param locationIds 需要删除的库区设置主键
+     * @return 结果
+     */"
+WmStorageLocationServiceImpl_deleteWmStorageLocationByLocationId,"/**
+     * 删除库区设置信息
+     * 
+     * @param locationId 库区设置主键
+     * @return 结果
+     */"
+WmProductSalseServiceImpl_selectWmProductSalseBySalseId,"/**
+     * 查询销售出库单
+     * 
+     * @param salseId 销售出库单主键
+     * @return 销售出库单
+     */"
+WmProductSalseServiceImpl_selectWmProductSalseList,"/**
+     * 查询销售出库单列表
+     * 
+     * @param wmProductSalse 销售出库单
+     * @return 销售出库单
+     */"
+WmProductSalseServiceImpl_insertWmProductSalse,"/**
+     * 新增销售出库单
+     * 
+     * @param wmProductSalse 销售出库单
+     * @return 结果
+     */"
+WmProductSalseServiceImpl_updateWmProductSalse,"/**
+     * 修改销售出库单
+     * 
+     * @param wmProductSalse 销售出库单
+     * @return 结果
+     */"
+WmProductSalseServiceImpl_deleteWmProductSalseBySalseIds,"/**
+     * 批量删除销售出库单
+     * 
+     * @param salseIds 需要删除的销售出库单主键
+     * @return 结果
+     */"
+WmProductSalseServiceImpl_deleteWmProductSalseBySalseId,"/**
+     * 删除销售出库单信息
+     * 
+     * @param salseId 销售出库单主键
+     * @return 结果
+     */"
+WmItemConsumeServiceImpl_selectWmItemConsumeByRecordId,"/**
+     * 查询物料消耗记录
+     * 
+     * @param recordId 物料消耗记录主键
+     * @return 物料消耗记录
+     */"
+WmItemConsumeServiceImpl_selectWmItemConsumeList,"/**
+     * 查询物料消耗记录列表
+     * 
+     * @param wmItemConsume 物料消耗记录
+     * @return 物料消耗记录
+     */"
+WmItemConsumeServiceImpl_insertWmItemConsume,"/**
+     * 新增物料消耗记录
+     * 
+     * @param wmItemConsume 物料消耗记录
+     * @return 结果
+     */"
+WmItemConsumeServiceImpl_updateWmItemConsume,"/**
+     * 修改物料消耗记录
+     * 
+     * @param wmItemConsume 物料消耗记录
+     * @return 结果
+     */"
+WmItemConsumeServiceImpl_deleteWmItemConsumeByRecordIds,"/**
+     * 批量删除物料消耗记录
+     * 
+     * @param recordIds 需要删除的物料消耗记录主键
+     * @return 结果
+     */"
+WmItemConsumeServiceImpl_deleteWmItemConsumeByRecordId,"/**
+     * 删除物料消耗记录信息
+     * 
+     * @param recordId 物料消耗记录主键
+     * @return 结果
+     */"
+WmSnServiceImpl_selectWmSnBySnId,"/**
+     * 查询SN码
+     * 
+     * @param snId SN码主键
+     * @return SN码
+     */"
+WmSnServiceImpl_selectWmSnList,"/**
+     * 查询SN码列表
+     * 
+     * @param wmSn SN码
+     * @return SN码
+     */"
+WmSnServiceImpl_insertWmSn,"/**
+     * 新增SN码
+     * 
+     * @param wmSn SN码
+     * @return 结果
+     */"
+WmSnServiceImpl_updateWmSn,"/**
+     * 修改SN码
+     * 
+     * @param wmSn SN码
+     * @return 结果
+     */"
+WmSnServiceImpl_deleteWmSnBySnIds,"/**
+     * 批量删除SN码
+     * 
+     * @param snIds 需要删除的SN码主键
+     * @return 结果
+     */"
+WmSnServiceImpl_deleteWmSnBySnId,"/**
+     * 删除SN码信息
+     * 
+     * @param snId SN码主键
+     * @return 结果
+     */"
+WmRtIssueLineServiceImpl_selectWmRtIssueLineByLineId,"/**
+     * 查询生产退料单行
+     * 
+     * @param lineId 生产退料单行主键
+     * @return 生产退料单行
+     */"
+WmRtIssueLineServiceImpl_selectWmRtIssueLineList,"/**
+     * 查询生产退料单行列表
+     * 
+     * @param wmRtIssueLine 生产退料单行
+     * @return 生产退料单行
+     */"
+WmRtIssueLineServiceImpl_insertWmRtIssueLine,"/**
+     * 新增生产退料单行
+     * 
+     * @param wmRtIssueLine 生产退料单行
+     * @return 结果
+     */"
+WmRtIssueLineServiceImpl_updateWmRtIssueLine,"/**
+     * 修改生产退料单行
+     * 
+     * @param wmRtIssueLine 生产退料单行
+     * @return 结果
+     */"
+WmRtIssueLineServiceImpl_deleteWmRtIssueLineByLineIds,"/**
+     * 批量删除生产退料单行
+     * 
+     * @param lineIds 需要删除的生产退料单行主键
+     * @return 结果
+     */"
+WmRtIssueLineServiceImpl_deleteWmRtIssueLineByLineId,"/**
+     * 删除生产退料单行信息
+     * 
+     * @param lineId 生产退料单行主键
+     * @return 结果
+     */"
+WmIssueLineServiceImpl_selectWmIssueLineByLineId,"/**
+     * 查询生产领料单行
+     * 
+     * @param lineId 生产领料单行主键
+     * @return 生产领料单行
+     */"
+WmIssueLineServiceImpl_selectWmIssueLineList,"/**
+     * 查询生产领料单行列表
+     * 
+     * @param wmIssueLine 生产领料单行
+     * @return 生产领料单行
+     */"
+WmIssueLineServiceImpl_insertWmIssueLine,"/**
+     * 新增生产领料单行
+     * 
+     * @param wmIssueLine 生产领料单行
+     * @return 结果
+     */"
+WmIssueLineServiceImpl_updateWmIssueLine,"/**
+     * 修改生产领料单行
+     * 
+     * @param wmIssueLine 生产领料单行
+     * @return 结果
+     */"
+WmIssueLineServiceImpl_deleteWmIssueLineByLineIds,"/**
+     * 批量删除生产领料单行
+     * 
+     * @param lineIds 需要删除的生产领料单行主键
+     * @return 结果
+     */"
+WmIssueLineServiceImpl_deleteWmIssueLineByLineId,"/**
+     * 删除生产领料单行信息
+     * 
+     * @param lineId 生产领料单行主键
+     * @return 结果
+     */"
+WmItemConsumeLineServiceImpl_selectWmItemConsumeLineByLineId,"/**
+     * 查询物料消耗记录行
+     * 
+     * @param lineId 物料消耗记录行主键
+     * @return 物料消耗记录行
+     */"
+WmItemConsumeLineServiceImpl_selectWmItemConsumeLineList,"/**
+     * 查询物料消耗记录行列表
+     * 
+     * @param wmItemConsumeLine 物料消耗记录行
+     * @return 物料消耗记录行
+     */"
+WmItemConsumeLineServiceImpl_insertWmItemConsumeLine,"/**
+     * 新增物料消耗记录行
+     * 
+     * @param wmItemConsumeLine 物料消耗记录行
+     * @return 结果
+     */"
+WmItemConsumeLineServiceImpl_updateWmItemConsumeLine,"/**
+     * 修改物料消耗记录行
+     * 
+     * @param wmItemConsumeLine 物料消耗记录行
+     * @return 结果
+     */"
+WmItemConsumeLineServiceImpl_deleteWmItemConsumeLineByLineIds,"/**
+     * 批量删除物料消耗记录行
+     * 
+     * @param lineIds 需要删除的物料消耗记录行主键
+     * @return 结果
+     */"
+WmItemConsumeLineServiceImpl_deleteWmItemConsumeLineByLineId,"/**
+     * 删除物料消耗记录行信息
+     * 
+     * @param lineId 物料消耗记录行主键
+     * @return 结果
+     */"
+WmTransactionServiceImpl_selectWmTransactionByTransactionId,"/**
+     * 查询库存事务
+     * 
+     * @param transactionId 库存事务主键
+     * @return 库存事务
+     */"
+WmTransactionServiceImpl_selectWmTransactionList,"/**
+     * 查询库存事务列表
+     * 
+     * @param wmTransaction 库存事务
+     * @return 库存事务
+     */"
+WmTransactionServiceImpl_insertWmTransaction,"/**
+     * 新增库存事务
+     * 
+     * @param wmTransaction 库存事务
+     * @return 结果
+     */"
+WmTransactionServiceImpl_updateWmTransaction,"/**
+     * 修改库存事务
+     * 
+     * @param wmTransaction 库存事务
+     * @return 结果
+     */"
+WmTransactionServiceImpl_deleteWmTransactionByTransactionIds,"/**
+     * 批量删除库存事务
+     * 
+     * @param transactionIds 需要删除的库存事务主键
+     * @return 结果
+     */"
+WmTransactionServiceImpl_deleteWmTransactionByTransactionId,"/**
+     * 删除库存事务信息
+     * 
+     * @param transactionId 库存事务主键
+     * @return 结果
+     */"
+WmStorageAreaServiceImpl_selectWmStorageAreaByAreaId,"/**
+     * 查询库位设置
+     * 
+     * @param areaId 库位设置主键
+     * @return 库位设置
+     */"
+WmStorageAreaServiceImpl_selectWmStorageAreaList,"/**
+     * 查询库位设置列表
+     * 
+     * @param wmStorageArea 库位设置
+     * @return 库位设置
+     */"
+WmStorageAreaServiceImpl_insertWmStorageArea,"/**
+     * 新增库位设置
+     * 
+     * @param wmStorageArea 库位设置
+     * @return 结果
+     */"
+WmStorageAreaServiceImpl_updateWmStorageArea,"/**
+     * 修改库位设置
+     * 
+     * @param wmStorageArea 库位设置
+     * @return 结果
+     */"
+WmStorageAreaServiceImpl_deleteWmStorageAreaByAreaIds,"/**
+     * 批量删除库位设置
+     * 
+     * @param areaIds 需要删除的库位设置主键
+     * @return 结果
+     */"
+WmStorageAreaServiceImpl_deleteWmStorageAreaByAreaId,"/**
+     * 删除库位设置信息
+     * 
+     * @param areaId 库位设置主键
+     * @return 结果
+     */"
+WmProductRecptServiceImpl_selectWmProductRecptByRecptId,"/**
+     * 查询产品入库录
+     * 
+     * @param recptId 产品入库录主键
+     * @return 产品入库录
+     */"
+WmProductRecptServiceImpl_selectWmProductRecptList,"/**
+     * 查询产品入库录列表
+     * 
+     * @param wmProductRecpt 产品入库录
+     * @return 产品入库录
+     */"
+WmProductRecptServiceImpl_insertWmProductRecpt,"/**
+     * 新增产品入库录
+     * 
+     * @param wmProductRecpt 产品入库录
+     * @return 结果
+     */"
+WmProductRecptServiceImpl_updateWmProductRecpt,"/**
+     * 修改产品入库录
+     * 
+     * @param wmProductRecpt 产品入库录
+     * @return 结果
+     */"
+WmProductRecptServiceImpl_deleteWmProductRecptByRecptIds,"/**
+     * 批量删除产品入库录
+     * 
+     * @param recptIds 需要删除的产品入库录主键
+     * @return 结果
+     */"
+WmProductRecptServiceImpl_deleteWmProductRecptByRecptId,"/**
+     * 删除产品入库录信息
+     * 
+     * @param recptId 产品入库录主键
+     * @return 结果
+     */"
+WmTransferLineServiceImpl_selectWmTransferLineByLineId,"/**
+     * 查询转移单行
+     * 
+     * @param lineId 转移单行主键
+     * @return 转移单行
+     */"
+WmTransferLineServiceImpl_selectWmTransferLineList,"/**
+     * 查询转移单行列表
+     * 
+     * @param wmTransferLine 转移单行
+     * @return 转移单行
+     */"
+WmTransferLineServiceImpl_insertWmTransferLine,"/**
+     * 新增转移单行
+     * 
+     * @param wmTransferLine 转移单行
+     * @return 结果
+     */"
+WmTransferLineServiceImpl_updateWmTransferLine,"/**
+     * 修改转移单行
+     * 
+     * @param wmTransferLine 转移单行
+     * @return 结果
+     */"
+WmTransferLineServiceImpl_deleteWmTransferLineByLineIds,"/**
+     * 批量删除转移单行
+     * 
+     * @param lineIds 需要删除的转移单行主键
+     * @return 结果
+     */"
+WmTransferLineServiceImpl_deleteWmTransferLineByLineId,"/**
+     * 删除转移单行信息
+     * 
+     * @param lineId 转移单行主键
+     * @return 结果
+     */"
+WmIssueHeaderServiceImpl_selectWmIssueHeaderByIssueId,"/**
+     * 查询生产领料单头
+     * 
+     * @param issueId 生产领料单头主键
+     * @return 生产领料单头
+     */"
+WmIssueHeaderServiceImpl_selectWmIssueHeaderList,"/**
+     * 查询生产领料单头列表
+     * 
+     * @param wmIssueHeader 生产领料单头
+     * @return 生产领料单头
+     */"
+WmIssueHeaderServiceImpl_insertWmIssueHeader,"/**
+     * 新增生产领料单头
+     * 
+     * @param wmIssueHeader 生产领料单头
+     * @return 结果
+     */"
+WmIssueHeaderServiceImpl_updateWmIssueHeader,"/**
+     * 修改生产领料单头
+     * 
+     * @param wmIssueHeader 生产领料单头
+     * @return 结果
+     */"
+WmIssueHeaderServiceImpl_deleteWmIssueHeaderByIssueIds,"/**
+     * 批量删除生产领料单头
+     * 
+     * @param issueIds 需要删除的生产领料单头主键
+     * @return 结果
+     */"
+WmIssueHeaderServiceImpl_deleteWmIssueHeaderByIssueId,"/**
+     * 删除生产领料单头信息
+     * 
+     * @param issueId 生产领料单头主键
+     * @return 结果
+     */"
+WmProductSalseLineController_list,"/**
+     * 查询产品销售出库行列表
+     */"
+WmProductSalseLineController_export,"/**
+     * 导出产品销售出库行列表
+     */"
+WmProductSalseLineController_getInfo,"/**
+     * 获取产品销售出库行详细信息
+     */"
+WmProductSalseLineController_add,"/**
+     * 新增产品销售出库行
+     */"
+WmProductSalseLineController_edit,"/**
+     * 修改产品销售出库行
+     */"
+WmProductSalseLineController_remove,"/**
+     * 删除产品销售出库行
+     */"
+WmTransferController_list,"/**
+     * 查询转移单列表
+     */"
+WmTransferController_export,"/**
+     * 导出转移单列表
+     */"
+WmTransferController_getInfo,"/**
+     * 获取转移单详细信息
+     */"
+WmTransferController_add,"/**
+     * 新增转移单
+     */"
+WmTransferController_edit,"/**
+     * 修改转移单
+     */"
+WmTransferController_remove,"/**
+     * 删除转移单
+     */"
+WmTransferController_execute,"/**
+     * 执行退货
+     */"
+WmWarehouseController_list,"/**
+     * 查询仓库设置列表
+     */"
+WmWarehouseController_getTreeList,"/**
+     * 查询树型的列表
+     * @return
+     */"
+WmWarehouseController_export,"/**
+     * 导出仓库设置列表
+     */"
+WmWarehouseController_getInfo,"/**
+     * 获取仓库设置详细信息
+     */"
+WmWarehouseController_add,"/**
+     * 新增仓库设置
+     */"
+WmWarehouseController_edit,"/**
+     * 修改仓库设置
+     */"
+WmWarehouseController_remove,"/**
+     * 删除仓库设置
+     */"
+WmTransferLineController_list,"/**
+     * 查询转移单行列表
+     */"
+WmTransferLineController_export,"/**
+     * 导出转移单行列表
+     */"
+WmTransferLineController_getInfo,"/**
+     * 获取转移单行详细信息
+     */"
+WmTransferLineController_add,"/**
+     * 新增转移单行
+     */"
+WmTransferLineController_edit,"/**
+     * 修改转移单行
+     */"
+WmTransferLineController_remove,"/**
+     * 删除转移单行
+     */"
+WmIssueLineController_list,"/**
+     * 查询生产领料单行列表
+     */"
+WmIssueLineController_export,"/**
+     * 导出生产领料单行列表
+     */"
+WmIssueLineController_getInfo,"/**
+     * 获取生产领料单行详细信息
+     */"
+WmIssueLineController_add,"/**
+     * 新增生产领料单行
+     */"
+WmIssueLineController_edit,"/**
+     * 修改生产领料单行
+     */"
+WmIssueLineController_remove,"/**
+     * 删除生产领料单行
+     */"
+WmBarcodeController_list,"/**
+     * 查询条码清单列表
+     */"
+WmBarcodeController_export,"/**
+     * 导出条码清单列表
+     */"
+WmBarcodeController_getInfo,"/**
+     * 获取条码清单详细信息
+     */"
+WmBarcodeController_add,"/**
+     * 新增条码清单
+     */"
+WmBarcodeController_edit,"/**
+     * 修改条码清单
+     */"
+WmBarcodeController_remove,"/**
+     * 删除条码清单
+     */"
+WmBarcodeConfigController_list,"/**
+     * 查询条码配置列表
+     */"
+WmBarcodeConfigController_export,"/**
+     * 导出条码配置列表
+     */"
+WmBarcodeConfigController_getInfo,"/**
+     * 获取条码配置详细信息
+     */"
+WmBarcodeConfigController_add,"/**
+     * 新增条码配置
+     */"
+WmBarcodeConfigController_edit,"/**
+     * 修改条码配置
+     */"
+WmBarcodeConfigController_remove,"/**
+     * 删除条码配置
+     */"
+WmRtSalseLineController_list,"/**
+     * 查询产品销售退货行列表
+     */"
+WmRtSalseLineController_export,"/**
+     * 导出产品销售退货行列表
+     */"
+WmRtSalseLineController_getInfo,"/**
+     * 获取产品销售退货行详细信息
+     */"
+WmRtSalseLineController_add,"/**
+     * 新增产品销售退货行
+     */"
+WmRtSalseLineController_edit,"/**
+     * 修改产品销售退货行
+     */"
+WmRtSalseLineController_remove,"/**
+     * 删除产品销售退货行
+     */"
+WmRtIssueController_list,"/**
+     * 查询生产退料单头列表
+     */"
+WmRtIssueController_export,"/**
+     * 导出生产退料单头列表
+     */"
+WmRtIssueController_getInfo,"/**
+     * 获取生产退料单头详细信息
+     */"
+WmRtIssueController_add,"/**
+     * 新增生产退料单头
+     */"
+WmRtIssueController_edit,"/**
+     * 修改生产退料单头
+     */"
+WmRtIssueController_remove,"/**
+     * 删除生产退料单头
+     */"
+WmRtIssueController_execute,"/**
+     * 执行退料
+     * @param rtId
+     * @return
+     */"
+WmStorageAreaController_list,"/**
+     * 查询库位设置列表
+     */"
+WmStorageAreaController_export,"/**
+     * 导出库位设置列表
+     */"
+WmStorageAreaController_getInfo,"/**
+     * 获取库位设置详细信息
+     */"
+WmStorageAreaController_add,"/**
+     * 新增库位设置
+     */"
+WmStorageAreaController_edit,"/**
+     * 修改库位设置
+     */"
+WmStorageAreaController_remove,"/**
+     * 删除库位设置
+     */"
+WmProductProduceController_list,"/**
+     * 查询产品产出记录列表
+     */"
+WmProductProduceController_export,"/**
+     * 导出产品产出记录列表
+     */"
+WmProductProduceController_getInfo,"/**
+     * 获取产品产出记录详细信息
+     */"
+WmProductProduceController_add,"/**
+     * 新增产品产出记录
+     */"
+WmProductProduceController_edit,"/**
+     * 修改产品产出记录
+     */"
+WmProductProduceController_remove,"/**
+     * 删除产品产出记录
+     */"
+WmPackageController_list,"/**
+     * 查询装箱单列表
+     */"
+WmPackageController_export,"/**
+     * 导出装箱单列表
+     */"
+WmPackageController_getInfo,"/**
+     * 获取装箱单详细信息
+     */"
+WmPackageController_add,"/**
+     * 新增装箱单
+     */"
+WmPackageController_edit,"/**
+     * 修改装箱单
+     */"
+WmPackageController_addSubPackage,"/**
+     * 添加子箱
+     */"
+WmPackageController_remove,"/**
+     * 删除装箱单
+     */"
+WmProductRecptLineController_list,"/**
+     * 查询产品入库记录行列表
+     */"
+WmProductRecptLineController_export,"/**
+     * 导出产品入库记录行列表
+     */"
+WmProductRecptLineController_getInfo,"/**
+     * 获取产品入库记录行详细信息
+     */"
+WmProductRecptLineController_add,"/**
+     * 新增产品入库记录行
+     */"
+WmProductRecptLineController_edit,"/**
+     * 修改产品入库记录行
+     */"
+WmProductRecptLineController_remove,"/**
+     * 删除产品入库记录行
+     */"
+WmRtVendorController_list,"/**
+     * 查询供应商退货列表
+     */"
+WmRtVendorController_export,"/**
+     * 导出供应商退货列表
+     */"
+WmRtVendorController_getInfo,"/**
+     * 获取供应商退货详细信息
+     */"
+WmRtVendorController_add,"/**
+     * 新增供应商退货
+     */"
+WmRtVendorController_edit,"/**
+     * 修改供应商退货
+     */"
+WmRtVendorController_remove,"/**
+     * 删除供应商退货
+     */"
+WmRtVendorController_execute,"/**
+     * 执行退货
+     */"
+WmProductProduceLineController_list,"/**
+     * 查询产品产出记录行列表
+     */"
+WmProductProduceLineController_export,"/**
+     * 导出产品产出记录行列表
+     */"
+WmProductProduceLineController_getInfo,"/**
+     * 获取产品产出记录行详细信息
+     */"
+WmProductProduceLineController_add,"/**
+     * 新增产品产出记录行
+     */"
+WmProductProduceLineController_edit,"/**
+     * 修改产品产出记录行
+     */"
+WmProductProduceLineController_remove,"/**
+     * 删除产品产出记录行
+     */"
+WmMaterialStockController_list,"/**
+     * 查询库存记录列表
+     */"
+WmMaterialStockController_export,"/**
+     * 导出库存记录列表
+     */"
+WmMaterialStockController_getInfo,"/**
+     * 获取库存记录详细信息
+     */"
+WmMaterialStockController_add,"/**
+     * 新增库存记录
+     */"
+WmMaterialStockController_edit,"/**
+     * 修改库存记录
+     */"
+WmMaterialStockController_remove,"/**
+     * 删除库存记录
+     */"
+WmItemRecptController_list,"/**
+     * 查询物料入库单列表
+     */"
+WmItemRecptController_export,"/**
+     * 导出物料入库单列表
+     */"
+WmItemRecptController_getInfo,"/**
+     * 获取物料入库单详细信息
+     */"
+WmItemRecptController_add,"/**
+     * 新增物料入库单
+     */"
+WmItemRecptController_confirm,"/**
+     * 确认入库单
+     */"
+WmItemRecptController_edit,"/**
+     * 修改物料入库单
+     */"
+WmItemRecptController_execute,"/**
+     * 执行入库
+     * @return
+     */"
+WmItemRecptController_remove,"/**
+     * 删除物料入库单
+     */"
+WmPackageLineController_list,"/**
+     * 查询装箱明细列表
+     */"
+WmPackageLineController_export,"/**
+     * 导出装箱明细列表
+     */"
+WmPackageLineController_getInfo,"/**
+     * 获取装箱明细详细信息
+     */"
+WmPackageLineController_add,"/**
+     * 新增装箱明细
+     */"
+WmPackageLineController_edit,"/**
+     * 修改装箱明细
+     */"
+WmPackageLineController_remove,"/**
+     * 删除装箱明细
+     */"
+WmItemConsumeLineController_list,"/**
+     * 查询物料消耗记录行列表
+     */"
+WmItemConsumeLineController_export,"/**
+     * 导出物料消耗记录行列表
+     */"
+WmItemConsumeLineController_getInfo,"/**
+     * 获取物料消耗记录行详细信息
+     */"
+WmItemConsumeLineController_add,"/**
+     * 新增物料消耗记录行
+     */"
+WmItemConsumeLineController_edit,"/**
+     * 修改物料消耗记录行
+     */"
+WmItemConsumeLineController_remove,"/**
+     * 删除物料消耗记录行
+     */"
+WmItemRecptLineController_list,"/**
+     * 查询物料入库单行列表
+     */"
+WmItemRecptLineController_export,"/**
+     * 导出物料入库单行列表
+     */"
+WmItemRecptLineController_getInfo,"/**
+     * 获取物料入库单行详细信息
+     */"
+WmItemRecptLineController_add,"/**
+     * 新增物料入库单行
+     */"
+WmItemRecptLineController_edit,"/**
+     * 修改物料入库单行
+     */"
+WmItemRecptLineController_remove,"/**
+     * 删除物料入库单行
+     */"
+WmStorageLocationController_list,"/**
+     * 查询库区设置列表
+     */"
+WmStorageLocationController_export,"/**
+     * 导出库区设置列表
+     */"
+WmStorageLocationController_getInfo,"/**
+     * 获取库区设置详细信息
+     */"
+WmStorageLocationController_add,"/**
+     * 新增库区设置
+     */"
+WmStorageLocationController_edit,"/**
+     * 修改库区设置
+     */"
+WmStorageLocationController_remove,"/**
+     * 删除库区设置
+     */"
+WmItemConsumeController_list,"/**
+     * 查询物料消耗记录列表
+     */"
+WmItemConsumeController_export,"/**
+     * 导出物料消耗记录列表
+     */"
+WmItemConsumeController_getInfo,"/**
+     * 获取物料消耗记录详细信息
+     */"
+WmItemConsumeController_add,"/**
+     * 新增物料消耗记录
+     */"
+WmItemConsumeController_edit,"/**
+     * 修改物料消耗记录
+     */"
+WmItemConsumeController_remove,"/**
+     * 删除物料消耗记录
+     */"
+WmSnController_list,"/**
+     * 查询SN码列表
+     */"
+WmSnController_listSn,"/**
+     * 查询SN码列表
+     */"
+WmSnController_export,"/**
+     * 导出SN码列表
+     */"
+WmSnController_getInfo,"/**
+     * 获取SN码详细信息
+     */"
+WmSnController_add,"/**
+     * 新增SN码
+     */"
+WmSnController_edit,"/**
+     * 修改SN码
+     */"
+WmSnController_remove,"/**
+     * 删除SN码
+     */"
+WmProductSalseController_list,"/**
+     * 查询销售出库单列表
+     */"
+WmProductSalseController_export,"/**
+     * 导出销售出库单列表
+     */"
+WmProductSalseController_getInfo,"/**
+     * 获取销售出库单详细信息
+     */"
+WmProductSalseController_add,"/**
+     * 新增销售出库单
+     */"
+WmProductSalseController_edit,"/**
+     * 修改销售出库单
+     */"
+WmProductSalseController_remove,"/**
+     * 删除销售出库单
+     */"
+WmProductSalseController_execute,"/**
+     * 执行出库
+     * @return
+     */"
+WmRtVendorLineController_list,"/**
+     * 查询供应商退货行列表
+     */"
+WmRtVendorLineController_export,"/**
+     * 导出供应商退货行列表
+     */"
+WmRtVendorLineController_getInfo,"/**
+     * 获取供应商退货行详细信息
+     */"
+WmRtVendorLineController_add,"/**
+     * 新增供应商退货行
+     */"
+WmRtVendorLineController_edit,"/**
+     * 修改供应商退货行
+     */"
+WmRtVendorLineController_remove,"/**
+     * 删除供应商退货行
+     */"
+WmProductRecptController_list,"/**
+     * 查询产品入库录列表
+     */"
+WmProductRecptController_export,"/**
+     * 导出产品入库录列表
+     */"
+WmProductRecptController_getInfo,"/**
+     * 获取产品入库录详细信息
+     */"
+WmProductRecptController_add,"/**
+     * 新增产品入库录
+     */"
+WmProductRecptController_edit,"/**
+     * 修改产品入库录
+     */"
+WmProductRecptController_remove,"/**
+     * 删除产品入库录
+     */"
+WmProductRecptController_execute,"/**
+     * 执行入库
+     * @return
+     */"
+WmRtIssueLineController_list,"/**
+     * 查询生产退料单行列表
+     */"
+WmRtIssueLineController_export,"/**
+     * 导出生产退料单行列表
+     */"
+WmRtIssueLineController_getInfo,"/**
+     * 获取生产退料单行详细信息
+     */"
+WmRtIssueLineController_add,"/**
+     * 新增生产退料单行
+     */"
+WmRtIssueLineController_edit,"/**
+     * 修改生产退料单行
+     */"
+WmRtIssueLineController_remove,"/**
+     * 删除生产退料单行
+     */"
+WmIssueHeaderController_list,"/**
+     * 查询生产领料单头列表
+     */"
+WmIssueHeaderController_export,"/**
+     * 导出生产领料单头列表
+     */"
+WmIssueHeaderController_getInfo,"/**
+     * 获取生产领料单头详细信息
+     */"
+WmIssueHeaderController_add,"/**
+     * 新增生产领料单头
+     */"
+WmIssueHeaderController_edit,"/**
+     * 修改生产领料单头
+     */"
+WmIssueHeaderController_remove,"/**
+     * 删除生产领料单头
+     */"
+WmIssueHeaderController_execute,"/**
+     * 执行出库
+     * @return
+     */"
+WmRtSalseController_list,"/**
+     * 查询产品销售退货单列表
+     */"
+WmRtSalseController_export,"/**
+     * 导出产品销售退货单列表
+     */"
+WmRtSalseController_getInfo,"/**
+     * 获取产品销售退货单详细信息
+     */"
+WmRtSalseController_add,"/**
+     * 新增产品销售退货单
+     */"
+WmRtSalseController_edit,"/**
+     * 修改产品销售退货单
+     */"
+WmRtSalseController_remove,"/**
+     * 删除产品销售退货单
+     */"
+WmRtSalseController_execute,"/**
+     * 执行退货
+     * @param rtId
+     * @return
+     */"
+MdProductSopServiceImpl_selectMdProductSopBySopId,"/**
+     * 查询产品SOP
+     * 
+     * @param sopId 产品SOP主键
+     * @return 产品SOP
+     */"
+MdProductSopServiceImpl_selectMdProductSopList,"/**
+     * 查询产品SOP列表
+     * 
+     * @param mdProdutSop 产品SOP
+     * @return 产品SOP
+     */"
+MdProductSopServiceImpl_insertMdProductSop,"/**
+     * 新增产品SOP
+     * 
+     * @param mdProdutSop 产品SOP
+     * @return 结果
+     */"
+MdProductSopServiceImpl_updateMdProductSop,"/**
+     * 修改产品SOP
+     * 
+     * @param mdProdutSop 产品SOP
+     * @return 结果
+     */"
+MdProductSopServiceImpl_deleteMdProductSopBySopIds,"/**
+     * 批量删除产品SOP
+     * 
+     * @param sopIds 需要删除的产品SOP主键
+     * @return 结果
+     */"
+MdProductSopServiceImpl_deleteMdProductSopBySopId,"/**
+     * 删除产品SOP信息
+     * 
+     * @param sopId 产品SOP主键
+     * @return 结果
+     */"
+ItemTypeServiceImpl_recursionFn,"/**
+     * 递归列表
+     */"
+ItemTypeServiceImpl_getChildList,"/**
+     * 得到子节点列表
+     */"
+ItemTypeServiceImpl_hasChild,"/**
+     * 判断是否有子节点
+     */"
+MdWorkshopServiceImpl_selectMdWorkshopByWorkshopId,"/**
+     * 查询车间
+     * 
+     * @param workshopId 车间主键
+     * @return 车间
+     */"
+MdWorkshopServiceImpl_selectMdWorkshopList,"/**
+     * 查询车间列表
+     * 
+     * @param mdWorkshop 车间
+     * @return 车间
+     */"
+MdWorkshopServiceImpl_insertMdWorkshop,"/**
+     * 新增车间
+     * 
+     * @param mdWorkshop 车间
+     * @return 结果
+     */"
+MdWorkshopServiceImpl_updateMdWorkshop,"/**
+     * 修改车间
+     * 
+     * @param mdWorkshop 车间
+     * @return 结果
+     */"
+MdWorkshopServiceImpl_deleteMdWorkshopByWorkshopIds,"/**
+     * 批量删除车间
+     * 
+     * @param workshopIds 需要删除的车间主键
+     * @return 结果
+     */"
+MdWorkshopServiceImpl_deleteMdWorkshopByWorkshopId,"/**
+     * 删除车间信息
+     * 
+     * @param workshopId 车间主键
+     * @return 结果
+     */"
+MdClientServiceImpl_selectMdClientByClientId,"/**
+     * 查询客户
+     * 
+     * @param clientId 客户主键
+     * @return 客户
+     */"
+MdClientServiceImpl_selectMdClientList,"/**
+     * 查询客户列表
+     * 
+     * @param mdClient 客户
+     * @return 客户
+     */"
+MdClientServiceImpl_insertMdClient,"/**
+     * 新增客户
+     * 
+     * @param mdClient 客户
+     * @return 结果
+     */"
+MdClientServiceImpl_updateMdClient,"/**
+     * 修改客户
+     * 
+     * @param mdClient 客户
+     * @return 结果
+     */"
+MdClientServiceImpl_deleteMdClientByClientIds,"/**
+     * 批量删除客户
+     * 
+     * @param clientIds 需要删除的客户主键
+     * @return 结果
+     */"
+MdClientServiceImpl_deleteMdClientByClientId,"/**
+     * 删除客户信息
+     * 
+     * @param clientId 客户主键
+     * @return 结果
+     */"
+MdVendorServiceImpl_selectMdVendorByVendorId,"/**
+     * 查询供应商
+     * 
+     * @param vendorId 供应商主键
+     * @return 供应商
+     */"
+MdVendorServiceImpl_selectMdVendorList,"/**
+     * 查询供应商列表
+     * 
+     * @param mdVendor 供应商
+     * @return 供应商
+     */"
+MdVendorServiceImpl_insertMdVendor,"/**
+     * 新增供应商
+     * 
+     * @param mdVendor 供应商
+     * @return 结果
+     */"
+MdVendorServiceImpl_updateMdVendor,"/**
+     * 修改供应商
+     * 
+     * @param mdVendor 供应商
+     * @return 结果
+     */"
+MdVendorServiceImpl_deleteMdVendorByVendorIds,"/**
+     * 批量删除供应商
+     * 
+     * @param vendorIds 需要删除的供应商主键
+     * @return 结果
+     */"
+MdVendorServiceImpl_deleteMdVendorByVendorId,"/**
+     * 删除供应商信息
+     * 
+     * @param vendorId 供应商主键
+     * @return 结果
+     */"
+MdUnitMeasureServiceImpl_selectMdUnitMeasureByMeasureId,"/**
+     * 查询单位
+     * 
+     * @param measureId 单位主键
+     * @return 单位
+     */"
+MdUnitMeasureServiceImpl_selectMdUnitMeasureList,"/**
+     * 查询单位列表
+     * 
+     * @param mdUnitMeasure 单位
+     * @return 单位
+     */"
+MdUnitMeasureServiceImpl_insertMdUnitMeasure,"/**
+     * 新增单位
+     * 
+     * @param mdUnitMeasure 单位
+     * @return 结果
+     */"
+MdUnitMeasureServiceImpl_updateMdUnitMeasure,"/**
+     * 修改单位
+     * 
+     * @param mdUnitMeasure 单位
+     * @return 结果
+     */"
+MdUnitMeasureServiceImpl_deleteMdUnitMeasureByMeasureIds,"/**
+     * 批量删除单位
+     * 
+     * @param measureIds 需要删除的单位主键
+     * @return 结果
+     */"
+MdUnitMeasureServiceImpl_deleteMdUnitMeasureByMeasureId,"/**
+     * 删除单位信息
+     * 
+     * @param measureId 单位主键
+     * @return 结果
+     */"
+MdWorkstationMachineServiceImpl_selectMdWorkstationMachineByRecordId,"/**
+     * 查询设备资源
+     * 
+     * @param recordId 设备资源主键
+     * @return 设备资源
+     */"
+MdWorkstationMachineServiceImpl_selectMdWorkstationMachineList,"/**
+     * 查询设备资源列表
+     * 
+     * @param mdWorkstationMachine 设备资源
+     * @return 设备资源
+     */"
+MdWorkstationMachineServiceImpl_checkMachineryExists,"/**
+     * 检查机器资源是否已经被占用
+     * 一台机器只能被分配到一个工作站中，且只能分配一次
+     * @param mdWorkstationMachine
+     * @return
+     */"
+MdWorkstationMachineServiceImpl_insertMdWorkstationMachine,"/**
+     * 新增设备资源
+     * 
+     * @param mdWorkstationMachine 设备资源
+     * @return 结果
+     */"
+MdWorkstationMachineServiceImpl_updateMdWorkstationMachine,"/**
+     * 修改设备资源
+     * 
+     * @param mdWorkstationMachine 设备资源
+     * @return 结果
+     */"
+MdWorkstationMachineServiceImpl_deleteMdWorkstationMachineByRecordIds,"/**
+     * 批量删除设备资源
+     * 
+     * @param recordIds 需要删除的设备资源主键
+     * @return 结果
+     */"
+MdWorkstationMachineServiceImpl_deleteMdWorkstationMachineByRecordId,"/**
+     * 删除设备资源信息
+     * 
+     * @param recordId 设备资源主键
+     * @return 结果
+     */"
+MdWorkstationWorkerServiceImpl_selectMdWorkstationWorkerByRecordId,"/**
+     * 查询人力资源
+     * 
+     * @param recordId 人力资源主键
+     * @return 人力资源
+     */"
+MdWorkstationWorkerServiceImpl_selectMdWorkstationWorkerList,"/**
+     * 查询人力资源列表
+     * 
+     * @param mdWorkstationWorker 人力资源
+     * @return 人力资源
+     */"
+MdWorkstationWorkerServiceImpl_insertMdWorkstationWorker,"/**
+     * 新增人力资源
+     * 
+     * @param mdWorkstationWorker 人力资源
+     * @return 结果
+     */"
+MdWorkstationWorkerServiceImpl_updateMdWorkstationWorker,"/**
+     * 修改人力资源
+     * 
+     * @param mdWorkstationWorker 人力资源
+     * @return 结果
+     */"
+MdWorkstationWorkerServiceImpl_deleteMdWorkstationWorkerByRecordIds,"/**
+     * 批量删除人力资源
+     * 
+     * @param recordIds 需要删除的人力资源主键
+     * @return 结果
+     */"
+MdWorkstationWorkerServiceImpl_deleteMdWorkstationWorkerByRecordId,"/**
+     * 删除人力资源信息
+     * 
+     * @param recordId 人力资源主键
+     * @return 结果
+     */"
+MdWorkstationServiceImpl_selectMdWorkstationByWorkstationId,"/**
+     * 查询工作站
+     * 
+     * @param workstationId 工作站主键
+     * @return 工作站
+     */"
+MdWorkstationServiceImpl_selectMdWorkstationList,"/**
+     * 查询工作站列表
+     * 
+     * @param mdWorkstation 工作站
+     * @return 工作站
+     */"
+MdWorkstationServiceImpl_insertMdWorkstation,"/**
+     * 新增工作站
+     * 
+     * @param mdWorkstation 工作站
+     * @return 结果
+     */"
+MdWorkstationServiceImpl_updateMdWorkstation,"/**
+     * 修改工作站
+     * 
+     * @param mdWorkstation 工作站
+     * @return 结果
+     */"
+MdWorkstationServiceImpl_deleteMdWorkstationByWorkstationIds,"/**
+     * 批量删除工作站
+     * 
+     * @param workstationIds 需要删除的工作站主键
+     * @return 结果
+     */"
+MdWorkstationServiceImpl_deleteMdWorkstationByWorkstationId,"/**
+     * 删除工作站信息
+     * 
+     * @param workstationId 工作站主键
+     * @return 结果
+     */"
+MdProductBomServiceImpl_selectMdProductBomByBomId,"/**
+     * 查询产品BOM关系
+     * 
+     * @param bomId 产品BOM关系主键
+     * @return 产品BOM关系
+     */"
+MdProductBomServiceImpl_selectMdProductBomList,"/**
+     * 查询产品BOM关系列表
+     * 
+     * @param mdProductBom 产品BOM关系
+     * @return 产品BOM关系
+     */"
+MdProductBomServiceImpl_insertMdProductBom,"/**
+     * 新增产品BOM关系
+     * 
+     * @param mdProductBom 产品BOM关系
+     * @return 结果
+     */"
+MdProductBomServiceImpl_updateMdProductBom,"/**
+     * 修改产品BOM关系
+     * 
+     * @param mdProductBom 产品BOM关系
+     * @return 结果
+     */"
+MdProductBomServiceImpl_deleteMdProductBomByBomIds,"/**
+     * 批量删除产品BOM关系
+     * 
+     * @param bomIds 需要删除的产品BOM关系主键
+     * @return 结果
+     */"
+MdProductBomServiceImpl_deleteMdProductBomByBomId,"/**
+     * 删除产品BOM关系信息
+     * 
+     * @param bomId 产品BOM关系主键
+     * @return 结果
+     */"
+MdWorkstationToolServiceImpl_selectMdWorkstationToolByRecordId,"/**
+     * 查询工装夹具资源
+     * 
+     * @param recordId 工装夹具资源主键
+     * @return 工装夹具资源
+     */"
+MdWorkstationToolServiceImpl_selectMdWorkstationToolList,"/**
+     * 查询工装夹具资源列表
+     * 
+     * @param mdWorkstationTool 工装夹具资源
+     * @return 工装夹具资源
+     */"
+MdWorkstationToolServiceImpl_insertMdWorkstationTool,"/**
+     * 新增工装夹具资源
+     * 
+     * @param mdWorkstationTool 工装夹具资源
+     * @return 结果
+     */"
+MdWorkstationToolServiceImpl_updateMdWorkstationTool,"/**
+     * 修改工装夹具资源
+     * 
+     * @param mdWorkstationTool 工装夹具资源
+     * @return 结果
+     */"
+MdWorkstationToolServiceImpl_deleteMdWorkstationToolByRecordIds,"/**
+     * 批量删除工装夹具资源
+     * 
+     * @param recordIds 需要删除的工装夹具资源主键
+     * @return 结果
+     */"
+MdWorkstationToolServiceImpl_deleteMdWorkstationToolByRecordId,"/**
+     * 删除工装夹具资源信息
+     * 
+     * @param recordId 工装夹具资源主键
+     * @return 结果
+     */"
+MdClientController_list,"/**
+     * 查询客户列表
+     */"
+MdClientController_export,"/**
+     * 导出客户列表
+     */"
+MdClientController_getInfo,"/**
+     * 获取客户详细信息
+     */"
+MdClientController_add,"/**
+     * 新增客户
+     */"
+MdClientController_edit,"/**
+     * 修改客户
+     */"
+MdClientController_remove,"/**
+     * 删除客户
+     */"
+MdWorkshopController_list,"/**
+     * 查询车间列表
+     */"
+MdWorkshopController_listAll,"/**
+     * 获取所有可用车间
+     * @return
+     */"
+MdWorkshopController_export,"/**
+     * 导出车间列表
+     */"
+MdWorkshopController_getInfo,"/**
+     * 获取车间详细信息
+     */"
+MdWorkshopController_add,"/**
+     * 新增车间
+     */"
+MdWorkshopController_edit,"/**
+     * 修改车间
+     */"
+MdWorkshopController_remove,"/**
+     * 删除车间
+     */"
+MdUnitMeasureController_list,"/**
+     * 查询单位列表
+     */"
+MdUnitMeasureController_export,"/**
+     * 导出单位列表
+     */"
+MdUnitMeasureController_getInfo,"/**
+     * 获取单位详细信息
+     */"
+MdUnitMeasureController_add,"/**
+     * 新增单位
+     */"
+MdUnitMeasureController_edit,"/**
+     * 修改单位
+     */"
+MdUnitMeasureController_remove,"/**
+     * 删除单位
+     */"
+MdItemController_list,"/**
+     * 列表查询
+     * @param mdItem
+     * @return
+     */"
+MdItemController_getInfo,"/**
+     * 主键查询
+     * @param itemId
+     * @return
+     */"
+MdItemController_add,"/**
+     * 新增
+     * @param mdItem
+     * @return
+     */"
+MdItemController_edit,"/**
+     * 更新
+     * @param mdItem
+     * @return
+     */"
+ItemTypeController_list,"/**
+     * 查询分类列表
+     * @param itemType
+     * @return
+     */"
+ItemTypeController_excludeChild,"/**
+     * 查询部门列表（排除当前和父节点）
+     * @param itemTypeId
+     * @return
+     */"
+ItemTypeController_getInfo,"/**
+     * 查询部门详情
+     * @param itemTypeId
+     * @return
+     */"
+ItemTypeController_treeSelect,"/**
+     * 获取树形结构数据
+     * @param itemType
+     * @return
+     */"
+MdWorkstationMachineController_list,"/**
+     * 查询设备资源列表
+     */"
+MdWorkstationMachineController_export,"/**
+     * 导出设备资源列表
+     */"
+MdWorkstationMachineController_getInfo,"/**
+     * 获取设备资源详细信息
+     */"
+MdWorkstationMachineController_add,"/**
+     * 新增设备资源
+     */"
+MdWorkstationMachineController_edit,"/**
+     * 修改设备资源
+     */"
+MdWorkstationMachineController_remove,"/**
+     * 删除设备资源
+     */"
+MdWorkstationToolController_list,"/**
+     * 查询工装夹具资源列表
+     */"
+MdWorkstationToolController_export,"/**
+     * 导出工装夹具资源列表
+     */"
+MdWorkstationToolController_getInfo,"/**
+     * 获取工装夹具资源详细信息
+     */"
+MdWorkstationToolController_add,"/**
+     * 新增工装夹具资源
+     */"
+MdWorkstationToolController_edit,"/**
+     * 修改工装夹具资源
+     */"
+MdWorkstationToolController_remove,"/**
+     * 删除工装夹具资源
+     */"
+MdWorkstationController_list,"/**
+     * 查询工作站列表
+     */"
+MdWorkstationController_export,"/**
+     * 导出工作站列表
+     */"
+MdWorkstationController_getInfo,"/**
+     * 获取工作站详细信息
+     */"
+MdWorkstationController_add,"/**
+     * 新增工作站
+     */"
+MdWorkstationController_edit,"/**
+     * 修改工作站
+     */"
+MdWorkstationController_remove,"/**
+     * 删除工作站
+     */"
+MdWorkstationWorkerController_list,"/**
+     * 查询人力资源列表
+     */"
+MdWorkstationWorkerController_export,"/**
+     * 导出人力资源列表
+     */"
+MdWorkstationWorkerController_getInfo,"/**
+     * 获取人力资源详细信息
+     */"
+MdWorkstationWorkerController_add,"/**
+     * 新增人力资源
+     */"
+MdWorkstationWorkerController_edit,"/**
+     * 修改人力资源
+     */"
+MdWorkstationWorkerController_remove,"/**
+     * 删除人力资源
+     */"
+MdVendorController_list,"/**
+     * 查询供应商列表
+     */"
+MdVendorController_export,"/**
+     * 导出供应商列表
+     */"
+MdVendorController_getInfo,"/**
+     * 获取供应商详细信息
+     */"
+MdVendorController_add,"/**
+     * 新增供应商
+     */"
+MdVendorController_edit,"/**
+     * 修改供应商
+     */"
+MdVendorController_remove,"/**
+     * 删除供应商
+     */"
+MdProductBomController_list,"/**
+     * 查询产品BOM关系列表
+     */"
+MdProductBomController_export,"/**
+     * 导出产品BOM关系列表
+     */"
+MdProductBomController_getInfo,"/**
+     * 获取产品BOM关系详细信息
+     */"
+MdProductBomController_add,"/**
+     * 新增产品BOM关系
+     */"
+MdProductBomController_edit,"/**
+     * 修改产品BOM关系
+     */"
+MdProductBomController_remove,"/**
+     * 删除产品BOM关系
+     */"
+MdProductSopController_list,"/**
+     * 查询产品SOP列表
+     */"
+MdProductSopController_export,"/**
+     * 导出产品SOP列表
+     */"
+MdProductSopController_getInfo,"/**
+     * 获取产品SOP详细信息
+     */"
+MdProductSopController_add,"/**
+     * 新增产品SOP
+     */"
+MdProductSopController_edit,"/**
+     * 修改产品SOP
+     */"
+MdProductSopController_remove,"/**
+     * 删除产品SOP
+     */"
+MdProductSOPMobController_list,"/**
+     * 查询产品SOP列表
+     */"
+BarcodeGenAspect_doAfter,"/**
+     * 根据业务controller的类型和返回值生成对应的条码
+     * @param joinPoint
+     * @param gen
+     * @param returnResult
+     */"
+ProTransConsumeServiceImpl_selectProTransConsumeByRecordId,"/**
+     * 查询物料消耗记录
+     * 
+     * @param recordId 物料消耗记录主键
+     * @return 物料消耗记录
+     */"
+ProTransConsumeServiceImpl_selectProTransConsumeList,"/**
+     * 查询物料消耗记录列表
+     * 
+     * @param proTransConsume 物料消耗记录
+     * @return 物料消耗记录
+     */"
+ProTransConsumeServiceImpl_insertProTransConsume,"/**
+     * 新增物料消耗记录
+     * 
+     * @param proTransConsume 物料消耗记录
+     * @return 结果
+     */"
+ProTransConsumeServiceImpl_updateProTransConsume,"/**
+     * 修改物料消耗记录
+     * 
+     * @param proTransConsume 物料消耗记录
+     * @return 结果
+     */"
+ProTransConsumeServiceImpl_deleteProTransConsumeByRecordIds,"/**
+     * 批量删除物料消耗记录
+     * 
+     * @param recordIds 需要删除的物料消耗记录主键
+     * @return 结果
+     */"
+ProTransConsumeServiceImpl_deleteProTransConsumeByRecordId,"/**
+     * 删除物料消耗记录信息
+     * 
+     * @param recordId 物料消耗记录主键
+     * @return 结果
+     */"
+ProUserWorkstationServiceImpl_selectProUserWorkstationByRecordId,"/**
+     * 查询用户工作站绑定关系
+     * 
+     * @param recordId 用户工作站绑定关系主键
+     * @return 用户工作站绑定关系
+     */"
+ProUserWorkstationServiceImpl_selectProUserWorkstationList,"/**
+     * 查询用户工作站绑定关系列表
+     * 
+     * @param proUserWorkstation 用户工作站绑定关系
+     * @return 用户工作站绑定关系
+     */"
+ProUserWorkstationServiceImpl_insertProUserWorkstation,"/**
+     * 新增用户工作站绑定关系
+     * 
+     * @param proUserWorkstation 用户工作站绑定关系
+     * @return 结果
+     */"
+ProUserWorkstationServiceImpl_updateProUserWorkstation,"/**
+     * 修改用户工作站绑定关系
+     * 
+     * @param proUserWorkstation 用户工作站绑定关系
+     * @return 结果
+     */"
+ProUserWorkstationServiceImpl_deleteProUserWorkstationByRecordIds,"/**
+     * 批量删除用户工作站绑定关系
+     * 
+     * @param recordIds 需要删除的用户工作站绑定关系主键
+     * @return 结果
+     */"
+ProUserWorkstationServiceImpl_deleteProUserWorkstationByRecordId,"/**
+     * 删除用户工作站绑定关系信息
+     * 
+     * @param recordId 用户工作站绑定关系主键
+     * @return 结果
+     */"
+ProUserWorkstationServiceImpl_deleteByUserName,"/**
+     * 根据用户名删除所有对应关系
+     * @param userName
+     * @return
+     */"
+ProRouteProductServiceImpl_selectProRouteProductByRecordId,"/**
+     * 查询产品制程
+     * 
+     * @param recordId 产品制程主键
+     * @return 产品制程
+     */"
+ProRouteProductServiceImpl_selectProRouteProductList,"/**
+     * 查询产品制程列表
+     * 
+     * @param proRouteProduct 产品制程
+     * @return 产品制程
+     */"
+ProRouteProductServiceImpl_insertProRouteProduct,"/**
+     * 新增产品制程
+     * 
+     * @param proRouteProduct 产品制程
+     * @return 结果
+     */"
+ProRouteProductServiceImpl_updateProRouteProduct,"/**
+     * 修改产品制程
+     * 
+     * @param proRouteProduct 产品制程
+     * @return 结果
+     */"
+ProRouteProductServiceImpl_deleteProRouteProductByRecordIds,"/**
+     * 批量删除产品制程
+     * 
+     * @param recordIds 需要删除的产品制程主键
+     * @return 结果
+     */"
+ProRouteProductServiceImpl_deleteProRouteProductByRecordId,"/**
+     * 删除产品制程信息
+     * 
+     * @param recordId 产品制程主键
+     * @return 结果
+     */"
+ProWorkorderBomServiceImpl_selectProWorkorderBomByLineId,"/**
+     * 查询生产工单BOM组成
+     * 
+     * @param lineId 生产工单BOM组成主键
+     * @return 生产工单BOM组成
+     */"
+ProWorkorderBomServiceImpl_selectProWorkorderBomList,"/**
+     * 查询生产工单BOM组成列表
+     * 
+     * @param proWorkorderBom 生产工单BOM组成
+     * @return 生产工单BOM组成
+     */"
+ProWorkorderBomServiceImpl_insertProWorkorderBom,"/**
+     * 新增生产工单BOM组成
+     * 
+     * @param proWorkorderBom 生产工单BOM组成
+     * @return 结果
+     */"
+ProWorkorderBomServiceImpl_updateProWorkorderBom,"/**
+     * 修改生产工单BOM组成
+     * 
+     * @param proWorkorderBom 生产工单BOM组成
+     * @return 结果
+     */"
+ProWorkorderBomServiceImpl_deleteProWorkorderBomByLineIds,"/**
+     * 批量删除生产工单BOM组成
+     * 
+     * @param lineIds 需要删除的生产工单BOM组成主键
+     * @return 结果
+     */"
+ProWorkorderBomServiceImpl_deleteProWorkorderBomByLineId,"/**
+     * 删除生产工单BOM组成信息
+     * 
+     * @param lineId 生产工单BOM组成主键
+     * @return 结果
+     */"
+ProWorkrecordServiceImpl_selectProWorkrecordByRecordId,"/**
+     * 查询上下工记录
+     * 
+     * @param recordId 上下工记录主键
+     * @return 上下工记录
+     */"
+ProWorkrecordServiceImpl_selectProWorkrecordList,"/**
+     * 查询上下工记录列表
+     * 
+     * @param proWorkrecord 上下工记录
+     * @return 上下工记录
+     */"
+ProWorkrecordServiceImpl_insertProWorkrecord,"/**
+     * 新增上下工记录
+     * 
+     * @param proWorkrecord 上下工记录
+     * @return 结果
+     */"
+ProWorkrecordServiceImpl_updateProWorkrecord,"/**
+     * 修改上下工记录
+     * 
+     * @param proWorkrecord 上下工记录
+     * @return 结果
+     */"
+ProWorkrecordServiceImpl_deleteProWorkrecordByRecordIds,"/**
+     * 批量删除上下工记录
+     * 
+     * @param recordIds 需要删除的上下工记录主键
+     * @return 结果
+     */"
+ProWorkrecordServiceImpl_deleteProWorkrecordByRecordId,"/**
+     * 删除上下工记录信息
+     * 
+     * @param recordId 上下工记录主键
+     * @return 结果
+     */"
+ProTaskIssueServiceImpl_selectProTaskIssueByRecordId,"/**
+     * 查询生产任务投料
+     * 
+     * @param recordId 生产任务投料主键
+     * @return 生产任务投料
+     */"
+ProTaskIssueServiceImpl_selectProTaskIssueList,"/**
+     * 查询生产任务投料列表
+     * 
+     * @param proTaskIssue 生产任务投料
+     * @return 生产任务投料
+     */"
+ProTaskIssueServiceImpl_insertProTaskIssue,"/**
+     * 新增生产任务投料
+     * 
+     * @param proTaskIssue 生产任务投料
+     * @return 结果
+     */"
+ProTaskIssueServiceImpl_updateProTaskIssue,"/**
+     * 修改生产任务投料
+     * 
+     * @param proTaskIssue 生产任务投料
+     * @return 结果
+     */"
+ProTaskIssueServiceImpl_deleteProTaskIssueByRecordIds,"/**
+     * 批量删除生产任务投料
+     * 
+     * @param recordIds 需要删除的生产任务投料主键
+     * @return 结果
+     */"
+ProTaskIssueServiceImpl_deleteProTaskIssueByRecordId,"/**
+     * 删除生产任务投料信息
+     * 
+     * @param recordId 生产任务投料主键
+     * @return 结果
+     */"
+ProProcessServiceImpl_selectProProcessByProcessId,"/**
+     * 查询生产工序
+     * 
+     * @param processId 生产工序主键
+     * @return 生产工序
+     */"
+ProProcessServiceImpl_selectProProcessList,"/**
+     * 查询生产工序列表
+     * 
+     * @param proProcess 生产工序
+     * @return 生产工序
+     */"
+ProProcessServiceImpl_checkProcessCodeUnique,"/**
+     * 检查工序编码是否唯一
+     * @param proProcess
+     * @return
+     */"
+ProProcessServiceImpl_checkProcessNameUnique,"/**
+     * 检查工序名称是否唯一
+     * @param proProcess
+     * @return
+     */"
+ProProcessServiceImpl_insertProProcess,"/**
+     * 新增生产工序
+     * 
+     * @param proProcess 生产工序
+     * @return 结果
+     */"
+ProProcessServiceImpl_updateProProcess,"/**
+     * 修改生产工序
+     * 
+     * @param proProcess 生产工序
+     * @return 结果
+     */"
+ProProcessServiceImpl_deleteProProcessByProcessIds,"/**
+     * 批量删除生产工序
+     * 
+     * @param processIds 需要删除的生产工序主键
+     * @return 结果
+     */"
+ProProcessServiceImpl_deleteProProcessByProcessId,"/**
+     * 删除生产工序信息
+     * 
+     * @param processId 生产工序主键
+     * @return 结果
+     */"
+ProRouteProcessServiceImpl_selectProRouteProcessByRecordId,"/**
+     * 查询工艺组成
+     * 
+     * @param recordId 工艺组成主键
+     * @return 工艺组成
+     */"
+ProRouteProcessServiceImpl_selectProRouteProcessList,"/**
+     * 查询工艺组成列表
+     * 
+     * @param proRouteProcess 工艺组成
+     * @return 工艺组成
+     */"
+ProRouteProcessServiceImpl_insertProRouteProcess,"/**
+     * 新增工艺组成
+     * 
+     * @param proRouteProcess 工艺组成
+     * @return 结果
+     */"
+ProRouteProcessServiceImpl_updateProRouteProcess,"/**
+     * 修改工艺组成
+     * 
+     * @param proRouteProcess 工艺组成
+     * @return 结果
+     */"
+ProRouteProcessServiceImpl_deleteProRouteProcessByRecordIds,"/**
+     * 批量删除工艺组成
+     * 
+     * @param recordIds 需要删除的工艺组成主键
+     * @return 结果
+     */"
+ProRouteProcessServiceImpl_deleteProRouteProcessByRecordId,"/**
+     * 删除工艺组成信息
+     * 
+     * @param recordId 工艺组成主键
+     * @return 结果
+     */"
+ProRouteProductBomServiceImpl_selectProRouteProductBomByRecordId,"/**
+     * 查询产品制程物料BOM
+     * 
+     * @param recordId 产品制程物料BOM主键
+     * @return 产品制程物料BOM
+     */"
+ProRouteProductBomServiceImpl_selectProRouteProductBomList,"/**
+     * 查询产品制程物料BOM列表
+     * 
+     * @param proRouteProductBom 产品制程物料BOM
+     * @return 产品制程物料BOM
+     */"
+ProRouteProductBomServiceImpl_insertProRouteProductBom,"/**
+     * 新增产品制程物料BOM
+     * 
+     * @param proRouteProductBom 产品制程物料BOM
+     * @return 结果
+     */"
+ProRouteProductBomServiceImpl_updateProRouteProductBom,"/**
+     * 修改产品制程物料BOM
+     * 
+     * @param proRouteProductBom 产品制程物料BOM
+     * @return 结果
+     */"
+ProRouteProductBomServiceImpl_deleteProRouteProductBomByRecordIds,"/**
+     * 批量删除产品制程物料BOM
+     * 
+     * @param recordIds 需要删除的产品制程物料BOM主键
+     * @return 结果
+     */"
+ProRouteProductBomServiceImpl_deleteProRouteProductBomByRecordId,"/**
+     * 删除产品制程物料BOM信息
+     * 
+     * @param recordId 产品制程物料BOM主键
+     * @return 结果
+     */"
+ProTransOrderServiceImpl_selectProTransOrderByTransOrderId,"/**
+     * 查询流转单
+     * 
+     * @param transOrderId 流转单主键
+     * @return 流转单
+     */"
+ProTransOrderServiceImpl_selectProTransOrderList,"/**
+     * 查询流转单列表
+     * 
+     * @param proTransOrder 流转单
+     * @return 流转单
+     */"
+ProTransOrderServiceImpl_insertProTransOrder,"/**
+     * 新增流转单
+     * 
+     * @param proTransOrder 流转单
+     * @return 结果
+     */"
+ProTransOrderServiceImpl_updateProTransOrder,"/**
+     * 修改流转单
+     * 
+     * @param proTransOrder 流转单
+     * @return 结果
+     */"
+ProTransOrderServiceImpl_deleteProTransOrderByTransOrderIds,"/**
+     * 批量删除流转单
+     * 
+     * @param transOrderIds 需要删除的流转单主键
+     * @return 结果
+     */"
+ProTransOrderServiceImpl_deleteProTransOrderByTransOrderId,"/**
+     * 删除流转单信息
+     * 
+     * @param transOrderId 流转单主键
+     * @return 结果
+     */"
+ProProcessContentServiceImpl_selectProProcessContentByContentId,"/**
+     * 查询生产工序内容
+     * 
+     * @param contentId 生产工序内容主键
+     * @return 生产工序内容
+     */"
+ProProcessContentServiceImpl_selectProProcessContentList,"/**
+     * 查询生产工序内容列表
+     * 
+     * @param proProcessContent 生产工序内容
+     * @return 生产工序内容
+     */"
+ProProcessContentServiceImpl_insertProProcessContent,"/**
+     * 新增生产工序内容
+     * 
+     * @param proProcessContent 生产工序内容
+     * @return 结果
+     */"
+ProProcessContentServiceImpl_updateProProcessContent,"/**
+     * 修改生产工序内容
+     * 
+     * @param proProcessContent 生产工序内容
+     * @return 结果
+     */"
+ProProcessContentServiceImpl_deleteProProcessContentByContentIds,"/**
+     * 批量删除生产工序内容
+     * 
+     * @param contentIds 需要删除的生产工序内容主键
+     * @return 结果
+     */"
+ProProcessContentServiceImpl_deleteProProcessContentByContentId,"/**
+     * 删除生产工序内容信息
+     * 
+     * @param contentId 生产工序内容主键
+     * @return 结果
+     */"
+ProTaskServiceImpl_selectProTaskByTaskId,"/**
+     * 查询生产任务
+     * 
+     * @param taskId 生产任务主键
+     * @return 生产任务
+     */"
+ProTaskServiceImpl_selectProTaskList,"/**
+     * 查询生产任务列表
+     * 
+     * @param proTask 生产任务
+     * @return 生产任务
+     */"
+ProTaskServiceImpl_insertProTask,"/**
+     * 新增生产任务
+     * 
+     * @param proTask 生产任务
+     * @return 结果
+     */"
+ProTaskServiceImpl_updateProTask,"/**
+     * 修改生产任务
+     * 
+     * @param proTask 生产任务
+     * @return 结果
+     */"
+ProTaskServiceImpl_deleteProTaskByTaskIds,"/**
+     * 批量删除生产任务
+     * 
+     * @param taskIds 需要删除的生产任务主键
+     * @return 结果
+     */"
+ProTaskServiceImpl_deleteProTaskByTaskId,"/**
+     * 删除生产任务信息
+     * 
+     * @param taskId 生产任务主键
+     * @return 结果
+     */"
+ProRouteServiceImpl_selectProRouteByRouteId,"/**
+     * 查询工艺路线
+     * 
+     * @param routeId 工艺路线主键
+     * @return 工艺路线
+     */"
+ProRouteServiceImpl_selectProRouteList,"/**
+     * 查询工艺路线列表
+     * 
+     * @param proRoute 工艺路线
+     * @return 工艺路线
+     */"
+ProRouteServiceImpl_insertProRoute,"/**
+     * 新增工艺路线
+     * 
+     * @param proRoute 工艺路线
+     * @return 结果
+     */"
+ProRouteServiceImpl_updateProRoute,"/**
+     * 修改工艺路线
+     * 
+     * @param proRoute 工艺路线
+     * @return 结果
+     */"
+ProRouteServiceImpl_deleteProRouteByRouteIds,"/**
+     * 批量删除工艺路线
+     * 
+     * @param routeIds 需要删除的工艺路线主键
+     * @return 结果
+     */"
+ProRouteServiceImpl_deleteProRouteByRouteId,"/**
+     * 删除工艺路线信息
+     * 
+     * @param routeId 工艺路线主键
+     * @return 结果
+     */"
+ProFeedbackServiceImpl_selectProFeedbackByRecordId,"/**
+     * 查询生产报工记录
+     * 
+     * @param recordId 生产报工记录主键
+     * @return 生产报工记录
+     */"
+ProFeedbackServiceImpl_selectProFeedbackList,"/**
+     * 查询生产报工记录列表
+     * 
+     * @param proFeedback 生产报工记录
+     * @return 生产报工记录
+     */"
+ProFeedbackServiceImpl_insertProFeedback,"/**
+     * 新增生产报工记录
+     * 
+     * @param proFeedback 生产报工记录
+     * @return 结果
+     */"
+ProFeedbackServiceImpl_updateProFeedback,"/**
+     * 修改生产报工记录
+     * 
+     * @param proFeedback 生产报工记录
+     * @return 结果
+     */"
+ProFeedbackServiceImpl_deleteProFeedbackByRecordIds,"/**
+     * 批量删除生产报工记录
+     * 
+     * @param recordIds 需要删除的生产报工记录主键
+     * @return 结果
+     */"
+ProFeedbackServiceImpl_deleteProFeedbackByRecordId,"/**
+     * 删除生产报工记录信息
+     * 
+     * @param recordId 生产报工记录主键
+     * @return 结果
+     */"
+ProWorkorderServiceImpl_selectProWorkorderByWorkorderId,"/**
+     * 查询生产工单
+     * 
+     * @param workorderId 生产工单主键
+     * @return 生产工单
+     */"
+ProWorkorderServiceImpl_selectProWorkorderList,"/**
+     * 查询生产工单列表
+     * 
+     * @param proWorkorder 生产工单
+     * @return 生产工单
+     */"
+ProWorkorderServiceImpl_insertProWorkorder,"/**
+     * 新增生产工单
+     * 
+     * @param proWorkorder 生产工单
+     * @return 结果
+     */"
+ProWorkorderServiceImpl_updateProWorkorder,"/**
+     * 修改生产工单
+     * 
+     * @param proWorkorder 生产工单
+     * @return 结果
+     */"
+ProWorkorderServiceImpl_deleteProWorkorderByWorkorderIds,"/**
+     * 批量删除生产工单
+     * 
+     * @param workorderIds 需要删除的生产工单主键
+     * @return 结果
+     */"
+ProWorkorderServiceImpl_deleteProWorkorderByWorkorderId,"/**
+     * 删除生产工单信息
+     * 
+     * @param workorderId 生产工单主键
+     * @return 结果
+     */"
+ProProcessMobController_getInfo,"/**
+     * 获取工序详细信息
+     */"
+ProWorkorderBomController_list,"/**
+     * 查询生产工单BOM组成列表
+     */"
+ProWorkorderBomController_export,"/**
+     * 导出生产工单BOM组成列表
+     */"
+ProWorkorderBomController_getInfo,"/**
+     * 获取生产工单BOM组成详细信息
+     */"
+ProWorkorderBomController_add,"/**
+     * 新增生产工单BOM组成
+     */"
+ProWorkorderBomController_edit,"/**
+     * 修改生产工单BOM组成
+     */"
+ProWorkorderBomController_remove,"/**
+     * 删除生产工单BOM组成
+     */"
+ProRouteProductBomController_list,"/**
+     * 查询产品制程物料BOM列表
+     */"
+ProRouteProductBomController_export,"/**
+     * 导出产品制程物料BOM列表
+     */"
+ProRouteProductBomController_getInfo,"/**
+     * 获取产品制程物料BOM详细信息
+     */"
+ProRouteProductBomController_add,"/**
+     * 新增产品制程物料BOM
+     */"
+ProRouteProductBomController_edit,"/**
+     * 修改产品制程物料BOM
+     */"
+ProRouteProductBomController_remove,"/**
+     * 删除产品制程物料BOM
+     */"
+ProTransConsumeController_list,"/**
+     * 查询物料消耗记录列表
+     */"
+ProTransConsumeController_export,"/**
+     * 导出物料消耗记录列表
+     */"
+ProTransConsumeController_getInfo,"/**
+     * 获取物料消耗记录详细信息
+     */"
+ProTransConsumeController_add,"/**
+     * 新增物料消耗记录
+     */"
+ProTransConsumeController_edit,"/**
+     * 修改物料消耗记录
+     */"
+ProTransConsumeController_remove,"/**
+     * 删除物料消耗记录
+     */"
+ProProcessController_list,"/**
+     * 查询生产工序列表
+     */"
+ProProcessController_listAll,"/**
+     * 查询所有可用工序的清单
+     * @return
+     */"
+ProProcessController_export,"/**
+     * 导出生产工序列表
+     */"
+ProProcessController_getInfo,"/**
+     * 获取生产工序详细信息
+     */"
+ProProcessController_add,"/**
+     * 新增生产工序
+     */"
+ProProcessController_edit,"/**
+     * 修改生产工序
+     */"
+ProProcessController_remove,"/**
+     * 删除生产工序
+     */"
+ProProcessContentController_list,"/**
+     * 查询生产工序内容列表
+     */"
+ProProcessContentController_export,"/**
+     * 导出生产工序内容列表
+     */"
+ProProcessContentController_getInfo,"/**
+     * 获取生产工序内容详细信息
+     */"
+ProProcessContentController_add,"/**
+     * 新增生产工序内容
+     */"
+ProProcessContentController_edit,"/**
+     * 修改生产工序内容
+     */"
+ProProcessContentController_remove,"/**
+     * 删除生产工序内容
+     */"
+ProTaskController_list,"/**
+     * 查询生产任务列表
+     */"
+ProTaskController_export,"/**
+     * 导出生产任务列表
+     */"
+ProTaskController_getInfo,"/**
+     * 获取生产任务详细信息
+     */"
+ProTaskController_getGanttTaskList,"/**
+     * 获取甘特图中需要显示的TASK，包括三种类型的内容：
+     * 1.Project：基于时间范围搜索的生产工单转换而来的Project。
+     *   搜索逻辑为：默认使用当前日期作为开始时间，搜索所有需求时间大于当前时间的生产工单
+     * 2.Task：基于生产工单拆分到具体工作站后的生产任务转换而来的Task。
+     * 3.Link：根据工序与工序之间的依赖关系转换而来的Link。
+     */"
+ProTaskController_add,"/**
+     * 新增生产任务
+     */"
+ProTaskController_edit,"/**
+     * 修改生产任务
+     */"
+ProTaskController_remove,"/**
+     * 删除生产任务
+     */"
+ProFeedbackController_list,"/**
+     * 查询生产报工记录列表
+     */"
+ProFeedbackController_export,"/**
+     * 导出生产报工记录列表
+     */"
+ProFeedbackController_getInfo,"/**
+     * 获取生产报工记录详细信息
+     */"
+ProFeedbackController_add,"/**
+     * 新增生产报工记录
+     */"
+ProFeedbackController_edit,"/**
+     * 修改生产报工记录
+     */"
+ProFeedbackController_remove,"/**
+     * 删除生产报工记录
+     */"
+ProFeedbackController_execute,"/**
+     * 执行报工
+     * 1.更新生产任务和生产工单的进度
+     * 2.物料消耗
+     * 3.产品产出
+     * @param recordId
+     * @return
+     */"
+ProFeedbackController_executeProductProduce,"/**
+     * 执行产品产出入线边库动作
+     * @param record
+     */"
+ProFeedbackController_executeItemConsume,"/**
+     * 执行物料消耗库存动作
+     * @param record
+     */"
+ProFeedBackMobController_add,"/**
+     * 新增生产报工记录
+     */"
+ProFeedBackMobController_list,"/**
+     * 查询生产报工记录列表
+     */"
+ProFeedBackMobController_listUnApproved,"/**
+     * 查询生产报工记录列表
+     */"
+ProFeedBackMobController_listApproved,"/**
+     * 查询生产报工记录列表
+     */"
+ProFeedBackMobController_edit,"/**
+     * 修改生产报工记录
+     */"
+ProFeedBackMobController_remove,"/**
+     * 删除生产报工记录
+     */"
+ProWorkorderController_list,"/**
+     * 查询生产工单列表
+     */"
+ProWorkorderController_export,"/**
+     * 导出生产工单列表
+     */"
+ProWorkorderController_getInfo,"/**
+     * 获取生产工单详细信息
+     */"
+ProWorkorderController_add,"/**
+     * 新增生产工单
+     */"
+ProWorkorderController_edit,"/**
+     * 修改生产工单
+     */"
+ProWorkorderController_remove,"/**
+     * 删除生产工单
+     */"
+ProWorkorderController_generateBomLine,"/**
+     * 根据生产工单中的产品生成BOM物料行
+     * @param workorderId
+     */"
+ProWorkorderController_removeBomLine,"/**
+     * 删除当前工单下所有BOM组成
+     * @param workorderId
+     */"
+ProWorkorderController_listItemss,"/**
+     * 获取当前工单的物料需求清单
+     */"
+ProTransOrderController_list,"/**
+     * 查询流转单列表
+     */"
+ProTransOrderController_export,"/**
+     * 导出流转单列表
+     */"
+ProTransOrderController_getInfo,"/**
+     * 获取流转单详细信息
+     */"
+ProTransOrderController_add,"/**
+     * 新增流转单
+     */"
+ProTransOrderController_edit,"/**
+     * 修改流转单
+     */"
+ProTransOrderController_remove,"/**
+     * 删除流转单
+     */"
+ProRouteProcessController_list,"/**
+     * 查询工艺组成列表
+     */"
+ProRouteProcessController_listProductProcess,"/**
+     * 查询指定产品的工艺组成
+     * @return
+     */"
+ProRouteProcessController_export,"/**
+     * 导出工艺组成列表
+     */"
+ProRouteProcessController_getInfo,"/**
+     * 获取工艺组成详细信息
+     */"
+ProRouteProcessController_add,"/**
+     * 新增工艺组成
+     */"
+ProRouteProcessController_edit,"/**
+     * 修改工艺组成
+     */"
+ProRouteProcessController_remove,"/**
+     * 删除工艺组成
+     */"
+ProRouteController_list,"/**
+     * 查询工艺路线列表
+     */"
+ProRouteController_export,"/**
+     * 导出工艺路线列表
+     */"
+ProRouteController_getInfo,"/**
+     * 获取工艺路线详细信息
+     */"
+ProRouteController_add,"/**
+     * 新增工艺路线
+     */"
+ProRouteController_edit,"/**
+     * 修改工艺路线
+     */"
+ProRouteController_remove,"/**
+     * 删除工艺路线
+     */"
+ProTransOrderMobController_getInfo,"/**
+     * 获取流转单详细信息
+     */"
+ProTransOrderMobController_add,"/**
+     * 新增流转单
+     */"
+ProTransOrderMobController_edit,"/**
+     * 修改流转单
+     */"
+ProTaskIssueController_list,"/**
+     * 查询生产任务投料列表
+     */"
+ProTaskIssueController_export,"/**
+     * 导出生产任务投料列表
+     */"
+ProTaskIssueController_getInfo,"/**
+     * 获取生产任务投料详细信息
+     */"
+ProTaskIssueController_add,"/**
+     * 新增生产任务投料
+     */"
+ProTaskIssueController_edit,"/**
+     * 修改生产任务投料
+     */"
+ProTaskIssueController_remove,"/**
+     * 删除生产任务投料
+     */"
+ProRouteProductController_list,"/**
+     * 查询产品制程列表
+     */"
+ProRouteProductController_export,"/**
+     * 导出产品制程列表
+     */"
+ProRouteProductController_getInfo,"/**
+     * 获取产品制程详细信息
+     */"
+ProRouteProductController_add,"/**
+     * 新增产品制程
+     */"
+ProRouteProductController_edit,"/**
+     * 修改产品制程
+     */"
+ProRouteProductController_move,"/**
+     * 更改产品的生产路线
+     */"
+ProRouteProductController_remove,"/**
+     * 删除产品制程
+     */"
+ProTaskIssueMobController_getSopList,"/**
+     * 获取当前产品的SOP
+     * @param mdProdutSop
+     * @return
+     */"
+ProTaskIssueMobController_getIssueList,"/**
+     * 查询当前工作站、当前任务的投料清单
+     * 至少提供workstationId、taskId两个参数
+     */"
+ProTaskIssueMobController_getReserveIssueList,"/**
+     * 查询当前工作站、当前任务可用的的领料清单
+     * 如果某个领料单是领出到当前工作站或者当前任务的，则可以查询到
+     */"
+ProTaskIssueMobController_add,"/**
+     * 通过新增或者扫码的方式添加某个流转单或者领料单到当前工作站、当前任务的投料清单中
+     * 此接口只支持一次性添加一行物料。如果要添加整个领料单，则可在领料单上指定工作站和任务；或者使用addIssue接口
+     */"
+ProTaskIssueMobController_addIssue,"/**
+     * 通过新增或者扫码的方式添加某个流转单或者领料单到当前工作站、当前任务的投料清单中
+     * 此接口专门用于一次性添加整个领料单的场景，传递的proTaskIssue参数需要source_doc_id为对应的领料单头ID
+     */"
+ProTaskIssueMobController_remove,"/**
+     * 删除生产任务投料
+     */"
+ProTaskMobController_list,"/**
+     * 查询工作站的生产任务
+     */"
+ProTaskMobController_getInfo,"/**
+     * 获取生产任务详细信息
+     */"
+ProTaskMobController_changeStatus,"/**
+     * 修改生产任务状态
+     */"
+QcIqcLineServiceImpl_selectQcIqcLineByLineId,"/**
+     * 查询来料检验单行
+     * 
+     * @param lineId 来料检验单行主键
+     * @return 来料检验单行
+     */"
+QcIqcLineServiceImpl_selectQcIqcLineList,"/**
+     * 查询来料检验单行列表
+     * 
+     * @param qcIqcLine 来料检验单行
+     * @return 来料检验单行
+     */"
+QcIqcLineServiceImpl_insertQcIqcLine,"/**
+     * 新增来料检验单行
+     * 
+     * @param qcIqcLine 来料检验单行
+     * @return 结果
+     */"
+QcIqcLineServiceImpl_updateQcIqcLine,"/**
+     * 修改来料检验单行
+     * 
+     * @param qcIqcLine 来料检验单行
+     * @return 结果
+     */"
+QcIqcLineServiceImpl_deleteQcIqcLineByLineIds,"/**
+     * 批量删除来料检验单行
+     * 
+     * @param lineIds 需要删除的来料检验单行主键
+     * @return 结果
+     */"
+QcIqcLineServiceImpl_deleteQcIqcLineByLineId,"/**
+     * 删除来料检验单行信息
+     * 
+     * @param lineId 来料检验单行主键
+     * @return 结果
+     */"
+QcIndexServiceImpl_selectQcIndexByIndexId,"/**
+     * 查询检测项
+     * 
+     * @param indexId 检测项主键
+     * @return 检测项
+     */"
+QcIndexServiceImpl_selectQcIndexList,"/**
+     * 查询检测项列表
+     * 
+     * @param qcIndex 检测项
+     * @return 检测项
+     */"
+QcIndexServiceImpl_insertQcIndex,"/**
+     * 新增检测项
+     * 
+     * @param qcIndex 检测项
+     * @return 结果
+     */"
+QcIndexServiceImpl_updateQcIndex,"/**
+     * 修改检测项
+     * 
+     * @param qcIndex 检测项
+     * @return 结果
+     */"
+QcIndexServiceImpl_deleteQcIndexByIndexIds,"/**
+     * 批量删除检测项
+     * 
+     * @param indexIds 需要删除的检测项主键
+     * @return 结果
+     */"
+QcIndexServiceImpl_deleteQcIndexByIndexId,"/**
+     * 删除检测项信息
+     * 
+     * @param indexId 检测项主键
+     * @return 结果
+     */"
+QcTemplateProductServiceImpl_selectQcTemplateProductByRecordId,"/**
+     * 查询检测模板-产品
+     * 
+     * @param recordId 检测模板-产品主键
+     * @return 检测模板-产品
+     */"
+QcTemplateProductServiceImpl_selectQcTemplateProductList,"/**
+     * 查询检测模板-产品列表
+     * 
+     * @param qcTemplateProduct 检测模板-产品
+     * @return 检测模板-产品
+     */"
+QcTemplateProductServiceImpl_insertQcTemplateProduct,"/**
+     * 新增检测模板-产品
+     * 
+     * @param qcTemplateProduct 检测模板-产品
+     * @return 结果
+     */"
+QcTemplateProductServiceImpl_updateQcTemplateProduct,"/**
+     * 修改检测模板-产品
+     * 
+     * @param qcTemplateProduct 检测模板-产品
+     * @return 结果
+     */"
+QcTemplateProductServiceImpl_deleteQcTemplateProductByRecordIds,"/**
+     * 批量删除检测模板-产品
+     * 
+     * @param recordIds 需要删除的检测模板-产品主键
+     * @return 结果
+     */"
+QcTemplateProductServiceImpl_deleteQcTemplateProductByRecordId,"/**
+     * 删除检测模板-产品信息
+     * 
+     * @param recordId 检测模板-产品主键
+     * @return 结果
+     */"
+QcTemplateIndexServiceImpl_selectQcTemplateIndexByRecordId,"/**
+     * 查询检测模板-检测项
+     * 
+     * @param recordId 检测模板-检测项主键
+     * @return 检测模板-检测项
+     */"
+QcTemplateIndexServiceImpl_selectQcTemplateIndexList,"/**
+     * 查询检测模板-检测项列表
+     * 
+     * @param qcTemplateIndex 检测模板-检测项
+     * @return 检测模板-检测项
+     */"
+QcTemplateIndexServiceImpl_insertQcTemplateIndex,"/**
+     * 新增检测模板-检测项
+     * 
+     * @param qcTemplateIndex 检测模板-检测项
+     * @return 结果
+     */"
+QcTemplateIndexServiceImpl_updateQcTemplateIndex,"/**
+     * 修改检测模板-检测项
+     * 
+     * @param qcTemplateIndex 检测模板-检测项
+     * @return 结果
+     */"
+QcTemplateIndexServiceImpl_deleteQcTemplateIndexByRecordIds,"/**
+     * 批量删除检测模板-检测项
+     * 
+     * @param recordIds 需要删除的检测模板-检测项主键
+     * @return 结果
+     */"
+QcTemplateIndexServiceImpl_deleteQcTemplateIndexByRecordId,"/**
+     * 删除检测模板-检测项信息
+     * 
+     * @param recordId 检测模板-检测项主键
+     * @return 结果
+     */"
+QcOqcServiceImpl_selectQcOqcByOqcId,"/**
+     * 查询出货检验单
+     * 
+     * @param oqcId 出货检验单主键
+     * @return 出货检验单
+     */"
+QcOqcServiceImpl_selectQcOqcList,"/**
+     * 查询出货检验单列表
+     * 
+     * @param qcOqc 出货检验单
+     * @return 出货检验单
+     */"
+QcOqcServiceImpl_insertQcOqc,"/**
+     * 新增出货检验单
+     * 
+     * @param qcOqc 出货检验单
+     * @return 结果
+     */"
+QcOqcServiceImpl_updateQcOqc,"/**
+     * 修改出货检验单
+     * 
+     * @param qcOqc 出货检验单
+     * @return 结果
+     */"
+QcOqcServiceImpl_deleteQcOqcByOqcIds,"/**
+     * 批量删除出货检验单
+     * 
+     * @param oqcIds 需要删除的出货检验单主键
+     * @return 结果
+     */"
+QcOqcServiceImpl_deleteQcOqcByOqcId,"/**
+     * 删除出货检验单信息
+     * 
+     * @param oqcId 出货检验单主键
+     * @return 结果
+     */"
+QcIpqcLineServiceImpl_selectQcIpqcLineByLineId,"/**
+     * 查询过程检验单行
+     * 
+     * @param lineId 过程检验单行主键
+     * @return 过程检验单行
+     */"
+QcIpqcLineServiceImpl_selectQcIpqcLineList,"/**
+     * 查询过程检验单行列表
+     * 
+     * @param qcIpqcLine 过程检验单行
+     * @return 过程检验单行
+     */"
+QcIpqcLineServiceImpl_insertQcIpqcLine,"/**
+     * 新增过程检验单行
+     * 
+     * @param qcIpqcLine 过程检验单行
+     * @return 结果
+     */"
+QcIpqcLineServiceImpl_updateQcIpqcLine,"/**
+     * 修改过程检验单行
+     * 
+     * @param qcIpqcLine 过程检验单行
+     * @return 结果
+     */"
+QcIpqcLineServiceImpl_deleteQcIpqcLineByLineIds,"/**
+     * 批量删除过程检验单行
+     * 
+     * @param lineIds 需要删除的过程检验单行主键
+     * @return 结果
+     */"
+QcIpqcLineServiceImpl_deleteQcIpqcLineByLineId,"/**
+     * 删除过程检验单行信息
+     * 
+     * @param lineId 过程检验单行主键
+     * @return 结果
+     */"
+QcOqcLineServiceImpl_selectQcOqcLineByLineId,"/**
+     * 查询出货检验单行
+     * 
+     * @param lineId 出货检验单行主键
+     * @return 出货检验单行
+     */"
+QcOqcLineServiceImpl_selectQcOqcLineList,"/**
+     * 查询出货检验单行列表
+     * 
+     * @param qcOqcLine 出货检验单行
+     * @return 出货检验单行
+     */"
+QcOqcLineServiceImpl_insertQcOqcLine,"/**
+     * 新增出货检验单行
+     * 
+     * @param qcOqcLine 出货检验单行
+     * @return 结果
+     */"
+QcOqcLineServiceImpl_updateQcOqcLine,"/**
+     * 修改出货检验单行
+     * 
+     * @param qcOqcLine 出货检验单行
+     * @return 结果
+     */"
+QcOqcLineServiceImpl_deleteQcOqcLineByLineIds,"/**
+     * 批量删除出货检验单行
+     * 
+     * @param lineIds 需要删除的出货检验单行主键
+     * @return 结果
+     */"
+QcOqcLineServiceImpl_deleteQcOqcLineByLineId,"/**
+     * 删除出货检验单行信息
+     * 
+     * @param lineId 出货检验单行主键
+     * @return 结果
+     */"
+QcIpqcServiceImpl_selectQcIpqcByIpqcId,"/**
+     * 查询过程检验单
+     * 
+     * @param ipqcId 过程检验单主键
+     * @return 过程检验单
+     */"
+QcIpqcServiceImpl_selectQcIpqcList,"/**
+     * 查询过程检验单列表
+     * 
+     * @param qcIpqc 过程检验单
+     * @return 过程检验单
+     */"
+QcIpqcServiceImpl_insertQcIpqc,"/**
+     * 新增过程检验单
+     * 
+     * @param qcIpqc 过程检验单
+     * @return 结果
+     */"
+QcIpqcServiceImpl_updateQcIpqc,"/**
+     * 修改过程检验单
+     * 
+     * @param qcIpqc 过程检验单
+     * @return 结果
+     */"
+QcIpqcServiceImpl_deleteQcIpqcByIpqcIds,"/**
+     * 批量删除过程检验单
+     * 
+     * @param ipqcIds 需要删除的过程检验单主键
+     * @return 结果
+     */"
+QcIpqcServiceImpl_deleteQcIpqcByIpqcId,"/**
+     * 删除过程检验单信息
+     * 
+     * @param ipqcId 过程检验单主键
+     * @return 结果
+     */"
+QcDefectRecordServiceImpl_selectQcDefectRecordByRecordId,"/**
+     * 查询检验单缺陷记录
+     * 
+     * @param recordId 检验单缺陷记录主键
+     * @return 检验单缺陷记录
+     */"
+QcDefectRecordServiceImpl_selectQcDefectRecordList,"/**
+     * 查询检验单缺陷记录列表
+     * 
+     * @param qcDefectRecord 检验单缺陷记录
+     * @return 检验单缺陷记录
+     */"
+QcDefectRecordServiceImpl_insertQcDefectRecord,"/**
+     * 新增检验单缺陷记录
+     * 
+     * @param qcDefectRecord 检验单缺陷记录
+     * @return 结果
+     */"
+QcDefectRecordServiceImpl_updateQcDefectRecord,"/**
+     * 修改检验单缺陷记录
+     * 
+     * @param qcDefectRecord 检验单缺陷记录
+     * @return 结果
+     */"
+QcDefectRecordServiceImpl_deleteQcDefectRecordByRecordIds,"/**
+     * 批量删除检验单缺陷记录
+     * 
+     * @param recordIds 需要删除的检验单缺陷记录主键
+     * @return 结果
+     */"
+QcDefectRecordServiceImpl_deleteQcDefectRecordByRecordId,"/**
+     * 删除检验单缺陷记录信息
+     * 
+     * @param recordId 检验单缺陷记录主键
+     * @return 结果
+     */"
+QcIqcServiceImpl_selectQcIqcByIqcId,"/**
+     * 查询来料检验单
+     * 
+     * @param iqcId 来料检验单主键
+     * @return 来料检验单
+     */"
+QcIqcServiceImpl_selectQcIqcList,"/**
+     * 查询来料检验单列表
+     * 
+     * @param qcIqc 来料检验单
+     * @return 来料检验单
+     */"
+QcIqcServiceImpl_insertQcIqc,"/**
+     * 新增来料检验单
+     * 
+     * @param qcIqc 来料检验单
+     * @return 结果
+     */"
+QcIqcServiceImpl_updateQcIqc,"/**
+     * 修改来料检验单
+     * 
+     * @param qcIqc 来料检验单
+     * @return 结果
+     */"
+QcIqcServiceImpl_deleteQcIqcByIqcIds,"/**
+     * 批量删除来料检验单
+     * 
+     * @param iqcIds 需要删除的来料检验单主键
+     * @return 结果
+     */"
+QcIqcServiceImpl_deleteQcIqcByIqcId,"/**
+     * 删除来料检验单信息
+     * 
+     * @param iqcId 来料检验单主键
+     * @return 结果
+     */"
+QcDefectServiceImpl_selectQcDefectByDefectId,"/**
+     * 查询常见缺陷
+     * 
+     * @param defectId 常见缺陷主键
+     * @return 常见缺陷
+     */"
+QcDefectServiceImpl_selectQcDefectList,"/**
+     * 查询常见缺陷列表
+     * 
+     * @param qcDefect 常见缺陷
+     * @return 常见缺陷
+     */"
+QcDefectServiceImpl_insertQcDefect,"/**
+     * 新增常见缺陷
+     * 
+     * @param qcDefect 常见缺陷
+     * @return 结果
+     */"
+QcDefectServiceImpl_updateQcDefect,"/**
+     * 修改常见缺陷
+     * 
+     * @param qcDefect 常见缺陷
+     * @return 结果
+     */"
+QcDefectServiceImpl_deleteQcDefectByDefectIds,"/**
+     * 批量删除常见缺陷
+     * 
+     * @param defectIds 需要删除的常见缺陷主键
+     * @return 结果
+     */"
+QcDefectServiceImpl_deleteQcDefectByDefectId,"/**
+     * 删除常见缺陷信息
+     * 
+     * @param defectId 常见缺陷主键
+     * @return 结果
+     */"
+QcTemplateServiceImpl_selectQcTemplateByTemplateId,"/**
+     * 查询检测模板
+     * 
+     * @param templateId 检测模板主键
+     * @return 检测模板
+     */"
+QcTemplateServiceImpl_selectQcTemplateList,"/**
+     * 查询检测模板列表
+     * 
+     * @param qcTemplate 检测模板
+     * @return 检测模板
+     */"
+QcTemplateServiceImpl_insertQcTemplate,"/**
+     * 新增检测模板
+     * 
+     * @param qcTemplate 检测模板
+     * @return 结果
+     */"
+QcTemplateServiceImpl_updateQcTemplate,"/**
+     * 修改检测模板
+     * 
+     * @param qcTemplate 检测模板
+     * @return 结果
+     */"
+QcTemplateServiceImpl_deleteQcTemplateByTemplateIds,"/**
+     * 批量删除检测模板
+     * 
+     * @param templateIds 需要删除的检测模板主键
+     * @return 结果
+     */"
+QcTemplateServiceImpl_deleteQcTemplateByTemplateId,"/**
+     * 删除检测模板信息
+     * 
+     * @param templateId 检测模板主键
+     * @return 结果
+     */"
+QcOqcLineController_list,"/**
+     * 查询出货检验单行列表
+     */"
+QcOqcLineController_export,"/**
+     * 导出出货检验单行列表
+     */"
+QcOqcLineController_getInfo,"/**
+     * 获取出货检验单行详细信息
+     */"
+QcOqcLineController_add,"/**
+     * 新增出货检验单行
+     */"
+QcOqcLineController_edit,"/**
+     * 修改出货检验单行
+     */"
+QcOqcLineController_remove,"/**
+     * 删除出货检验单行
+     */"
+QcOqcController_list,"/**
+     * 查询出货检验单列表
+     */"
+QcOqcController_export,"/**
+     * 导出出货检验单列表
+     */"
+QcOqcController_getInfo,"/**
+     * 获取出货检验单详细信息
+     */"
+QcOqcController_add,"/**
+     * 新增出货检验单
+     */"
+QcOqcController_edit,"/**
+     * 修改出货检验单
+     */"
+QcOqcController_remove,"/**
+     * 删除出货检验单
+     */"
+QcOqcController_generateLine,"/**
+     * 根据头信息生成行信息
+     * @param oqc
+     */"
+QcTemplateIndexController_list,"/**
+     * 查询检测模板-检测项列表
+     */"
+QcTemplateIndexController_export,"/**
+     * 导出检测模板-检测项列表
+     */"
+QcTemplateIndexController_getInfo,"/**
+     * 获取检测模板-检测项详细信息
+     */"
+QcTemplateIndexController_add,"/**
+     * 新增检测模板-检测项
+     */"
+QcTemplateIndexController_edit,"/**
+     * 修改检测模板-检测项
+     */"
+QcTemplateIndexController_remove,"/**
+     * 删除检测模板-检测项
+     */"
+QcIpqcLineController_list,"/**
+     * 查询过程检验单行列表
+     */"
+QcIpqcLineController_export,"/**
+     * 导出过程检验单行列表
+     */"
+QcIpqcLineController_getInfo,"/**
+     * 获取过程检验单行详细信息
+     */"
+QcIpqcLineController_add,"/**
+     * 新增过程检验单行
+     */"
+QcIpqcLineController_edit,"/**
+     * 修改过程检验单行
+     */"
+QcIpqcLineController_remove,"/**
+     * 删除过程检验单行
+     */"
+QcDefectRecordController_list,"/**
+     * 查询检验单缺陷记录列表
+     */"
+QcDefectRecordController_export,"/**
+     * 导出检验单缺陷记录列表
+     */"
+QcDefectRecordController_getInfo,"/**
+     * 获取检验单缺陷记录详细信息
+     */"
+QcDefectRecordController_add,"/**
+     * 新增检验单缺陷记录
+     */"
+QcDefectRecordController_updateList,"/**
+     * 修改来料检验单缺陷记录
+     */"
+QcDefectRecordController_remove,"/**
+     * 删除检验单缺陷记录
+     */"
+QcIpqcController_list,"/**
+     * 查询过程检验单列表
+     */"
+QcIpqcController_export,"/**
+     * 导出过程检验单列表
+     */"
+QcIpqcController_getInfo,"/**
+     * 获取过程检验单详细信息
+     */"
+QcIpqcController_add,"/**
+     * 新增过程检验单
+     */"
+QcIpqcController_edit,"/**
+     * 修改过程检验单
+     */"
+QcIpqcController_remove,"/**
+     * 删除过程检验单
+     */"
+QcIpqcController_generateLine,"/**
+     * 根据头信息生成行信息
+     * @param iqc
+     */"
+QcDefectController_list,"/**
+     * 查询常见缺陷列表
+     */"
+QcDefectController_export,"/**
+     * 导出常见缺陷列表
+     */"
+QcDefectController_getInfo,"/**
+     * 获取常见缺陷详细信息
+     */"
+QcDefectController_add,"/**
+     * 新增常见缺陷
+     */"
+QcDefectController_edit,"/**
+     * 修改常见缺陷
+     */"
+QcDefectController_remove,"/**
+     * 删除常见缺陷
+     */"
+QcTemplateProductController_list,"/**
+     * 查询检测模板-产品列表
+     */"
+QcTemplateProductController_export,"/**
+     * 导出检测模板-产品列表
+     */"
+QcTemplateProductController_getInfo,"/**
+     * 获取检测模板-产品详细信息
+     */"
+QcTemplateProductController_add,"/**
+     * 新增检测模板-产品
+     */"
+QcTemplateProductController_edit,"/**
+     * 修改检测模板-产品
+     */"
+QcTemplateProductController_remove,"/**
+     * 删除检测模板-产品
+     */"
+QcTemplateIndexMobController_getLines,"/**
+     * 根据物料产品和质检类型查询对应的质检模板行信息
+     */"
+QcIndexController_list,"/**
+     * 查询检测项列表
+     */"
+QcIndexController_export,"/**
+     * 导出检测项列表
+     */"
+QcIndexController_getInfo,"/**
+     * 获取检测项详细信息
+     */"
+QcIndexController_add,"/**
+     * 新增检测项
+     */"
+QcIndexController_edit,"/**
+     * 修改检测项
+     */"
+QcIndexController_remove,"/**
+     * 删除检测项
+     */"
+QcIqcController_list,"/**
+     * 查询来料检验单列表
+     */"
+QcIqcController_export,"/**
+     * 导出来料检验单列表
+     */"
+QcIqcController_getInfo,"/**
+     * 获取来料检验单详细信息
+     */"
+QcIqcController_add,"/**
+     * 新增来料检验单
+     */"
+QcIqcController_edit,"/**
+     * 修改来料检验单
+     */"
+QcIqcController_remove,"/**
+     * 删除来料检验单
+     */"
+QcIqcController_generateLine,"/**
+     * 根据头信息生成行信息
+     * @param iqc
+     */"
+QcTemplateController_list,"/**
+     * 查询检测模板列表
+     */"
+QcTemplateController_export,"/**
+     * 导出检测模板列表
+     */"
+QcTemplateController_getInfo,"/**
+     * 获取检测模板详细信息
+     */"
+QcTemplateController_add,"/**
+     * 新增检测模板
+     */"
+QcTemplateController_edit,"/**
+     * 修改检测模板
+     */"
+QcTemplateController_remove,"/**
+     * 删除检测模板
+     */"
+QcIqcLineController_list,"/**
+     * 查询来料检验单行列表
+     */"
+QcIqcLineController_export,"/**
+     * 导出来料检验单行列表
+     */"
+QcIqcLineController_getInfo,"/**
+     * 获取来料检验单行详细信息
+     */"
+QcIqcLineController_add,"/**
+     * 新增来料检验单行
+     */"
+QcIqcLineController_edit,"/**
+     * 修改来料检验单行
+     */"
+QcIqcLineController_remove,"/**
+     * 删除来料检验单行
+     */"
+DvCheckPlanServiceImpl_selectDvCheckPlanByPlanId,"/**
+     * 查询设备点检计划头
+     * 
+     * @param planId 设备点检计划头主键
+     * @return 设备点检计划头
+     */"
+DvCheckPlanServiceImpl_selectDvCheckPlanList,"/**
+     * 查询设备点检计划头列表
+     * 
+     * @param dvCheckPlan 设备点检计划头
+     * @return 设备点检计划头
+     */"
+DvCheckPlanServiceImpl_insertDvCheckPlan,"/**
+     * 新增设备点检计划头
+     * 
+     * @param dvCheckPlan 设备点检计划头
+     * @return 结果
+     */"
+DvCheckPlanServiceImpl_updateDvCheckPlan,"/**
+     * 修改设备点检计划头
+     * 
+     * @param dvCheckPlan 设备点检计划头
+     * @return 结果
+     */"
+DvCheckPlanServiceImpl_deleteDvCheckPlanByPlanIds,"/**
+     * 批量删除设备点检计划头
+     * 
+     * @param planIds 需要删除的设备点检计划头主键
+     * @return 结果
+     */"
+DvCheckPlanServiceImpl_deleteDvCheckPlanByPlanId,"/**
+     * 删除设备点检计划头信息
+     * 
+     * @param planId 设备点检计划头主键
+     * @return 结果
+     */"
+DvRepairLineServiceImpl_selectDvRepairLineByLineId,"/**
+     * 查询设备维修单行
+     * 
+     * @param lineId 设备维修单行主键
+     * @return 设备维修单行
+     */"
+DvRepairLineServiceImpl_selectDvRepairLineList,"/**
+     * 查询设备维修单行列表
+     * 
+     * @param dvRepairLine 设备维修单行
+     * @return 设备维修单行
+     */"
+DvRepairLineServiceImpl_insertDvRepairLine,"/**
+     * 新增设备维修单行
+     * 
+     * @param dvRepairLine 设备维修单行
+     * @return 结果
+     */"
+DvRepairLineServiceImpl_updateDvRepairLine,"/**
+     * 修改设备维修单行
+     * 
+     * @param dvRepairLine 设备维修单行
+     * @return 结果
+     */"
+DvRepairLineServiceImpl_deleteDvRepairLineByLineIds,"/**
+     * 批量删除设备维修单行
+     * 
+     * @param lineIds 需要删除的设备维修单行主键
+     * @return 结果
+     */"
+DvRepairLineServiceImpl_deleteDvRepairLineByLineId,"/**
+     * 删除设备维修单行信息
+     * 
+     * @param lineId 设备维修单行主键
+     * @return 结果
+     */"
+DvCheckMachineryServiceImpl_selectDvCheckMachineryByRecordId,"/**
+     * 查询点检设备
+     * 
+     * @param recordId 点检设备主键
+     * @return 点检设备
+     */"
+DvCheckMachineryServiceImpl_selectDvCheckMachineryList,"/**
+     * 查询点检设备列表
+     * 
+     * @param dvCheckMachinery 点检设备
+     * @return 点检设备
+     */"
+DvCheckMachineryServiceImpl_insertDvCheckMachinery,"/**
+     * 新增点检设备
+     * 
+     * @param dvCheckMachinery 点检设备
+     * @return 结果
+     */"
+DvCheckMachineryServiceImpl_updateDvCheckMachinery,"/**
+     * 修改点检设备
+     * 
+     * @param dvCheckMachinery 点检设备
+     * @return 结果
+     */"
+DvCheckMachineryServiceImpl_deleteDvCheckMachineryByRecordIds,"/**
+     * 批量删除点检设备
+     * 
+     * @param recordIds 需要删除的点检设备主键
+     * @return 结果
+     */"
+DvCheckMachineryServiceImpl_deleteDvCheckMachineryByRecordId,"/**
+     * 删除点检设备信息
+     * 
+     * @param recordId 点检设备主键
+     * @return 结果
+     */"
+DvMachineryServiceImpl_selectDvMachineryByMachineryId,"/**
+     * 查询设备
+     * 
+     * @param machineryId 设备主键
+     * @return 设备
+     */"
+DvMachineryServiceImpl_selectDvMachineryList,"/**
+     * 查询设备列表
+     * 
+     * @param dvMachinery 设备
+     * @return 设备
+     */"
+DvMachineryServiceImpl_insertDvMachinery,"/**
+     * 新增设备
+     * 
+     * @param dvMachinery 设备
+     * @return 结果
+     */"
+DvMachineryServiceImpl_updateDvMachinery,"/**
+     * 修改设备
+     * 
+     * @param dvMachinery 设备
+     * @return 结果
+     */"
+DvMachineryServiceImpl_deleteDvMachineryByMachineryIds,"/**
+     * 批量删除设备
+     * 
+     * @param machineryIds 需要删除的设备主键
+     * @return 结果
+     */"
+DvMachineryServiceImpl_deleteDvMachineryByMachineryId,"/**
+     * 删除设备信息
+     * 
+     * @param machineryId 设备主键
+     * @return 结果
+     */"
+DvMachineryTypeServiceImpl_selectDvMachineryTypeByMachineryTypeId,"/**
+     * 查询设备类型
+     * 
+     * @param machineryTypeId 设备类型主键
+     * @return 设备类型
+     */"
+DvMachineryTypeServiceImpl_selectDvMachineryTypeList,"/**
+     * 查询设备类型列表
+     * 
+     * @param dvMachineryType 设备类型
+     * @return 设备类型
+     */"
+DvMachineryTypeServiceImpl_insertDvMachineryType,"/**
+     * 新增设备类型
+     * 
+     * @param dvMachineryType 设备类型
+     * @return 结果
+     */"
+DvMachineryTypeServiceImpl_updateDvMachineryType,"/**
+     * 修改设备类型
+     * 
+     * @param dvMachineryType 设备类型
+     * @return 结果
+     */"
+DvMachineryTypeServiceImpl_deleteDvMachineryTypeByMachineryTypeIds,"/**
+     * 批量删除设备类型
+     * 
+     * @param machineryTypeIds 需要删除的设备类型主键
+     * @return 结果
+     */"
+DvMachineryTypeServiceImpl_deleteDvMachineryTypeByMachineryTypeId,"/**
+     * 删除设备类型信息
+     * 
+     * @param machineryTypeId 设备类型主键
+     * @return 结果
+     */"
+DvCheckSubjectServiceImpl_selectDvCheckSubjectByRecordId,"/**
+     * 查询点检项目
+     * 
+     * @param recordId 点检项目主键
+     * @return 点检项目
+     */"
+DvCheckSubjectServiceImpl_selectDvCheckSubjectList,"/**
+     * 查询点检项目列表
+     * 
+     * @param dvCheckSubject 点检项目
+     * @return 点检项目
+     */"
+DvCheckSubjectServiceImpl_insertDvCheckSubject,"/**
+     * 新增点检项目
+     * 
+     * @param dvCheckSubject 点检项目
+     * @return 结果
+     */"
+DvCheckSubjectServiceImpl_updateDvCheckSubject,"/**
+     * 修改点检项目
+     * 
+     * @param dvCheckSubject 点检项目
+     * @return 结果
+     */"
+DvCheckSubjectServiceImpl_deleteDvCheckSubjectByRecordIds,"/**
+     * 批量删除点检项目
+     * 
+     * @param recordIds 需要删除的点检项目主键
+     * @return 结果
+     */"
+DvCheckSubjectServiceImpl_deleteDvCheckSubjectByRecordId,"/**
+     * 删除点检项目信息
+     * 
+     * @param recordId 点检项目主键
+     * @return 结果
+     */"
+DvRepairServiceImpl_selectDvRepairByRepairId,"/**
+     * 查询设备维修单
+     * 
+     * @param repairId 设备维修单主键
+     * @return 设备维修单
+     */"
+DvRepairServiceImpl_selectDvRepairList,"/**
+     * 查询设备维修单列表
+     * 
+     * @param dvRepair 设备维修单
+     * @return 设备维修单
+     */"
+DvRepairServiceImpl_insertDvRepair,"/**
+     * 新增设备维修单
+     * 
+     * @param dvRepair 设备维修单
+     * @return 结果
+     */"
+DvRepairServiceImpl_updateDvRepair,"/**
+     * 修改设备维修单
+     * 
+     * @param dvRepair 设备维修单
+     * @return 结果
+     */"
+DvRepairServiceImpl_deleteDvRepairByRepairIds,"/**
+     * 批量删除设备维修单
+     * 
+     * @param repairIds 需要删除的设备维修单主键
+     * @return 结果
+     */"
+DvRepairServiceImpl_deleteDvRepairByRepairId,"/**
+     * 删除设备维修单信息
+     * 
+     * @param repairId 设备维修单主键
+     * @return 结果
+     */"
+DvSubjectServiceImpl_selectDvSubjectBySubjectId,"/**
+     * 查询设备点检保养项目
+     * 
+     * @param subjectId 设备点检保养项目主键
+     * @return 设备点检保养项目
+     */"
+DvSubjectServiceImpl_selectDvSubjectList,"/**
+     * 查询设备点检保养项目列表
+     * 
+     * @param dvSubject 设备点检保养项目
+     * @return 设备点检保养项目
+     */"
+DvSubjectServiceImpl_insertDvSubject,"/**
+     * 新增设备点检保养项目
+     * 
+     * @param dvSubject 设备点检保养项目
+     * @return 结果
+     */"
+DvSubjectServiceImpl_updateDvSubject,"/**
+     * 修改设备点检保养项目
+     * 
+     * @param dvSubject 设备点检保养项目
+     * @return 结果
+     */"
+DvSubjectServiceImpl_deleteDvSubjectBySubjectIds,"/**
+     * 批量删除设备点检保养项目
+     * 
+     * @param subjectIds 需要删除的设备点检保养项目主键
+     * @return 结果
+     */"
+DvSubjectServiceImpl_deleteDvSubjectBySubjectId,"/**
+     * 删除设备点检保养项目信息
+     * 
+     * @param subjectId 设备点检保养项目主键
+     * @return 结果
+     */"
+DvSubjectController_list,"/**
+     * 查询设备点检保养项目列表
+     */"
+DvSubjectController_export,"/**
+     * 导出设备点检保养项目列表
+     */"
+DvSubjectController_getInfo,"/**
+     * 获取设备点检保养项目详细信息
+     */"
+DvSubjectController_add,"/**
+     * 新增设备点检保养项目
+     */"
+DvSubjectController_edit,"/**
+     * 修改设备点检保养项目
+     */"
+DvSubjectController_remove,"/**
+     * 删除设备点检保养项目
+     */"
+DvRepairController_list,"/**
+     * 查询设备维修单列表
+     */"
+DvRepairController_export,"/**
+     * 导出设备维修单列表
+     */"
+DvRepairController_getInfo,"/**
+     * 获取设备维修单详细信息
+     */"
+DvRepairController_add,"/**
+     * 新增设备维修单
+     */"
+DvRepairController_edit,"/**
+     * 修改设备维修单
+     */"
+DvRepairController_remove,"/**
+     * 删除设备维修单
+     */"
+DvCheckPlanController_list,"/**
+     * 查询设备点检计划头列表
+     */"
+DvCheckPlanController_export,"/**
+     * 导出设备点检计划头列表
+     */"
+DvCheckPlanController_getInfo,"/**
+     * 获取设备点检计划头详细信息
+     */"
+DvCheckPlanController_add,"/**
+     * 新增设备点检计划头
+     */"
+DvCheckPlanController_edit,"/**
+     * 修改设备点检计划头
+     */"
+DvCheckPlanController_remove,"/**
+     * 删除设备点检计划头
+     */"
+DvMachineryController_list,"/**
+     * 查询设备列表
+     */"
+DvMachineryController_export,"/**
+     * 导出设备列表
+     */"
+DvMachineryController_getInfo,"/**
+     * 获取设备详细信息
+     */"
+DvMachineryController_add,"/**
+     * 新增设备
+     */"
+DvMachineryController_edit,"/**
+     * 修改设备
+     */"
+DvMachineryController_remove,"/**
+     * 删除设备
+     */"
+DvCheckMachineryController_list,"/**
+     * 查询点检设备列表
+     */"
+DvCheckMachineryController_export,"/**
+     * 导出点检设备列表
+     */"
+DvCheckMachineryController_getInfo,"/**
+     * 获取点检设备详细信息
+     */"
+DvCheckMachineryController_add,"/**
+     * 新增点检设备
+     */"
+DvCheckMachineryController_edit,"/**
+     * 修改点检设备
+     */"
+DvCheckMachineryController_remove,"/**
+     * 删除点检设备
+     */"
+DvCheckSubjectController_list,"/**
+     * 查询点检项目列表
+     */"
+DvCheckSubjectController_export,"/**
+     * 导出点检项目列表
+     */"
+DvCheckSubjectController_getInfo,"/**
+     * 获取点检项目详细信息
+     */"
+DvCheckSubjectController_add,"/**
+     * 新增点检项目
+     */"
+DvCheckSubjectController_edit,"/**
+     * 修改点检项目
+     */"
+DvCheckSubjectController_remove,"/**
+     * 删除点检项目
+     */"
+DvRepairLineController_list,"/**
+     * 查询设备维修单行列表
+     */"
+DvRepairLineController_export,"/**
+     * 导出设备维修单行列表
+     */"
+DvRepairLineController_getInfo,"/**
+     * 获取设备维修单行详细信息
+     */"
+DvRepairLineController_add,"/**
+     * 新增设备维修单行
+     */"
+DvRepairLineController_edit,"/**
+     * 修改设备维修单行
+     */"
+DvRepairLineController_remove,"/**
+     * 删除设备维修单行
+     */"
+DvMachineryTypeController_list,"/**
+     * 查询设备类型列表
+     */"
+DvMachineryTypeController_export,"/**
+     * 导出设备类型列表
+     */"
+DvMachineryTypeController_getInfo,"/**
+     * 获取设备类型详细信息
+     */"
+DvMachineryTypeController_add,"/**
+     * 新增设备类型
+     */"
+DvMachineryTypeController_edit,"/**
+     * 修改设备类型
+     */"
+DvMachineryTypeController_remove,"/**
+     * 删除设备类型
+     */"

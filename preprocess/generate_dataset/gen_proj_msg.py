@@ -1,5 +1,5 @@
 import os
-from typing import List, Dict
+from typing import List, Dict,Any
 
 import javalang
 from javalang.tree import MethodDeclaration
@@ -7,7 +7,17 @@ from gen_dataset.rebuild_ast import get_token, get_child
 from anytree import AnyNode
 
 
-def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_asts: Dict):
+def add_func_doc(func_node:MethodDeclaration,class_name:str):
+    # 方法的注释
+    func_doc = func_node.documentation
+    # 方法名
+    func_name = func_node.name
+    # 类-方法 字典的key
+    dict_key = f"{class_name}_{func_name}"
+
+
+
+def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_asts: Dict,java_func_doc_dict:Dict[Any,Any]):
     """
     根据输入Java代码，解析出当前java文件中的类-方法 对应关系和方法AST列表
     类-方法对应关系结构为：
@@ -18,6 +28,7 @@ def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_as
     @param code: 一个.java文件的代码
     @param method_ast_list: 方法ast列表
     @param class_func_asts: class-func对应关系map
+    @param java_func_doc_dict: java 方法-方法注释 字典{class_func:doc}
     """
     # 将java代码转换成ast
     code_ast = javalang.parse.parse(code)
@@ -37,20 +48,31 @@ def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_as
                 body_type = type(body).__name__
                 # 如果当前节点是方法节点
                 if body_type == "MethodDeclaration":
+                    # 方法名
                     func_name = body.name
+                    # 方法的注释
+                    func_doc = body.documentation
                     # 类-方法 字典的key
                     dict_key = f"{class_name}_{func_name}"
+
                     # 将需要加入class_func dict的ast使用anytree进行重构,在后面构建数据集的时候需要重构来统一格式
                     nodelist = []
                     new_tree = AnyNode(id=0, token=None, data=None)
+                    # 重构树
                     create_tree(new_tree, body, nodelist, None, )
                     # 存储重构之后的tree
                     class_func_asts[dict_key] = new_tree
                     # 将方法的ast节点添加到ast节点列表中
                     method_ast_list.append(body)
 
+                    if func_doc is not None:
+                        # 如果当前方法的注释不为空（满足要求）则将当前的方法和对应的注释关联到一起
+                        """
+                            处于方法上方的注释才会被认为是方法注释，并且方法注释的格式是/*xxx*/格式的，其他格式不行
+                        """
+                        java_func_doc_dict[dict_key] = func_doc
 
-# def get_proj_method_asts_classes(proj_dir: str) -> tuple[List[MethodDeclaration], Dict]:
+
 def get_proj_method_asts_classes(proj_dir: str):
     """
         根据输入的项目位置，解析出当前项目的类-方法 对应关系和方法AST列表
@@ -64,6 +86,8 @@ def get_proj_method_asts_classes(proj_dir: str):
     method_ast_list = list([])
     # 类-方法 对应列表
     class_func_asts = dict({})
+    # java 方法-方法注释 字典{class_func:doc}
+    java_func_doc_dict = dict({})
 
     # 遍历项目目录下所有的.java文件
     for rt, dirs, files in os.walk(proj_dir):
@@ -74,11 +98,11 @@ def get_proj_method_asts_classes(proj_dir: str):
                 code = java_file.read()
                 # 获取方法的ast节点 和 类
                 try:
-                    get_file_method_asts_classes(code, method_ast_list, class_func_asts)
+                    get_file_method_asts_classes(code, method_ast_list, class_func_asts, java_func_doc_dict)
                 except Exception as e:
                     pass
 
-    return method_ast_list, class_func_asts
+    return method_ast_list, class_func_asts, java_func_doc_dict
 
 
 def create_tree(root, node, nodelist, parent):
