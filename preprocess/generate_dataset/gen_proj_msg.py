@@ -7,16 +7,6 @@ from gen_dataset.rebuild_ast import get_token, get_child
 from anytree import AnyNode
 
 
-def add_func_doc(func_node:MethodDeclaration,class_name:str):
-    # 方法的注释
-    func_doc = func_node.documentation
-    # 方法名
-    func_name = func_node.name
-    # 类-方法 字典的key
-    dict_key = f"{class_name}_{func_name}"
-
-
-
 def get_file_method_asts_classes(code: str, method_ast_list: list, class_func_asts: Dict,java_func_doc_dict:Dict[Any,Any]):
     """
     根据输入Java代码，解析出当前java文件中的类-方法 对应关系和方法AST列表

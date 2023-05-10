@@ -19,7 +19,7 @@ import models
 from torch_geometric.data import Data, DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from early_stopping import EarlyStopping
-# import logddd
+import logddd
 # 获取参数
 args = get_args()
 device = torch.device('cuda:0')
@@ -32,18 +32,22 @@ if not os.path.exists("data.data"):
     # 获取格式化数据
     traindata, validdata, testdata = creategmndata(
         args.data_setting, treedict, vocablen, vocabdict, device)
-    train_data = {
+    datas = {
         "traindata": traindata,
         "validdata": validdata,
         "testdata": testdata,
         "vocablen": vocablen
     }
-    joblib.dump(train_data, "data.data")
+    joblib.dump(datas, "data.data")
 else:
-    train_data = joblib.load("data.data")
-    traindata, validdata, testdata, vocablen = train_data["traindata"], train_data[
-        "validdata"], train_data["testdata"], train_data["vocablen"]
+    datas = joblib.load("data.data")
+    traindata, validdata, testdata, vocablen = datas["traindata"], datas[
+        "validdata"], datas["testdata"], datas["vocablen"]
 
+traindata = traindata[:10000]
+validdata = validdata[:100]
+testdata = testdata[:100]
+logddd.log(len(traindata),len(testdata))
 
 num_layers = int(args.num_layers)
 model = models.GMNnet(vocablen, embedding_dim=100,
@@ -54,12 +58,12 @@ optimizer = optim.AdamW(model.parameters(), lr=args.lr)
 criterion = nn.CosineEmbeddingLoss()
 criterion2 = nn.MSELoss()
 
-criterion3 = torch.nn.BCEWithLogitsLoss(
-    weight=torch.tensor([1, 6], dtype=torch.long, device=device))
-# weight=torch.tensor([0.8576, 0.1424] ,dtype=torch.long, device=device)
-# weight=torch.tensor([0.8576, 0.1424], dtype=torch.long, device=device)
-criterion4 = nn.BCELoss(weight=torch.tensor(
-    [1, 6], dtype=torch.long, device=device))  # 交叉熵
+criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([1, 1], dtype=torch.long, device=device))
+criterion4 = nn.BCELoss(weight=torch.tensor([1, 1], dtype=torch.long, device=device))  # 交叉熵
+
+# criterion3 = torch.nn.BCEWithLogitsLoss(weight=torch.tensor([1, 6], dtype=torch.long, device=device))
+# criterion4 = nn.BCELoss(weight=torch.tensor([1, 6], dtype=torch.long, device=device))  # 交叉熵evice))
+
 save_path = "./models"  # 当前目录下
 # early_stopping = EarlyStopping()
 early_stopping = EarlyStopping(
@@ -118,7 +122,7 @@ for epoch in epochs:  # without batching
 
     for index, batch in tqdm(enumerate(batches), total=len(batches), desc="Batches"):
         optimizer.zero_grad()
-        # batchloss= 0wei
+        # batchloss= 0
 
         # 预测正确的数量
         # num_correct = 0
@@ -131,23 +135,23 @@ for epoch in epochs:  # without batching
             x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2 = data
             x1 = torch.tensor(x1, dtype=torch.long, device=device)
             x2 = torch.tensor(x2, dtype=torch.long, device=device)
-            logddd.log(x1.shape)
-            logddd.log(x2.shape)
+            # logddd.log(x1.shape)
+            # logddd.log(x2.shape)
 
             edge_index1 = torch.tensor(
                 edge_index1, dtype=torch.long, device=device)
             edge_index2 = torch.tensor(
                 edge_index2, dtype=torch.long, device=device)
-            logddd.log(edge_index1.shape)
-            logddd.log(edge_index2.shape)
+            # logddd.log(edge_index1.shape)
+            # logddd.log(edge_index2.shape)
 
             if edge_attr1 != None:
                 edge_attr1 = torch.tensor(
                     edge_attr1, dtype=torch.long, device=device)
                 edge_attr2 = torch.tensor(
                     edge_attr2, dtype=torch.long, device=device)
-            logddd.log(edge_attr1.shape)
-            logddd.log(edge_attr2.shape)
+            # logddd.log(edge_attr1.shape)
+            # logddd.log(edge_attr2.shape)
             # x1_a = to_adjacen_matrix(x1, edge_index1)
             # x2_a = to_adjacen_matrix(x2, edge_index2)
 
@@ -186,7 +190,7 @@ for epoch in epochs:  # without batching
     # 验证和计算早停
     with torch.no_grad():
         valid_loss_list = []
-        val_data = validdata[:40000]
+        val_data = validdata
         # val_data = validdata[:40]
         tp = 0
         tn = 0
@@ -233,6 +237,7 @@ for epoch in epochs:  # without batching
                 prediction = 0.4
             else:
                 prediction = 0.6
+            print(prediction)
             y = label.tolist()
             # print(label[0]==[0,1])
             if prediction > args.threshold and y[0] == [0, 1]:

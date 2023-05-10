@@ -34,12 +34,18 @@ parser.add_argument("--lr", default=0.001)
 parser.add_argument("--threshold", default=0)
 args = parser.parse_args()
  
-device=torch.device('cuda:4')
+device=torch.device('cuda:0')
 #device=torch.device('cpu')
 astdict,vocablen,vocabdict=createast()
 treedict=createseparategraph(astdict, vocablen, vocabdict,device,mode=args.graphmode,nextsib=args.nextsib,ifedge=args.ifedge,whileedge=args.whileedge,foredge=args.foredge,blockedge=args.blockedge,nexttoken=args.nexttoken,nextuse=args.nextuse)
 traindata,validdata,testdata=creategmndata(args.data_setting,treedict,vocablen,vocabdict,device)
 
+# ==========================================================测试====================================
+traindata = traindata[:100]
+validdata = validdata[:100]
+testdata = testdata[:100]
+
+# ==========================================================测试====================================
 #trainloder=DataLoader(traindata,batch_size=1)
 num_layers=int(args.num_layers)
 model=models.GMNnet(vocablen,embedding_dim=100,num_layers=num_layers,device=device).to(device)
@@ -70,6 +76,7 @@ def test(dataset):
         if edge_attr1!=None:
             edge_attr1=torch.tensor(edge_attr1, dtype=torch.long, device=device)
             edge_attr2=torch.tensor(edge_attr2, dtype=torch.long, device=device)
+
         data=[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2]
         prediction=model(data)
         output=F.cosine_similarity(prediction[0],prediction[1])
@@ -159,7 +166,7 @@ for epoch in epochs:# without batching
         epochs.set_description("Epoch (Loss=%g)" % round(loss,5))
     #test(validdata)
 
-    testresults=test(testdata[:40000])
+    testresults=test(testdata)
     # devresults=test(validdata)
     # devfile=open('gmnbcbresult/'+args.graphmode+'_dev_epoch_'+str(epoch+1),mode='w')
     # for res in devresults:

@@ -122,9 +122,9 @@ def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func,
                 replaced_func.append(class_func_key)
                 type4.append(class_func_key)
                 node, token = called_func_ast, get_token(called_func_ast)
-            else:
-                # 第三种情况
-                type3.append(class_func_key)
+        elif str(class_name).istitle():
+            # 第三种情况，在内部方法表中查不到，但是首字母是写
+            type3.append(class_func_key)
         else:
             # 首字母为小写，表示的是第一种
             # 类名
@@ -134,17 +134,14 @@ def replace_called_func(node: Node, class_func_asts: Dict, token, replaced_func,
             class_func_key = f"{class_name}_{func_name}"
             type1.append(class_func_key)
     else:
-        # 走到这个地方就表示当前的调用方式是其他的几种（类实例.func ｜ new 类().func ｜ 第三方工具类.func ）
+
         """
             对于这三种的区分: 按照标准代码规范可以区分
             1. 类实例.func 其qualifier属性值，首字母是小写
             2. new 类().func 其qualifier属性为空
             3. 第三方工具类.func 其qualifier属性值，首字母是大写
         """
-        qualifier = node.qualifier
-        if qualifier is None:
-            # 表示是第二种
-            type2.append(node.member)
+        type2.append(node.member)
 
     return node, token
 

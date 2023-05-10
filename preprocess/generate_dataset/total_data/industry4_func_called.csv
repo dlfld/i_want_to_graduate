@@ -1,5 +1,4 @@
-index,被调用方法,被调用次数,new class().func(),local.func(),OtherClass.func(),ProjClass.func()
-,,,88505,17857,0,3051
+index,被调用方法,被调用次数
 0,SearchRestrictions_eq,516
 1,SearchRestrictions_belongsTo,481
 2,BigDecimalUtils_convertNullToZero,147

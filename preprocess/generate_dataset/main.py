@@ -48,9 +48,9 @@ def statistics_func_called(dataset_map: Dict[Any, Any], proj_name: str, types):
     # 将结果写到csv文件当中
     with open(f"{pre_dir}/{proj_name}_func_called.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["index", "被调用方法", "被调用次数", "new class().func()", "local.func()", "OtherClass.func()",
-                         "ProjClass.func()"])
-        writer.writerow(types)
+        # writer.writerow(["index", "被调用方法", "被调用次数", "new class().func()", "local.func()", "OtherClass.func()","ProjClass.func()"])
+        writer.writerow(["index", "被调用方法", "被调用次数"])
+        # writer.writerow(types)
         writer.writerows(save_list)
 
 
@@ -63,8 +63,8 @@ def save_func_doc(java_func_doc_dict: dict,proj_name: str):
     """
     with open(f"{pre_dir}/{proj_name}_doc.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["className_funcName","doc"])
-        values = [[key,java_func_doc_dict[key]] for key in java_func_doc_dict.keys()]
+        writer.writerow(["index","className_funcName","doc"])
+        values = [[index,key,java_func_doc_dict[key]] for index,key in enumerate(java_func_doc_dict.keys())]
         writer.writerows(values)
 
 
@@ -87,10 +87,10 @@ if __name__ == '__main__':
     # 第三种 第三方工具类 StringUtils.isEmpty() 这种，其qualifier属性为变量名为第三方类名
     # 第四种 当前项目的staticClass.func() 这种，其qualifier属性为变量名为第三方类名
     dataset_map, type1, type2, type3, type4 = func_call_replace(method_ast_list, class_func_asts)
-    logddd.log(len(type1))
-    logddd.log(len(type2))
-    logddd.log(len(type3))
-    logddd.log(len(type4))
+    logddd.log("方法总共的调用次数：",len(type1),"被单独调用的次数",len(set(type1)),"被重复调用的次数",len(type1) - len(set(type1)))
+    logddd.log("方法总共的调用次数：",len(type2),"被单独调用的次数",len(set(type2)),"被重复调用的次数",len(type2) - len(set(type2)))
+    logddd.log("方法总共的调用次数：",len(type3),"被单独调用的次数",len(set(type3)),"被重复调用的次数",len(type3) - len(set(type3)))
+    logddd.log("方法总共的调用次数：",len(type4),"被单独调用的次数",len(set(type4)),"被重复调用的次数",len(type4) - len(set(type4)))
 
     logddd.log("len(method_ast_list) = ", len(method_ast_list))
     logddd.log("len(class_func_asts) = ", len(class_func_asts))
@@ -111,3 +111,5 @@ if __name__ == '__main__':
     # for index in tqdm(range(len(dataset_list)), desc="saving"):
     #     data = dataset_list[index]
     #     dump_dataset(data, f"dataset/{proj_name}_{index}.data")
+
+    logddd.log("DONE!")

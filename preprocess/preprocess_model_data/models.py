@@ -106,7 +106,7 @@ class DeepSim(nn.Module):
         )
 
         # 如果添加了hist 需要将hist的长度添加上去
-        self.liner = nn.Linear(200, 2)
+        self.liner = nn.Linear(200, 1)
 
     def forward(self, x1, x2, hist):
 
