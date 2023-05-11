@@ -98,7 +98,7 @@ def to_adjacen_matrix(nodes, edge_index):
     return A
 
 # loss_list = []
-# =======================================================early stop=======================================================
+# =======================================================early stop====================================================
 
 
 train_losses = []
@@ -106,7 +106,7 @@ train_acces = []
 # 用数组保存每一轮迭代中，在测试数据上测试的损失值和精确度，也是为了通过画图展示出来。
 eval_losses = []
 eval_acces = []
-# =======================================================early stop=======================================================
+# =======================================================early stop====================================================
 writer = SummaryWriter('log/')
 epochs = trange(args.num_epochs, leave=True, desc="Epoch")
 for epoch in epochs:  # without batching
@@ -237,7 +237,7 @@ for epoch in epochs:  # without batching
                 prediction = 0.4
             else:
                 prediction = 0.6
-            print(prediction)
+
             y = label.tolist()
             # print(label[0]==[0,1])
             if prediction > args.threshold and y[0] == [0, 1]:

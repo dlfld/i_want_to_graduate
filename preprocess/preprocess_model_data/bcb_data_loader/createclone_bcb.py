@@ -195,7 +195,7 @@ def createast():
     return astdict, vocabsize, vocabdict
 
 
-def createseparategraph(astdict, vocablen, vocabdict, mode='astonly', nextsib=False, ifedge=False,
+def createseparategraph(astdict, vocabdict, mode='astonly', nextsib=False, ifedge=False,
                         whileedge=False, foredge=False, blockedge=False, nexttoken=False, nextuse=False):
     """
         创建图信息，根据ast重新构建树的结构，并在树上添加边
@@ -310,7 +310,7 @@ def createpairdata(treedict, pathlist):
             edge_attr2 = None
         # data = [[x1, x2, edge_index1, edge_index2, edge_attr1, edge_attr2], label]
         data = [x1, x2, edge_index1, edge_index2,
-                edge_attr1, edge_attr2, label]
+                 edge_attr1, edge_attr2, label]
         datalist.append(data)
     return datalist
 

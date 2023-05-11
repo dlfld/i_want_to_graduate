@@ -15,8 +15,7 @@ def load_bcb_data(args):
         # 读取数据集获取数据信息
         astdict, vocablen, vocabdict = createast()
         # 数据预处理
-        treedict = createseparategraph(astdict, vocablen, vocabdict, mode=args.graphmode, nextsib=args.nextsib, ifedge=args.ifedge,
-                                       whileedge=args.whileedge, foredge=args.foredge, blockedge=args.blockedge, nexttoken=args.nexttoken, nextuse=args.nextuse)
+        treedict = createseparategraph(astdict, vocabdict, mode=args.graphmode, nextsib=args.nextsib, ifedge=args.ifedge, whileedge=args.whileedge, foredge=args.foredge, blockedge=args.blockedge, nexttoken=args.nexttoken, nextuse=args.nextuse)
         # 获取格式化数据
         traindata, validdata, testdata = creategmndata(
             args.data_setting, treedict, vocablen, vocabdict)
