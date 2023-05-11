@@ -49,14 +49,14 @@ def get_all_tokens(dataset_path: str) -> Tuple[Dict[Any, Any], int, List[Any]]:
         get_tree_tokens_dfs(ast1, all_tokens)
         get_tree_tokens_dfs(ast2, all_tokens)
         # 测试，限制数据量
-        sum += 1
-        if sum == 200000:
-            break
+        # sum += 1
+        # if sum == 200000:
+        #     break
 
     vocab_size = len(list(all_tokens))
     token_ids = range(vocab_size)
 
-    return dict(zip(all_tokens, token_ids)), vocab_size, all_data[:200000]
+    return dict(zip(all_tokens, token_ids)), vocab_size, all_data
 
 
 def getnodeandedge_astonly(node, nodeindexlist, vocabdict, src, tgt):
@@ -259,7 +259,7 @@ def get_all_mes_datas(dataset_path: str) -> List[Any]:
     return all_pair_data, token_dict
 
 
-def load_mem_data(args):
+def load_mom_data(args):
     """
         返回MOM&MES数据,
         @return: 所有数据的列表，词表

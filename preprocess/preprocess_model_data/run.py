@@ -19,14 +19,21 @@ from torch.utils.data import DataLoader
 import os
 import joblib
 from torch.utils.tensorboard import SummaryWriter
-from data_embedding import load_mem_data
+from data_embedding import load_mom_data,get_all_mes_datas
 from bcb_data_loader.loader import load_bcb_data
 # import logddd
 from early_stopping import EarlyStopping
 import logddd
 
 
-
+def load_vaild_data():
+    """
+         加载验证集数据
+         验证集数据用另一个项目的数据做
+    """
+    data_file_path = "../generate_dataset/valid_data/"
+    all_data_list, token_dict = get_all_mes_datas(data_file_path)
+    return all_data_list
 
 def create_batches(data):
     batches = [data[graph:graph+args.batch_size]
@@ -54,7 +61,7 @@ def load_total_data(args):
     """
     data_save_file_name = "all_data.data"
     if not os.path.exists(data_save_file_name):
-        all_data, mom_vocab_dict = load_mem_data(args)
+        all_data, mom_vocab_dict = load_mom_data(args)
 
         bcb_data, bcb_cocab_dict = load_bcb_data(args)
 
